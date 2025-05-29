@@ -8,9 +8,31 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Astro with Tailwind CSS</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-gray-100 min-h-screen">
+		<div class="container mx-auto px-4 py-8">
+			<h1 class="text-4xl font-bold text-blue-600 mb-4">Welcome to Astro with Tailwind CSS!</h1>
+			<p class="text-lg text-gray-700 mb-6">
+				Your Astro project is now configured with Tailwind CSS for rapid UI development.
+			</p>
+			<div class="bg-white rounded-lg shadow-md p-6">
+				<h2 class="text-2xl font-semibold mb-4">Features Included:</h2>
+				<ul class="space-y-2">
+					<li class="flex items-center">
+						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+						Tailwind CSS v3
+					</li>
+					<li class="flex items-center">
+						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+						Typography Plugin
+					</li>
+					<li class="flex items-center">
+						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+						Responsive Design Ready
+					</li>
+				</ul>
+			</div>
+		</div>
 	</body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "exotic-equator",
+  "name": "blog-v2",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,5 +10,10 @@
   },
   "dependencies": {
     "astro": "^5.8.1"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss": "^3.4.17"
   }
 }
