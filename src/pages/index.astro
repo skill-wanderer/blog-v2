@@ -3,36 +3,186 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro with Tailwind CSS</title>
-	</head>
-	<body class="bg-gray-100 min-h-screen">
-		<div class="container mx-auto px-4 py-8">
-			<h1 class="text-4xl font-bold text-blue-600 mb-4">Welcome to Astro with Tailwind CSS!</h1>
-			<p class="text-lg text-gray-700 mb-6">
-				Your Astro project is now configured with Tailwind CSS for rapid UI development.
-			</p>
-			<div class="bg-white rounded-lg shadow-md p-6">
-				<h2 class="text-2xl font-semibold mb-4">Features Included:</h2>
-				<ul class="space-y-2">
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-						Tailwind CSS v3
-					</li>
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-						Typography Plugin
-					</li>
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-						Responsive Design Ready
-					</li>
-				</ul>
-			</div>
-		</div>
-	</body>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Skill Wanderer</title>
+    <style>
+        /* Basic body styling for dark theme */
+        body {
+            background-color: #3a3a3a; /* Skill-Wanderer Primary Dark */
+            color: #ffffff; /* Skill-Wanderer Text on Dark */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .nav-link {
+            @apply px-4 py-2 transition-colors;
+            color: #e0e0e0; /* Text Dark Secondary */
+        }
+        .nav-link:hover {
+            color: #ff6b35; /* Primary Orange */
+        }
+        .btn-primary {
+            @apply font-semibold py-2 px-6 rounded-lg transition-colors;
+            background-color: #ff6b35; /* Primary Orange */
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #ff8555; /* Light Orange */
+        }
+        .topic-btn {
+            @apply font-medium py-2 px-5 rounded-lg transition-colors;
+            background-color: #4a4a4a; /* Secondary Dark */
+            color: #e0e0e0; /* Text Dark Secondary */
+        }
+        .topic-btn:hover {
+            background-color: #303030; /* Card Dark */
+            color: #ffffff; /* Text Dark */
+        }
+        .card-dark {
+            background-color: #303030; /* Card Dark */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Border on Dark */
+        }
+        .card-light {
+            background-color: #ffffff; /* White */
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Border on Light */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1); /* Shadow Light */
+        }
+    </style>
+</head>
+<body style="background-color: #3a3a3a; color: #ffffff;" class="min-h-screen">
+    <!-- Header -->
+    <header style="background-color: #2a2a2a; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <div class="text-2xl font-bold" style="color: #ff6b35;">
+                SKILL WANDERER
+            </div>
+            <nav class="hidden md:flex items-center space-x-2">
+                <a href="#" class="nav-link">Latest</a>
+                <a href="#" class="nav-link">Featured</a>
+                <a href="#" class="nav-link">Categories</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="btn-primary ml-4">Subscribe</a>
+            </nav>
+            <div class="md:hidden">
+                <!-- Mobile menu button -->
+                <button style="color: #e0e0e0;" class="hover:text-skill-wanderer-primary-orange focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6" style="color: #ffffff;">
+            The Skill Wanderer Blog
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style="color: #e0e0e0;">
+            Insights from My Tech Journey
+        </p>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #b0b0b0;">
+            Join me on my learning journey as I share insights from exploring various tech
+            domains, building projects, and navigating the ever-evolving landscape of software
+            development.
+        </p>
+    </main>
+
+    <!-- Explore Topics Section -->
+    <section class="py-12 md:py-16" style="background-color: #f5f5f5;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-semibold mb-8" style="color: #2a2a2a;">Explore Topics</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="btn-primary">All Posts</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">Development</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">Architecture</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">DevOps</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">Leadership</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">Career</button>
+                <button class="px-5 py-2 rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);" 
+                        onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.color='#2a2a2a';" 
+                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#666666';">Learning</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder for Featured Posts -->
+    <section class="py-12 md:py-16" style="background-color: #3a3a3a;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-semibold mb-8 text-center md:text-left" style="color: #ffffff;">Featured Posts</h2>
+            <!-- Featured posts content will go here -->
+            <div class="card-dark p-8 rounded-lg text-center">
+                <span style="color: #e0e0e0;">[Featured Posts Area - To be implemented]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder for Latest Posts -->
+    <section class="py-12 md:py-16" style="background-color: #f5f5f5;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-semibold" style="color: #2a2a2a;">Latest Posts</h2>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 text-sm rounded-lg font-medium transition-colors" style="background-color: #ffffff; color: #666666; border: 1px solid rgba(0, 0, 0, 0.1);">Grid View</button>
+                    <button class="px-4 py-2 text-sm rounded-lg font-medium" style="background-color: #ff6b35; color: #ffffff;">List View</button>
+                </div>
+            </div>
+            <!-- Latest posts content will go here -->
+            <div class="card-light p-8 rounded-lg text-center">
+                <span style="color: #666666;">[Latest Posts Area - To be implemented]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Journey Section -->
+    <section class="py-16 md:py-24" style="background-color: #3a3a3a;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6" style="color: #ffffff;">Join the Journey</h2>
+            <p class="text-lg mb-8 max-w-xl mx-auto" style="color: #e0e0e0;">
+                Get weekly insights on development, architecture, and the art of continuous learning.
+            </p>
+            <form class="max-w-md mx-auto flex gap-3">
+                <input type="email" placeholder="Enter your email" 
+                       class="flex-grow rounded-lg py-3 px-4 outline-none transition-colors" 
+                       style="background-color: #4a4a4a; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1);" 
+                       onfocus="this.style.borderColor='#ff6b35';" 
+                       onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)';" />
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8" style="background-color: #2a2a2a; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center" style="color: #b0b0b0;">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="transition-colors" style="color: #b0b0b0;" 
+                   onmouseover="this.style.color='#ff6b35';" 
+                   onmouseout="this.style.color='#b0b0b0';">Main Site</a>
+                <a href="#" class="transition-colors" style="color: #b0b0b0;" 
+                   onmouseover="this.style.color='#ff6b35';" 
+                   onmouseout="this.style.color='#b0b0b0';">LinkedIn</a>
+                <a href="#" class="transition-colors" style="color: #b0b0b0;" 
+                   onmouseover="this.style.color='#ff6b35';" 
+                   onmouseout="this.style.color='#b0b0b0';">GitHub</a>
+                <a href="#" class="transition-colors" style="color: #b0b0b0;" 
+                   onmouseover="this.style.color='#ff6b35';" 
+                   onmouseout="this.style.color='#b0b0b0';">Contact</a>
+            </div>
+            <p>&copy; 2025 Skill-Wanderer. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
 </html>
