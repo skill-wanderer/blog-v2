@@ -6,5 +6,11 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.skill-wanderer.com',
-  integrations: [tailwind(), mdx()]
+  integrations: [tailwind(), mdx()],
+  image: {
+    // Enable additional image optimizations
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
+  }
 });

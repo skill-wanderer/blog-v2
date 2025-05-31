@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface RelatedPost {
   title: string;
   excerpt: string;
@@ -24,14 +26,15 @@ const relatedPosts = posts.filter(post => post.slug !== currentSlug).slice(0, 3)
     <h2 class="text-3xl font-semibold text-skill-wanderer-hero-text mb-8 text-center">Related Posts</h2>
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {relatedPosts.map((post) => (
-        <article class="bg-skill-wanderer-article-bg rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      {relatedPosts.map((post) => (        <article class="bg-skill-wanderer-article-bg rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
           {post.image && (
             <div class="aspect-video overflow-hidden">
-              <img 
+              <Image 
                 src={post.image} 
                 alt={post.title}
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
               />
             </div>
           )}

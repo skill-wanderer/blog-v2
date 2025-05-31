@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
   name: string;
   bio: string;
@@ -15,14 +17,15 @@ const { name, bio, avatar, social } = Astro.props;
 ---
 
 <section class="bg-skill-wanderer-author-bio-bg rounded-lg p-8 shadow-lg border border-light">
-  <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-    <!-- Avatar -->
+  <div class="flex flex-col md:flex-row items-start md:items-center gap-6">    <!-- Avatar -->
     <div class="flex-shrink-0">
       {avatar ? (
-        <img 
+        <Image 
           src={avatar} 
           alt={name}
           class="w-20 h-20 rounded-full object-cover border-4 border-skill-wanderer-primary-orange"
+          width={80}
+          height={80}
         />
       ) : (
         <div class="w-20 h-20 rounded-full bg-skill-wanderer-avatar-bg flex items-center justify-center text-white text-2xl font-bold">

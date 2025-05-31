@@ -4,6 +4,7 @@ import TableOfContents from '../components/TableOfContents.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import { Image } from 'astro:assets';
 
 export interface BlogPost {
   title: string;
@@ -129,14 +130,15 @@ const currentUrl = Astro.site
             <span>{blogPost.readTime}</span>
           </div>
         </div>
-        
-        <!-- Hero Image -->
+          <!-- Hero Image -->
         {blogPost.image && (
           <div class="rounded-lg overflow-hidden shadow-2xl">
-            <img 
+            <Image 
               src={blogPost.image} 
               alt={blogPost.title}
               class="w-full h-64 md:h-96 object-cover"
+              width={800}
+              height={400}
             />
           </div>
         )}
