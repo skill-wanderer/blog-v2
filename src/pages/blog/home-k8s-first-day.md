@@ -5,7 +5,7 @@ description: "The journey from idle hardware to a functioning Kubernetes cluster
 author:
   name: "Skill-Wanderer"
   bio: "Senior DevOps Engineer passionate about container orchestration, home labs, and building scalable infrastructure from the ground up."
-  avatar: "/images/skill-wanderer-avatar.jpg"
+  avatar: "/images/authors/skill-wanderer-avatar.jpg"
   social:
     twitter: "https://twitter.com/skillwanderer"
     linkedin: "https://linkedin.com/in/skillwanderer"
@@ -14,7 +14,7 @@ author:
 publishDate: "2025-03-22"
 category: "Home Data Center"
 readTime: "8 min read"
-image: "/images/k8s-home-lab-hero.jpg"
+image: "/images/blog/home-k8s-first-day/hero.jpg"
 tags: ["Kubernetes", "Home Lab", "WordPress", "DevOps", "Self-Hosting", "Container Orchestration"]
 ---
 
