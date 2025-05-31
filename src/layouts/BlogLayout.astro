@@ -35,7 +35,8 @@ export interface TOCItem {
 
 interface Props {
   post?: BlogPost;
-  headings?: TOCItem[];
+  // Expect Astro's native MarkdownHeading array from the page using the layout
+  headings?: { depth: number, slug: string, text: string }[]; 
   relatedPosts?: any[];
   currentSlug?: string;
   // Add frontmatter props for direct markdown usage
@@ -59,7 +60,13 @@ interface Props {
   tags?: string[];
 }
 
-const { post, headings = [], relatedPosts = [], currentSlug, ...frontmatter } = Astro.props;
+const { 
+  post, 
+  headings: rawHeadingsFromPage = [], // Renamed to clarify it's Astro's raw headings
+  relatedPosts = [], 
+  currentSlug, 
+  ...frontmatter 
+} = Astro.props;
 
 // Use post if available, otherwise construct from frontmatter
 const blogPost = post || {
@@ -73,9 +80,14 @@ const blogPost = post || {
   tags: frontmatter.tags || []
 };
 
-// Generate headings from the page content if not provided
-// This is a simple fallback - in a real app you'd extract from rendered content
-const pageHeadings = headings.length > 0 ? headings : [];
+// Transform rawHeadingsFromPage to the TOCItem[] structure needed by TableOfContents.astro
+const pageHeadings: TOCItem[] = rawHeadingsFromPage.map(h => {
+  return {
+    id: h.slug,    // Map slug to id
+    text: h.text,
+    level: h.depth // Map depth to level
+  };
+});
 
 // Format date
 const formatDate = (dateString: string) => {
