@@ -13,25 +13,19 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-// Placeholder for related posts. You might want to implement a more dynamic way to fetch these.
-const relatedPosts = [
-  {
-    title: 'Mastering TypeScript: Advanced Patterns for Scalable Applications',
-    excerpt: 'Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.',
-    slug: 'mastering-typescript-advanced-patterns',
-    category: 'Development',
-    readTime: '8 min',
-    image: '/blog/typescript-patterns.jpg'
-  },
-  {
-    title: 'Database Design Patterns for Scale',
-    excerpt: 'Learn how to design databases that can handle millions of users while maintaining performance.',
-    slug: 'database-design-patterns',
-    category: 'Architecture',
-    readTime: '10 min',
-    image: '/blog/database-design.jpg'
-  }
-];
+// Fetch all posts
+const allPosts = await getCollection('posts');
+
+// Map posts to the RelatedPost structure not yet tested due to only 1 mdx so far
+// Assuming each post has a title, description, slug, category, readTime, and image
+const relatedPosts = allPosts.map(post => ({
+  title: post.data.title,
+  excerpt: post.data.description, // Using description as excerpt
+  slug: post.slug,
+  category: post.data.category,
+  readTime: post.data.readTime,
+  image: post.data.image,
+}));
 ---
 
 <BlogLayout
