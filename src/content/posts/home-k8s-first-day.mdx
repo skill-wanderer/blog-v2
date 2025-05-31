@@ -18,7 +18,19 @@ image: "/images/blog/home-k8s-first-day/hero.jpg"
 tags: ["Kubernetes", "Home Lab", "WordPress", "DevOps", "Self-Hosting", "Container Orchestration"]
 ---
 
+import { Image } from 'astro:assets';
+import heroImage from '../../../public/images/blog/home-k8s-first-day/hero.jpg';
+
 ## How It All Started: From Idle Hardware to an Agile Vision
+<Image 
+  src={heroImage} 
+  alt="How It All Started: From Idle Hardware to an Agile Vision"
+  width={800}
+  height={450}
+  format="webp"
+  loading="eager"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
 Like many tech enthusiasts, I had capable hardware sitting partially idle. In my case, it was a trusty retired [ThinkPad T480](https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadt/thinkpad-t480/22tp2tt4800). With its 8 Intel CPU cores, a hefty 32GB of RAM, and a spacious 500GB SSD, it's a machine that's frankly overkill for many simple tasks. But the thought of using it as just a single, monolithic server felt potentially limiting for future ambitions. What if my home lab needs expanded beyond what one machine, however powerful, could comfortably or efficiently handle? It represented untapped potential, waiting for the right challenge.
 

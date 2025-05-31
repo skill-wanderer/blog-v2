@@ -1,195 +1,27 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  // Sample blog posts data - in a real app, this would come from a CMS or markdown files
-  const posts = [
-    {
-      slug: 'mastering-typescript-advanced-patterns',
-      title: 'Mastering TypeScript: Advanced Patterns for Scalable Applications',
-      description: 'Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.',
-      author: {
-        name: 'Skill Wanderer',
-        bio: 'Full-stack developer passionate about clean code, system architecture, and continuous learning. Sharing insights from my journey through various tech domains.',
-        avatar: '/avatar.jpg',
-        social: {
-          twitter: 'skillwanderer',
-          linkedin: 'skillwanderer',
-          github: 'skillwanderer',
-          website: 'https://skillwanderer.dev'
-        }
-      },
-      publishDate: '2025-05-15',
-      category: 'Development',
-      readTime: '8 min',
-      image: '/blog/typescript-patterns.jpg',
-      tags: ['TypeScript', 'JavaScript', 'Development', 'Architecture'],
-      content: `<p>TypeScript has revolutionized the way we build JavaScript applications, providing type safety and enhanced developer experience. In this comprehensive guide, we'll explore advanced TypeScript patterns that can significantly improve your code quality and maintainability.</p>
-
-<h2 id="generic-constraints">Generic Constraints and Conditional Types</h2>
-
-<p>One of the most powerful features of TypeScript is its ability to create flexible yet type-safe APIs using generics. Let's explore how generic constraints can help us build more robust systems.</p>
-
-<pre><code>interface HasId {
-  id: string | number;
-}
-
-function updateEntity&lt;T extends HasId&gt;(entity: T, updates: Partial&lt;T&gt;): T {
-  return { ...entity, ...updates };
-}
-
-// Usage
-const user = { id: 1, name: 'John', email: 'john@example.com' };
-const updatedUser = updateEntity(user, { name: 'Jane' });
-</code></pre>
-
-<h2 id="mapped-types">Mapped Types for Transformation</h2>
-
-<p>Mapped types allow you to create new types by transforming properties of existing types. This is particularly useful for creating utility types that work across your entire application.</p>
-
-<blockquote>
-  <p>Mapped types are like functions for types - they take an input type and transform it into a new output type with modified properties.</p>
-</blockquote>
-
-<h3 id="readonly-pattern">The Readonly Pattern</h3>
-
-<p>Creating immutable versions of your types is a common pattern that helps prevent accidental mutations:</p>
-
-<pre><code>type DeepReadonly&lt;T&gt; = {
-  readonly [P in keyof T]: T[P] extends object ? DeepReadonly&lt;T[P]&gt; : T[P];
-};
-
-interface UserConfig {
-  theme: string;
-  notifications: {
-    email: boolean;
-    push: boolean;
-  };
-}
-
-type ImmutableConfig = DeepReadonly&lt;UserConfig&gt;;
-</code></pre>
-
-<h2 id="discriminated-unions">Discriminated Unions for State Management</h2>
-
-<p>Discriminated unions are excellent for modeling application state, especially when dealing with loading states, error handling, and complex data flows.</p>
-
-<pre><code>type ApiState&lt;T&gt; =
-  | { status: 'idle' }
-  | { status: 'loading' }
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: string };
-
-function handleApiState&lt;T&gt;(state: ApiState&lt;T&gt;) {
-  switch (state.status) {
-    case 'idle':
-      return 'Not started';
-    case 'loading':
-      return 'Loading...';
-    case 'success':
-      return state.data; // TypeScript knows data exists here
-    case 'error':
-      return 'Error: ' + state.error;
-  }
-}
-</code></pre>
-
-<h2 id="template-literals">Template Literal Types</h2>
-
-<p>Template literal types open up powerful possibilities for creating type-safe APIs that feel natural to use:</p>
-
-<pre><code>type EventName = 'user' | 'product' | 'order';
-type EventAction = 'created' | 'updated' | 'deleted';
-type EventType = \`\${EventName}:\${EventAction}\`;
-
-// Results in: 'user:created' | 'user:updated' | 'user:deleted' | 'product:created' | ...
-
-function emit(event: EventType, data: any) {
-  // Type-safe event emission
-}
-
-emit('user:created', userData); // ✅ Valid
-emit('invalid:event', data);    // ❌ TypeScript error
-</code></pre>
-
-<h2 id="best-practices">Best Practices and Performance</h2>
-
-<p>When working with advanced TypeScript patterns, keep these performance and maintainability tips in mind:</p>
-
-<ul>
-  <li><strong>Avoid deep recursion</strong> in mapped types as it can slow down compilation</li>
-  <li><strong>Use branded types</strong> for domain-specific primitives to prevent mixing incompatible values</li>
-  <li><strong>Leverage utility types</strong> like <code>Pick</code>, <code>Omit</code>, and <code>Record</code> instead of creating custom ones when possible</li>
-  <li><strong>Document complex types</strong> with JSDoc comments to help other developers understand the intent</li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>These advanced TypeScript patterns form the foundation of robust, scalable applications. By leveraging generic constraints, mapped types, discriminated unions, and template literals, you can create APIs that are both flexible and type-safe.</p>
-
-<p>The key is to start simple and gradually introduce these patterns as your application grows in complexity. Remember, the goal is to catch errors at compile time rather than runtime, while maintaining code that's easy to read and understand.</p>`
-    },
-    {
-      slug: 'building-resilient-microservices',
-      title: 'Building Resilient Microservices: Patterns and Practices',
-      description: 'Learn essential patterns for building fault-tolerant microservices that can handle failures gracefully.',
-      author: {
-        name: 'Skill Wanderer',
-        bio: 'Full-stack developer passionate about clean code, system architecture, and continuous learning.',
-        social: {
-          github: 'skillwanderer'
-        }
-      },
-      publishDate: '2025-05-10',
-      category: 'Architecture',
-      readTime: '12 min',
-      tags: ['Microservices', 'Architecture', 'DevOps', 'Resilience'],
-      content: `<p>Building resilient microservices requires careful consideration of failure modes and implementing patterns that help systems gracefully handle inevitable failures.</p>
-
-<h2 id="circuit-breaker">Circuit Breaker Pattern</h2>
-<p>The circuit breaker pattern prevents cascading failures by monitoring service calls and "opening" the circuit when failures reach a threshold.</p>
-
-<h2 id="retry-strategies">Retry Strategies</h2>
-<p>Implementing exponential backoff and jitter in retry logic helps prevent thundering herd problems.</p>`
-    }
-  ];
-
-  return posts.map(post => ({
+  const posts = await getCollection('posts');
+  return posts.map((post: CollectionEntry<'posts'>) => ({
     params: { slug: post.slug },
-    props: { post }
+    props: { entry: post },
   }));
 }
 
-const { post } = Astro.props;
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
 
-// Generate table of contents from content
-const generateTOC = (content: string) => {
-  const headingRegex = /<h([2-4])[^>]*id="([^"]*)"[^>]*>([^<]*)<\/h[2-4]>/g;
-  const headings = [];
-  let match;
-  
-  while ((match = headingRegex.exec(content)) !== null) {
-    headings.push({
-      id: match[2],
-      text: match[3],
-      level: parseInt(match[1])
-    });
-  }
-  
-  return headings;
-};
-
-const headings = generateTOC(post.content);
-
-// Sample related posts
+// Placeholder for related posts. You might want to implement a more dynamic way to fetch these.
 const relatedPosts = [
   {
-    title: 'React Performance Optimization Techniques',
-    excerpt: 'Discover advanced techniques to optimize your React applications for better performance and user experience.',
-    slug: 'react-performance-optimization',
+    title: 'Mastering TypeScript: Advanced Patterns for Scalable Applications',
+    excerpt: 'Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.',
+    slug: 'mastering-typescript-advanced-patterns',
     category: 'Development',
-    readTime: '6 min',
-    image: '/blog/react-performance.jpg'
+    readTime: '8 min',
+    image: '/blog/typescript-patterns.jpg'
   },
   {
     title: 'Database Design Patterns for Scale',
@@ -202,11 +34,11 @@ const relatedPosts = [
 ];
 ---
 
-<BlogLayout 
-  post={post}
+<BlogLayout
+  post={entry.data}
   headings={headings}
   relatedPosts={relatedPosts}
-  currentSlug={post.slug}
+  currentSlug={entry.slug}
 >
-  <Fragment set:html={post.content} />
+  <Content />
 </BlogLayout>
