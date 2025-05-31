@@ -196,10 +196,17 @@ const currentUrl = Astro.site
           
           <!-- Sidebar -->
            
-          <aside class="lg:col-span-4">       
+          <aside class="lg:col-span-4 sticky top-24 self-start">       
             {pageHeadings && pageHeadings.length > 0 && (
               <TableOfContents headings={pageHeadings} />
             )}
+            <div class="mt-8"> {/* Added a div for spacing */}
+              <ShareButtons 
+                title={blogPost.title}
+                url={currentUrl.toString()}
+                description={blogPost.description}
+              />
+            </div>
           </aside>
           
         </div>
