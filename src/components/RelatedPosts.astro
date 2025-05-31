@@ -1,0 +1,80 @@
+---
+interface RelatedPost {
+  title: string;
+  excerpt: string;
+  slug: string;
+  category: string;
+  readTime: string;
+  image?: string;
+}
+
+interface Props {
+  posts: RelatedPost[];
+  currentSlug: string;
+}
+
+const { posts, currentSlug } = Astro.props;
+
+// Filter out current post and limit to 3
+const relatedPosts = posts.filter(post => post.slug !== currentSlug).slice(0, 3);
+---
+
+<section class="bg-skill-wanderer-related-posts-bg py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-semibold text-skill-wanderer-hero-text mb-8 text-center">Related Posts</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {relatedPosts.map((post) => (
+        <article class="bg-skill-wanderer-article-bg rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          {post.image && (
+            <div class="aspect-video overflow-hidden">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          )}
+          
+          <div class="p-6">
+            <!-- Category Badge -->
+            <div class="mb-3">
+              <span class="inline-block bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">
+                {post.category}
+              </span>
+            </div>
+            
+            <!-- Title -->
+            <h3 class="text-xl font-semibold text-skill-wanderer-article-headings mb-3 hover:text-skill-wanderer-primary-orange transition-colors">
+              <a href={`/blog/${post.slug}`}>
+                {post.title}
+              </a>
+            </h3>
+            
+            <!-- Excerpt -->
+            <p class="text-skill-wanderer-article-text mb-4 line-clamp-3">
+              {post.excerpt}
+            </p>
+            
+            <!-- Meta Info -->
+            <div class="flex items-center justify-between text-sm text-skill-wanderer-article-text">
+              <span>{post.readTime} read</span>
+              <a 
+                href={`/blog/${post.slug}`}
+                class="text-skill-wanderer-primary-orange hover:text-skill-wanderer-orange-hover font-medium transition-colors"
+              >
+                Read more →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    {relatedPosts.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-skill-wanderer-hero-meta text-lg">No related posts found.</p>
+      </div>
+    )}
+  </div>
+</section>

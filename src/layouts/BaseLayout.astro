@@ -1,0 +1,107 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {image && <meta property="og:image" content={image} />}
+    <style>
+        .nav-link {
+            @apply px-4 py-2 transition-colors text-skill-wanderer-text-dark-secondary;
+        }
+        .nav-link:hover {
+            @apply text-skill-wanderer-primary-orange;
+        }
+        .btn-primary {
+            @apply font-semibold py-2 px-6 rounded-lg transition-colors bg-skill-wanderer-primary-orange text-skill-wanderer-text-dark;
+        }
+        .btn-primary:hover {
+            @apply bg-skill-wanderer-light-orange;
+        }
+        .prose {
+            @apply max-w-none;
+        }
+        .prose h1 {
+            @apply text-skill-wanderer-article-headings;
+        }
+        .prose h2 {
+            @apply text-skill-wanderer-article-headings;
+        }
+        .prose h3 {
+            @apply text-skill-wanderer-article-headings;
+        }
+        .prose h4 {
+            @apply text-skill-wanderer-article-headings;
+        }
+        .prose p {
+            @apply text-skill-wanderer-article-text;
+        }
+        .prose pre {
+            @apply bg-skill-wanderer-code-bg;
+        }
+        .prose code {
+            @apply text-skill-wanderer-code-text;
+        }
+        .prose blockquote {
+            @apply bg-skill-wanderer-blockquote-bg border-l-4 border-skill-wanderer-primary-orange text-skill-wanderer-blockquote-text italic;
+        }
+        .prose a {
+            @apply text-skill-wanderer-primary-orange hover:text-skill-wanderer-orange-hover transition-colors;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-skill-wanderer-article-bg">
+    <!-- Header -->
+    <header class="bg-skill-wanderer-darkest border-b border-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="/" class="text-2xl font-bold text-skill-wanderer-primary-orange">
+                SKILL-WANDERER
+            </a>
+            <nav class="hidden md:flex items-center space-x-2">
+                <a href="/" class="nav-link">Latest</a>
+                <a href="#" class="nav-link">Featured</a>
+                <a href="#" class="nav-link">Categories</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="btn-primary ml-4">Subscribe</a>
+            </nav>
+            <div class="md:hidden">
+                <!-- Mobile menu button -->
+                <button class="text-skill-wanderer-text-dark-secondary hover:text-skill-wanderer-primary-orange focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-skill-wanderer-darkest border-t border-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-skill-wanderer-text-dark-muted">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">Main Site</a>
+                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">LinkedIn</a>
+                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">GitHub</a>
+                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">Contact</a>
+            </div>
+            <p>&copy; 2025 Skill-Wanderer. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

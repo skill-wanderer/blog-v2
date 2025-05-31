@@ -93,10 +93,43 @@
     <!-- Placeholder for Featured Posts -->
     <section class="py-12 md:py-16 bg-skill-wanderer-primary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-semibold mb-8 text-center md:text-left text-skill-wanderer-text-dark">Featured Posts</h2>
-            <!-- Featured posts content will go here -->
-            <div class="card-dark p-8 rounded-lg text-center">
-                <span class="text-skill-wanderer-text-dark-secondary">[Featured Posts Area - To be implemented]</span>
+            <h2 class="text-3xl font-semibold mb-8 text-center md:text-left text-skill-wanderer-text-dark">Featured Posts</h2>            <!-- Featured posts content will go here -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <article class="card-dark p-6 rounded-lg hover:shadow-xl transition-shadow">
+                    <div class="mb-4">
+                        <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Development</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-skill-wanderer-text-dark mb-3">
+                        <a href="/blog/mastering-typescript-advanced-patterns" class="hover:text-skill-wanderer-primary-orange transition-colors">
+                            Mastering TypeScript: Advanced Patterns for Scalable Applications
+                        </a>
+                    </h3>
+                    <p class="text-skill-wanderer-text-dark-secondary mb-4">
+                        Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-skill-wanderer-text-dark-muted">
+                        <span>May 15, 2025</span>
+                        <span>8 min read</span>
+                    </div>
+                </article>
+                
+                <article class="card-dark p-6 rounded-lg hover:shadow-xl transition-shadow">
+                    <div class="mb-4">
+                        <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Architecture</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-skill-wanderer-text-dark mb-3">
+                        <a href="/blog/building-resilient-microservices" class="hover:text-skill-wanderer-primary-orange transition-colors">
+                            Building Resilient Microservices: Patterns and Practices
+                        </a>
+                    </h3>
+                    <p class="text-skill-wanderer-text-dark-secondary mb-4">
+                        Learn essential patterns for building fault-tolerant microservices that can handle failures gracefully.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-skill-wanderer-text-dark-muted">
+                        <span>May 10, 2025</span>
+                        <span>12 min read</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -110,10 +143,53 @@
                     <button class="px-4 py-2 text-sm rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light">Grid View</button>
                     <button class="px-4 py-2 text-sm rounded-lg font-medium bg-skill-wanderer-primary-orange text-skill-wanderer-white">List View</button>
                 </div>
-            </div>
-            <!-- Latest posts content will go here -->
-            <div class="card-light p-8 rounded-lg text-center">
-                <span class="text-skill-wanderer-text-light-secondary">[Latest Posts Area - To be implemented]</span>
+            </div>            <!-- Latest posts content will go here -->
+            <div class="space-y-6">
+                <article class="card-light p-6 rounded-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row gap-6">
+                    <div class="flex-grow">
+                        <div class="mb-3">
+                            <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Development</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-skill-wanderer-text-light mb-3">
+                            <a href="/blog/mastering-typescript-advanced-patterns" class="hover:text-skill-wanderer-primary-orange transition-colors">
+                                Mastering TypeScript: Advanced Patterns for Scalable Applications
+                            </a>
+                        </h3>
+                        <p class="text-skill-wanderer-text-light-secondary mb-4">
+                            Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.
+                        </p>
+                        <div class="flex items-center space-x-4 text-sm text-skill-wanderer-text-light-secondary">
+                            <span>May 15, 2025</span>
+                            <span>•</span>
+                            <span>8 min read</span>
+                            <span>•</span>
+                            <span>By Skill Wanderer</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="card-light p-6 rounded-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row gap-6">
+                    <div class="flex-grow">
+                        <div class="mb-3">
+                            <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Architecture</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-skill-wanderer-text-light mb-3">
+                            <a href="/blog/building-resilient-microservices" class="hover:text-skill-wanderer-primary-orange transition-colors">
+                                Building Resilient Microservices: Patterns and Practices
+                            </a>
+                        </h3>
+                        <p class="text-skill-wanderer-text-light-secondary mb-4">
+                            Learn essential patterns for building fault-tolerant microservices that can handle failures gracefully.
+                        </p>
+                        <div class="flex items-center space-x-4 text-sm text-skill-wanderer-text-light-secondary">
+                            <span>May 10, 2025</span>
+                            <span>•</span>
+                            <span>12 min read</span>
+                            <span>•</span>
+                            <span>By Skill Wanderer</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

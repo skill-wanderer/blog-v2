@@ -2,8 +2,7 @@
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    extend: {
-      colors: {
+    extend: {      colors: {
         'skill-wanderer': {
           // Dark Backgrounds
           'primary-dark': '#3a3a3a',
@@ -25,6 +24,25 @@ module.exports = {
           // Accent Colors
           'primary-orange': '#ff6b35',
           'light-orange': '#ff8555',
+
+          // Blog Detail Colors
+          'article-bg': '#ffffff',
+          'article-text': '#666666',
+          'article-headings': '#2a2a2a',
+          'hero-bg': '#4a4a4a',
+          'hero-text': '#ffffff',
+          'hero-meta': '#e0e0e0',
+          'code-bg': '#2a2a2a',
+          'code-text': '#ffffff',
+          'blockquote-bg': '#f5f5f5',
+          'blockquote-text': '#666666',
+          'toc-bg': '#f5f5f5',
+          'author-bio-bg': '#f5f5f5',
+          'comment-form-bg': '#f5f5f5',
+          'related-posts-bg': '#4a4a4a',
+          'share-button-bg': '#f5f5f5',
+          'avatar-bg': '#ff6b35',
+          'orange-hover': '#ff8555',
         }
       },
       borderColor: {
