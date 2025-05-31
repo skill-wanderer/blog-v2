@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: "Building My Digital Home: A Kubernetes and WordPress Beginning"
 description: "The journey from idle hardware to a functioning Kubernetes cluster - documenting the first day of launching a home data center with WordPress"
 author:
@@ -20,17 +19,9 @@ tags: ["Kubernetes", "Home Lab", "WordPress", "DevOps", "Self-Hosting", "Contain
 
 import { Image } from 'astro:assets';
 import heroImage from '../../../public/images/blog/home-k8s-first-day/hero.jpg';
+import k8sIllustration from '../../../public/images/blog/home-k8s-first-day/k8s-illustration.jpg';
 
 ## How It All Started: From Idle Hardware to an Agile Vision
-<Image 
-  src={heroImage} 
-  alt="How It All Started: From Idle Hardware to an Agile Vision"
-  width={800}
-  height={450}
-  format="webp"
-  loading="eager"
-  class="rounded-lg shadow-lg mb-6"
-/>
 
 Like many tech enthusiasts, I had capable hardware sitting partially idle. In my case, it was a trusty retired [ThinkPad T480](https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadt/thinkpad-t480/22tp2tt4800). With its 8 Intel CPU cores, a hefty 32GB of RAM, and a spacious 500GB SSD, it's a machine that's frankly overkill for many simple tasks. But the thought of using it as just a single, monolithic server felt potentially limiting for future ambitions. What if my home lab needs expanded beyond what one machine, however powerful, could comfortably or efficiently handle? It represented untapped potential, waiting for the right challenge.
 
@@ -45,6 +36,13 @@ This naturally led to thinking about the approach. The beauty of using Kubernete
 [K8s](https://kubernetes.io/) is tailor-made for this; adding more worker nodes later, whether they're more Orange Pis, other hardware, or VMs, is a core strength of the platform. It allows the home lab to grow agilely, adapting incrementally to new requirements or incorporating new hardware as it becomes available, rather than demanding a massive, rigid upfront design. This first step, getting WordPress online via K8s, is just the beginning of that agile journey.
 
 ## Welcome Aboard: The Adventure Begins Now
+
+<Image 
+  src={k8sIllustration}
+  alt="Illustration of Kubernetes concepts with interconnected nodes"
+  class="rounded-lg shadow-lg mb-6"
+/>
+
 
 Welcome! You've arrived not just at a website, but at the very first landmark of a significant new technical journey I've undertaken. For a long time, I've been captivated by the potential of container orchestration and the appeal of truly self-hosting my corner of the web. Beyond the desire to move past shared hosting limitations and really understand the stack from the metal up, this approach offered both a powerful hands-on learning opportunity and the potential to sidestep the often hefty monthly bills associated with major cloud platforms.
 

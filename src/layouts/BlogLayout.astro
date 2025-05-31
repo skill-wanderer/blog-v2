@@ -183,21 +183,13 @@ const currentUrl = Astro.site
           </main>
           
           <!-- Sidebar -->
-          <aside class="lg:col-span-4">            <div class="sticky top-8 space-y-8">
-              <!-- Table of Contents -->
-              {pageHeadings.length > 0 && (
-                <TableOfContents headings={pageHeadings} />
-              )}
-                <!-- Share Buttons -->
-              <div class="bg-skill-wanderer-toc-bg rounded-lg p-6 shadow-lg border border-light">
-                <ShareButtons 
-                  title={blogPost.title}
-                  url={currentUrl.toString()}
-                  description={blogPost.description}
-                />
-              </div>
-            </div>
+           
+          <aside class="lg:col-span-4">       
+            {pageHeadings && pageHeadings.length > 0 && (
+              <TableOfContents headings={pageHeadings} />
+            )}
           </aside>
+          
         </div>
       </div>
     </div>
