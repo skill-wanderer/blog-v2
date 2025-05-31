@@ -1,5 +1,21 @@
 ---
+import { getCollection } from 'astro:content';
 
+// Get all posts
+const allPosts = await getCollection('posts', ({ data }) => {
+    // Filter out draft posts if you have a draft field
+    // return data.draft !== true;
+    return true; // Assuming all posts in the collection are to be included
+});
+
+// Sort posts by publishDate in descending order
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+// Get the latest 3 posts
+const latestPosts = sortedPosts.slice(0, 3);
+
+// Feature the latest post
+const featuredPost = sortedPosts[0];
 ---
 
 <html lang="en">
@@ -93,43 +109,31 @@
     <!-- Placeholder for Featured Posts -->
     <section class="py-12 md:py-16 bg-skill-wanderer-primary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-semibold mb-8 text-center md:text-left text-skill-wanderer-text-dark">Featured Posts</h2>            <!-- Featured posts content will go here -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <article class="card-dark p-6 rounded-lg hover:shadow-xl transition-shadow">
-                    <div class="mb-4">
-                        <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Development</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-skill-wanderer-text-dark mb-3">
-                        <a href="/blog/mastering-typescript-advanced-patterns" class="hover:text-skill-wanderer-primary-orange transition-colors">
-                            Mastering TypeScript: Advanced Patterns for Scalable Applications
-                        </a>
-                    </h3>
-                    <p class="text-skill-wanderer-text-dark-secondary mb-4">
-                        Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.
-                    </p>
-                    <div class="flex items-center justify-between text-sm text-skill-wanderer-text-dark-muted">
-                        <span>May 15, 2025</span>
-                        <span>8 min read</span>
-                    </div>
-                </article>
-                
-                <article class="card-dark p-6 rounded-lg hover:shadow-xl transition-shadow">
-                    <div class="mb-4">
-                        <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Architecture</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-skill-wanderer-text-dark mb-3">
-                        <a href="/blog/building-resilient-microservices" class="hover:text-skill-wanderer-primary-orange transition-colors">
-                            Building Resilient Microservices: Patterns and Practices
-                        </a>
-                    </h3>
-                    <p class="text-skill-wanderer-text-dark-secondary mb-4">
-                        Learn essential patterns for building fault-tolerant microservices that can handle failures gracefully.
-                    </p>
-                    <div class="flex items-center justify-between text-sm text-skill-wanderer-text-dark-muted">
-                        <span>May 10, 2025</span>
-                        <span>12 min read</span>
-                    </div>
-                </article>
+            <h2 class="text-3xl font-semibold mb-8 text-center md:text-left text-skill-wanderer-text-dark">Featured Post</h2>
+            <div class="grid md:grid-cols-1 gap-8"> {/* Changed to grid-cols-1 for a single featured post */}
+                {featuredPost && (
+                    <a href={`/blog/${featuredPost.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+                        <div class="md:flex">
+                            {featuredPost.data.image && (
+                                <div class="md:w-1/2">
+                                    <img src={featuredPost.data.image} alt={featuredPost.data.title} class="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                                </div>
+                            )}
+                            <div class:list={["p-6 md:p-8 flex flex-col justify-center", featuredPost.data.image ? "md:w-1/2" : "w-full"]}>
+                                <p class="text-sm text-skill-wanderer-primary-orange uppercase font-semibold mb-2">{featuredPost.data.category}</p>
+                                <h3 class="text-2xl font-bold mb-3 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{featuredPost.data.title}</h3>
+                                <p class="text-skill-wanderer-text-dark-secondary mb-4 text-sm leading-relaxed">{featuredPost.data.description}</p>
+                                <div class="mt-auto">
+                                    <p class="text-xs text-skill-wanderer-text-dark-muted">{featuredPost.data.readTime}</p>
+                                    <p class="text-xs text-skill-wanderer-text-dark-muted">Published on: {new Date(featuredPost.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                )}
+                {!featuredPost && (
+                    <p class="text-skill-wanderer-text-dark-secondary">No featured posts available at the moment.</p>
+                )}
             </div>
         </div>
     </section>
@@ -139,57 +143,33 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-semibold text-skill-wanderer-text-light">Latest Posts</h2>
-                <div class="flex space-x-2">
-                    <button class="px-4 py-2 text-sm rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light">Grid View</button>
-                    <button class="px-4 py-2 text-sm rounded-lg font-medium bg-skill-wanderer-primary-orange text-skill-wanderer-white">List View</button>
-                </div>
-            </div>            <!-- Latest posts content will go here -->
-            <div class="space-y-6">
-                <article class="card-light p-6 rounded-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row gap-6">
-                    <div class="flex-grow">
-                        <div class="mb-3">
-                            <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Development</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-skill-wanderer-text-light mb-3">
-                            <a href="/blog/mastering-typescript-advanced-patterns" class="hover:text-skill-wanderer-primary-orange transition-colors">
-                                Mastering TypeScript: Advanced Patterns for Scalable Applications
-                            </a>
-                        </h3>
-                        <p class="text-skill-wanderer-text-light-secondary mb-4">
-                            Dive deep into advanced TypeScript patterns that will help you build more maintainable and scalable applications.
-                        </p>
-                        <div class="flex items-center space-x-4 text-sm text-skill-wanderer-text-light-secondary">
-                            <span>May 15, 2025</span>
-                            <span>•</span>
-                            <span>8 min read</span>
-                            <span>•</span>
-                            <span>By Skill Wanderer</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="card-light p-6 rounded-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row gap-6">
-                    <div class="flex-grow">
-                        <div class="mb-3">
-                            <span class="bg-skill-wanderer-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Architecture</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-skill-wanderer-text-light mb-3">
-                            <a href="/blog/building-resilient-microservices" class="hover:text-skill-wanderer-primary-orange transition-colors">
-                                Building Resilient Microservices: Patterns and Practices
-                            </a>
-                        </h3>
-                        <p class="text-skill-wanderer-text-light-secondary mb-4">
-                            Learn essential patterns for building fault-tolerant microservices that can handle failures gracefully.
-                        </p>
-                        <div class="flex items-center space-x-4 text-sm text-skill-wanderer-text-light-secondary">
-                            <span>May 10, 2025</span>
-                            <span>•</span>
-                            <span>12 min read</span>
-                            <span>•</span>
-                            <span>By Skill Wanderer</span>
-                        </div>
-                    </div>
-                </article>
+                <a href="/blog" class="text-skill-wanderer-primary-orange hover:underline">View All</a>
+            </div>
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                {latestPosts.length > 0 ? (
+                    latestPosts.map(post => (
+                        <a href={`/blog/${post.slug}/`} class="block card-light rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+                            {post.data.image && (
+                                <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                            )}
+                            <div class="p-6 flex flex-col">
+                                <p class="text-xs text-skill-wanderer-primary-orange uppercase font-semibold mb-1">{post.data.category}</p>
+                                <h3 class="text-xl font-bold mb-2 text-skill-wanderer-text-light group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{post.data.title}</h3>
+                                <p class="text-skill-wanderer-text-light-secondary text-sm mb-3 leading-relaxed flex-grow">
+                                    {post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}
+                                </p>
+                                <div class="mt-auto">
+                                    <p class="text-xs text-skill-wanderer-text-light-secondary">{post.data.readTime}</p>
+                                    <p class="text-xs text-skill-wanderer-text-light-secondary">
+                                        Published on: {new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                ) : (
+                    <p class="text-skill-wanderer-text-light-secondary col-span-full text-center">More posts coming soon!</p>
+                )}
             </div>
         </div>
     </section>

@@ -13,7 +13,9 @@ interface Props {
   };
 }
 
-const { name, bio, avatar, social } = Astro.props;
+const { name, bio: rawBio, avatar, social } = Astro.props; // Renamed bio to rawBio
+// Split the bio string into paragraphs, trim whitespace, and filter out empty paragraphs
+const bioParagraphs = rawBio.trim().split(/\n{2,}/).map(p => p.trim()).filter(p => p.length > 0);
 ---
 
 <section class="bg-skill-wanderer-author-bio-bg rounded-lg p-8 shadow-lg border border-light">
@@ -37,7 +39,10 @@ const { name, bio, avatar, social } = Astro.props;
     <!-- Author Info -->
     <div class="flex-grow">
       <h3 class="text-xl font-semibold text-skill-wanderer-article-headings mb-2">About {name}</h3>
-      <p class="text-skill-wanderer-article-text mb-4 leading-relaxed">{bio}</p>
+      {/* Render each paragraph in its own <p> tag */}
+      {bioParagraphs.map(paragraph => (
+        <p class="text-skill-wanderer-article-text mb-4 leading-relaxed">{paragraph}</p>
+      ))}
       
       <!-- Social Links -->
       {social && (
