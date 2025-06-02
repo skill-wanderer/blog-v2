@@ -66,7 +66,7 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsGrid">
                         {sortedPosts.map(post => (
                             <article 
-                                class="post-card block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                                class="post-card block bg-skill-wanderer-card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
                                 data-category={post.data.category || ''}
                                 data-title={post.data.title.toLowerCase()}
                                 data-description={post.data.description?.toLowerCase() || ''}
