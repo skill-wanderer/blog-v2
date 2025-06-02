@@ -1,11 +1,6 @@
 // Blog categories constants
 export const BLOG_CATEGORIES = [
-  'Development',
-  'Architecture', 
-  'DevOps',
-  'Leadership',
-  'Career',
-  'Learning',
+
   'Home Data Center'
 ] as const;
 
@@ -25,6 +20,6 @@ export const formatCategoryForUrl = (category: BlogCategory): string => {
 };
 
 // Helper function to get category display name
-export const getCategoryDisplayName = (category: BlogCategory): string => {
+export const getCategoryDisplayName = (category: BlogCategory | string): string => {
   return category;
 };
