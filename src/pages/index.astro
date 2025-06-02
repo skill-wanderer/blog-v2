@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { BLOG_CATEGORIES } from '../constants/categories';
 
 // Get all posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -91,20 +92,15 @@ const latestPosts = sortedPosts.slice(0, 3);
             domains, building projects, and navigating the ever-evolving landscape of software
             development.
         </p>
-    </main>
-
-    <!-- Explore Topics Section -->
+    </main>    <!-- Explore Topics Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-light-gray">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>
             <div class="flex flex-wrap justify-center gap-4">
-                <button class="btn-primary">All Posts</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Development</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Architecture</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">DevOps</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Leadership</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Career</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Learning</button>
+                <a href="/blog" class="btn-primary">All Posts</a>
+                {BLOG_CATEGORIES.map(category => (
+                    <a href={`/blog?category=${encodeURIComponent(category)}`} class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">{category}</a>
+                ))}
             </div>
         </div>
     </section>
@@ -161,19 +157,52 @@ const latestPosts = sortedPosts.slice(0, 3);
                 <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No posts available at the moment.</p>
             )}
         </div>
-    </section>
-
-    <!-- Latest Posts Section -->
+    </section>    <!-- Latest Posts Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-primary-dark"> {/* Ensure dark background like in the image */}
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Search and Filter Section -->
+            <div class="mb-8 bg-skill-wanderer-card-dark rounded-lg p-6 border border-dark">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <!-- Search Input -->
+                    <div class="flex-grow w-full md:w-auto">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search posts by title or description..." 
+                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
+                        />
+                    </div>
+                      <!-- Category Filter -->
+                    <div class="flex flex-wrap gap-2">
+                        <button 
+                            class="category-filter active px-4 py-2 rounded-lg bg-skill-wanderer-primary-orange text-white font-medium transition-colors" 
+                            data-category="all"
+                        >
+                            All
+                        </button>
+                        {BLOG_CATEGORIES.map(category => (
+                            <button 
+                                class="category-filter px-4 py-2 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark-secondary hover:bg-skill-wanderer-primary-orange hover:text-white font-medium transition-colors" 
+                                data-category={category}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2> {/* Text color for dark background */}
-                <a href="/blog" class="text-skill-wanderer-primary-orange hover:underline font-semibold">View All</a>
-            </div>
-            {latestPosts.length > 0 ? (
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="/blog" class="bg-white text-skill-wanderer-primary-dark px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors duration-300 shadow-lg border-2 border-skill-wanderer-primary-orange">View All Posts</a>
+            </div>            {latestPosts.length > 0 ? (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsContainer">
                     {latestPosts.map(post => (
-                        <a href={`/blog/${post.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <a href={`/blog/${post.slug}/`} 
+                           class="post-card block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                           data-category={post.data.category || ''}
+                           data-title={post.data.title.toLowerCase()}
+                           data-description={(post.data.description || '').toLowerCase()}>
                             {post.data.image && (
                                 <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
                             )}
@@ -224,8 +253,89 @@ const latestPosts = sortedPosts.slice(0, 3);
                 <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">Contact</a>
             </div>
             <p>&copy; 2025 Skill-Wanderer. All rights reserved.</p>
-        </div>
-    </footer>
+        </div>    </footer>    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const postCards = document.querySelectorAll('.post-card') as NodeListOf<HTMLElement>;
+            const postsContainer = document.getElementById('postsContainer');
+
+            let currentCategory = 'all';
+            let currentSearchTerm = '';
+
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const target = e.target as HTMLInputElement;
+                    if (target) {
+                        currentSearchTerm = target.value.toLowerCase();
+                        filterPosts();
+                    }
+                });
+            }            // Category filter functionality
+            categoryFilters.forEach(button => {
+                button.addEventListener('click', function(this: HTMLElement) {
+                    // Remove active class from all buttons
+                    categoryFilters.forEach(btn => {
+                        btn.classList.remove('active', 'bg-skill-wanderer-primary-orange', 'text-white');
+                        btn.classList.add('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    });
+
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-skill-wanderer-primary-orange', 'text-white');
+                    this.classList.remove('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+
+                    currentCategory = this.dataset.category || 'all';
+                    filterPosts();
+                });
+            });
+
+            function filterPosts() {
+                let visiblePosts = 0;
+
+                postCards.forEach(card => {
+                    const cardCategory = card.dataset.category || '';
+                    const cardTitle = card.dataset.title || '';
+                    const cardDescription = card.dataset.description || '';
+
+                    const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+                    const matchesSearch = currentSearchTerm === '' || 
+                                        cardTitle.includes(currentSearchTerm) || 
+                                        cardDescription.includes(currentSearchTerm);
+
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'block';
+                        visiblePosts++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show no results message if no posts are visible
+                let noResultsMsg = document.getElementById('noResultsMessage');
+                if (visiblePosts === 0) {
+                    if (!noResultsMsg && postsContainer) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.id = 'noResultsMessage';
+                        noResultsMsg.className = 'col-span-full text-center py-12';
+                        noResultsMsg.innerHTML = `
+                            <div class="text-skill-wanderer-text-dark-secondary">
+                                <h3 class="text-xl font-semibold mb-2">No posts found</h3>
+                                <p>Try adjusting your search terms or filters.</p>
+                            </div>
+                        `;
+                        postsContainer.appendChild(noResultsMsg);
+                    }
+                    if (noResultsMsg) {
+                        noResultsMsg.style.display = 'block';
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.style.display = 'none';
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
