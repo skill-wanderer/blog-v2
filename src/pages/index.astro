@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import { BLOG_CATEGORIES, formatCategoryForUrl, getCategoryDisplayName } from '../constants/categories.ts';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 // Get all posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -27,14 +30,8 @@ const latestPosts = sortedPosts.slice(0, 3);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Skill-Wanderer</title>
+    <title>Skill-Wanderer</title>    
     <style>
-        .nav-link {
-            @apply px-4 py-2 transition-colors text-skill-wanderer-text-dark-secondary;
-        }
-        .nav-link:hover {
-            @apply text-skill-wanderer-primary-orange;
-        }
         .btn-primary {
             @apply font-semibold py-2 px-6 rounded-lg transition-colors bg-skill-wanderer-primary-orange text-skill-wanderer-text-dark;
         }
@@ -57,31 +54,12 @@ const latestPosts = sortedPosts.slice(0, 3);
 </head>
 <body class="min-h-screen bg-skill-wanderer-primary-dark text-skill-wanderer-text-dark">
     <!-- Header -->
-    <header class="bg-skill-wanderer-darkest border-b border-dark">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-            <div class="text-2xl font-bold text-skill-wanderer-primary-orange">
-                SKILL-WANDERER
-            </div>
-            <nav class="hidden md:flex items-center space-x-2">
-                <a href="#" class="nav-link">Latest</a>
-                <a href="#" class="nav-link">Featured</a>
-                <a href="#" class="nav-link">Categories</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="btn-primary ml-4">Subscribe</a>
-            </nav>
-            <div class="md:hidden">
-                <!-- Mobile menu button -->
-                <button class="text-skill-wanderer-text-dark-secondary hover:text-skill-wanderer-primary-orange focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </div>
-    </header>
+    <Header />
 
     <!-- Hero Section -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
         <h1 class="text-5xl md:text-6xl font-bold mb-6 text-skill-wanderer-text-dark">
-            The Skill-Wanderer Blog
+            The Skill-Wanderer Journey
         </h1>
         <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-skill-wanderer-text-dark-secondary">
             Insights from My Tech Journey
@@ -91,26 +69,18 @@ const latestPosts = sortedPosts.slice(0, 3);
             domains, building projects, and navigating the ever-evolving landscape of software
             development.
         </p>
-    </main>
-
-    <!-- Explore Topics Section -->
+    </main>    <!-- Explore Topics Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-light-gray">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <button class="btn-primary">All Posts</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Development</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Architecture</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">DevOps</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Leadership</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Career</button>
-                <button class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">Learning</button>
+            <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>            <div class="flex flex-wrap justify-center gap-4">
+                <a href="/blog" class="btn-primary">All Posts</a>
+                {BLOG_CATEGORIES.map(category => (
+                    <a href={`/blog?category=${formatCategoryForUrl(category)}`} class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">{getCategoryDisplayName(category)}</a>
+                ))}
             </div>
         </div>
-    </section>
-
-    <!-- Featured Posts Section -->
-    <section class="py-12 md:py-16 bg-skill-wanderer-primary-dark">
+    </section>    <!-- Featured Posts Section -->
+    <section class="py-12 md:py-16 bg-skill-wanderer-secondary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-dark">Featured Posts</h2>
             {sortedPosts.length > 0 ? (
@@ -127,9 +97,8 @@ const latestPosts = sortedPosts.slice(0, 3);
                                         <span class="inline-block bg-skill-wanderer-primary-orange text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Featured</span>
                                     </div>
                                     <h3 class="text-3xl lg:text-4xl font-bold mb-4 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{featuredPost.data.title}</h3>
-                                    {featuredPost.data.description && <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary mb-6 flex-grow">{featuredPost.data.description}</p>}
-                                    <div class="text-sm text-skill-wanderer-text-dark-muted">
-                                        {featuredPost.data.category && <span>{featuredPost.data.category.toUpperCase()}</span>}
+                                    {featuredPost.data.description && <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary mb-6 flex-grow">{featuredPost.data.description}</p>}                                    <div class="text-sm text-skill-wanderer-text-dark-muted">
+                                        {featuredPost.data.category && <span>{getCategoryDisplayName(featuredPost.data.category).toUpperCase()}</span>}
                                         {featuredPost.data.readTime && featuredPost.data.category && <span class="mx-2">•</span>}
                                         {featuredPost.data.readTime && <span>{featuredPost.data.readTime} min read</span>}
                                         {(featuredPost.data.category || featuredPost.data.readTime) && <span class="mx-2">•</span>}
@@ -160,26 +129,56 @@ const latestPosts = sortedPosts.slice(0, 3);
             ) : (
                 <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No posts available at the moment.</p>
             )}
-        </div>
-    </section>
-
-    <!-- Latest Posts Section -->
-    <section class="py-12 md:py-16 bg-skill-wanderer-primary-dark"> {/* Ensure dark background like in the image */}
+        </div>    </section>    <!-- Latest Posts Section -->
+    <section class="py-12 md:py-16 bg-skill-wanderer-darkest"> {/* Changed to darkest background to differentiate from featured section */}
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Search and Filter Section -->
+            <div class="mb-8 bg-skill-wanderer-card-dark rounded-lg p-6 border border-dark">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <!-- Search Input -->
+                    <div class="flex-grow w-full md:w-auto">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search posts by title or description..." 
+                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
+                        />
+                    </div>
+                      <!-- Category Filter -->
+                    <div class="flex flex-wrap gap-2">
+                        <button 
+                            class="category-filter active px-4 py-2 rounded-lg bg-skill-wanderer-primary-orange text-white font-medium transition-colors" 
+                            data-category="all"
+                        >
+                            All
+                        </button>                        {BLOG_CATEGORIES.map(category => (
+                            <button 
+                                class="category-filter px-4 py-2 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark-secondary hover:bg-skill-wanderer-primary-orange hover:text-white font-medium transition-colors" 
+                                data-category={category}
+                            >
+                                {getCategoryDisplayName(category)}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>            
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2> {/* Text color for dark background */}
-                <a href="/blog" class="text-skill-wanderer-primary-orange hover:underline font-semibold">View All</a>
+                <a href="/blog" class="bg-skill-wanderer-primary-orange text-white px-6 py-3 rounded-lg font-bold hover:bg-skill-wanderer-light-orange hover:text-skill-wanderer-text-dark transition-all duration-300 shadow-lg border border-skill-wanderer-primary-orange">View All Posts</a>
             </div>
             {latestPosts.length > 0 ? (
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsContainer">
                     {latestPosts.map(post => (
-                        <a href={`/blog/${post.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+                        <a href={`/blog/${post.slug}/`} 
+                           class="post-card block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                           data-category={post.data.category || ''}
+                           data-title={post.data.title.toLowerCase()}
+                           data-description={(post.data.description || '').toLowerCase()}>
                             {post.data.image && (
                                 <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
                             )}
-                            <div class="p-6 flex-grow flex flex-col">
-                                <div class="flex justify-between items-center mb-3 text-xs">
-                                    {post.data.category && <span class="text-skill-wanderer-primary-orange uppercase font-bold tracking-wider">{post.data.category}</span>}
+                            <div class="p-6 flex-grow flex flex-col">                                <div class="flex justify-between items-center mb-3 text-xs">
+                                    {post.data.category && <span class="text-skill-wanderer-primary-orange uppercase font-bold tracking-wider">{getCategoryDisplayName(post.data.category)}</span>}
                                     <span class="text-skill-wanderer-text-dark-muted">
                                         {new Date(post.data.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                     </span>
@@ -200,7 +199,7 @@ const latestPosts = sortedPosts.slice(0, 3);
     </section>
 
     <!-- Join the Journey Section -->
-    <section class="py-16 md:py-24 bg-skill-wanderer-primary-dark">
+    <!-- <section class="py-16 md:py-24 bg-skill-wanderer-primary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-skill-wanderer-text-dark">Join the Journey</h2>
             <p class="text-lg mb-8 max-w-xl mx-auto text-skill-wanderer-text-dark-secondary">
@@ -211,21 +210,94 @@ const latestPosts = sortedPosts.slice(0, 3);
                        class="flex-grow rounded-lg py-3 px-4 outline-none transition-colors bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange" />
                 <button type="submit" class="btn-primary">Subscribe</button>
             </form>
-        </div>
-    </section>
+        </div>    </section> -->
 
     <!-- Footer -->
-    <footer class="py-8 bg-skill-wanderer-darkest border-t border-dark">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-skill-wanderer-text-dark-muted">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">Main Site</a>
-                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">LinkedIn</a>
-                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">GitHub</a>
-                <a href="#" class="transition-colors text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange">Contact</a>
-            </div>
-            <p>&copy; 2025 Skill-Wanderer. All rights reserved.</p>
-        </div>
-    </footer>
+    <Footer />
+    
+<script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const postCards = document.querySelectorAll('.post-card') as NodeListOf<HTMLElement>;
+            const postsContainer = document.getElementById('postsContainer');
+
+            let currentCategory = 'all';
+            let currentSearchTerm = '';
+
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const target = e.target as HTMLInputElement;
+                    if (target) {
+                        currentSearchTerm = target.value.toLowerCase();
+                        filterPosts();
+                    }
+                });
+            }            // Category filter functionality
+            categoryFilters.forEach(button => {
+                button.addEventListener('click', function(this: HTMLElement) {
+                    // Remove active class from all buttons
+                    categoryFilters.forEach(btn => {
+                        btn.classList.remove('active', 'bg-skill-wanderer-primary-orange', 'text-white');
+                        btn.classList.add('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    });
+
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-skill-wanderer-primary-orange', 'text-white');
+                    this.classList.remove('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+
+                    currentCategory = this.dataset.category || 'all';
+                    filterPosts();
+                });
+            });
+
+            function filterPosts() {
+                let visiblePosts = 0;
+
+                postCards.forEach(card => {
+                    const cardCategory = card.dataset.category || '';
+                    const cardTitle = card.dataset.title || '';
+                    const cardDescription = card.dataset.description || '';
+
+                    const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+                    const matchesSearch = currentSearchTerm === '' || 
+                                        cardTitle.includes(currentSearchTerm) || 
+                                        cardDescription.includes(currentSearchTerm);
+
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'block';
+                        visiblePosts++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show no results message if no posts are visible
+                let noResultsMsg = document.getElementById('noResultsMessage');
+                if (visiblePosts === 0) {
+                    if (!noResultsMsg && postsContainer) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.id = 'noResultsMessage';
+                        noResultsMsg.className = 'col-span-full text-center py-12';
+                        noResultsMsg.innerHTML = `
+                            <div class="text-skill-wanderer-text-dark-secondary">
+                                <h3 class="text-xl font-semibold mb-2">No posts found</h3>
+                                <p>Try adjusting your search terms or filters.</p>
+                            </div>
+                        `;
+                        postsContainer.appendChild(noResultsMsg);
+                    }
+                    if (noResultsMsg) {
+                        noResultsMsg.style.display = 'block';
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.style.display = 'none';
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>

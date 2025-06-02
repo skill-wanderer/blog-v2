@@ -5,6 +5,8 @@ import AuthorBio from '../components/AuthorBio.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import { Image } from 'astro:assets';
+import type { BlogCategory } from '../constants/categories.ts';
+import { getCategoryDisplayName, BLOG_CATEGORIES } from '../constants/categories.ts';
 
 export interface BlogPost {
   title: string;
@@ -21,7 +23,7 @@ export interface BlogPost {
     };
   };
   publishDate: string;
-  category: string;
+  category: BlogCategory;
   readTime: string;
   image?: string;
   tags?: string[];
@@ -54,7 +56,7 @@ interface Props {
     };
   };
   publishDate?: string;
-  category?: string;
+  category?: BlogCategory;
   readTime?: string;
   image?: string;
   tags?: string[];
@@ -70,11 +72,10 @@ const {
 
 // Use post if available, otherwise construct from frontmatter
 const blogPost = post || {
-  title: frontmatter.title || 'Untitled',
-  description: frontmatter.description || '',
+  title: frontmatter.title || 'Untitled',  description: frontmatter.description || '',
   author: frontmatter.author || { name: 'Anonymous', bio: '' },
   publishDate: frontmatter.publishDate || '',
-  category: frontmatter.category || 'Uncategorized',
+  category: frontmatter.category || BLOG_CATEGORIES[0],
   readTime: frontmatter.readTime || '5 min read',
   image: frontmatter.image,
   tags: frontmatter.tags || []
@@ -112,10 +113,9 @@ const currentUrl = Astro.site
   <!-- Hero Section -->
   <section class="bg-skill-wanderer-hero-bg py-16 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <!-- Category Badge -->        <div class="mb-6">
+      <div class="max-w-4xl mx-auto text-center">        <!-- Category Badge -->        <div class="mb-6">
           <span class="inline-block bg-skill-wanderer-primary-orange text-white text-sm font-semibold px-4 py-2 rounded-full">
-            {blogPost.category}
+            {getCategoryDisplayName(blogPost.category)}
           </span>
         </div>
         

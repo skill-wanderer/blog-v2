@@ -1,0 +1,47 @@
+---
+interface Props {
+  showNavigation?: boolean;
+}
+
+const { showNavigation = true } = Astro.props;
+---
+
+<style>
+    .nav-link {
+        @apply px-4 py-2 transition-colors text-skill-wanderer-text-dark-secondary;
+    }
+    .nav-link:hover {
+        @apply text-skill-wanderer-primary-orange;
+    }
+    .btn-primary {
+        @apply font-semibold py-2 px-6 rounded-lg transition-colors bg-skill-wanderer-primary-orange text-skill-wanderer-text-dark;
+    }
+    .btn-primary:hover {
+        @apply bg-skill-wanderer-light-orange;
+    }
+</style>
+
+<header class="bg-skill-wanderer-darkest border-b border-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+        <a href="/" class="text-2xl font-bold text-skill-wanderer-primary-orange">
+            SKILL-WANDERER JOURNEY
+        </a>
+        
+        {showNavigation && (
+            <nav class="hidden md:flex items-center space-x-2">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/blog" class="nav-link">All Posts</a>
+                <a href="https://skill-wanderer.com/" class="nav-link">Main Site</a>
+            </nav>
+        )}
+
+        <div class="md:hidden">
+            <!-- Mobile menu button -->
+            <button class="text-skill-wanderer-text-dark-secondary hover:text-skill-wanderer-primary-orange focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
