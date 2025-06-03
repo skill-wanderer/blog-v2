@@ -1,0 +1,37 @@
+# Build output - uncomment to include dist/ for Dockerfile.simple
+# dist/
+
+# Generated types
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.production
+
+# OS files
+.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+
+# Git
+.git
+.gitignore
+
+# Documentation (not needed for build)
+README.md
+LICENSE
+
+# Docker files (avoid recursion)
+Dockerfile
+.dockerignore

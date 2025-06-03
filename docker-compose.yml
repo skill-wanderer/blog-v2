@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  blog:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    container_name: skill-wanderer-blog
+    
+  # Optional: Development service
+  blog-dev:
+    build: .
+    ports:
+      - "4321:80"
+    restart: unless-stopped
+    container_name: skill-wanderer-blog-dev
+    profiles:
+      - dev

@@ -156,6 +156,7 @@ This blog is configured for deployment to various platforms:
 - **Netlify**: Connect your repository and deploy automatically
 - **Vercel**: Zero-config deployment with Git integration
 - **GitHub Pages**: Static site hosting with GitHub Actions
+- **Docker**: Containerized deployment for any environment
 - **Self-hosted**: Build and serve the `dist/` folder
 
 ### Build for Production
@@ -165,6 +166,47 @@ npm run build
 ```
 
 The built site will be in the `./dist/` directory, ready for deployment.
+
+### 🐳 Docker Deployment
+
+Build and run the blog using Docker:
+
+```bash
+# Build the Docker image
+docker build -t blog-v2 .
+
+# Run the container
+docker run -p 8080:80 blog-v2
+```
+
+The blog will be available at `http://localhost:8080`.
+
+#### Docker Compose (Optional)
+
+Create a `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+services:
+  blog:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+```
+
+Then run:
+
+```bash
+docker-compose up -d
+```
+
+#### Docker Features
+
+- **Multi-stage build**: Optimized for production with minimal image size
+- **Nginx serving**: Fast static file serving with nginx
+- **Production ready**: Suitable for deployment in any container orchestration platform
+- **Self-contained**: All dependencies included in the image
 
 ## 📝 Content Management
 
