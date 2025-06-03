@@ -1,0 +1,20 @@
+# Simple Dockerfile for serving pre-built Astro blog
+# Usage: 
+# 1. Build locally: npm run build
+# 2. Build image: docker build -f Dockerfile.simple -t blog-v2 .
+# 3. Run: docker run -p 8080:80 blog-v2
+
+FROM nginx:alpine
+
+# Copy pre-built assets to nginx html directory
+COPY dist/ /usr/share/nginx/html/
+
+# Expose port 80
+EXPOSE 80
+
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost/ || exit 1
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
