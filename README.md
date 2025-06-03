@@ -149,6 +149,40 @@ The blog uses a custom color palette defined in `tailwind.config.mjs`:
 - **Clean typography optimized for reading**
 - **Fast loading with optimized images**
 
+## 🚀 CI/CD
+
+This repository includes automated GitHub Actions workflows for continuous integration and deployment:
+
+### Workflows
+
+- **CI** (`ci.yml`): Runs on every push and PR
+  - Builds the Astro application
+  - Tests Docker build process
+  - Uploads build artifacts
+  
+- **Multi-Architecture Build** (`build-and-push.yml`): Builds and pushes Docker images
+  - Supports both **x86_64** and **ARM64** architectures
+  - Pushes to GitHub Container Registry (ghcr.io)
+  - Automatically triggered on pushes to main/master
+  - Creates multi-platform images for diverse deployment environments
+  
+- **Dependency Updates** (`dependency-update.yml`): Weekly automated dependency maintenance
+  - Updates npm dependencies
+  - Creates PRs with security fixes
+  - Validates builds after updates
+
+### Container Registry
+
+Multi-architecture Docker images are available at:
+```
+ghcr.io/skill-wanderer/blog-v2:latest
+```
+
+Pull the image:
+```bash
+docker pull ghcr.io/skill-wanderer/blog-v2:latest
+```
+
 ## 🌐 Deployment
 
 This blog is configured for deployment to various platforms:
@@ -168,6 +202,20 @@ npm run build
 The built site will be in the `./dist/` directory, ready for deployment.
 
 ### 🐳 Docker Deployment
+
+#### Using Pre-built Multi-Architecture Images
+
+Pull and run the official multi-architecture image:
+
+```bash
+# Pull the latest image (supports both x86_64 and ARM64)
+docker pull ghcr.io/skill-wanderer/blog-v2:latest
+
+# Run the container
+docker run -p 8080:80 ghcr.io/skill-wanderer/blog-v2:latest
+```
+
+#### Building Locally
 
 Build and run the blog using Docker:
 
@@ -203,10 +251,12 @@ docker-compose up -d
 
 #### Docker Features
 
+- **Multi-architecture support**: Automated builds for x86_64 and ARM64 architectures
 - **Multi-stage build**: Optimized for production with minimal image size
 - **Nginx serving**: Fast static file serving with nginx
 - **Production ready**: Suitable for deployment in any container orchestration platform
 - **Self-contained**: All dependencies included in the image
+- **GitHub Container Registry**: Automated image publishing with proper tagging
 
 ## 📝 Content Management
 
