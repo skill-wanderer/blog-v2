@@ -1,6 +1,6 @@
 # 🌟 The Skill-Wanderer Journey
 
-> **Insights from My Tech Journey** - A modern tech blog documenting explorations through various technology domains, project builds, and navigating the ever-evolving landscape of software development.
+> **Insights from My Tech Journey** - A modern tech blog documenting explorations through various technology domains, project builds, and navigating the ever-evolving landscape of software development. Migrated from WordPress to Astro for enhanced performance and developer experience.
 
 ![Blog Preview](https://blog.skill-wanderer.com)
 
@@ -15,6 +15,18 @@ Welcome to The Skill-Wanderer Journey! This is a personal tech blog where I shar
 - **Self-Hosting** adventures
 - **Container Orchestration** experiences
 - Real-world project builds and lessons learned
+
+## 🔄 From WordPress to Astro: A Strategic Migration
+
+The decision to migrate the Skill-Wanderer blog from WordPress to Astro was a strategic choice driven by the pursuit of superior performance, greater developer control, and better alignment with the platform's modern, streamlined technology stack. This move prioritizes a faster, more efficient user experience and a more manageable development workflow.
+
+### Key Drivers for the Migration:
+
+**Performance and SEO**: Astro is engineered for content-heavy websites, focusing on maximizing performance and search engine optimization. It achieves this by shipping minimal to no JavaScript by default, which results in significantly faster page load times—a critical factor for user retention and SEO rankings.
+
+**Developer Control and Modern Stack**: Moving to Astro provides a more controllable and performant solution compared to WordPress. It integrates seamlessly into a modern development workflow that utilizes Git for version control, allowing for more robust and collaborative processes. This aligns with the overall technical strategy of using contemporary frameworks like Nuxt.js for the main hub and preparing for future scalability.
+
+**Resource Efficiency**: The migration reflects the core development principle of resourcefulness and efficiency. By leveraging a framework optimized for content, the platform can deliver a high-quality blog experience without the overhead and complexity that can sometimes be associated with a full-scale CMS like WordPress.
 
 ## 🛠️ Tech Stack
 
