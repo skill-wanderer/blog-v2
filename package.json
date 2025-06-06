@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
-    "astro": "^5.8.1"
+    "astro": "^5.8.1",
+    "fetch-mcp": "^0.0.5"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
