@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blog-v2-ingress
+  labels:
+    app: blog-v2
+  annotations:
+    # Uncomment and modify these annotations based on your ingress controller
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  # Uncomment for TLS/SSL support
+  # tls:
+  #   - hosts:
+  #       - your-domain.com
+  #     secretName: blog-v2-tls
+  rules:
+    - host: blog.example.com  # Replace with your actual domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-v2-service
+                port:
+                  number: 80

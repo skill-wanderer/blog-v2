@@ -1,0 +1,27 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: blog-v2
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+# Uncomment to add namespace
+# namespace: blog-v2
+
+# Uncomment to add common labels to all resources
+# commonLabels:
+#   version: v1.0.0
+#   environment: production
+
+# Uncomment to add prefix to all resource names
+# namePrefix: prod-
+
+# Uncomment to customize image tags
+# images:
+#   - name: ghcr.io/skill-wanderer/blog-v2
+#     newTag: v1.0.0
