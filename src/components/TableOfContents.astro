@@ -12,8 +12,8 @@ interface Props {
 const { headings } = Astro.props;
 ---
 
-<aside class="sticky top-8 bg-skill-wanderer-toc-bg rounded-lg p-6 shadow-lg border border-light">
-  <div class="mb-4">
+<aside class="sticky top-8 bg-skill-wanderer-toc-bg rounded-lg p-6 shadow-lg border border-light max-h-[calc(100vh-4rem)] overflow-hidden flex flex-col">
+  <div class="mb-4 flex-shrink-0">
     <h3 class="text-lg font-semibold text-skill-wanderer-article-headings mb-3">Table of Contents</h3>
     <!-- Reading Progress Bar -->
     <div class="w-full bg-gray-200 rounded-full h-1 mb-4">
@@ -21,7 +21,7 @@ const { headings } = Astro.props;
     </div>
   </div>
   
-  <nav class="space-y-2">
+  <nav class="space-y-2 overflow-y-auto flex-1 pr-2 -mr-2">
     {headings.map((heading) => (
       <a 
         href={`#${heading.id}`}
@@ -80,6 +80,21 @@ const { headings } = Astro.props;
       if (activeLink) {
         activeLink.classList.add('border-l-4', 'border-skill-wanderer-primary-orange', 'bg-white', 'text-skill-wanderer-primary-orange');
         activeLink.classList.remove('text-skill-wanderer-article-text');
+        
+        // Auto-scroll the active link into view within the TOC
+        const tocNav = activeLink.closest('nav');
+        if (tocNav) {
+          const linkRect = activeLink.getBoundingClientRect();
+          const navRect = tocNav.getBoundingClientRect();
+          
+          if (linkRect.bottom > navRect.bottom || linkRect.top < navRect.top) {
+            activeLink.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center',
+              inline: 'nearest'
+            });
+          }
+        }
       }
     }
   }
@@ -96,3 +111,34 @@ const { headings } = Astro.props;
     updateActiveTOC();
   });
 </script>
+
+<style>
+  /* Custom scrollbar for the TOC navigation */
+  nav {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+  }
+  
+  nav::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  nav::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+  }
+  
+  nav::-webkit-scrollbar-thumb:hover {
+    background-color: #a0aec0;
+  }
+  
+  /* Smooth scroll behavior for TOC links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
