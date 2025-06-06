@@ -203,6 +203,7 @@ This blog is configured for deployment to various platforms:
 - **Vercel**: Zero-config deployment with Git integration
 - **GitHub Pages**: Static site hosting with GitHub Actions
 - **Docker**: Containerized deployment for any environment
+- **Kubernetes**: Container orchestration deployment using provided manifests
 - **Self-hosted**: Build and serve the `dist/` folder
 
 ### Build for Production
@@ -269,6 +270,27 @@ docker-compose up -d
 - **Production ready**: Suitable for deployment in any container orchestration platform
 - **Self-contained**: All dependencies included in the image
 - **GitHub Container Registry**: Automated image publishing with proper tagging
+
+### 🚢 Kubernetes Deployment
+
+Deploy the blog on any Kubernetes cluster using the provided manifests:
+
+```bash
+# Quick deployment
+kubectl apply -f k8s/
+
+# Or using kustomize
+kubectl apply -k k8s/
+```
+
+Features:
+- **Ready-to-use manifests**: Deployment, Service, and Ingress configurations
+- **Health checks**: Liveness and readiness probes included
+- **Resource limits**: Optimized for efficient resource usage
+- **Customizable**: Easy configuration for different environments
+- **Multi-architecture support**: Works with both x86_64 and ARM64 clusters
+
+For detailed Kubernetes deployment instructions, see [`k8s/README.md`](k8s/README.md).
 
 ## 📝 Content Management
 
