@@ -5,7 +5,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.skill-wanderer.com',
+  site: 'https://wanderings.skill-wander.com',
   integrations: [tailwind(), mdx()],
   image: {
     // Enable additional image optimizations

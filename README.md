@@ -2,7 +2,7 @@
 
 > **Insights from My Tech Journey** - A modern tech blog documenting explorations through various technology domains, project builds, and navigating the ever-evolving landscape of software development.
 
-![Blog Preview](https://blog.skill-wanderer.com)
+![Blog Preview](https://wanderings.skill-wander.com)
 
 ## 🚀 About This Blog
 
@@ -288,7 +288,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🔗 Links
 
-- **Live Blog**: [blog.skill-wanderer.com](https://blog.skill-wanderer.com)
+- **Live Blog**: [wanderings.skill-wander.com](https://wanderings.skill-wander.com)
 - **Astro Documentation**: [docs.astro.build](https://docs.astro.build)
 - **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com)
 
