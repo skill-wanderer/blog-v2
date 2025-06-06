@@ -1,6 +1,6 @@
 // Blog categories constants
 export const BLOG_CATEGORIES = [
-
+  'Artificial Intelligence',
   'Home Data Center'
 ] as const;
 
