@@ -33,17 +33,16 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                             class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
                         />
                     </div>
-                    
-                    <!-- Category Filter -->
+                      <!-- Category Filter -->
                     <div class="flex flex-wrap gap-2">
                         <button 
-                            class="category-filter active px-4 py-2 rounded-lg bg-skill-wanderer-primary-orange text-white font-medium transition-colors" 
+                            class="category-filter active px-6 py-3 rounded-full bg-skill-wanderer-primary-orange text-white font-semibold transition-all duration-300 hover:shadow-lg" 
                             data-category="all"
                         >
                             All
                         </button>                        {BLOG_CATEGORIES.map(category => (
                             <button 
-                                class="category-filter px-4 py-2 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark-secondary hover:bg-skill-wanderer-primary-orange hover:text-white font-medium transition-colors" 
+                                class="category-filter px-6 py-3 rounded-full bg-transparent border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300" 
                                 data-category={category}
                             >
                                 {getCategoryDisplayName(category)}
@@ -96,10 +95,9 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                     <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No posts available at the moment.</p>
                 )}
                 
-                <!-- No Results Message -->
-                <div id="noResults" class="hidden text-center py-12">
+                <!-- No Results Message -->                <div id="noResults" class="hidden text-center py-12">
                     <p class="text-skill-wanderer-text-dark-secondary text-lg mb-4">No posts found matching your criteria.</p>
-                    <button id="clearFilters" class="bg-skill-wanderer-primary-orange text-white px-6 py-3 rounded-lg font-semibold hover:bg-skill-wanderer-light-orange transition-colors">
+                    <button id="clearFilters" class="bg-skill-wanderer-primary-orange text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
                         Clear Filters
                     </button>
                 </div>
@@ -125,17 +123,16 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
             
             if (categoryParam) {
                 currentCategory = categoryParam;
-                
-                // Update active category filter
+                  // Update active category filter
                 categoryFilters.forEach(f => {
                     f.classList.remove('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                    f.classList.add('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    f.classList.add('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 });
                 
                 const targetFilter = document.querySelector(`[data-category="${categoryParam}"]`);
                 if (targetFilter) {
                     targetFilter.classList.add('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                    targetFilter.classList.remove('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    targetFilter.classList.remove('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 }
             }
             
@@ -194,16 +191,15 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
             filter.addEventListener('click', (e) => {
                 const target = e.target as HTMLButtonElement;
                 if (!target) return;
-                
-                // Remove active class from all filters
+                  // Remove active class from all filters
                 categoryFilters.forEach(f => {
                     f.classList.remove('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                    f.classList.add('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    f.classList.add('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 });
                 
                 // Add active class to clicked filter
                 target.classList.add('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                target.classList.remove('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                target.classList.remove('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 
                 currentCategory = target.getAttribute('data-category') || 'all';
                 
@@ -229,18 +225,17 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                 if (searchInput) {
                     searchInput.value = '';
                 }
-                
-                // Reset category filters
+                  // Reset category filters
                 categoryFilters.forEach(f => {
                     f.classList.remove('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                    f.classList.add('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    f.classList.add('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 });
                 
                 // Set "All" as active
                 const allFilter = document.querySelector('[data-category="all"]');
                 if (allFilter) {
                     allFilter.classList.add('active', 'bg-skill-wanderer-primary-orange', 'text-white');
-                    allFilter.classList.remove('bg-skill-wanderer-secondary-dark', 'text-skill-wanderer-text-dark-secondary');
+                    allFilter.classList.remove('bg-transparent', 'border-2', 'border-skill-wanderer-primary-orange', 'text-skill-wanderer-primary-orange');
                 }
                 
                 // Update URL
