@@ -20,13 +20,6 @@ spec:
           image: ghcr.io/skill-wanderer/blog-v2:latest
           ports:
             - containerPort: 80
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "50m"
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
           livenessProbe:
             httpGet:
               path: /
