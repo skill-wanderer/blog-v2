@@ -14,11 +14,11 @@ const allPosts = await getCollection('posts', ({ data }) => {
 // Sort posts by publishDate in descending order
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
-// Main featured post for the "Featured Posts" section
-const featuredPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
+// Main latest post for the "Latest Posts" section
+const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
 
-// Side posts for the "Featured Posts" section (next 2 posts)
-const sideFeaturedPosts = sortedPosts.length > 1 ? sortedPosts.slice(1, 3) : [];
+// Side posts for the "Latest Posts" section (next 2 posts)
+const sideLatestPosts = sortedPosts.length > 1 ? sortedPosts.slice(1, 3) : [];
 
 // Get the latest 3 posts for the "Latest Posts" section
 const latestPosts = sortedPosts.slice(0, 3);
@@ -79,40 +79,42 @@ const latestPosts = sortedPosts.slice(0, 3);
                 ))}
             </div>
         </div>
-    </section>    <!-- Featured Posts Section -->
+    </section>    <!-- Latest Posts Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-secondary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-dark">Featured Posts</h2>
-            {sortedPosts.length > 0 ? (
-                <div class="flex flex-col lg:flex-row gap-8">
-                    <!-- Main Featured Post (lg:w-2/3) -->
-                    {featuredPost && (
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2>
+                <a href="/blog" class="btn-primary">View All Posts</a>
+            </div>
+            {sortedPosts.length > 0 ? (<div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Main Latest Post (lg:w-2/3) -->
+                    {latestPost && (
                         <div class="lg:w-2/3">
-                            <a href={`/blog/${featuredPost.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                                {featuredPost.data.image && (
-                                    <img src={featuredPost.data.image} alt={featuredPost.data.title} class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <a href={`/blog/${latestPost.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                                {latestPost.data.image && (
+                                    <img src={latestPost.data.image} alt={latestPost.data.title} class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
                                 )}
                                 <div class="p-6 md:p-8 flex-grow flex flex-col justify-center">
                                     <div class="mb-3">
-                                        <span class="inline-block bg-skill-wanderer-primary-orange text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Featured</span>
+                                        <span class="inline-block bg-skill-wanderer-primary-orange text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Latest</span>
                                     </div>
-                                    <h3 class="text-3xl lg:text-4xl font-bold mb-4 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{featuredPost.data.title}</h3>
-                                    {featuredPost.data.description && <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary mb-6 flex-grow">{featuredPost.data.description}</p>}                                    <div class="text-sm text-skill-wanderer-text-dark-muted">
-                                        {featuredPost.data.category && <span>{getCategoryDisplayName(featuredPost.data.category).toUpperCase()}</span>}
-                                        {featuredPost.data.readTime && featuredPost.data.category && <span class="mx-2">•</span>}
-                                        {featuredPost.data.readTime && <span>{featuredPost.data.readTime} min read</span>}
-                                        {(featuredPost.data.category || featuredPost.data.readTime) && <span class="mx-2">•</span>}
-                                        <span>{new Date(featuredPost.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                    <h3 class="text-3xl lg:text-4xl font-bold mb-4 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{latestPost.data.title}</h3>
+                                    {latestPost.data.description && <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary mb-6 flex-grow">{latestPost.data.description}</p>}                                    <div class="text-sm text-skill-wanderer-text-dark-muted">
+                                        {latestPost.data.category && <span>{getCategoryDisplayName(latestPost.data.category).toUpperCase()}</span>}
+                                        {latestPost.data.readTime && latestPost.data.category && <span class="mx-2">•</span>}
+                                        {latestPost.data.readTime && <span>{latestPost.data.readTime} min read</span>}
+                                        {(latestPost.data.category || latestPost.data.readTime) && <span class="mx-2">•</span>}
+                                        <span>{new Date(latestPost.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     )}
 
-                    <!-- Side Featured Posts (lg:w-1/3) -->
-                    {sideFeaturedPosts.length > 0 && (
+                    <!-- Side Latest Posts (lg:w-1/3) -->
+                    {sideLatestPosts.length > 0 && (
                         <div class="lg:w-1/3 flex flex-col gap-6">
-                            {sideFeaturedPosts.map(post => (
+                            {sideLatestPosts.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                                     {post.data.image && (
                                         <img src={post.data.image} alt={post.data.title} class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -129,74 +131,8 @@ const latestPosts = sortedPosts.slice(0, 3);
             ) : (
                 <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No posts available at the moment.</p>
             )}
-        </div>    </section>    <!-- Latest Posts Section -->
-    <section class="py-12 md:py-16 bg-skill-wanderer-darkest"> {/* Changed to darkest background to differentiate from featured section */}
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Search and Filter Section -->
-            <div class="mb-8 bg-skill-wanderer-card-dark rounded-lg p-6 border border-dark">
-                <div class="flex flex-col md:flex-row gap-4 items-center">
-                    <!-- Search Input -->
-                    <div class="flex-grow w-full md:w-auto">
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            placeholder="Search posts by title or description..." 
-                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
-                        />
-                    </div>
-                      <!-- Category Filter -->
-                    <div class="flex flex-wrap gap-2">
-                        <button 
-                            class="category-filter active px-4 py-2 rounded-lg bg-skill-wanderer-primary-orange text-white font-medium transition-colors" 
-                            data-category="all"
-                        >
-                            All
-                        </button>                        {BLOG_CATEGORIES.map(category => (
-                            <button 
-                                class="category-filter px-4 py-2 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark-secondary hover:bg-skill-wanderer-primary-orange hover:text-white font-medium transition-colors" 
-                                data-category={category}
-                            >
-                                {getCategoryDisplayName(category)}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </div>            
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2> {/* Text color for dark background */}
-                <a href="/blog" class="bg-skill-wanderer-primary-orange text-white px-6 py-3 rounded-lg font-bold hover:bg-skill-wanderer-light-orange hover:text-skill-wanderer-text-dark transition-all duration-300 shadow-lg border border-skill-wanderer-primary-orange">View All Posts</a>
-            </div>
-            {latestPosts.length > 0 ? (
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsContainer">
-                    {latestPosts.map(post => (
-                        <a href={`/blog/${post.slug}/`} 
-                           class="post-card block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
-                           data-category={post.data.category || ''}
-                           data-title={post.data.title.toLowerCase()}
-                           data-description={(post.data.description || '').toLowerCase()}>
-                            {post.data.image && (
-                                <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-                            )}
-                            <div class="p-6 flex-grow flex flex-col">                                <div class="flex justify-between items-center mb-3 text-xs">
-                                    {post.data.category && <span class="text-skill-wanderer-primary-orange uppercase font-bold tracking-wider">{getCategoryDisplayName(post.data.category)}</span>}
-                                    <span class="text-skill-wanderer-text-dark-muted">
-                                        {new Date(post.data.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                    </span>
-                                </div>
-                                <h3 class="text-xl lg:text-2xl font-bold mb-3 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300 flex-grow">{post.data.title}</h3>
-                                {post.data.description && <p class="text-sm text-skill-wanderer-text-dark-secondary mb-4 line-clamp-3 flex-grow">{post.data.description}</p>}
-                                <div class="mt-auto pt-2">
-                                    <span class="text-skill-wanderer-primary-orange group-hover:underline font-semibold text-sm">Read more →</span>
-                                </div>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-            ) : (
-                <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No latest posts available at the moment.</p>
-            )}
-        </div>
-    </section>
+        </div>    </section>    
+
 
     <!-- Join the Journey Section -->
     <!-- <section class="py-16 md:py-24 bg-skill-wanderer-primary-dark">
