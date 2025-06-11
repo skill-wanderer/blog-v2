@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { BLOG_CATEGORIES, formatCategoryForUrl, getCategoryDisplayName } from '../constants/categories.ts';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 
 // Get all posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -89,10 +90,15 @@ const latestPosts = sortedPosts.slice(0, 3);
             {sortedPosts.length > 0 ? (<div class="flex flex-col lg:flex-row gap-8">
                     <!-- Main Latest Post (lg:w-2/3) -->
                     {latestPost && (
-                        <div class="lg:w-2/3">
-                            <a href={`/blog/${latestPost.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                        <div class="lg:w-2/3">                            <a href={`/blog/${latestPost.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                                 {latestPost.data.image && (
-                                    <img src={latestPost.data.image} alt={latestPost.data.title} class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                    <Image 
+                                        src={latestPost.data.image} 
+                                        alt={latestPost.data.title} 
+                                        class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                                        width={800}
+                                        height={320}
+                                    />
                                 )}
                                 <div class="p-6 md:p-8 flex-grow flex flex-col justify-center">
                                     <div class="mb-3">
@@ -113,11 +119,16 @@ const latestPosts = sortedPosts.slice(0, 3);
 
                     <!-- Side Latest Posts (lg:w-1/3) -->
                     {sideLatestPosts.length > 0 && (
-                        <div class="lg:w-1/3 flex flex-col gap-6">
-                            {sideLatestPosts.map(post => (
+                        <div class="lg:w-1/3 flex flex-col gap-6">                            {sideLatestPosts.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="block card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                                     {post.data.image && (
-                                        <img src={post.data.image} alt={post.data.title} class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                        <Image 
+                                            src={post.data.image} 
+                                            alt={post.data.title} 
+                                            class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                                            width={400}
+                                            height={160}
+                                        />
                                     )}
                                     <div class="p-6">
                                         <h4 class="text-xl font-semibold mb-2 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{post.data.title}</h4>

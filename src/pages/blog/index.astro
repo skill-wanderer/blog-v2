@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BLOG_CATEGORIES, getCategoryDisplayName } from '../../constants/categories.ts';
+import { Image } from 'astro:assets';
 
 // Get all posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -69,10 +70,15 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                                 data-category={post.data.category || ''}
                                 data-title={post.data.title.toLowerCase()}
                                 data-description={post.data.description?.toLowerCase() || ''}
-                            >
-                                <a href={`/blog/${post.slug}/`} class="flex flex-col h-full">
+                            >                                <a href={`/blog/${post.slug}/`} class="flex flex-col h-full">
                                     {post.data.image && (
-                                        <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                        <Image 
+                                            src={post.data.image} 
+                                            alt={post.data.title} 
+                                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                            width={400}
+                                            height={192}
+                                        />
                                     )}
                                     <div class="p-6 flex-grow flex flex-col">
                                         <div class="flex justify-between items-center mb-3 text-xs">
