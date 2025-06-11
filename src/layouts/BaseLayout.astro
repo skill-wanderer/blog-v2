@@ -6,9 +6,84 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  keywords?: string;
+  author?: string;
+  publishDate?: string;
+  type?: 'website' | 'article';
+  canonicalUrl?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { 
+  title, 
+  description = "Insights from My Tech Journey - Join me on my learning journey exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.",
+  image = "/images/general/skill-wanderer-og-default.jpg", // Default OG image
+  keywords = "tech blog, software development, programming, web development, technology insights, coding tutorials",
+  author = "Skill-Wanderer",
+  publishDate,
+  type = "website",
+  canonicalUrl,
+  noindex = false
+} = Astro.props;
+
+// Get the current URL for canonical and og:url
+const currentUrl = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'https://wanderings.skill-wander.com').toString();
+
+// Ensure image is absolute URL
+const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site || 'https://wanderings.skill-wander.com').toString();
+
+// JSON-LD structured data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": type === "article" ? "BlogPosting" : "WebSite",
+  "headline": title,
+  "description": description,
+  "url": currentUrl,
+  "image": {
+    "@type": "ImageObject",
+    "url": absoluteImageUrl,
+    "width": 1200,
+    "height": 630
+  },  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": Astro.site || "https://wanderings.skill-wander.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Skill-Wanderer",
+    "url": Astro.site || "https://wanderings.skill-wander.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/favicon.svg", Astro.site || "https://wanderings.skill-wander.com").toString(),
+      "width": 60,
+      "height": 60
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": currentUrl
+  },
+  "inLanguage": "en-US",
+  ...(publishDate && {
+    "datePublished": publishDate,
+    "dateModified": publishDate
+  }),
+  ...(type === "article" && {
+    "articleSection": "Technology",
+    "wordCount": "1000", // You might want to calculate this dynamically
+    "timeRequired": "PT5M" // 5 minutes reading time in ISO 8601 duration format
+  }),  ...(type === "website" && {
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${Astro.site || "https://wanderings.skill-wander.com"}/blog/?search={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })
+};
 ---
 
 <!DOCTYPE html>
@@ -16,11 +91,89 @@ const { title, description, image } = Astro.props;
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    {image && <meta property="og:image" content={image} />}
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />    <meta name="author" content={author} />
+    <link rel="canonical" href={currentUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Skill-Wanderer RSS Feed" href="/rss.xml" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageUrl} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:site_name" content="Skill-Wanderer" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImageUrl} />
+    <meta name="twitter:creator" content="@skill_wanderer" />
+    <meta name="twitter:site" content="@skill_wanderer" />
+      <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#FF6B35" />
+    <meta name="msapplication-TileColor" content="#FF6B35" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Dublin Core metadata -->
+    <meta name="dc.title" content={title} />
+    <meta name="dc.description" content={description} />
+    <meta name="dc.creator" content={author} />
+    <meta name="dc.language" content="en" />
+    <meta name="dc.type" content="Text" />
+    
+    <!-- Additional Open Graph tags -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    
+    <!-- Article specific Open Graph tags -->
+    {type === 'article' && publishDate && (
+      <>
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:author" content={author} />
+        <meta property="article:section" content="Technology" />
+      </>
+    )}
+    
+    <!-- Twitter Card additional tags -->
+    <meta name="twitter:image:alt" content={title} />
+    <meta name="twitter:domain" content={new URL(currentUrl).hostname} />
+      <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    
+    <!-- Additional head content from pages -->
+    <slot name="head" />
+      <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for better performance -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    
+    <!-- Preload critical resources if needed -->
+    <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+    
+    <!-- Add security headers via meta tags where possible -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade" />
     <style>
         .nav-link {
             @apply px-4 py-2 transition-colors text-skill-wanderer-text-dark-secondary;

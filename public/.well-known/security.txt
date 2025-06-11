@@ -1,0 +1,10 @@
+Contact: mailto:contact@wanderings.skill-wander.com
+Expires: 2026-12-31T23:59:59.000Z
+Encryption: https://wanderings.skill-wander.com/.well-known/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://wanderings.skill-wander.com/.well-known/security.txt
+
+# Security Policy
+# Report security vulnerabilities responsibly
+# Please include detailed information about the issue
+# Expected response time: 48-72 hours

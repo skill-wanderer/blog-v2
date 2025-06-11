@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block access to admin or sensitive areas if you have any
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://wanderings.skill-wander.com/sitemap-index.xml
+Sitemap: https://wanderings.skill-wander.com/sitemap-0.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 1

@@ -13,9 +13,24 @@ const allPosts = await getCollection('posts', ({ data }) => {
 
 // Sort posts by publishDate in descending order
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+// Get unique categories from posts for metadata
+const uniqueCategories = [...new Set(allPosts.map(post => post.data.category).filter(Boolean))];
+const categoryKeywords = uniqueCategories.map(cat => getCategoryDisplayName(cat)).join(', ');
+
+// Dynamic description based on available content
+const dynamicDescription = `Browse all ${sortedPosts.length} blog posts covering ${categoryKeywords}. Join me on my learning journey through the ever-evolving tech landscape.`;
+
+// Enhanced keywords including actual categories
+const enhancedKeywords = `tech blog posts, software development articles, programming tutorials, ${categoryKeywords.toLowerCase()}, home lab guides, kubernetes tutorials, AI insights, technology learning, coding journey`;
 ---
 
-<BaseLayout title="All Blog Posts - Skill-Wanderer" description="Browse all blog posts from Skill-Wanderer.">
+<BaseLayout 
+    title="All Blog Posts - Skill-Wanderer | Tech Journey & Insights"
+    description={dynamicDescription}
+    keywords={enhancedKeywords}
+    type="website"
+>
     <div class="bg-skill-wanderer-darkest text-skill-wanderer-text-dark py-12 md:py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center text-skill-wanderer-text-dark">
@@ -143,9 +158,7 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
             }
             
             filterPosts();
-        }
-
-        function filterPosts() {
+        }        function filterPosts() {
             let visibleCount = 0;
             
             postCards.forEach(card => {
@@ -171,6 +184,9 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                 postCount.textContent = `Showing ${visibleCount} posts`;
             }
             
+            // Update page title and meta description for SEO
+            updatePageMetadata(visibleCount);
+            
             // Show/hide no results message
             if (visibleCount === 0) {
                 if (postsGrid) postsGrid.style.display = 'none';
@@ -179,6 +195,58 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime
                 if (postsGrid) postsGrid.style.display = 'grid';
                 if (noResults) noResults.classList.add('hidden');
             }
+        }
+
+        function updatePageMetadata(visibleCount) {
+            const baseTitle = 'All Blog Posts - Skill-Wanderer | Tech Journey & Insights';
+            const baseDescription = 'Browse all blog posts covering software development, home labs, Kubernetes, AI, and various technology topics.';
+            
+            let newTitle = baseTitle;
+            let newDescription = baseDescription;
+            
+            if (currentCategory !== 'all') {
+                const categoryDisplayName = getCategoryDisplayName(currentCategory);
+                newTitle = `${categoryDisplayName} Posts - Skill-Wanderer | Tech Journey & Insights`;
+                newDescription = `Browse ${visibleCount} ${categoryDisplayName.toLowerCase()} posts covering software development, technology insights, and more.`;
+            } else if (currentSearch) {
+                newTitle = `Search Results for "${currentSearch}" - Skill-Wanderer`;
+                newDescription = `Found ${visibleCount} posts matching "${currentSearch}". Browse software development and technology articles.`;
+            }
+            
+            // Update document title
+            document.title = newTitle;
+            
+            // Update meta description
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', newDescription);
+            }
+            
+            // Update Open Graph meta tags
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+            if (ogTitle) ogTitle.setAttribute('content', newTitle);
+            if (ogDescription) ogDescription.setAttribute('content', newDescription);
+            
+            // Update Twitter Card meta tags
+            const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+            const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+            if (twitterTitle) twitterTitle.setAttribute('content', newTitle);
+            if (twitterDescription) twitterDescription.setAttribute('content', newDescription);
+        }
+
+        function getCategoryDisplayName(category) {
+            // This should match your getCategoryDisplayName function from constants
+            const categoryMap = {
+                'home-lab': 'Home Lab',
+                'kubernetes': 'Kubernetes',
+                'ai': 'AI & Machine Learning',
+                'web-development': 'Web Development',
+                'devops': 'DevOps',
+                'programming': 'Programming',
+                'tech-insights': 'Tech Insights'
+            };
+            return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1);
         }
 
         // Search input event

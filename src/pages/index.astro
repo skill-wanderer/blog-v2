@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { BLOG_CATEGORIES, formatCategoryForUrl, getCategoryDisplayName } from '../constants/categories.ts';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 
 // Get all posts
@@ -23,16 +22,29 @@ const sideLatestPosts = sortedPosts.length > 1 ? sortedPosts.slice(1, 3) : [];
 
 // Get the latest 3 posts for the "Latest Posts" section
 const latestPosts = sortedPosts.slice(0, 3);
+
+// Generate dynamic metadata based on actual content
+const totalPosts = sortedPosts.length;
+const recentPostsText = latestPosts.length > 0 ? `Latest posts include: ${latestPosts.map(p => p.data.title).slice(0, 2).join(', ')}.` : '';
+const dynamicHomeDescription = `Join me on my learning journey as I share insights from exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development. ${totalPosts} posts and counting! ${recentPostsText}`;
+
+// Get unique categories for keywords
+const homeUniqueCategories = [...new Set(allPosts.map(post => post.data.category).filter(Boolean))];
+const homeCategoryKeywords = homeUniqueCategories.map(cat => getCategoryDisplayName(cat)).join(', ');
+const enhancedHomeKeywords = `tech blog, software development, programming, web development, technology insights, coding tutorials, home lab, kubernetes, AI, machine learning, ${homeCategoryKeywords.toLowerCase()}`;
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Skill-Wanderer</title>    
-    <style>
+<BaseLayout 
+  title="Skill-Wanderer - Insights from My Tech Journey"
+  description={dynamicHomeDescription}
+  keywords={enhancedHomeKeywords}
+  type="website"
+>    <style>
+        /* Smooth scrolling for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         .btn-primary {
             @apply font-semibold py-2 px-6 rounded-lg transition-colors bg-skill-wanderer-primary-orange text-skill-wanderer-text-dark;
         }
@@ -51,26 +63,90 @@ const latestPosts = sortedPosts.slice(0, 3);
         .card-light {
             @apply bg-skill-wanderer-white border border-light shadow-light;
         }
-    </style>
-</head>
-<body class="min-h-screen bg-skill-wanderer-primary-dark text-skill-wanderer-text-dark">
-    <!-- Header -->
-    <Header />
-
-    <!-- Hero Section -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-skill-wanderer-text-dark">
-            The Skill-Wanderer Journey
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-skill-wanderer-text-dark-secondary">
-            Insights from My Tech Journey
-        </p>
-        <p class="text-lg max-w-2xl mx-auto text-skill-wanderer-text-dark-muted">
-            Join me on my learning journey as I share insights from exploring various tech
-            domains, building projects, and navigating the ever-evolving landscape of software
-            development.
-        </p>
-    </main>    <!-- Explore Topics Section -->
+        
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style><!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-skill-wanderer-darkest via-skill-wanderer-secondary-dark to-skill-wanderer-card-dark overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 z-0">
+            <!-- Animated gradient orbs -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-skill-wanderer-primary-orange opacity-10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-skill-wanderer-light-orange opacity-15 rounded-full blur-2xl animate-pulse delay-1000"></div>
+            
+            <!-- Grid pattern overlay -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="h-full w-full" style="background-image: linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-block mb-6">
+                <span class="px-4 py-2 bg-skill-wanderer-primary-orange text-white text-sm font-semibold rounded-full tracking-wide">
+                    ⚡ WELCOME TO THE JOURNEY
+                </span>
+            </div>
+            
+            <!-- Main heading -->
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-skill-wanderer-text-dark leading-tight">
+                The <span class="text-skill-wanderer-primary-orange">Skill-Wanderer</span> Journey
+            </h1>
+            
+            <!-- Subtitle -->
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 max-w-4xl mx-auto text-skill-wanderer-text-dark-secondary leading-relaxed">
+                Insights from My <span class="text-skill-wanderer-light-orange">Tech Journey</span>
+            </h2>
+            
+            <!-- Description -->
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-skill-wanderer-text-dark-muted leading-relaxed mb-12">
+                Join me on my learning journey as I share insights from exploring various tech
+                domains, building projects, and navigating the ever-evolving landscape of software
+                development.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="/blog" class="px-8 py-4 bg-skill-wanderer-primary-orange text-white font-semibold rounded-lg shadow-lg hover:bg-skill-wanderer-light-orange hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
+                    Explore All Posts
+                </a>
+                <a href="#latest-posts" class="px-8 py-4 border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold rounded-lg hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-lg">
+                    Latest Updates
+                </a>
+            </div>
+            
+            <!-- Stats or highlights -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">{totalPosts}+</div>
+                    <div class="text-skill-wanderer-text-dark-secondary">Posts Written</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">{homeUniqueCategories.length}+</div>
+                    <div class="text-skill-wanderer-text-dark-secondary">Topics Covered</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">∞</div>
+                    <div class="text-skill-wanderer-text-dark-secondary">Learning Never Stops</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-skill-wanderer-text-dark-secondary animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section><!-- Explore Topics Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-light-gray">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>            <div class="flex flex-wrap justify-center gap-4">
@@ -81,7 +157,7 @@ const latestPosts = sortedPosts.slice(0, 3);
             </div>
         </div>
     </section>    <!-- Latest Posts Section -->
-    <section class="py-12 md:py-16 bg-skill-wanderer-secondary-dark">
+    <section id="latest-posts" class="py-12 md:py-16 bg-skill-wanderer-secondary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2>
@@ -157,12 +233,7 @@ const latestPosts = sortedPosts.slice(0, 3);
                        class="flex-grow rounded-lg py-3 px-4 outline-none transition-colors bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange" />
                 <button type="submit" class="btn-primary">Subscribe</button>
             </form>
-        </div>    </section> -->
-
-    <!-- Footer -->
-    <Footer />
-    
-<script>
+        </div>    </section> -->    <script>
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput') as HTMLInputElement;
@@ -182,7 +253,9 @@ const latestPosts = sortedPosts.slice(0, 3);
                         filterPosts();
                     }
                 });
-            }            // Category filter functionality
+            }
+
+            // Category filter functionality
             categoryFilters.forEach(button => {
                 button.addEventListener('click', function(this: HTMLElement) {
                     // Remove active class from all buttons
@@ -245,6 +318,4 @@ const latestPosts = sortedPosts.slice(0, 3);
             }
         });
     </script>
-
-</body>
-</html>
+</BaseLayout>
