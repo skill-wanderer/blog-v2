@@ -31,6 +31,14 @@ image: "/images/blog/the-price-of-independence/hero.webp"
 tags: ["Home Data Center", "Cost Analysis", "AWS", "Hostinger", "Self-Hosting", "Cloud Computing", "Kubernetes"]
 ---
 
+import { Image } from 'astro:assets';
+import billArrives from '../../../public/images/blog/the-price-of-independence/The%20Bill%20Arrives%20Tallying%20Up%20One%20Month%20of%20My%20Home%20Data%20Center.png';
+import awsCosts from '../../../public/images/blog/the-price-of-independence/Sizing%20Up%20the%20Cloud%20Giant%20Estimating%20Equivalent%20Costs%20on%20AWS.png';
+import hostingerPricing from '../../../public/images/blog/the-price-of-independence/The%20Budget%20Contender%20What%20if%20I%20Went%20with%20Hostinger.png';
+import hostingerPricing2 from '../../../public/images/blog/the-price-of-independence/The%20Budget%20Contender%20What%20if%20I%20Went%20with%20Hostinger%202.png';
+import intangibleValue from '../../../public/images/blog/the-price-of-independence/Beyond%20the%20Dollars%20and%20Cents%20The%20Intangible%20Value%20(and%20Hidden%20Efforts)%20of%20Self-Hosting.webp';
+import myVerdict from '../../../public/images/blog/the-price-of-independence/My%20Verdict%20Is%20My%20Home%20Data%20Center%20a%20Cost-Effective%20Venture%20(For%20Me).png';
+
 Hey everyone, and welcome back! After our brief but important detour into the world of AI literacy in the last post (thanks for sticking with me!), we're diving straight back into the heart of the '[Chronicles of a Home Data Center.](https://wanderings.skill-wanderer.com/category/home-data-center/setup-home-data-center-series/)' If you've been following along, you know this blog itself is now proudly served from the [Kubernetes cluster](https://kubernetes.io/) I've painstakingly built right here at home.
 
 Now that the silicon dust has settled a bit from the initial setup, and the hum of the servers has become a familiar background rhythm, one burning question remains—a question many of you might be pondering if you're considering a similar path: **what does this all actually cost to run each month?** Is this passion project secretly draining my bank account, or is it a surprisingly savvy move in the long run?
@@ -44,7 +52,11 @@ So, if you're curious about the real-world economics of self-hosting versus rely
 
 ## The Bill Arrives: Tallying Up One Month of My Home Data Center
 
-![The Bill Arrives: Tallying Up One Month of My Home Data Center](/images/blog/the-price-of-independence/The%20Bill%20Arrives%20Tallying%20Up%20One%20Month%20of%20My%20Home%20Data%20Center.png)
+<Image 
+  src={billArrives}
+  alt="The Bill Arrives: Tallying Up One Month of My Home Data Center"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
 Alright, let's lift the curtain and dive into the numbers that make my home data center tick (or, more accurately, hum quietly in the corner). When we talk about costs, it's not just about the shiny new gear; it's also about the ongoing expenses. To give you the clearest picture, I'm going to break this down into two main categories: the upfront investment in hardware (which we'll spread out over its useful life using depreciation) and the recurring monthly operational costs.
 
@@ -123,9 +135,13 @@ Not too shabby for a setup that hosts this very blog, various critical services,
 
 ## Sizing Up the Cloud Giant: Estimating Equivalent Costs on [AWS](https://en.wikipedia.org/wiki/Amazon_Web_Services)
 
-![Sizing Up the Cloud Giant: Estimating Equivalent Costs on AWS](/images/blog/the-price-of-independence/Sizing%20Up%20the%20Cloud%20Giant%20Estimating%20Equivalent%20Costs%20on%20AWS.png)
+<Image 
+  src={awsCosts}
+  alt="Sizing Up the Cloud Giant: Estimating Equivalent Costs on AWS"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
-Now that we have a handle on what my home data center costs to run monthly (between $17.80 and $21.82, depending on depreciation), it's time to pit it against the cloud titan: Amazon Web Services (AWS). For what I believe is a fair comparison to a self-managed server environment that offers simplicity and predictable pricing, I've focused on [Amazon Lightsail](https://aws.amazon.com/lightsail/). [Lightsail](https://aws.amazon.com/lightsail/) is AWS's offering for virtual private servers (VPS) with straightforward, bundled monthly pricing, making it a good analogue to what one might set up at home.
+Now that we have a handle on what my home data center coststo run monthly (between $17.80 and $21.82, depending on depreciation), it's time to pit it against the cloud titan: Amazon Web Services (AWS). For what I believe is a fair comparison to a self-managed server environment that offers simplicity and predictable pricing, I've focused on [Amazon Lightsail](https://aws.amazon.com/lightsail/). [Lightsail](https://aws.amazon.com/lightsail/) is AWS's offering for virtual private servers (VPS) with straightforward, bundled monthly pricing, making it a good analogue to what one might set up at home.
 
 ### Finding an Equivalent [AWS Lightsail](https://aws.amazon.com/lightsail/) Instance
 
@@ -184,7 +200,11 @@ But AWS isn't the only player in the cloud game, especially when budget is a con
 
 ## The Budget Contender: What if I Went with [Hostinger](https://www.hostinger.com/)?
 
-![The Budget Contender: What if I Went with Hostinger](/images/blog/the-price-of-independence/The%20Budget%20Contender%20What%20if%20I%20Went%20with%20Hostinger.png)
+<Image 
+  src={hostingerPricing}
+  alt="The Budget Contender: What if I Went with Hostinger"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
 After sizing up a giant like AWS, let's turn our attention to a cloud hosting provider renowned for its aggressive pricing and appeal to budget-conscious users: Hostinger. Can a VPS from Hostinger truly give my home data center a run for its money, particularly when those initial low prices are so tempting?
 
@@ -201,7 +221,11 @@ On paper, this looks like a potent virtual server, certainly capable of handling
 
 ### The Price Tag: A Tale of Promotional Deals and Renewal Realities
 
-![The Budget Contender: What if I Went with Hostinger (Pricing)](/images/blog/the-price-of-independence/The%20Budget%20Contender%20What%20if%20I%20Went%20with%20Hostinger%202.png)
+<Image 
+  src={hostingerPricing2}
+  alt="The Budget Contender: What if I Went with Hostinger (Pricing)"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
 Hostinger is known for its promotional pricing, which often requires longer commitments. Here's how the KVM 8 stacks up against my home lab's monthly running cost of $17.80 – $21.82:
 
@@ -299,9 +323,13 @@ Next, we'll delve deeper into those less tangible, but equally critical, aspects
 
 ## Beyond the Dollars and Cents: The Intangible Value (and Hidden Efforts) of Self-Hosting
 
-![Beyond the Dollars and Cents: The Intangible Value (and Hidden Efforts) of Self-Hosting](/images/blog/the-price-of-independence/Beyond%20the%20Dollars%20and%20Cents%20The%20Intangible%20Value%20(and%20Hidden%20Efforts)%20of%20Self-Hosting.webp)
+<Image 
+  src={intangibleValue}
+  alt="Beyond the Dollars and Cents: The Intangible Value (and Hidden Efforts) of Self-Hosting"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
-The spreadsheets and comparison tables in the last section laid bare the financial realities of running a home data center versus leveraging cloud services. My home lab clearly emerged as the long-term winner on raw monthly operational costs for the kind of setup I'm running. But as anyone who has ever embarked on a significant tech project knows, the true 'value' of an endeavor often extends far beyond what can be itemized on a bill or captured in a cost-per-month figure.
+The spreadsheets and comparison tablesin the last section laid bare the financial realities of running a home data center versus leveraging cloud services. My home lab clearly emerged as the long-term winner on raw monthly operational costs for the kind of setup I'm running. But as anyone who has ever embarked on a significant tech project knows, the true 'value' of an endeavor often extends far beyond what can be itemized on a bill or captured in a cost-per-month figure.
 
 So, if the cloud can offer undeniable convenience (albeit at a higher price for comparable dedicated resources long-term, or with promotional pricing that requires careful attention), why bother with the perceived complexities and upfront efforts of self-hosting? This section is dedicated to exploring those intangible rewards and, just as importantly, acknowledging the often-unseen efforts that come with charting your own infrastructure course right here from Hanoi.
 
@@ -323,7 +351,7 @@ For me, and likely for many of you following the 'Chronicles of a Home Data Cent
 
 **• A Perfect Sandbox for Bold Experimentation:** Curious about a new database technology, a different container networking interface, or a bleeding-edge application? The home lab is the perfect, low-risk sandbox. I can spin up resources, push them to their limits, break things (and learn from fixing them!), all without the looming fear of an unexpectedly large bill from a cloud provider for experimental instances I might have forgotten to terminate.
 
-**• Enabling a Multitude of Real-World Projects:** This home data center isn't just an abstract learning exercise; it's a practical platform that has already paved the way for tangible outcomes. It's currently hosting my Moodle LMS instance for AI literacy experiments, this very WordPress blog you're reading, and supporting the development of my own custom portal page. Looking to the future, it provides the robust foundation I need for hosting other useful open-source tools, various services I'm developing, or even tackling more complex projects like custom data pipelines. This capability to dream up and implement diverse projects without immediately hitting paywalls for resources is incredibly liberating.
+**• Enabling a Multitude of Real-World Projects:** This home data center isn't just an abstract learning exercise; it's a practical platform that has already paved the way for tangible outcomes. It's currently hosting my Moodle LMS instance for AI literacy experiments, this very WordPress blog, and supporting the development of my own custom portal page. Looking to the future, it provides the robust foundation I need for hosting other useful open-source tools, various services I'm developing, or even tackling more complex projects like custom data pipelines. This capability to dream up and implement diverse projects without immediately hitting paywalls for resources is incredibly liberating.
 
 **• Long-Term Hardware Value & Repurposing:** As we've discussed, the hardware I own doesn't just evaporate once its initial purpose is served or its "accounting life" for this analysis is over. My ThinkPad, already fully depreciated, is a testament to this, now serving as a critical master node. The Orange Pi, should its current role change, can be repurposed for countless other embedded projects, educational tools, or even another small server. This potential for a second or third life contrasts sharply with the purely rental model of cloud services.
 
@@ -355,7 +383,11 @@ This isn't about one approach being universally 'better' than the other. It's ab
 
 ## My Verdict: Is My Home Data Center a Cost-Effective Venture (For Me)?
 
-![My Verdict: Is My Home Data Center a Cost-Effective Venture (For Me)?](/images/blog/the-price-of-independence/My%20Verdict%20Is%20My%20Home%20Data%20Center%20a%20Cost-Effective%20Venture%20(For%20Me).png)
+<Image 
+  src={myVerdict}
+  alt="My Verdict: Is My Home Data Center a Cost-Effective Venture (For Me)?"
+  class="rounded-lg shadow-lg mb-6"
+/>
 
 So, after meticulously dissecting the monthly bills, simulating cloud deployments on AWS and Hostinger, and weighing the tangible financial figures against the equally important intangible values and hidden efforts, we arrive at the ultimate question for this installment of the 'Chronicles of a Home Data Center': **Is my home data center, humming away right here in Hanoi, a cost-effective venture for me?**
 
