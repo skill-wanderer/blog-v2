@@ -6,7 +6,7 @@ metadata:
   labels:
     app: blog-v2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: blog-v2
