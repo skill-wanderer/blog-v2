@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wanderings.skill-wander.com',
+  site: 'https://wanderings.skill-wanderer.com',
   integrations: [
     tailwind(), 
     mdx(),
