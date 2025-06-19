@@ -23,19 +23,17 @@ module.exports = {
           
           // Accent Colors
           'primary-orange': '#ff6b35',
-          'light-orange': '#ff8555',
-
-          // Blog Detail Colors
+          'light-orange': '#ff8555',          // Blog Detail Colors
           'article-bg': '#ffffff',
-          'article-text': '#666666',
+          'article-text': '#2a2a2a',
           'article-headings': '#2a2a2a',
           'hero-bg': '#4a4a4a',
           'hero-text': '#ffffff',
           'hero-meta': '#e0e0e0',
           'code-bg': '#2a2a2a',
-          'code-text': '#ffffff',
+          'code-text': '#ffffff',          
           'blockquote-bg': '#f5f5f5',
-          'blockquote-text': '#666666',
+          'blockquote-text': '#2a2a2a',
           'toc-bg': '#f5f5f5',
           'author-bio-bg': '#f5f5f5',
           'comment-form-bg': '#f5f5f5',
