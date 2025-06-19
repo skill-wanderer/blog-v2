@@ -1,8 +1,8 @@
-Contact: mailto:contact@wanderings.skill-wander.com
+Contact: mailto:contact@wanderings.skill-wanderer.com
 Expires: 2026-12-31T23:59:59.000Z
-Encryption: https://wanderings.skill-wander.com/.well-known/pgp-key.txt
+Encryption: https://wanderings.skill-wanderer.com/.well-known/pgp-key.txt
 Preferred-Languages: en
-Canonical: https://wanderings.skill-wander.com/.well-known/security.txt
+Canonical: https://wanderings.skill-wanderer.com/.well-known/security.txt
 
 # Security Policy
 # Report security vulnerabilities responsibly

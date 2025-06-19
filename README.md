@@ -441,7 +441,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ### 🎯 Related Projects
 
-- **Main Hub**: [Skill-Wanderer Platform](https://skill-wander.com) - Portfolio and services
+- **Main Hub**: [Skill-Wanderer Platform](https://skill-wanderer.com) - Portfolio and services
 - **Learning Platform**: Moodle LMS for AI literacy courses (coming soon)
 
 ---

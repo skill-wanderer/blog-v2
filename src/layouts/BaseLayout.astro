@@ -27,10 +27,10 @@ const {
 } = Astro.props;
 
 // Get the current URL for canonical and og:url
-const currentUrl = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'https://wanderings.skill-wander.com').toString();
+const currentUrl = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'https://wanderings.skill-wanderer.com').toString();
 
 // Ensure image is absolute URL
-const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site || 'https://wanderings.skill-wander.com').toString();
+const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site || 'https://wanderings.skill-wanderer.com').toString();
 
 // JSON-LD structured data
 const jsonLd = {
@@ -47,15 +47,15 @@ const jsonLd = {
   },  "author": {
     "@type": "Person",
     "name": author,
-    "url": Astro.site || "https://wanderings.skill-wander.com"
+    "url": Astro.site || "https://wanderings.skill-wanderer.com"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Skill-Wanderer",
-    "url": Astro.site || "https://wanderings.skill-wander.com",
+    "url": Astro.site || "https://wanderings.skill-wanderer.com",
     "logo": {
       "@type": "ImageObject",
-      "url": new URL("/favicon.svg", Astro.site || "https://wanderings.skill-wander.com").toString(),
+      "url": new URL("/favicon.svg", Astro.site || "https://wanderings.skill-wanderer.com").toString(),
       "width": 60,
       "height": 60
     }
@@ -78,7 +78,7 @@ const jsonLd = {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": `${Astro.site || "https://wanderings.skill-wander.com"}/blog/?search={search_term_string}`
+        "urlTemplate": `${Astro.site || "https://wanderings.skill-wanderer.com"}/blog/?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
