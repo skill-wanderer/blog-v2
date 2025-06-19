@@ -1,7 +1,8 @@
 // Blog categories constants
 export const BLOG_CATEGORIES = [
   'Artificial Intelligence',
-  'Home Data Center'
+  'Home Data Center',
+  'Skill-Wanderer Journey'
 ] as const;
 
 export type BlogCategory = typeof BLOG_CATEGORIES[number];
