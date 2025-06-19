@@ -174,16 +174,15 @@ const breadcrumbJsonLd = {
             </svg>
             <span>{blogPost.readTime}</span>
           </div>
-        </div>
-          <!-- Hero Image -->
+        </div>          <!-- Hero Image -->
         {blogPost.image && (
           <div class="rounded-lg overflow-hidden shadow-2xl">
             <Image 
               src={blogPost.image} 
               alt={blogPost.title}
-              class="w-full h-64 md:h-96 object-cover"
+              class="w-full h-80 md:h-[28rem] lg:h-[32rem] object-cover"
               width={800}
-              height={400}
+              height={512}
             />
           </div>
         )}
