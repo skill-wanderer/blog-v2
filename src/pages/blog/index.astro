@@ -35,35 +35,36 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center text-skill-wanderer-text-dark">
                 All Blog Posts
-            </h1>
-
-            <!-- Filter Section -->
+            </h1>            <!-- Filter Section -->
             <div class="mb-8 bg-skill-wanderer-card-dark rounded-lg p-6">
-                <div class="flex flex-col md:flex-row gap-4 items-center">
+                <div class="flex flex-col gap-6">
                     <!-- Search Input -->
-                    <div class="flex-grow w-full md:w-auto">
+                    <div class="w-full">
                         <input 
                             type="text" 
                             id="searchInput" 
                             placeholder="Search posts by title or description..." 
-                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
+                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-skill-wanderer-secondary-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
                         />
                     </div>
-                      <!-- Category Filter -->
-                    <div class="flex flex-wrap gap-2">
-                        <button 
-                            class="category-filter active px-6 py-3 rounded-full bg-skill-wanderer-primary-orange text-white font-semibold transition-all duration-300 hover:shadow-lg" 
-                            data-category="all"
-                        >
-                            All
-                        </button>                        {BLOG_CATEGORIES.map(category => (
+                    <!-- Category Filter -->
+                    <div class="w-full">
+                        <div class="flex flex-wrap gap-3 justify-center sm:justify-start">
                             <button 
-                                class="category-filter px-6 py-3 rounded-full bg-transparent border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300" 
-                                data-category={category}
+                                class="category-filter active px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-skill-wanderer-primary-orange text-white font-semibold transition-all duration-300 hover:shadow-lg text-sm sm:text-base whitespace-nowrap" 
+                                data-category="all"
                             >
-                                {getCategoryDisplayName(category)}
+                                All
                             </button>
-                        ))}
+                            {BLOG_CATEGORIES.map(category => (
+                                <button 
+                                    class="category-filter px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-transparent border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-sm sm:text-base whitespace-nowrap" 
+                                    data-category={category}
+                                >
+                                    {getCategoryDisplayName(category)}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,7 +198,7 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
             }
         }
 
-        function updatePageMetadata(visibleCount) {
+        function updatePageMetadata(visibleCount: number) {
             const baseTitle = 'All Blog Posts - Skill-Wanderer | Tech Journey & Insights';
             const baseDescription = 'Browse all blog posts covering software development, home labs, Kubernetes, AI, and various technology topics.';
             
@@ -233,11 +234,9 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
             const twitterDescription = document.querySelector('meta[name="twitter:description"]');
             if (twitterTitle) twitterTitle.setAttribute('content', newTitle);
             if (twitterDescription) twitterDescription.setAttribute('content', newDescription);
-        }
-
-        function getCategoryDisplayName(category) {
+        }        function getCategoryDisplayName(category: string) {
             // This should match your getCategoryDisplayName function from constants
-            const categoryMap = {
+            const categoryMap: { [key: string]: string } = {
                 'home-lab': 'Home Lab',
                 'kubernetes': 'Kubernetes',
                 'ai': 'AI & Machine Learning',
