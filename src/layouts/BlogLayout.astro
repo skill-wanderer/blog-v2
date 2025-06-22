@@ -7,21 +7,12 @@ import RelatedPosts from '../components/RelatedPosts.astro';
 import { Image } from 'astro:assets';
 import type { BlogCategory } from '../constants/categories.ts';
 import { getCategoryDisplayName, BLOG_CATEGORIES } from '../constants/categories.ts';
+import { getAuthor, type Author } from '../constants/authors.ts';
 
 export interface BlogPost {
   title: string;
   description: string;
-  author: {
-    name: string;
-    bio: string;
-    avatar?: string;
-    social?: {
-      twitter?: string;
-      linkedin?: string;
-      github?: string;
-      website?: string;
-    };
-  };
+  authorId: string;
   publishDate: string;
   category: BlogCategory;
   readTime: string;
@@ -44,17 +35,7 @@ interface Props {
   // Add frontmatter props for direct markdown usage
   title?: string;
   description?: string;
-  author?: {
-    name: string;
-    bio: string;
-    avatar?: string;
-    social?: {
-      twitter?: string;
-      linkedin?: string;
-      github?: string;
-      website?: string;
-    };
-  };
+  authorId?: string;
   publishDate?: string;
   category?: BlogCategory;
   readTime?: string;
@@ -72,14 +53,21 @@ const {
 
 // Use post if available, otherwise construct from frontmatter
 const blogPost = post || {
-  title: frontmatter.title || 'Untitled',  description: frontmatter.description || '',
-  author: frontmatter.author || { name: 'Anonymous', bio: '' },
+  title: frontmatter.title || 'Untitled',  
+  description: frontmatter.description || '',
+  authorId: frontmatter.authorId || 'quan-nguyen',
   publishDate: frontmatter.publishDate || '',
   category: frontmatter.category || BLOG_CATEGORIES[0],
   readTime: frontmatter.readTime || '5 min read',
   image: frontmatter.image,
   tags: frontmatter.tags || []
 };
+
+// Get author data
+const author = getAuthor(blogPost.authorId);
+if (!author) {
+  throw new Error(`Author with ID "${blogPost.authorId}" not found`);
+}
 
 // Transform rawHeadingsFromPage to the TOCItem[] structure needed by TableOfContents.astro
 const pageHeadings: TOCItem[] = rawHeadingsFromPage.map(h => {
@@ -136,7 +124,7 @@ const breadcrumbJsonLd = {
   description={blogPost.description}
   image={blogPost.image}
   keywords={blogPost.tags ? blogPost.tags.join(', ') : undefined}
-  author={blogPost.author.name}
+  author={author.name}
   publishDate={blogPost.publishDate}
   type="article"
 >
@@ -160,7 +148,7 @@ const breadcrumbJsonLd = {
         <!-- Meta Information -->
         <div class="flex flex-wrap justify-center items-center gap-4 text-skill-wanderer-hero-meta mb-8">
           <div class="flex items-center space-x-2">
-            <span>By {blogPost.author.name}</span>
+            <span>By {author.name}</span>
           </div>
           <div class="flex items-center space-x-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,12 +204,11 @@ const breadcrumbJsonLd = {
             )}
             
             <!-- Author Bio -->
-            <div class="mt-12">
-              <AuthorBio 
-                name={blogPost.author.name}
-                bio={blogPost.author.bio}
-                avatar={blogPost.author.avatar}
-                social={blogPost.author.social}
+            <div class="mt-12">              <AuthorBio 
+                name={author.name}
+                bio={author.bio}
+                avatar={author.avatar}
+                social={author.social}
               />
             </div>
           </main>

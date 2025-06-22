@@ -1,22 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 import { BLOG_CATEGORIES, type BlogCategory } from '../constants/categories.ts';
+import { AUTHOR_IDS } from '../constants/authors.ts';
 
 const posts = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    author: z.object({
-      name: z.string(),
-      bio: z.string(),
-      avatar: z.string().optional(),
-      social: z.object({
-        twitter: z.string().optional(),
-        linkedin: z.string().optional(),
-        github: z.string().optional(),
-        website: z.string().optional(),
-      }).optional(),
-    }),
+    authorId: z.enum(AUTHOR_IDS),
     publishDate: z.string(),
     category: z.enum(BLOG_CATEGORIES as readonly [string, ...string[]]),
     readTime: z.string(),
