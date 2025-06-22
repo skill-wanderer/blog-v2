@@ -2,7 +2,8 @@
 export const BLOG_CATEGORIES = [
   'Artificial Intelligence',
   'Home Data Center',
-  'Skill-Wanderer Journey'
+  'Skill-Wanderer Journey',
+  "The Wanderer's Playbook"
 ] as const;
 
 export type BlogCategory = typeof BLOG_CATEGORIES[number];
