@@ -16,9 +16,13 @@ const { Content, headings } = await entry.render();
 // Fetch all posts
 const allPosts = await getCollection('posts');
 
-// Map posts to the RelatedPost structure not yet tested due to only 1 mdx so far
-// Assuming each post has a title, description, slug, category, readTime, and image
-const relatedPosts = allPosts.map(post => ({
+// Filter posts by same category and exclude current post
+const relatedPostsData = allPosts.filter(post => 
+  post.data.category === entry.data.category && post.slug !== entry.slug
+);
+
+// Map filtered posts to the RelatedPost structure
+const relatedPosts = relatedPostsData.map(post => ({
   title: post.data.title,
   excerpt: post.data.description, // Using description as excerpt
   slug: post.slug,
