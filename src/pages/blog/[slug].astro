@@ -1,6 +1,7 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { calculateWordCount, calculateReadingTime } from '../../utils/seo.ts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -12,6 +13,19 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
+
+// Calculate word count from the raw content if not provided
+const rawContent = entry.body || '';
+const calculatedWordCount = (entry.data as any).wordCount || calculateWordCount(rawContent);
+const calculatedReadTime = entry.data.readTime || calculateReadingTime(calculatedWordCount);
+
+// Create enhanced post data with calculated values
+const enhancedPostData = {
+  ...entry.data,
+  category: entry.data.category as any, // Type assertion for category
+  wordCount: calculatedWordCount,
+  readTime: calculatedReadTime
+};
 
 // Fetch all posts
 const allPosts = await getCollection('posts');
@@ -33,7 +47,7 @@ const relatedPosts = relatedPostsData.map(post => ({
 ---
 
 <BlogLayout
-  post={entry.data}
+  post={enhancedPostData}
   headings={headings}
   relatedPosts={relatedPosts}
   currentSlug={entry.slug}
