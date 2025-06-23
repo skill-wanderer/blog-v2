@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { optimizeDescriptionLength, generateKeywords, readingTimeToISO8601 } from '../utils/seo.ts';
 
 export interface Props {
   title: string;
@@ -10,31 +9,21 @@ export interface Props {
   keywords?: string;
   author?: string;
   publishDate?: string;
-  modifiedDate?: string;
   type?: 'website' | 'article';
   canonicalUrl?: string;
   noindex?: boolean;
-  tags?: string[];
-  category?: string;
-  readTime?: string;
-  wordCount?: number;
 }
 
 const { 
   title, 
-  description = "Join my tech journey exploring software development, programming insights, and innovative solutions. Practical tutorials and real-world experiences.",
+  description = "Insights from My Tech Journey - Join me on my learning journey exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.",
   image = "/images/general/skill-wanderer-og-default.jpg", // Default OG image
   keywords = "tech blog, software development, programming, web development, technology insights, coding tutorials",
   author = "Skill-Wanderer",
   publishDate,
-  modifiedDate,
   type = "website",
   canonicalUrl,
-  noindex = false,
-  tags = [],
-  category,
-  readTime,
-  wordCount
+  noindex = false
 } = Astro.props;
 
 // Get the current URL for canonical and og:url
@@ -43,34 +32,19 @@ const currentUrl = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'ht
 // Ensure image is absolute URL
 const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site || 'https://wanderings.skill-wanderer.com').toString();
 
-// Optimize title with site name for better branding (except for home page)
-const optimizedTitle = Astro.url.pathname === '/' ? title : `${title} | Skill-Wanderer`;
-
-// Ensure description is within optimal length (150-160 characters)
-const optimizedDescription = optimizeDescriptionLength(description);
-
-// Create comprehensive keywords string
-const allKeywords = generateKeywords(
-  tags,
-  category,
-  title,
-  keywords.split(', ').filter(Boolean)
-);
-
 // JSON-LD structured data
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": type === "article" ? "BlogPosting" : "WebSite",
   "headline": title,
-  "description": optimizedDescription,
+  "description": description,
   "url": currentUrl,
   "image": {
     "@type": "ImageObject",
     "url": absoluteImageUrl,
     "width": 1200,
     "height": 630
-  },
-  "author": {
+  },  "author": {
     "@type": "Person",
     "name": author,
     "url": Astro.site || "https://wanderings.skill-wanderer.com"
@@ -93,17 +67,13 @@ const jsonLd = {
   "inLanguage": "en-US",
   ...(publishDate && {
     "datePublished": publishDate,
-    "dateModified": modifiedDate || publishDate
+    "dateModified": publishDate
   }),
   ...(type === "article" && {
-    "articleSection": category || "Technology",
-    "keywords": allKeywords,
-    ...(tags && tags.length > 0 && { "about": tags.map(tag => ({ "@type": "Thing", "name": tag })) }),    ...(wordCount && { "wordCount": wordCount }),
-    ...(readTime && { 
-      "timeRequired": readingTimeToISO8601(readTime)
-    })
-  }),
-  ...(type === "website" && {
+    "articleSection": "Technology",
+    "wordCount": "1000", // You might want to calculate this dynamically
+    "timeRequired": "PT5M" // 5 minutes reading time in ISO 8601 duration format
+  }),  ...(type === "website" && {
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -117,7 +87,7 @@ const jsonLd = {
 ---
 
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -125,77 +95,34 @@ const jsonLd = {
     <meta name="generator" content={Astro.generator} />
     
     <!-- SEO Meta Tags -->
-    <title>{optimizedTitle}</title>
-    <meta name="description" content={optimizedDescription} />
-    <meta name="keywords" content={allKeywords} />
-    <meta name="author" content={author} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />    <meta name="author" content={author} />
     <link rel="canonical" href={currentUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     
-    <!-- Additional SEO Meta Tags -->
-    <meta name="language" content="en-US" />
-    <meta name="geo.region" content="US" />
-    <meta name="geo.placename" content="United States" />
-    <meta name="distribution" content="global" />
-    <meta name="rating" content="general" />
-    <meta name="revisit-after" content="7 days" />
-      <!-- RSS Feed -->
+    <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Skill-Wanderer RSS Feed" href="/rss.xml" />
-    
-    <!-- Sitemap -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={optimizedDescription} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content={absoluteImageUrl} />
     <meta property="og:url" content={currentUrl} />
     <meta property="og:site_name" content="Skill-Wanderer" />
     <meta property="og:locale" content="en_US" />
-    {type === 'article' && (
-      <>
-        <meta property="og:image:alt" content={title} />
-        {tags && tags.length > 0 && tags.map(tag => (
-          <meta property="article:tag" content={tag} />
-        ))}
-        {publishDate && <meta property="article:published_time" content={publishDate} />}
-        {(modifiedDate || publishDate) && <meta property="article:modified_time" content={modifiedDate || publishDate} />}
-        {category && <meta property="article:section" content={category} />}
-        <meta property="article:author" content={author} />
-      </>
-    )}
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={optimizedDescription} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteImageUrl} />
-    <meta name="twitter:image:alt" content={title} />
     <meta name="twitter:creator" content="@skill_wanderer" />
     <meta name="twitter:site" content="@skill_wanderer" />
-    <meta name="twitter:domain" content={new URL(currentUrl).hostname} />
-      <!-- Performance and Resource Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://api.github.com" />
-    <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
-    
-    <!-- Resource hints for better performance -->
-    <meta http-equiv="x-dns-prefetch-control" content="on" />
-    
-    <!-- Optimize image loading -->
-    {type === 'article' && image && (
-      <link rel="preload" as="image" href={absoluteImageUrl} />
-    )}
-    
-    <!-- Additional Meta Tags -->
+      <!-- Additional Meta Tags -->
     <meta name="theme-color" content="#FF6B35" />
     <meta name="msapplication-TileColor" content="#FF6B35" />
-    <meta name="apple-mobile-web-app-title" content="Skill-Wanderer" />
-    <meta name="application-name" content="Skill-Wanderer" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -206,27 +133,45 @@ const jsonLd = {
     
     <!-- Dublin Core metadata -->
     <meta name="dc.title" content={title} />
-    <meta name="dc.description" content={optimizedDescription} />
+    <meta name="dc.description" content={description} />
     <meta name="dc.creator" content={author} />
-    <meta name="dc.language" content="en-US" />
+    <meta name="dc.language" content="en" />
     <meta name="dc.type" content="Text" />
-    {publishDate && <meta name="dc.date" content={publishDate} />}
-    {category && <meta name="dc.subject" content={category} />}
     
     <!-- Additional Open Graph tags -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     
-    <!-- Security headers via meta tags -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade" />
+    <!-- Article specific Open Graph tags -->
+    {type === 'article' && publishDate && (
+      <>
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:author" content={author} />
+        <meta property="article:section" content="Technology" />
+      </>
+    )}
     
-    <!-- JSON-LD Structured Data -->
+    <!-- Twitter Card additional tags -->
+    <meta name="twitter:image:alt" content={title} />
+    <meta name="twitter:domain" content={new URL(currentUrl).hostname} />
+      <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     
     <!-- Additional head content from pages -->
     <slot name="head" />
+      <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for better performance -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    
+    <!-- Preload critical resources if needed -->
+    <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+      <!-- Add security headers via meta tags where possible -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade" />
     <style>
         .nav-link {
             @apply px-4 py-2 transition-colors text-skill-wanderer-text-dark-secondary;

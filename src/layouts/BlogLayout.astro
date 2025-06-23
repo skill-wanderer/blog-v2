@@ -8,19 +8,16 @@ import { Image } from 'astro:assets';
 import type { BlogCategory } from '../constants/categories.ts';
 import { getCategoryDisplayName, BLOG_CATEGORIES } from '../constants/categories.ts';
 import { getAuthor, type Author } from '../constants/authors.ts';
-import { calculateWordCount, calculateReadingTime } from '../utils/seo.ts';
 
 export interface BlogPost {
   title: string;
   description: string;
   authorId: string;
   publishDate: string;
-  modifiedDate?: string;
   category: BlogCategory;
   readTime: string;
   image?: string;
   tags?: string[];
-  wordCount?: number;
 }
 
 export interface TOCItem {
@@ -34,17 +31,16 @@ interface Props {
   // Expect Astro's native MarkdownHeading array from the page using the layout
   headings?: { depth: number, slug: string, text: string }[]; 
   relatedPosts?: any[];
-  currentSlug?: string;  // Add frontmatter props for direct markdown usage
+  currentSlug?: string;
+  // Add frontmatter props for direct markdown usage
   title?: string;
   description?: string;
   authorId?: string;
   publishDate?: string;
-  modifiedDate?: string;
   category?: BlogCategory;
   readTime?: string;
   image?: string;
   tags?: string[];
-  wordCount?: number;
 }
 
 const { 
@@ -61,12 +57,10 @@ const blogPost = post || {
   description: frontmatter.description || '',
   authorId: frontmatter.authorId || 'quan-nguyen',
   publishDate: frontmatter.publishDate || '',
-  modifiedDate: frontmatter.modifiedDate,
   category: frontmatter.category || BLOG_CATEGORIES[0],
   readTime: frontmatter.readTime || '5 min read',
   image: frontmatter.image,
-  tags: frontmatter.tags || [],
-  wordCount: frontmatter.wordCount
+  tags: frontmatter.tags || []
 };
 
 // Get author data
@@ -132,12 +126,7 @@ const breadcrumbJsonLd = {
   keywords={blogPost.tags ? blogPost.tags.join(', ') : undefined}
   author={author.name}
   publishDate={blogPost.publishDate}
-  modifiedDate={blogPost.modifiedDate}
   type="article"
-  tags={blogPost.tags}
-  category={getCategoryDisplayName(blogPost.category)}
-  readTime={blogPost.readTime}
-  wordCount={blogPost.wordCount}
 >
   <!-- Additional structured data for blog posts -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} slot="head" />
