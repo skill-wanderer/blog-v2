@@ -2,7 +2,6 @@
 
 > **Insights from My Tech Journey** - A modern tech blog documenting explorations through various technology domains, project builds, and navigating the ever-evolving landscape of software development. Migrated from WordPress to Astro for enhanced performance and developer experience.
 
-![Blog Preview](public/images/blog/chronicles-of-a-home-data-center-day-1/hero.jpg)
 
 ## 📚 Table of Contents
 
@@ -23,21 +22,9 @@
 
 ## 🚀 About This Blog
 
-Welcome to **The Skill-Wanderer Journey**! This is a personal tech blog where I share insights, experiences, and learnings from my adventures in technology. From home data centers and Kubernetes clusters to development workflows and infrastructure projects, this blog serves as both a documentation of my journey and a resource for fellow tech enthusiasts.
+Welcome to [**The Skill-Wanderer Journey**](https://wanderings.skill-wanderer.com)! This is a personal tech blog where I share insights, experiences, and learnings from my adventures in technology. From home data centers and Kubernetes clusters to development workflows and infrastructure projects, this blog serves as both a documentation of my journey and a resource for fellow tech enthusiasts.
 
-### 🎯 What You'll Find Here
 
-- 🏠 **Home Data Center** - Projects, setups, and real-world implementations
-- 🔧 **DevOps & Infrastructure** - Automation, monitoring, and best practices
-- 🌐 **Self-Hosting** - Adventures in running your own services
-- ☸️ **Container Orchestration** - Kubernetes, Docker, and container strategies
-- 🚀 **Real-world Projects** - Step-by-step builds and lessons learned
-- 🤖 **AI & Modern Tools** - Leveraging AI for development and learning
-
-### 📖 Blog Series
-
-- **Chronicles of a Home Data Center** - A complete guide to building and managing your own infrastructure
-- **AI Literacy Series** - Understanding and effectively using AI tools in development
 
 ## 🔄 From WordPress to Astro: A Strategic Migration
 
@@ -182,14 +169,7 @@ All commands are run from the root of the project:
    kubectl get pods
    ```
    
-   ### Using Components
-   
-   <Image 
-     src="/images/blog/my-post/diagram.png"
-     alt="Architecture diagram"
-     class="rounded-lg shadow-lg"
-   />
-   ```
+
 
 ### 🏷️ Adding New Categories
 
@@ -442,7 +422,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ### 🎯 Related Projects
 
 - **Main Hub**: [Skill-Wanderer Platform](https://skill-wanderer.com) - Portfolio and services
-- **Learning Platform**: Moodle LMS for AI literacy courses (coming soon)
+- **Learning Platform**: [Moodle LMS](https://dojo.skill-wanderer.com) (coming soon)
 
 ---
 
