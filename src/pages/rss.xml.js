@@ -25,14 +25,7 @@ export async function GET(context) {
     })),
     customData: `
       <language>en-us</language>
-      <managingEditor>contact@wanderings.skill-wanderer.com (Skill-Wanderer)</managingEditor>
-      <webMaster>contact@wanderings.skill-wanderer.com (Skill-Wanderer)</webMaster>
-      <category>Technology</category>
-      <category>Software Development</category>
-      <category>Programming</category>
-      <category>Home Lab</category>
-      <category>Kubernetes</category>
-      <category>AI</category>
+
       <ttl>60</ttl>
     `,
   });

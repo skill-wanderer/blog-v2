@@ -26,8 +26,7 @@ const { showNavigation = true } = Astro.props;
         <a href="/" class="text-2xl font-bold text-skill-wanderer-primary-orange">
             SKILL-WANDERER JOURNEY
         </a>
-        
-        {showNavigation && (
+          {showNavigation && (
             <nav class="hidden md:flex items-center space-x-2">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/blog" class="nav-link">All Posts</a>
@@ -36,13 +35,67 @@ const { showNavigation = true } = Astro.props;
         )}        <div class="md:hidden">
             <!-- Mobile menu button -->
             <button 
+                id="mobile-menu-button"
                 class="text-skill-wanderer-text-dark-secondary hover:text-skill-wanderer-primary-orange focus:outline-none"
                 aria-label="Open mobile navigation menu"
             >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
     </div>
+      <!-- Mobile Navigation Menu -->
+    {showNavigation && (
+        <div id="mobile-menu" class="hidden md:hidden bg-skill-wanderer-darkest border-t border-dark">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="/" class="nav-link block px-3 py-2 rounded-lg">Home</a>
+                    <a href="/blog" class="nav-link block px-3 py-2 rounded-lg">All Posts</a>
+                    <a href="https://skill-wanderer.com/" class="nav-link block px-3 py-2 rounded-lg">Main Site</a>
+                </div>
+            </nav>
+        </div>
+    )}
 </header>
+
+<script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+            mobileMenuButton.addEventListener('click', function() {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Close menu
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                }
+            });
+
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    });
+</script>
