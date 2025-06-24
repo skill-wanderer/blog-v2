@@ -421,7 +421,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ### 🎯 Related Projects
 
-- **Main Hub**: [Skill-Wanderer Platform](https://skill-wanderer.com) - Portfolio and services
+- **Main Hub**: [Skill-Wanderer Platform](https://skill-wanderer.com) 
 - **Learning Platform**: [Moodle LMS](https://dojo.skill-wanderer.com) (coming soon)
 
 ---
