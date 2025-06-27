@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Stack Infographic - Image Version</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            padding: 40px;
+        }
+
+        .infographic-image {
+            width: 1080px;
+            height: 1350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content-area {
+            padding: 40px;
+            color: white;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: rgba(255,255,255,0.25);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        .platforms-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .platform-item {
+            background: rgba(255,255,255,0.95);
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid;
+        }
+
+        .platform-item.udemy { border-left-color: #a435f0; }
+        .platform-item.pluralsight { border-left-color: #f15b2a; }
+        .platform-item.linkedin { border-left-color: #0077b5; }
+        .platform-item.datacamp { border-left-color: #03ef62; }
+        .platform-item.coursera { border-left-color: #0056d3; }
+        .platform-item.codecademy { border-left-color: #1f4056; }
+
+        .platform-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .platform-desc {
+            font-size: 1rem;
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+        }
+
+        .platform-best {
+            font-size: 0.9rem;
+            background: #ecf0f1;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .example-section {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .example-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .example-item {
+            background: rgba(255,255,255,0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .example-goal {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .example-steps {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .footer-message {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            right: 40px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .infographic-image { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-image">
+        <div class="header">
+            <div class="title">The Modern Tech Professional's Learning Stack</div>
+            <div class="subtitle">A 2025 Guide to Building Your Ultimate Learning Toolkit</div>
+        </div>
+
+        <div class="content-area">
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-number">44%</span>
+                    <div class="stat-label">of core job skills will be disrupted in 5 years</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">platforms in the perfect learning stack</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">∞</span>
+                    <div class="stat-label">learning possibilities when combined</div>
+                </div>
+            </div>
+
+            <div class="platforms-section">
+                <h2 class="section-title">The Learning Stack Contenders</h2>
+                
+                <div class="platforms-grid">
+                    <div class="platform-item udemy">
+                        <div class="platform-name">Udemy</div>
+                        <div class="platform-desc">"The Digital Supermarket"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Specific tool training (Dev, PM, BA)</div>
+                    </div>
+
+                    <div class="platform-item pluralsight">
+                        <div class="platform-name">Pluralsight</div>
+                        <div class="platform-desc">"The Professional's Gym"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Serious developer upskilling, cloud certs</div>
+                    </div>
+
+                    <div class="platform-item linkedin">
+                        <div class="platform-name">LinkedIn Learning</div>
+                        <div class="platform-desc">"The Corporate Trainer"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Project Management & Soft Skills</div>
+                    </div>
+
+                    <div class="platform-item datacamp">
+                        <div class="platform-name">DataCamp</div>
+                        <div class="platform-desc">"The Interactive Data Lab"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Business/Data Analysts, Python/R/SQL</div>
+                    </div>
+
+                    <div class="platform-item coursera">
+                        <div class="platform-name">Coursera</div>
+                        <div class="platform-desc">"The Digital University"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Formal Certificates (PM, BA, Dev)</div>
+                    </div>
+
+                    <div class="platform-item codecademy">
+                        <div class="platform-name">Codecademy</div>
+                        <div class="platform-desc">"The Coding Sandbox"</div>
+                        <div class="platform-best"><strong>Best For:</strong> Absolute beginner coders, basic syntax</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3 class="example-title">🎯 Battle-Tested Learning Stack Combinations</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="example-goal">📊 For Data Skills</div>
+                        <div class="example-steps">
+                            <strong>Foundation:</strong> Coursera (Theory)<br>
+                            <strong>Practice:</strong> DataCamp (Interactive)
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-goal">💻 For New Languages</div>
+                        <div class="example-steps">
+                            <strong>Syntax:</strong> Codecademy<br>
+                            <strong>Depth:</strong> Pluralsight<br>
+                            <strong>Projects:</strong> Udemy
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-goal">☁️ For Cloud Architecture</div>
+                        <div class="example-steps">
+                            <strong>Concepts:</strong> Coursera<br>
+                            <strong>Practice:</strong> Pluralsight Labs
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-goal">📋 For Management</div>
+                        <div class="example-steps">
+                            <strong>Certification:</strong> Coursera<br>
+                            <strong>Skills:</strong> LinkedIn Learning
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 0.9rem; opacity: 0.8; font-style: italic;">
+                    Match platform strengths to your specific learning objectives
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-message">
+            💡 Don't search for the "best" platform. Build a learning stack that matches your goals.
+        </div>
+    </div>
+</body>
+</html>
