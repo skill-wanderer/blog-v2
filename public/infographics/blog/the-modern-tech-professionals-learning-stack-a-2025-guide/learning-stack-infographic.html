@@ -249,6 +249,74 @@
             opacity: 0.8;
         }
 
+        /* Hero Section Styles */
+        .hero-section {
+            padding: 40px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .hero-section h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Print Styles */
+        @media print {
+            .section {
+                page-break-before: always;
+                margin-bottom: 0;
+            }
+            
+            .section:first-child {
+                page-break-before: auto;
+            }
+            
+            .header, .hero-section {
+                page-break-after: always;
+            }
+            
+            .footer {
+                page-break-before: always;
+            }
+            
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .infographic {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .platform-card:hover {
+                transform: none;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+        }
+
         /* Decision Guide Styles */
         .decision-guide, .quick-picker {
             background: #f8f9fa;
@@ -301,6 +369,10 @@
                 font-size: 2rem;
             }
             
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
             .platforms-grid {
                 grid-template-columns: 1fr;
             }
@@ -323,6 +395,9 @@
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8; font-style: italic; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
                 <strong>Disclaimer:</strong> Not affiliated with, sponsored by, or receiving compensation from any platforms mentioned. All opinions are my own.
             </p>
+            <img src="/images/blog/the-modern-tech-professionals-learning-stack-a-2025-guide/hero-learning-stack.jpg" 
+                 alt="The Modern Tech Professional's Learning Stack - A comprehensive guide to building the perfect learning stack for developers, project managers, and business analysts" 
+                 class="hero-image">
         </div>
 
         <div class="content">
