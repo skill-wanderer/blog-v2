@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Stack Combinations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .learning-stack-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stack-example {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stack-example:hover {
+            transform: translateY(-5px);
+        }
+
+        .stack-goal {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .stack-step {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stack-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .stack-step strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .stack-step span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .key-principle {
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .key-principle h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .key-principle p {
+            color: #34495e;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .strategy-tips {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .strategy-tips h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tip {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .tip span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .learning-stack-examples {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>Battle-Tested Learning Stack Combinations</h1>
+            <p>Strategic platform combinations for maximum learning effectiveness</p>
+        </div>
+
+        <div class="content">
+            <div class="learning-stack-examples">
+                <div class="stack-example">
+                    <div class="stack-goal">📊 For Data Skills</div>
+                    <div class="stack-step">
+                        <strong>Foundation:</strong>
+                        <span>Coursera - structured theory and methodologies</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Practice:</strong>
+                        <span>DataCamp - interactive hands-on coding exercises</span>
+                    </div>
+                </div>
+
+                <div class="stack-example">
+                    <div class="stack-goal">☁️ For Cloud Knowledge</div>
+                    <div class="stack-step">
+                        <strong>Conceptual:</strong>
+                        <span>Coursera - architecture fundamentals and principles</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Practical:</strong>
+                        <span>Pluralsight - real sandbox environments and labs</span>
+                    </div>
+                </div>
+
+                <div class="stack-example">
+                    <div class="stack-goal">💻 For New Programming Languages</div>
+                    <div class="stack-step">
+                        <strong>Syntax:</strong>
+                        <span>Codecademy - interactive basics and fundamentals</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Depth:</strong>
+                        <span>Pluralsight - structured learning paths and patterns</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Application:</strong>
+                        <span>Udemy - project-based real-world applications</span>
+                    </div>
+                </div>
+
+                <div class="stack-example">
+                    <div class="stack-goal">📋 For Management Skills</div>
+                    <div class="stack-step">
+                        <strong>Certification:</strong>
+                        <span>Coursera - formal credential programs and frameworks</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Soft Skills:</strong>
+                        <span>LinkedIn Learning - professional development and leadership</span>
+                    </div>
+                </div>
+
+                <div class="stack-example">
+                    <div class="stack-goal">🛠️ For Specific Tools</div>
+                    <div class="stack-step">
+                        <strong>Quick Start:</strong>
+                        <span>Udemy - marketplace courses for immediate needs</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Mastery:</strong>
+                        <span>Pluralsight - in-depth specialization and expertise</span>
+                    </div>
+                </div>
+
+                <div class="stack-example">
+                    <div class="stack-goal">👥 For Team Training</div>
+                    <div class="stack-step">
+                        <strong>Onboarding:</strong>
+                        <span>Codecademy - beginner-friendly interactive learning</span>
+                    </div>
+                    <div class="stack-step">
+                        <strong>Growth:</strong>
+                        <span>Pluralsight - professional subscription services</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategy-tips">
+                <h3>🎯 Stack Building Strategy</h3>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <strong>📚 Start with Theory</strong>
+                        <span>Build strong foundations with structured content</span>
+                    </div>
+                    <div class="tip">
+                        <strong>⚡ Add Practice</strong>
+                        <span>Reinforce with hands-on interactive exercises</span>
+                    </div>
+                    <div class="tip">
+                        <strong>🚀 Build Projects</strong>
+                        <span>Apply knowledge through real-world applications</span>
+                    </div>
+                    <div class="tip">
+                        <strong>💎 Polish Skills</strong>
+                        <span>Professional presentation and communication</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-principle">
+                <h3>🔑 Key Principle</h3>
+                <p><strong>Match platform strengths to your specific learning objectives for maximum effectiveness.</strong> The most powerful approach is using each platform for what it does best, creating a learning experience far more effective than any single service could provide.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>The Multi-Platform Advantage</h3>
+            <p>Strategic combinations accelerate learning by 3x compared to single-platform approaches. Build your stack, not just your skills.</p>
+            <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7; font-style: italic; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
+                <strong>Disclaimer:</strong> Not affiliated with, sponsored by, or receiving compensation from any platforms mentioned. All opinions are my own based on personal experience.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

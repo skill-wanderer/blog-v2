@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern Tech Professional's Learning Stack - Infographic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .platform-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .platform-card.udemy { border-left-color: #a435f0; }
+        .platform-card.pluralsight { border-left-color: #f15b2a; }
+        .platform-card.linkedin { border-left-color: #0077b5; }
+        .platform-card.datacamp { border-left-color: #03ef62; }
+        .platform-card.coursera { border-left-color: #0056d3; }
+        .platform-card.codecademy { border-left-color: #1f4056; }
+
+        .platform-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .platform-tagline {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .platform-description {
+            color: #34495e;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .platform-strength {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e9ecef;
+        }
+
+        .platform-strength strong {
+            color: #2c3e50;
+        }
+
+        .pricing-wrap strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .ideal-for {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-stack-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .stack-example {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .stack-goal {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .stack-step {
+            background: rgba(255,255,255,0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stack-step strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .key-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Decision Guide Styles */
+        .decision-guide, .quick-picker {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .quick-picker {
+            border-left-color: #f39c12;
+        }
+
+        .decision-guide h3, .quick-picker h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .decision-grid, .picker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .decision-item, .picker-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 3px solid #3498db;
+        }
+
+        .decision-item strong, .picker-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .decision-item span, .picker-item span {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+
+            .decision-grid, .picker-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>The Modern Tech Professional's Learning Stack</h1>
+            <p>A 2025 Guide to Building Your Ultimate Learning Toolkit</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8; font-style: italic; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
+                <strong>Disclaimer:</strong> Not affiliated with, sponsored by, or receiving compensation from any platforms mentioned. All opinions are my own.
+            </p>
+        </div>
+
+        <div class="content">
+            <!-- Key Statistics -->
+            <div class="section">
+                <h2 class="section-title">The Learning Revolution in Numbers</h2>
+                <div class="key-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">44%</span>
+                        <div class="stat-label">of core job skills will be disrupted in the next 5 years</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                        <span class="stat-number">8</span>
+                        <div class="stat-label">part comprehensive series on learning platforms</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                        <span class="stat-number">6</span>
+                        <div class="stat-label">platforms analyzed in this ultimate learning stack guide</div>
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; border-left: 4px solid #3498db; margin-top: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2rem;">💡 Key Insights from the Guide</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: #34495e; margin-bottom: 10px; padding-left: 20px; position: relative;">
+                            <span style="content: '▶'; color: #3498db; position: absolute; left: 0;">▶</span>
+                            AI won't replace you, but professionals who leverage AI will replace those who don't
+                        </li>
+                        <li style="color: #34495e; margin-bottom: 10px; padding-left: 20px; position: relative;">
+                            <span style="content: '▶'; color: #3498db; position: absolute; left: 0;">▶</span>
+                            Relying on a single learning platform is like using one tool for every job - inefficient and limiting
+                        </li>
+                        <li style="color: #34495e; margin-bottom: 10px; padding-left: 20px; position: relative;">
+                            <span style="content: '▶'; color: #3498db; position: absolute; left: 0;">▶</span>
+                            Building "T-shaped" professionals requires both depth and breadth across platforms
+                        </li>
+                        <li style="color: #34495e; margin-bottom: 10px; padding-left: 20px; position: relative;">
+                            <span style="content: '▶'; color: #3498db; position: absolute; left: 0;">▶</span>
+                            The era of single-source learning is over - modern professionals need versatile learning stacks
+                        </li>
+                        <li style="color: #34495e; margin-bottom: 0; padding-left: 20px; position: relative;">
+                            <span style="content: '▶'; color: #3498db; position: absolute; left: 0;">▶</span>
+                            Different learning goals demand entirely different platform features and approaches
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Platforms Overview -->
+            <div class="section">
+                <h2 class="section-title">The Learning Stack Contenders</h2>
+                <div class="platforms-grid">
+                    <div class="platform-card udemy">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">🛒</div>
+                        <div class="platform-name">Udemy</div>
+                        <div class="platform-tagline">"The Digital Supermarket"</div>
+                        <div class="platform-description">
+                            The massive, open marketplace for skills with unbeatable topic variety and incredibly low prices during sales. You can find courses on all kind of skills and nearly every programming language and framework.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Specific tool training (Dev, PM, BA)
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Pay-per-course, frequent sales
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> Huge variety & frequent sales
+                            </div>
+                        </div>
+                        <span class="ideal-for">Self-directed learners</span>
+                    </div>
+
+                    <div class="platform-card pluralsight">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">🏋️</div>
+                        <div class="platform-name">Pluralsight</div>
+                        <div class="platform-tagline">"The Professional's Gym"</div>
+                        <div class="platform-description">
+                            The premium subscription for serious tech skill development with expert-led, high-quality technical content. Includes A Cloud Guru for real cloud sandbox environments which is hard to find for the price.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Serious developer upskilling, cloud certs
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Subscription-based
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> Real Cloud Sandboxes (ACG)
+                            </div>
+                        </div>
+                        <span class="ideal-for">Developers & Engineers</span>
+                    </div>
+
+                    <div class="platform-card linkedin">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">👔</div>
+                        <div class="platform-name">LinkedIn Learning</div>
+                        <div class="platform-tagline">"The Corporate Trainer"</div>
+                        <div class="platform-description">
+                            The professional development arm of LinkedIn focused on holistic career growth, covering business skills from technical project management to leadership and communication.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Project Management & Soft Skills
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Subscription-based
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> Integration with LinkedIn Profile
+                            </div>
+                        </div>
+                        <span class="ideal-for">All-round professionals</span>
+                    </div>
+
+                    <div class="platform-card datacamp">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">🔬</div>
+                        <div class="platform-name">DataCamp</div>
+                        <div class="platform-tagline">"The Interactive Data Lab"</div>
+                        <div class="platform-description">
+                            The specialist platform laser-focused on data with an interactive, "learn-by-doing" model that's phenomenal for hands-on data manipulation in SQL, Python, or R.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Business/Data Analysts, Python/R/SQL
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Subscription-based
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> Interactive, in-browser exercises
+                            </div>
+                        </div>
+                        <span class="ideal-for">Data professionals</span>
+                    </div>
+
+                    <div class="platform-card coursera">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">🎓</div>
+                        <div class="platform-name">Coursera</div>
+                        <div class="platform-tagline">"The Digital University"</div>
+                        <div class="platform-description">
+                            The bridge connecting learners to courses and certificates from world-class universities and companies, offering highly valued Professional Certificates and Specializations.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Formal Certificates (PM, BA, Dev)
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Subscription or per-course
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> University-backed credentials
+                            </div>
+                        </div>
+                        <span class="ideal-for">Credential seekers</span>
+                    </div>
+
+                    <div class="platform-card codecademy">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3;">🏖️</div>
+                        <div class="platform-name">Codecademy</div>
+                        <div class="platform-tagline">"The Coding Sandbox"</div>
+                        <div class="platform-description">
+                            The interactive learning environment designed to get you writing code from minute one. Fantastic for absolute beginners with a hands-on approach to learning syntax.
+                        </div>
+                        <div style="display: grid; gap: 12px; margin-bottom: 15px;">
+                            <div class="platform-strength">
+                                <strong>Best For:</strong> Absolute beginner coders, basic syntax
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Pricing:</strong> Freemium model
+                            </div>
+                            <div class="platform-strength">
+                                <strong>Killer Feature:</strong> Interactive, text-based learning
+                            </div>
+                        </div>
+                        <span class="ideal-for">Coding beginners</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Stack Combinations -->
+            <div class="section">
+                <h2 class="section-title">Battle-Tested Learning Stack Combinations</h2>
+                <div class="learning-stack-examples">
+                    <div class="stack-example">
+                        <div class="stack-goal">📊 For Data Skills</div>
+                        <div class="stack-step">
+                            <strong>Foundation:</strong>
+                            Coursera - theory and concepts
+                        </div>
+                        <div class="stack-step">
+                            <strong>Practice:</strong>
+                            DataCamp - interactive hands-on coding
+                        </div>
+                    </div>
+
+                    <div class="stack-example">
+                        <div class="stack-goal">☁️ For Cloud Knowledge</div>
+                        <div class="stack-step">
+                            <strong>Conceptual:</strong>
+                            Coursera - architecture fundamentals
+                        </div>
+                        <div class="stack-step">
+                            <strong>Practical:</strong>
+                            Pluralsight - sandbox environments
+                        </div>
+                    </div>
+
+                    <div class="stack-example">
+                        <div class="stack-goal">💻 For New Programming Languages</div>
+                        <div class="stack-step">
+                            <strong>Syntax:</strong>
+                            Codecademy - interactive basics
+                        </div>
+                        <div class="stack-step">
+                            <strong>Depth:</strong>
+                            Pluralsight - structured learning paths
+                        </div>
+                        <div class="stack-step">
+                            <strong>Application:</strong>
+                            Udemy - project-based courses
+                        </div>
+                    </div>
+
+                    <div class="stack-example">
+                        <div class="stack-goal">📋 For Management Skills</div>
+                        <div class="stack-step">
+                            <strong>Certification:</strong>
+                            Coursera - formal credential programs
+                        </div>
+                        <div class="stack-step">
+                            <strong>Soft Skills:</strong>
+                            LinkedIn Learning - professional development
+                        </div>
+                    </div>
+
+                    <div class="stack-example">
+                        <div class="stack-goal">�️ For Specific Tools</div>
+                        <div class="stack-step">
+                            <strong>Quick Start:</strong>
+                            Udemy - marketplace courses for immediate needs
+                        </div>
+                        <div class="stack-step">
+                            <strong>Mastery:</strong>
+                            Pluralsight - in-depth specialization
+                        </div>
+                    </div>
+
+                    <div class="stack-example">
+                        <div class="stack-goal">👥 For Team Training</div>
+                        <div class="stack-step">
+                            <strong>Onboarding:</strong>
+                            Codecademy - beginner-friendly interactive
+                        </div>
+                        <div class="stack-step">
+                            <strong>Growth:</strong>
+                            Pluralsight - professional subscription services
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #3498db;">
+                    <p style="color: #2c3e50; font-style: italic; margin: 0;">
+                        <strong>Key Principle:</strong> Match platform strengths to your specific learning objectives for maximum effectiveness
+                    </p>
+                </div>
+            </div>
+
+            <!-- Decision Guide -->
+            <div class="section">
+                <div class="decision-guide">
+                    <h3>🎯 Decision Guide: When to Use Which Platform</h3>
+                    <div class="decision-grid">
+                        <div class="decision-item">
+                            <strong>For Formal Certification (PMP, AWS, etc.)</strong>
+                            <span>→ Coursera</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Mastering a Specific Tool (Tableau, Jira, React)</strong>
+                            <span>→ Udemy + Pluralsight + LinkedIn Learning</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Understanding Core Concepts (Agile, Database Theory, Cloud Computing)</strong>
+                            <span>→ Coursera + Pluralsight + LinkedIn Learning</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Building Soft Skills (Leadership, Communication)</strong>
+                            <span>→ LinkedIn Learning</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Interactive Data Skills (SQL, Python, R, Data Science)</strong>
+                            <span>→ DataCamp</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Coding Beginners</strong>
+                            <span>→ Codecademy</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Cloud Certifications & Labs</strong>
+                            <span>→ Pluralsight (A Cloud Guru)</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For University-Backed Credentials</strong>
+                            <span>→ Coursera Specializations</span>
+                        </div>
+                        <div class="decision-item">
+                            <strong>For Quick Skill Acquisition</strong>
+                            <span>→ Udemy (frequent sales)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Picker -->
+            <div class="section">
+                <div class="quick-picker">
+                    <h3>⚡ Quick Picker: Battle-Tested Learning Stack Combinations</h3>
+                    <div class="picker-grid">
+                        <div class="picker-item">
+                            <strong>📊 Mastering Data Skills</strong>
+                            <span>Coursera + DataCamp</span>
+                        </div>
+                        <div class="picker-item">
+                            <strong>☁️ Deepening Cloud Knowledge</strong>
+                            <span>Coursera + Pluralsight</span>
+                        </div>
+                        <div class="picker-item">
+                            <strong>💻 Learning New Programming Language</strong>
+                            <span>Codecademy + Pluralsight + Udemy</span>
+                        </div>
+                        <div class="picker-item">
+                            <strong>📋 Mastering Project Management</strong>
+                            <span>Coursera + LinkedIn Learning</span>
+                        </div>
+                        <div class="picker-item">
+                            <strong>💼 Business Analyst Skills</strong>
+                            <span>Coursera + LinkedIn Learning</span>
+                        </div>
+                        <div class="picker-item">
+                            <strong>👥 Training Junior Coders</strong>
+                            <span>Codecademy + Udemy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Comparison Table -->
+            <div class="section">
+                <h2 class="section-title">Quick Comparison</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Pricing</th>
+                                <th>Best For</th>
+                                <th>Killer Feature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Udemy</strong></td>
+                                <td>Pay-Per-Course</td>
+                                <td>Specific tool training (Dev, PM, BA)</td>
+                                <td>Huge variety & frequent sales</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pluralsight</strong></td>
+                                <td>Subscription</td>
+                                <td>Serious developer upskilling, cloud certs</td>
+                                <td>Real Cloud Sandboxes (ACG)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LinkedIn Learning</strong></td>
+                                <td>Subscription</td>
+                                <td>Project Management & Soft Skills</td>
+                                <td>Integration with LinkedIn Profile</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DataCamp</strong></td>
+                                <td>Subscription</td>
+                                <td>Business/Data Analysts, Python/R/SQL</td>
+                                <td>Interactive, in-browser exercises</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coursera</strong></td>
+                                <td>Subscription / Course</td>
+                                <td>Formal Certificates (PM, BA, Dev)</td>
+                                <td>University-backed credentials</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Codecademy</strong></td>
+                                <td>Freemium / Subscription</td>
+                                <td>Absolute beginner coders, basic syntax</td>
+                                <td>Interactive, text-based learning</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Remember: No Single Platform Rules All</h3>
+            <p>The most effective learners combine 2-3 platforms strategically. Choose based on your specific goals, not marketing promises.</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7; font-style: italic; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
+                <strong>Disclaimer:</strong> Not affiliated with, sponsored by, or receiving compensation from any platforms mentioned. All opinions are my own based on personal experience.
+            </p>
+            <p style="margin-top: 10px; font-style: italic;">© 2025 - The Skill Wanderer's Guide</p>
+        </div>
+    </div>
+</body>
+</html>
