@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platforms Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .platform-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .platform-card.udemy { border-left-color: #a435f0; }
+        .platform-card.pluralsight { border-left-color: #f15b2a; }
+        .platform-card.linkedin { border-left-color: #0077b5; }
+        .platform-card.datacamp { border-left-color: #03ef62; }
+        .platform-card.coursera { border-left-color: #0056d3; }
+        .platform-card.codecademy { border-left-color: #1f4056; }
+
+        .platform-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .platform-tagline {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .platform-description {
+            color: #34495e;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .platform-details {
+            display: grid;
+            gap: 12px;
+        }
+
+        .platform-strength {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            font-size: 0.85rem;
+        }
+
+        .platform-strength strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .ideal-for {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .platform-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .platforms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>The Learning Stack Contenders</h1>
+            <p>Six platforms that form the perfect modern learning toolkit</p>
+        </div>
+
+        <div class="content">
+            <div class="platforms-grid">
+                <div class="platform-card udemy">
+                    <div class="platform-icon">🛒</div>
+                    <div class="platform-name">Udemy</div>
+                    <div class="platform-tagline">"The Digital Supermarket"</div>
+                    <div class="platform-description">
+                        The massive, open marketplace for skills with unbeatable topic variety and incredibly low prices during sales. You can find courses on all kind of skills and nearly every programming language and framework.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Specific tool training (Dev, PM, BA)
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Pay-per-course, frequent sales
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> Huge variety & frequent sales
+                        </div>
+                    </div>
+                    <span class="ideal-for">Self-directed learners</span>
+                </div>
+
+                <div class="platform-card pluralsight">
+                    <div class="platform-icon">🏋️</div>
+                    <div class="platform-name">Pluralsight</div>
+                    <div class="platform-tagline">"The Professional's Gym"</div>
+                    <div class="platform-description">
+                        The premium subscription for serious tech skill development with expert-led, high-quality technical content. Includes A Cloud Guru for real cloud sandbox environments which is hard to find for the price.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Serious developer upskilling, cloud certs
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Subscription-based
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> Real Cloud Sandboxes (ACG)
+                        </div>
+                    </div>
+                    <span class="ideal-for">Developers & Engineers</span>
+                </div>
+
+                <div class="platform-card linkedin">
+                    <div class="platform-icon">👔</div>
+                    <div class="platform-name">LinkedIn Learning</div>
+                    <div class="platform-tagline">"The Corporate Trainer"</div>
+                    <div class="platform-description">
+                        The professional development arm of LinkedIn focused on holistic career growth, covering business skills from technical project management to leadership and communication.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Project Management & Soft Skills
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Subscription-based
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> Integration with LinkedIn Profile
+                        </div>
+                    </div>
+                    <span class="ideal-for">All-round professionals</span>
+                </div>
+
+                <div class="platform-card datacamp">
+                    <div class="platform-icon">🔬</div>
+                    <div class="platform-name">DataCamp</div>
+                    <div class="platform-tagline">"The Interactive Data Lab"</div>
+                    <div class="platform-description">
+                        The specialist platform laser-focused on data with an interactive, "learn-by-doing" model that's phenomenal for hands-on data manipulation in SQL, Python, or R.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Business/Data Analysts, Python/R/SQL
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Subscription-based
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> Interactive, in-browser exercises
+                        </div>
+                    </div>
+                    <span class="ideal-for">Data professionals</span>
+                </div>
+
+                <div class="platform-card coursera">
+                    <div class="platform-icon">🎓</div>
+                    <div class="platform-name">Coursera</div>
+                    <div class="platform-tagline">"The Digital University"</div>
+                    <div class="platform-description">
+                        The bridge connecting learners to courses and certificates from world-class universities and companies, offering highly valued Professional Certificates and Specializations.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Formal Certificates (PM, BA, Dev)
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Subscription or per-course
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> University-backed credentials
+                        </div>
+                    </div>
+                    <span class="ideal-for">Credential seekers</span>
+                </div>
+
+                <div class="platform-card codecademy">
+                    <div class="platform-icon">🏖️</div>
+                    <div class="platform-name">Codecademy</div>
+                    <div class="platform-tagline">"The Coding Sandbox"</div>
+                    <div class="platform-description">
+                        The interactive learning environment designed to get you writing code from minute one. Fantastic for absolute beginners with a hands-on approach to learning syntax.
+                    </div>
+                    <div class="platform-details">
+                        <div class="platform-strength">
+                            <strong>Best For:</strong> Absolute beginner coders, basic syntax
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Pricing:</strong> Freemium model
+                        </div>
+                        <div class="platform-strength">
+                            <strong>Killer Feature:</strong> Interactive, text-based learning
+                        </div>
+                    </div>
+                    <span class="ideal-for">Coding beginners</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Remember: Choose Your Fighter</h3>
+            <p>Each platform has a unique personality and serves different learning goals. The key is knowing when to use which one.</p>
+        </div>
+    </div>
+</body>
+</html>

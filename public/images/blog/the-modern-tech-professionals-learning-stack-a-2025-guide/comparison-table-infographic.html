@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platforms Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #34495e;
+            color: white;
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background: #e8f4f8;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .udemy { border-left: 4px solid #a435f0; }
+        .pluralsight { border-left: 4px solid #f15b2a; }
+        .linkedin { border-left: 4px solid #0077b5; }
+        .datacamp { border-left: 4px solid #03ef62; }
+        .coursera { border-left: 4px solid #0056d3; }
+        .codecademy { border-left: 4px solid #1f4056; }
+
+        .pricing-highlight {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
+        .best-for-highlight {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
+        .feature-highlight {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
+        .decision-guide {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 25px;
+        }
+
+        .decision-guide h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .decision-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .decision-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .decision-item span {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        .quick-picker {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .quick-picker h3 {
+            margin-bottom: 20px;
+        }
+
+        .picker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .picker-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .picker-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .picker-item span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .comparison-table {
+                overflow-x: auto;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .decision-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .picker-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>Learning Platforms Quick Comparison</h1>
+            <p>At-a-glance comparison to help you choose the right platform for your goals</p>
+        </div>
+
+        <div class="content">
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Pricing Model</th>
+                            <th>Best For</th>
+                            <th>Killer Feature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="udemy">
+                            <td class="platform-name">Udemy</td>
+                            <td>Pay-Per-Course <span class="pricing-highlight">SALES</span></td>
+                            <td>Specific tool training (Dev, PM, BA) <span class="best-for-highlight">FOCUSED</span></td>
+                            <td>Huge variety & frequent sales <span class="feature-highlight">BUDGET</span></td>
+                        </tr>
+                        <tr class="pluralsight">
+                            <td class="platform-name">Pluralsight</td>
+                            <td>Subscription <span class="pricing-highlight">PREMIUM</span></td>
+                            <td>Serious developer upskilling, cloud certs <span class="best-for-highlight">TECH</span></td>
+                            <td>Real Cloud Sandboxes (ACG) <span class="feature-highlight">HANDS-ON</span></td>
+                        </tr>
+                        <tr class="linkedin">
+                            <td class="platform-name">LinkedIn Learning</td>
+                            <td>Subscription <span class="pricing-highlight">STANDARD</span></td>
+                            <td>Project Management & Soft Skills <span class="best-for-highlight">BUSINESS</span></td>
+                            <td>Integration with LinkedIn Profile <span class="feature-highlight">NETWORK</span></td>
+                        </tr>
+                        <tr class="datacamp">
+                            <td class="platform-name">DataCamp</td>
+                            <td>Subscription <span class="pricing-highlight">SPECIALIST</span></td>
+                            <td>Business/Data Analysts, Python/R/SQL <span class="best-for-highlight">DATA</span></td>
+                            <td>Interactive, in-browser exercises <span class="feature-highlight">PRACTICE</span></td>
+                        </tr>
+                        <tr class="coursera">
+                            <td class="platform-name">Coursera</td>
+                            <td>Subscription / Course <span class="pricing-highlight">FLEXIBLE</span></td>
+                            <td>Formal Certificates (PM, BA, Dev) <span class="best-for-highlight">CREDS</span></td>
+                            <td>University-backed credentials <span class="feature-highlight">PRESTIGE</span></td>
+                        </tr>
+                        <tr class="codecademy">
+                            <td class="platform-name">Codecademy</td>
+                            <td>Freemium / Subscription <span class="pricing-highlight">FREE START</span></td>
+                            <td>Absolute beginner coders, basic syntax <span class="best-for-highlight">BEGINNER</span></td>
+                            <td>Interactive, text-based learning <span class="feature-highlight">EASY</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="decision-guide">
+                <h3>🎯 Decision Guide: When to Use Which Platform</h3>
+                <div class="decision-grid">
+                    <div class="decision-item">
+                        <strong>Need a specific tool skill NOW?</strong>
+                        <span>→ Udemy (quick, cheap, focused)</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>Want cloud certifications?</strong>
+                        <span>→ Pluralsight + A Cloud Guru labs</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>Building leadership skills?</strong>
+                        <span>→ LinkedIn Learning (business focus)</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>Becoming data-driven?</strong>
+                        <span>→ DataCamp (interactive SQL/Python)</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>Need formal credentials?</strong>
+                        <span>→ Coursera (university certificates)</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>Complete coding beginner?</strong>
+                        <span>→ Codecademy (gentle introduction)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-picker">
+                <h3>⚡ Quick Picker: Choose by Your Role</h3>
+                <div class="picker-grid">
+                    <div class="picker-item">
+                        <strong>👨‍💻 Developer</strong>
+                        <span>Pluralsight + Udemy</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>📊 Data Analyst</strong>
+                        <span>DataCamp + Coursera</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>📋 Project Manager</strong>
+                        <span>Coursera + LinkedIn Learning</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>💼 Business Analyst</strong>
+                        <span>Coursera + DataCamp</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>🆕 Career Switcher</strong>
+                        <span>Codecademy + Coursera</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>🎯 Specific Skill</strong>
+                        <span>Udemy + Pluralsight</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Remember: No Single Platform Rules All</h3>
+            <p>The most effective learners combine 2-3 platforms strategically. Choose based on your specific goals, not marketing promises.</p>
+        </div>
+    </div>
+</body>
+</html>
