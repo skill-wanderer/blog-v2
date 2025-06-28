@@ -144,26 +144,41 @@
 
         .decision-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .decision-item {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 12px;
             border: 1px solid #e9ecef;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .decision-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .decision-item strong {
             color: #2c3e50;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.3;
         }
 
         .decision-item span {
             color: #7f8c8d;
             font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .quick-picker {
@@ -180,26 +195,40 @@
 
         .picker-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .picker-item {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .picker-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.2);
         }
 
         .picker-item strong {
             display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            line-height: 1.2;
         }
 
         .picker-item span {
-            font-size: 0.8rem;
-            opacity: 0.9;
+            font-size: 0.85rem;
+            opacity: 0.95;
+            font-weight: 500;
         }
 
         .footer {
@@ -239,10 +268,25 @@
             
             .decision-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .picker-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .decision-item,
+            .picker-item {
+                min-height: auto;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .decision-grid,
+            .picker-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -310,58 +354,70 @@
                 <h3>🎯 Decision Guide: When to Use Which Platform</h3>
                 <div class="decision-grid">
                     <div class="decision-item">
-                        <strong>Need a specific tool skill NOW?</strong>
-                        <span>→ Udemy (quick, cheap, focused)</span>
+                        <strong>For Formal Certification (PMP, AWS, etc.)</strong>
+                        <span>→ Coursera</span>
                     </div>
                     <div class="decision-item">
-                        <strong>Want cloud certifications?</strong>
-                        <span>→ Pluralsight + A Cloud Guru labs</span>
+                        <strong>For Mastering a Specific Tool (Tableau, Jira, React)</strong>
+                        <span>→ Udemy + Pluralsight + LinkedIn Learning</span>
                     </div>
                     <div class="decision-item">
-                        <strong>Building leadership skills?</strong>
-                        <span>→ LinkedIn Learning (business focus)</span>
+                        <strong>For Understanding Core Concepts (Agile, Database Theory , Cloud Computing)</strong>
+                        <span>→ Coursera + Pluralsight + LinkedIn Learning</span>
                     </div>
                     <div class="decision-item">
-                        <strong>Becoming data-driven?</strong>
-                        <span>→ DataCamp (interactive SQL/Python)</span>
+                        <strong>For Building Soft Skills (Leadership, Communication)</strong>
+                        <span>→ LinkedIn Learning</span>
                     </div>
                     <div class="decision-item">
-                        <strong>Need formal credentials?</strong>
-                        <span>→ Coursera (university certificates)</span>
+                        <strong>For Interactive Data Skills (SQL, Python, R , Data Science)</strong>
+                        <span>→ DataCamp</span>
                     </div>
                     <div class="decision-item">
-                        <strong>Complete coding beginner?</strong>
-                        <span>→ Codecademy (gentle introduction)</span>
+                        <strong>For Coding Beginners</strong>
+                        <span>→ Codecademy</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>For Cloud Certifications & Labs</strong>
+                        <span>→ Pluralsight (A Cloud Guru)</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>For University-Backed Credentials</strong>
+                        <span>→ Coursera Specializations</span>
+                    </div>
+                    <div class="decision-item">
+                        <strong>For Quick Skill Acquisition</strong>
+                        <span>→ Udemy (frequent sales)</span>
                     </div>
                 </div>
             </div>
 
             <div class="quick-picker">
-                <h3>⚡ Quick Picker: Choose by Your Role</h3>
+                <h3>⚡ Quick Picker: Battle-Tested Learning Stack Combinations</h3>
                 <div class="picker-grid">
                     <div class="picker-item">
-                        <strong>👨‍💻 Developer</strong>
-                        <span>Pluralsight + Udemy</span>
-                    </div>
-                    <div class="picker-item">
-                        <strong>📊 Data Analyst</strong>
-                        <span>DataCamp + Coursera</span>
-                    </div>
-                    <div class="picker-item">
-                        <strong>📋 Project Manager</strong>
-                        <span>Coursera + LinkedIn Learning</span>
-                    </div>
-                    <div class="picker-item">
-                        <strong>💼 Business Analyst</strong>
+                        <strong>� Mastering Data Skills</strong>
                         <span>Coursera + DataCamp</span>
                     </div>
                     <div class="picker-item">
-                        <strong>🆕 Career Switcher</strong>
-                        <span>Codecademy + Coursera</span>
+                        <strong>☁️ Deepening Cloud Knowledge</strong>
+                        <span>Coursera + Pluralsight</span>
                     </div>
                     <div class="picker-item">
-                        <strong>🎯 Specific Skill</strong>
-                        <span>Udemy + Pluralsight</span>
+                        <strong>� Learning New Programming Language</strong>
+                        <span>Codecademy + Pluralsight + Udemy</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>� Mastering Project Management</strong>
+                        <span>Coursera + LinkedIn Learning</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>💼 Business Analyst Skills</strong>
+                        <span>Coursera + LinkedIn Learning</span>
+                    </div>
+                    <div class="picker-item">
+                        <strong>👥 Training Junior Coders</strong>
+                        <span>Codecademy + Udemy</span>
                     </div>
                 </div>
             </div>
