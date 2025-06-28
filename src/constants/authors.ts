@@ -26,7 +26,7 @@ Think of me as your dedicated companion on an exciting adventure of discovery. L
     social: {
       linkedin: '/quan-nguyen-skill-wanderer',
       github: 'skill-wanderer',
-      website: 'https://wanderings.skill-wanderer.com',
+      website: 'https://skill-wanderer.com',
     },
   },
 };
