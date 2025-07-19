@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Newsletter Admin - Skill Wanderer"
+  description="Newsletter subscription management"
+  noindex={true}
+>
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-skill-wanderer-article-headings mb-8">Newsletter Subscribers</h1>
+    
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <div class="mb-6">
+        <button 
+          id="load-subscribers"
+          class="bg-skill-wanderer-primary-orange text-white px-6 py-2 rounded-lg hover:bg-skill-wanderer-orange-hover transition-colors"
+        >
+          Load Subscribers
+        </button>
+        <span id="subscriber-count" class="ml-4 text-skill-wanderer-text-dark-secondary"></span>
+      </div>
+
+      <div id="loading" class="hidden text-center py-8">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-skill-wanderer-primary-orange"></div>
+        <p class="mt-2 text-skill-wanderer-text-dark-secondary">Loading subscribers...</p>
+      </div>
+
+      <div id="subscriber-list" class="hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Subscribed</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Source</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="subscriber-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4">
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { firestoreService } from '../../lib/firebase-services';
+  import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+  import { getFirebaseFirestore } from '../../lib/firebase';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const loadBtn = document.getElementById('load-subscribers') as HTMLButtonElement;
+    const loading = document.getElementById('loading') as HTMLDivElement;
+    const subscriberList = document.getElementById('subscriber-list') as HTMLDivElement;
+    const subscriberCount = document.getElementById('subscriber-count') as HTMLSpanElement;
+    const tableBody = document.getElementById('subscriber-table-body') as HTMLTableSectionElement;
+    const errorMessage = document.getElementById('error-message') as HTMLDivElement;
+
+    loadBtn?.addEventListener('click', loadSubscribers);
+
+    async function loadSubscribers() {
+      try {
+        loading.classList.remove('hidden');
+        subscriberList.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+
+        // Get all subscribers from Firestore
+        const db = getFirebaseFirestore();
+        const q = query(
+          collection(db, 'subscribers'),
+          orderBy('subscribedAt', 'desc')
+        );
+        
+        const querySnapshot = await getDocs(q);
+        const subscribers: any[] = [];
+        
+        querySnapshot.forEach((doc) => {
+          subscribers.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+
+        // Update subscriber count
+        subscriberCount.textContent = `Total: ${subscribers.length} subscribers`;
+
+        // Clear existing table rows
+        tableBody.innerHTML = '';
+
+        // Populate table
+        subscribers.forEach(subscriber => {
+          const row = document.createElement('tr');
+          const subscribeDate = subscriber.subscribedAt?.toDate?.() || new Date();
+          
+          row.innerHTML = `
+            <td class="border border-gray-300 px-4 py-2">${subscriber.email}</td>
+            <td class="border border-gray-300 px-4 py-2">${subscribeDate.toLocaleDateString()}</td>
+            <td class="border border-gray-300 px-4 py-2">${subscriber.source || 'unknown'}</td>
+            <td class="border border-gray-300 px-4 py-2">
+              <button 
+                class="text-red-600 hover:text-red-800 text-sm" 
+                onclick="unsubscribeUser('${subscriber.id}')"
+              >
+                Delete
+              </button>
+            </td>
+          `;
+          
+          tableBody.appendChild(row);
+        });
+
+        loading.classList.add('hidden');
+        subscriberList.classList.remove('hidden');
+
+      } catch (error) {
+        console.error('Error loading subscribers:', error);
+        loading.classList.add('hidden');
+        errorMessage.textContent = 'Error loading subscribers: ' + (error as Error).message;
+        errorMessage.classList.remove('hidden');
+      }
+    }
+
+    // Make unsubscribeUser globally available
+    (window as any).unsubscribeUser = async function(subscriberId: string) {
+      if (!confirm('Are you sure you want to delete this subscriber?')) {
+        return;
+      }
+
+      try {
+        await firestoreService.unsubscribe(subscriberId);
+        alert('Subscriber deleted successfully');
+        loadSubscribers(); // Reload the list
+      } catch (error) {
+        console.error('Error deleting subscriber:', error);
+        alert('Error deleting subscriber: ' + (error as Error).message);
+      }
+    };
+  });
+</script>

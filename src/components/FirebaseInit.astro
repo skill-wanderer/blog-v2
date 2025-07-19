@@ -1,0 +1,20 @@
+---
+// FirebaseInit.astro - Component to initialize Firebase on the client side
+import { isFirebaseConfigured } from '../lib/firebase';
+
+// Check if Firebase is configured
+const isConfigured = isFirebaseConfigured();
+---
+
+{isConfigured && (
+  <script>
+    // Firebase initialization will happen when this script loads
+    import('../scripts/firebase-init.ts');
+  </script>
+)}
+
+{!isConfigured && (
+  <script>
+    console.warn('Firebase is not configured. Analytics and other Firebase features will not be available.');
+  </script>
+)}
