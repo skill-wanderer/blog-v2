@@ -31,7 +31,7 @@ jobs:
       - name: Test build after updates
         run: |
           npm ci
-          npm run build:production
+          npm run build
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5

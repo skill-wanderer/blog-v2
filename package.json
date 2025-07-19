@@ -5,9 +5,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:production": "NODE_ENV=production astro build",
-    "preview": "astro preview",
-    "preview:production": "NODE_ENV=production astro preview",
     "astro": "astro",
     "firebase:setup": "node scripts/setup-firebase.mjs",
     "env:check": "node scripts/check-env.mjs"
