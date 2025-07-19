@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run build
+        run: npm run build:production
 
       - name: Test Docker build (single architecture)
         run: |
