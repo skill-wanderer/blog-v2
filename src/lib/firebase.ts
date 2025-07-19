@@ -2,6 +2,7 @@ import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
 import { getFirestore, type Firestore } from 'firebase/firestore';
 import { getAuth, type Auth } from 'firebase/auth';
 import { getStorage, type FirebaseStorage } from 'firebase/storage';
+import { getEnvironmentConfig, isDevelopment } from '../utils/environment';
 
 // Firebase configuration interface
 export interface FirebaseConfig {
@@ -13,27 +14,9 @@ export interface FirebaseConfig {
   appId: string;
 }
 
-// Environment variables with fallbacks for development
-const firebaseConfig: FirebaseConfig = {
-  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY || '',
-  authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN || '',
-  projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID || '',
-  storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: import.meta.env.PUBLIC_FIREBASE_APP_ID || '',
-};
-
-
-// Validate Firebase configuration
-function validateFirebaseConfig(config: FirebaseConfig): void {
-  const requiredFields = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
-  
-  for (const field of requiredFields) {
-    if (!config[field as keyof FirebaseConfig]) {
-      throw new Error(`Firebase configuration error: ${field} is required but not provided`);
-    }
-  }
-}
+// Get environment configuration
+const envConfig = getEnvironmentConfig();
+const firebaseConfig: FirebaseConfig = envConfig.firebase;
 
 // Initialize Firebase app
 let app: FirebaseApp;
@@ -43,13 +26,12 @@ let storage: FirebaseStorage | null = null;
 
 export function initializeFirebase(): FirebaseApp {
   if (getApps().length === 0) {
-    // Validate configuration before initializing
-    validateFirebaseConfig(firebaseConfig);
-    
-    // Initialize Firebase
+    // Configuration is already validated in getEnvironmentConfig()
     app = initializeApp(firebaseConfig);
     
-    console.log('Firebase initialized successfully');
+    if (isDevelopment()) {
+      console.log('Firebase initialized in development mode');
+    }
   } else {
     app = getApps()[0];
   }
@@ -90,7 +72,7 @@ export function getFirebaseApp(): FirebaseApp {
 // Utility function to check if Firebase is properly configured
 export function isFirebaseConfigured(): boolean {
   try {
-    validateFirebaseConfig(firebaseConfig);
+    // Configuration validation is handled in getEnvironmentConfig()
     return true;
   } catch {
     return false;
