@@ -131,14 +131,6 @@ const breadcrumbJsonLd = {
   <!-- Additional structured data for blog posts -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} slot="head" />
   
-  <!-- Analytics meta tags -->
-  <meta name="author" content={author.name} slot="head" />
-  <meta name="category" content={getCategoryDisplayName(blogPost.category)} slot="head" />
-  <meta name="read-time" content={blogPost.readTime} slot="head" />
-  {blogPost.tags && blogPost.tags.map(tag => (
-    <meta name="keyword" content={tag} slot="head" />
-  ))}
-  
   <!-- Hero Section -->
   <section class="bg-skill-wanderer-hero-bg py-16 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">

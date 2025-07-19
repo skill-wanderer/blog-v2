@@ -9,7 +9,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
-  - firebase-secret.yaml
 
 # Uncomment to add namespace
 # namespace: blog-v2
