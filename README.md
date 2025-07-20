@@ -246,6 +246,35 @@ Pull the image:
 docker pull ghcr.io/skill-wanderer/blog-v2:latest
 ```
 
+### 🔐 GitHub Secrets Configuration
+
+To enable Firebase functionality and proper CI/CD builds, configure the following GitHub repository secrets:
+
+1. **Navigate to your GitHub repository settings**
+   - Go to `Settings` → `Secrets and variables` → `Actions`
+
+2. **Add the following repository secrets:**
+
+   | Secret Name | Value |
+   |-------------|-------|
+   | `PUBLIC_FIREBASE_API_KEY` | `AIzaSyCr_1Fo6hzJDsKZrjw2u3HlrFhBnfeHmxE` |
+   | `PUBLIC_FIREBASE_AUTH_DOMAIN` | `skill-wanderer-hub.firebaseapp.com` |
+   | `PUBLIC_FIREBASE_PROJECT_ID` | `skill-wanderer-hub` |
+   | `PUBLIC_FIREBASE_STORAGE_BUCKET` | `skill-wanderer-hub.appspot.com` |
+   | `PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | `801841516442` |
+   | `PUBLIC_FIREBASE_APP_ID` | `1:801841516442:web:77c33043420a581b95f423` |
+   | `PUBLIC_FIREBASE_MEASUREMENT_ID` | `G-XZETSK476Y` |
+
+3. **Why these secrets are needed:**
+   - These Firebase configuration values are required for the email subscription functionality
+   - The CI/CD workflows use these secrets to build the application with proper Firebase integration
+   - Docker builds require these values as build arguments to embed them into the static site
+
+4. **Security Note:**
+   - These are Firebase client-side configuration values, not server-side API keys
+   - They are safe to include in client-side bundles as they're designed for public exposure
+   - However, using GitHub secrets ensures consistent configuration across environments
+
 ## 🌐 Deployment
 
 This blog supports multiple deployment strategies to fit different needs:
