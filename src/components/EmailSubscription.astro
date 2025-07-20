@@ -1,0 +1,203 @@
+---
+// EmailSubscription.astro
+// Firebase email subscription component
+---
+
+<section class="bg-skill-wanderer-darkest py-16 border-t border-dark">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Header -->
+      <div class="mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-skill-wanderer-text-dark mb-4">
+          Stay in the Loop! 📧
+        </h2>
+        <p class="text-xl text-skill-wanderer-text-dark-secondary max-w-2xl mx-auto">
+          Get the latest insights from my tech journey delivered straight to your inbox. No spam, just valuable content to help you on your own skill-wandering adventure.
+        </p>
+      </div>
+
+      <!-- Subscription Form -->
+      <div class="bg-skill-wanderer-card-dark rounded-2xl shadow-2xl p-8 max-w-2xl mx-auto border border-dark">
+        <form id="email-subscription-form" class="space-y-6">
+          <!-- Email Input -->
+          <div class="relative">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              placeholder="Enter your email address"
+              class="w-full px-6 py-4 text-lg bg-skill-wanderer-primary-dark border-2 border-skill-wanderer-secondary-dark rounded-xl focus:border-skill-wanderer-primary-orange focus:ring-2 focus:ring-skill-wanderer-primary-orange/20 transition-colors outline-none text-skill-wanderer-text-dark placeholder-skill-wanderer-text-dark-muted"
+            />
+            <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+              <svg class="w-6 h-6 text-skill-wanderer-text-dark-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Subscribe Button -->
+          <button 
+            type="submit" 
+            id="subscribe-btn"
+            class="w-full bg-skill-wanderer-primary-orange hover:bg-skill-wanderer-light-orange text-skill-wanderer-text-dark font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
+          >
+            <span id="btn-text">Subscribe to My Journey</span>
+            <svg id="loading-icon" class="hidden animate-spin ml-2 h-5 w-5 text-skill-wanderer-text-dark inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </button>
+
+          <!-- Success/Error Messages -->
+          <div id="success-message" class="hidden bg-green-900/20 border border-green-400 text-green-400 px-4 py-3 rounded-xl">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>🎉 Thanks for subscribing! Check your email for confirmation.</span>
+            </div>
+          </div>
+
+          <div id="error-message" class="hidden bg-red-900/20 border border-red-400 text-red-400 px-4 py-3 rounded-xl">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+              <span id="error-text">Something went wrong. Please try again.</span>
+            </div>
+          </div>
+        </form>
+
+        <!-- Privacy Note -->
+        <p class="text-sm text-skill-wanderer-text-dark-muted mt-6">
+          🔒 Your email is safe with me. I respect your privacy and will never spam you. 
+          You can unsubscribe at any time.
+        </p>
+      </div>
+
+      <!-- Features -->
+      <div class="grid md:grid-cols-3 gap-8 mt-12 text-skill-wanderer-text-dark">
+        <div class="text-center">
+          <div class="bg-skill-wanderer-card-dark rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center border border-dark">
+            <svg class="w-8 h-8 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Weekly Insights</h3>
+          <p class="text-skill-wanderer-text-dark-secondary">Fresh perspectives from my learning journey</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-skill-wanderer-card-dark rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center border border-dark">
+            <svg class="w-8 h-8 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Practical Tips</h3>
+          <p class="text-skill-wanderer-text-dark-secondary">Actionable advice for your tech career</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-skill-wanderer-card-dark rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center border border-dark">
+            <svg class="w-8 h-8 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Learning Resources</h3>
+          <p class="text-skill-wanderer-text-dark-secondary">Curated tools and resources I discover</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Dynamic import for Firebase modules to ensure client-side execution
+    const { db } = await import('../lib/firebase.ts');
+    const { collection, addDoc, Timestamp } = await import('firebase/firestore');
+
+    const form = document.getElementById('email-subscription-form') as HTMLFormElement;
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const subscribeBtn = document.getElementById('subscribe-btn') as HTMLButtonElement;
+    const btnText = document.getElementById('btn-text') as HTMLSpanElement;
+    const loadingIcon = document.getElementById('loading-icon') as HTMLElement;
+    const successMessage = document.getElementById('success-message') as HTMLElement;
+    const errorMessage = document.getElementById('error-message') as HTMLElement;
+    const errorText = document.getElementById('error-text') as HTMLSpanElement;
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      
+      if (!email) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      try {
+        // Show loading state
+        setLoading(true);
+        hideMessages();
+
+        // Add to Firestore
+        const docRef = await addDoc(collection(db, 'subscribers'), {
+          email: email,
+          subscribedAt: Timestamp.now(),
+          source: 'blog-v2',
+        });
+
+        console.log('Subscriber added with ID: ', docRef.id);
+        
+        // Show success message
+        showSuccess();
+        form.reset();
+
+      } catch (error) {
+        console.error('Error adding subscriber: ', error);
+        showError('Something went wrong. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    function setLoading(loading: boolean) {
+      subscribeBtn.disabled = loading;
+      if (loading) {
+        btnText.textContent = 'Subscribing...';
+        loadingIcon.classList.remove('hidden');
+        subscribeBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      } else {
+        btnText.textContent = 'Subscribe to My Journey';
+        loadingIcon.classList.add('hidden');
+        subscribeBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+      }
+    }
+
+    function showSuccess() {
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+    }
+
+    function showError(message: string) {
+      errorText.textContent = message;
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+    }
+
+    function hideMessages() {
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+    }
+  });
+</script>

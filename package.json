@@ -14,7 +14,8 @@
     "@astrojs/sitemap": "^3.4.1",
     "astro": "^5.8.1",
     "astro-embed": "^0.9.0",
-    "fetch-mcp": "^0.0.5"
+    "fetch-mcp": "^0.0.5",
+    "firebase": "^12.0.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
