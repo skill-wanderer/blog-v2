@@ -1,0 +1,135 @@
+---
+title: "The Wanderer's Log #1: The Heart of the Mission: The Skill-Wanderer Platform is Live"
+description: "The official announcement of the Skill-Wanderer platform MVP launch - a journey of building trust, accessibility, and integrity in online education"
+authorId: "quan-nguyen"
+publishDate: "2025-07-27"
+category: "Skill-Wanderer Journey"
+readTime: "12 min read"
+image: "/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/hero.jpg"
+tags: ["Skill-Wanderer", "Platform Launch", "MVP", "Mission", "Trust", "Accessibility", "Home Lab", "Kubernetes"]
+---
+
+_Disclaimer: I am not affiliated with any of the brands or products mentioned in this post, and I do not receive any compensation for the links provided. These links are included solely for your convenience to help you find more information._
+
+import { Image } from 'astro:assets';
+import heroImage from '../../../public/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/hero.jpg';
+import promiseImage from '../../../public/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/Our-Promise-An-Education-Built-on-Trust.jpg';
+import sustainableImage from '../../../public/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/A-Sustainable-Future.jpg';
+
+> **📊 Visual Summary**: Want a quick overview? Check out our [platform launch infographic](/infographics/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/platform-launch-infographic.html) that highlights our mission, promises, and technology stack.
+
+<Image src={heroImage} alt="The Wanderer's Log #1: The Heart of the Mission - Skill-Wanderer Platform Launch" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
+## The Memory That Started It All
+
+It starts with a memory. The memory of watching talented, driven developers struggle to afford the very online courses they needed to grow, with monthly fees sometimes costing more than 10% of their salary. It starts with the memory of seeing trust broken when money gets on the table, and how even a genuine recommendation can be spoiled by a seed of doubt.
+
+Those memories, and many others, are the reason Skill-Wanderer exists.
+
+For months, I have nurtured this mission through planning and late-night coding sessions. Today, that mission takes its first real step. I am incredibly excited to announce that the technical Minimum Viable Product (MVP) of the Skill-Wanderer.com platform is complete and operational.
+
+This post marks the beginning of **The Wanderer's Log**, a "building in public" series where I will share my entire journey of growing this platform. You'll see the wins, the technical challenges, and the evolution of a mission to build a better way to learn. Welcome.
+
+## Our Promise: An Education Built on Trust
+
+<Image src={promiseImage} alt="Our Promise: An Education Built on Trust" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+Skill-Wanderer was created to be different. It's an answer to the problems I've seen firsthand in the world of online education. Our mission is simple: we believe quality education shapes brighter futures. To achieve this, we are making a promise to every learner, built on a foundation of core principles.
+
+### A Promise of Access
+Our core educational content will always be free. I believe that no one should be left behind in this industry simply because they cannot afford the first step. We will provide and curate high-quality learning paths that are completely free, removing that initial financial barrier for those who need it most.
+
+### A Promise of Integrity
+Our guidance will never be for sale. To eliminate any seed of doubt, our platform will not use paid advertisements or accept commissions from any third-party resources we recommend. Our recommendations will be our own, based solely on what we believe is best for you, the learner.
+
+### A Promise to See You as an Individual
+We believe that the people who improve the most are those who discover their own way of learning. Our role is not to dictate a single, rigid path. We are the narrator, the guide who lays out the resources. You are the hero of your own story, and you must be the one to choose your own path and your own pace.
+
+## The Platform is Ready: A Tour of the MVP
+
+<img src="../../../public/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/A-Tour-of-the-MVP.svg" alt="A Tour of the MVP - Skill-Wanderer Platform Technology Stack" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+This mission is now backed by running code. The current platform is the result of strategic development choices focused on performance, security, and laying a robust foundation for a scalable future. Here's a look under the hood:
+
+> **Brand Mention Disclaimer**: The technologies and services mentioned below (Nuxt.js, Astro, Moodle, Keycloak, Amazon SES, Firebase, Cloudflare, etc.) are shared because I genuinely believe they are excellent tools for our use case. I receive no compensation, sponsorship, or any form of payment from these companies. These recommendations are based purely on technical merit and my personal experience with these platforms.
+
+### The Frontend Stack
+The main user-facing landing page and hub is operational on **[Nuxt.js](https://nuxt.com/)**. The blog is running on **[Astro](https://astro.build/)**.
+
+### The Learning Core
+Our Learning Management System (LMS) is a live, themed instance of **[Moodle](https://moodle.org/)**, which serves as the core system for delivering our online courses.
+
+### Centralized Identity
+We have successfully implemented **[Keycloak](https://www.keycloak.org/)** as the core system for all user registration and Single Sign-On (SSO). It now acts as our central, authoritative Identity Provider (IdP).
+
+### Email Service
+All transactional emails, such as registration confirmations, are handled by **[Amazon SES](https://aws.amazon.com/ses/)** (Simple Email Service) to ensure reliable delivery.
+
+### The Backend (For Now)
+In the spirit of transparency, our current backend needs, like forms, are being temporarily handled by **[Firebase](https://firebase.google.com/)**. This pragmatic choice let us launch reliably and is scheduled for replacement in our very next development phase.
+
+### What's Next: Community Microservice
+Following the MVP launch, our immediate next priority is developing a dedicated community microservice. This will serve as the social backbone of our platform, enabling peer-to-peer learning, mentorship connections, and collaborative project spaces. The community service will integrate seamlessly with our existing Keycloak SSO system and complement our educational offerings.
+
+## Our Humble Abode: The Home Lab Infrastructure
+
+
+<img src="/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/The-Home-Lab-Infrastructure.svg" alt="The Home Lab Infrastructure - Kubernetes Cluster Setup" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+You might wonder why we're not using a major cloud provider. Our decision to self-host the entire Skill-Wanderer platform is a strategic one, born from our guiding principles of resourcefulness and pragmatism. As a self-funded initiative with limited resources, this approach allows us to minimize operational costs significantly. This path is only possible because I have the technical ability to manage the infrastructure and reliable, high-speed internet access.
+
+This brings me to our humble abode: a **[Kubernetes (K8s)](https://kubernetes.io/) cluster**. The master node is a **[ThinkPad T480](https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadt/thinkpad-t480/22tp2tt4800)**—an old pal that was with me during my own junior coding days, now given a new purpose. It's supported by an **[Orange Pi](http://www.orangepi.org/)** worker node.
+
+The platform's front door is **[Cloudflare](https://www.cloudflare.com/)**, which is used as the primary entry point for all traffic, providing an essential Web Application Firewall (WAF) for security and using Dynamic DNS (DDNS) to resolve our domain name to my home's dynamic IP address.
+
+And in the spirit of making the most of every resource, the **[PostgreSQL](https://www.postgresql.org/)** database and the NFS server are currently hosted on that same master node. This is a conscious, temporary decision based on our current constraints, and it's a priority to move them to a dedicated server as soon as we have better resources available.
+
+## Our Pledge: A Sustainable Future
+
+<Image src={sustainableImage} alt="A Sustainable Future - Mission-Centric Total Reinvestment" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+Skill-Wanderer is currently a self-funded passion project. But to protect this mission for the long term, it must be sustainable.
+
+My past experiences in start-ups taught me painful lessons about what happens when greed tears a team apart or when a mission is abandoned to chase money. I am unwilling to repeat those mistakes.
+
+That is why our future is built on a final, absolute principle: **Mission-Centric Total Reinvestment**. In the future, the platform will be sustained by mission-aligned technology services. But we commit that all net revenue from any of our operations, after covering costs like wages and tools, will be entirely reinvested back into our global mission. No dividends will be paid. This is our lock, our promise to protect the organization from the very forces that can tear even profitable ventures apart.
+
+## The Journey Has Just Begun
+
+Launching this platform is a significant milestone, but it is truly just the beginning. It is the first tangible expression of a deeply held belief that we can do better.
+
+In the upcoming articles in this series, I'll dive much deeper into the technical decisions, the lessons learned, and the rest of the guiding principles that form the heart of this organization.
+
+I invite you to explore the new Skill-Wanderer.com. The learning dojo is technically ready and operational, and while our first courses are currently under development, you can register an account, read our blog, and sign up for our newsletter to be the first to know when they launch.
+
+## You Are Here at the Blog - Explore Our Full Ecosystem
+
+Welcome to the Skill-Wanderer blog! This is just one part of our comprehensive ecosystem designed to transform how you learn and grow in technology. Here's where you can connect with us:
+
+### 🌐 **Our Mission Hub: [Skill-Wanderer.com](https://skill-wanderer.com)**
+Discover our complete mission, values, and approach to education. This is your gateway to understanding how we're building a better future for tech learning.
+
+### 📝 **Our Knowledge Base: [wanderings.skill-wanderer.com](https://wanderings.skill-wanderer.com)**
+You're currently reading our central hub for insights, tutorials, and behind-the-scenes content. Here we share technical deep-dives, learning strategies, industry perspectives, and "The Wanderer's Log" series where we build in public and document our journey of creating better educational experiences.
+
+### 🥋 **Our Learning Dojo: [dojo.skill-wanderer.com](https://dojo.skill-wanderer.com)**
+Your hands-on learning destination where theory meets practice. Our comprehensive learning management system delivers courses, projects, and real-world challenges designed to build genuine expertise. **The dojo is technically ready and our first courses are currently under development.**
+
+### 🤝 **Coming Soon: Our Community Hub**
+We're actively developing a dedicated community microservice that will connect learners, facilitate collaboration, and create spaces for knowledge sharing. This will be the heart of peer-to-peer learning and mentorship within the Skill-Wanderer ecosystem.
+
+### About Skill-Wanderer: Where Education Meets Real-World Impact
+
+Skill-Wanderer operates as a **non-profit technology education organization** with a unique dual approach that sets us apart:
+
+**🎓 Educational Mission**: We provide high-quality, accessible technology education that removes financial barriers and focuses on practical, real-world skills. Our courses are designed not just to teach concepts, but to prepare you for the challenges you'll actually face in your tech career.
+
+**⚙️ Technology Services**: We also operate mission-aligned technology services that serve a dual purpose:
+- **Funding the Mission**: Revenue from our tech services directly funds our educational programs, ensuring sustainability without compromising our values
+- **Living Laboratory**: Our real-world client work becomes the foundation for our educational content, ensuring everything we teach is current, relevant, and battle-tested
+
+This integrated approach means when you learn with us, you're not just studying theoretical concepts—you're learning from actual implementations, real challenges, and proven solutions. Our instructors aren't just teachers; they're practitioners actively working in the field, and that experience flows directly into our curriculum.
+
+**The Skill-Wanderer Difference**: We bridge the gap between education and industry by being actively involved in both. Every course, every project, and every lesson is informed by real-world experience because we live and work in the same technological landscape we're preparing you to enter.
+
+Thank you for being here at the start.

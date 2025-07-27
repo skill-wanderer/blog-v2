@@ -1,0 +1,94 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #2c3e50; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 14px; fill: #34495e; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #2c3e50; }
+      .small-label { font-family: Arial, sans-serif; font-size: 10px; fill: #7f8c8d; }
+      .device-text { font-family: Arial, sans-serif; font-size: 11px; fill: #2c3e50; font-weight: bold; }
+      .connection { stroke: #3498db; stroke-width: 2; fill: none; }
+      .connection-dashed { stroke: #e74c3c; stroke-width: 2; fill: none; stroke-dasharray: 5,5; }
+      .cloud { fill: #3498db; opacity: 0.8; }
+      .device-box { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; }
+      .master-node { fill: #e8f5e8; stroke: #27ae60; stroke-width: 2; }
+      .worker-node { fill: #fff3e0; stroke: #f39c12; stroke-width: 2; }
+      .database { fill: #e3f2fd; stroke: #2196f3; stroke-width: 2; }
+      .security { fill: #fce4ec; stroke: #e91e63; stroke-width: 2; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="30" class="title" text-anchor="middle">Skill-Wanderer Home Lab Infrastructure</text>
+  <text x="500" y="50" class="subtitle" text-anchor="middle">Self-Hosted Kubernetes Platform</text>
+  
+  <!-- Internet/Cloud -->
+  <ellipse cx="500" cy="100" rx="80" ry="30" class="cloud"/>
+  <text x="500" y="90" class="label" text-anchor="middle" fill="white">Internet</text>
+  <text x="500" y="105" class="small-label" text-anchor="middle" fill="white">Dynamic IP</text>
+  
+  <!-- Cloudflare -->
+  <rect x="420" y="160" width="160" height="60" rx="10" class="security"/>
+  <text x="500" y="180" class="device-text" text-anchor="middle">Cloudflare</text>
+  <text x="500" y="195" class="small-label" text-anchor="middle">WAF + DDNS</text>
+  <text x="500" y="208" class="small-label" text-anchor="middle">Primary Entry Point</text>
+  
+  <!-- Home Network Box -->
+  <rect x="150" y="270" width="700" height="380" rx="15" fill="#f8f9fa" stroke="#6c757d" stroke-width="2" stroke-dasharray="10,5"/>
+  <text x="500" y="295" class="subtitle" text-anchor="middle">Home Network</text>
+  
+  <!-- Kubernetes Cluster Box -->
+  <rect x="200" y="320" width="600" height="280" rx="10" fill="#f0f8ff" stroke="#4169e1" stroke-width="2"/>
+  <text x="500" y="345" class="device-text" text-anchor="middle">Kubernetes (K8s) Cluster</text>
+  
+  <!-- Master Node (ThinkPad T480) -->
+  <rect x="230" y="370" width="220" height="180" rx="10" class="master-node"/>
+  <text x="340" y="390" class="device-text" text-anchor="middle">Master Node</text>
+  <text x="340" y="405" class="device-text" text-anchor="middle">ThinkPad T480</text>
+  <text x="340" y="420" class="small-label" text-anchor="middle">"Old pal from junior coding days"</text>
+  
+  <!-- PostgreSQL Database -->
+  <rect x="250" y="440" width="80" height="40" rx="5" class="database"/>
+  <text x="290" y="455" class="small-label" text-anchor="middle">PostgreSQL</text>
+  <text x="290" y="468" class="small-label" text-anchor="middle">Database</text>
+  
+  <!-- NFS Server -->
+  <rect x="350" y="440" width="80" height="40" rx="5" class="database"/>
+  <text x="390" y="455" class="small-label" text-anchor="middle">NFS</text>
+  <text x="390" y="468" class="small-label" text-anchor="middle">Server</text>
+  
+  <!-- Temporary note -->
+  <text x="340" y="500" class="small-label" text-anchor="middle" fill="#e74c3c">Temporary hosting on master node</text>
+  <text x="340" y="515" class="small-label" text-anchor="middle" fill="#e74c3c">Move to dedicated server when funding allows</text>
+  
+  <!-- Worker Node (Orange Pi) -->
+  <rect x="500" y="370" width="180" height="120" rx="10" class="worker-node"/>
+  <text x="590" y="390" class="device-text" text-anchor="middle">Worker Node</text>
+  <text x="590" y="405" class="device-text" text-anchor="middle">Orange Pi</text>
+  <text x="590" y="430" class="small-label" text-anchor="middle">Additional compute</text>
+  <text x="590" y="445" class="small-label" text-anchor="middle">resource</text>
+  
+  <!-- Connections -->
+  <!-- Internet to Cloudflare -->
+  <line x1="500" y1="130" x2="500" y2="160" class="connection"/>
+  
+  <!-- Cloudflare to Home Network -->
+  <line x1="500" y1="220" x2="500" y2="270" class="connection"/>
+  
+  <!-- Home Network to K8s Cluster -->
+  <line x1="500" y1="295" x2="500" y2="320" class="connection"/>
+  
+  <!-- Master to Worker connection -->
+  <line x1="450" y1="430" x2="500" y2="430" class="connection"/>
+  
+  <!-- Legend -->
+  <rect x="50" y="620" width="200" height="60" rx="5" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+  <text x="150" y="640" class="small-label" text-anchor="middle" font-weight="bold">Key Principles</text>
+  <text x="60" y="655" class="small-label">• Self-funded &amp; resourceful</text>
+  <text x="60" y="670" class="small-label">• Minimize operational costs</text>
+  
+  <!-- Cost Efficiency Note -->
+  <rect x="750" y="620" width="200" height="60" rx="5" fill="#fff8e1" stroke="#ffa000" stroke-width="1"/>
+  <text x="850" y="640" class="small-label" text-anchor="middle" font-weight="bold">Infrastructure Benefits</text>
+  <text x="760" y="655" class="small-label">• High-speed internet access</text>
+  <text x="760" y="670" class="small-label">• Technical management capability</text>
+</svg>

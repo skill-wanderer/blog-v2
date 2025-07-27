@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wanderer's Log #1: Skill-Wanderer Platform Launch - Infographic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            color: #3498db;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: #3498db;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .promises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .promise-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .promise-card.access { border-left-color: #27ae60; }
+        .promise-card.integrity { border-left-color: #e74c3c; }
+        .promise-card.individual { border-left-color: #f39c12; }
+
+        .promise-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .access .promise-icon { color: #27ae60; }
+        .integrity .promise-icon { color: #e74c3c; }
+        .individual .promise-icon { color: #f39c12; }
+
+        .promise-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .promise-description {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .tech-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .tech-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .tech-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tech-highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .infrastructure-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+        }
+
+        .infrastructure-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .infra-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+
+        .infra-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .infra-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .mission-statement {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .mission-statement h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-statement p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+        }
+
+        .infrastructure-intro {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .mission-principle {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .mission-principle h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-principle p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .section-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .platform-card {
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .platform-card.mission-hub {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .platform-card.blog {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+        }
+
+        .platform-card.learning-dojo {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+
+        .platform-card.coming-soon {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card.coming-soon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .platform-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .platform-card .url {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .platform-card .description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .difference-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .difference-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .difference-item {
+            text-align: center;
+        }
+
+        .difference-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .difference-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .difference-item p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .promises-grid,
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+            
+            .infrastructure-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <h1>The Wanderer's Log #1</h1>
+            <p>The Heart of the Mission: The Skill-Wanderer Platform is Live</p>
+            <div class="subtitle">Building Trust, Accessibility & Integrity in Online Education</div>
+        </div>
+
+        <div class="content">
+            <!-- Mission Statement -->
+            <div class="mission-statement">
+                <h3>Our Mission</h3>
+                <p>We believe quality education shapes brighter futures. Skill-Wanderer was created to remove financial barriers and build trust in online learning through integrity and personalized guidance.</p>
+            </div>
+
+            <!-- Our Three Promises -->
+            <div class="section">
+                <h2 class="section-title">Our Three Core Promises</h2>
+                <img src="/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/Our-Promise-An-Education-Built-on-Trust.jpg" alt="Our Promise: An Education Built on Trust" class="section-image" />
+                <div class="promises-grid">
+                    <div class="promise-card access">
+                        <span class="promise-icon">🔓</span>
+                        <div class="promise-title">A Promise of Access</div>
+                        <div class="promise-description">
+                            Our core educational content will always be free. No one should be left behind simply because they cannot afford the first step.
+                        </div>
+                    </div>
+                    <div class="promise-card integrity">
+                        <span class="promise-icon">🤝</span>
+                        <div class="promise-title">A Promise of Integrity</div>
+                        <div class="promise-description">
+                            Our guidance will never be for sale. No paid advertisements or commissions. Our recommendations are based solely on what's best for you.
+                        </div>
+                    </div>
+                    <div class="promise-card individual">
+                        <span class="promise-icon">🎯</span>
+                        <div class="promise-title">A Promise to See You as an Individual</div>
+                        <div class="promise-description">
+                            We guide, you choose. You are the hero of your own learning story, and you must choose your own path and pace.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="section">
+                <h2 class="section-title">Our Technology Stack</h2>
+                <img src="/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/A-Tour-of-the-MVP.svg" alt="A Tour of the MVP - Technology Stack" class="section-image" />
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-title">Frontend</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Nuxt.js</span> for the main platform<br>
+                            <span class="tech-highlight">Astro</span> for the blog
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-title">Learning Core</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Moodle</span> LMS for course delivery
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-title">Identity Management</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Keycloak</span> for SSO and user management
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-title">Email Service</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Amazon SES</span> for transactional emails
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-title">Backend (Temporary)</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Firebase</span> for forms and basic backend needs
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-title">Security & CDN</div>
+                        <div class="tech-description">
+                            <span class="tech-highlight">Cloudflare</span> for WAF and DDNS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="section">
+                <h2 class="section-title">Home Lab Infrastructure</h2>
+                <img src="/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/The-Home-Lab-Infrastructure.svg" alt="Home Lab Infrastructure - Kubernetes Cluster" class="section-image" />
+                <div class="infrastructure-section">
+                    <p class="infrastructure-intro">
+                        Self-hosted on a Kubernetes cluster for cost efficiency and learning opportunities
+                    </p>
+                    <div class="infrastructure-grid">
+                        <div class="infra-item">
+                            <div class="infra-title">Master Node</div>
+                            <div class="infra-description">ThinkPad T480<br>(Repurposed from junior dev days)</div>
+                        </div>
+                        <div class="infra-item">
+                            <div class="infra-title">Worker Node</div>
+                            <div class="infra-description">Orange Pi<br>(Cost-effective addition)</div>
+                        </div>
+                        <div class="infra-item">
+                            <div class="infra-title">Database</div>
+                            <div class="infra-description">PostgreSQL<br>(Currently on master node)</div>
+                        </div>
+                        <div class="infra-item">
+                            <div class="infra-title">Storage</div>
+                            <div class="infra-description">NFS Server<br>(Currently on master node)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Statistics -->
+            <div class="section">
+                <h2 class="section-title">Platform Status</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">MVP</span>
+                        <div class="stat-label">Platform Status</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <div class="stat-label">Self-Funded</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0%</span>
+                        <div class="stat-label">Dividends Paid</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <div class="stat-label">Mission Commitment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission-Centric Principle -->
+            <div class="section">
+                <img src="/images/blog/the-wanderers-log-1-the-heart-of-the-mission-the-skill-wanderer-platform-is-live/A-Sustainable-Future.jpg" alt="A Sustainable Future - Mission-Centric Total Reinvestment" class="section-image" />
+                <div class="mission-principle">
+                    <h3>Mission-Centric Total Reinvestment</h3>
+                    <p>
+                        All net revenue, after covering costs like wages and tools, will be entirely reinvested back into our global mission. No dividends will be paid. This is our promise to protect the organization from forces that can tear ventures apart.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ecosystem Introduction -->
+            <div class="section">
+                <h2 class="section-title">Explore Our Full Ecosystem</h2>
+                <div class="ecosystem-grid">
+                    <div class="platform-card mission-hub">
+                        <h3>🌐 Mission Hub</h3>
+                        <p class="url">skill-wanderer.com</p>
+                        <p class="description">Complete mission, values, and approach to education</p>
+                    </div>
+                    <div class="platform-card blog">
+                        <h3>📝 Knowledge Base</h3>
+                        <p class="url">wanderings.skill-wanderer.com</p>
+                        <p class="description">Insights, tutorials, and building in public content</p>
+                    </div>
+                    <div class="platform-card learning-dojo">
+                        <h3>🥋 Learning Dojo</h3>
+                        <p class="url">dojo.skill-wanderer.com</p>
+                        <p class="description">Tech ready! First courses under development</p>
+                    </div>
+                    <div class="platform-card coming-soon">
+                        <h3>🤝 Community Hub</h3>
+                        <p class="url">Coming Soon</p>
+                        <p class="description">Peer-to-peer learning, mentorship, and collaboration spaces</p>
+                    </div>
+                </div>
+                
+                <div class="difference-section">
+                    <h3 class="difference-title">The Skill-Wanderer Difference</h3>
+                    <div class="difference-grid">
+                        <div class="difference-item">
+                            <div class="difference-icon">🎓</div>
+                            <h4>Educational Mission</h4>
+                            <p>High-quality, accessible tech education with practical, real-world skills</p>
+                        </div>
+                        <div class="difference-item">
+                            <div class="difference-icon">⚙️</div>
+                            <h4>Technology Services</h4>
+                            <p>Real client work funds education and becomes course content</p>
+                        </div>
+                        <div class="difference-item">
+                            <div class="difference-icon">🔬</div>
+                            <h4>Living Laboratory</h4>
+                            <p>Learn from actual implementations and proven solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h4>The Journey Has Just Begun</h4>
+            <p>This is the first tangible expression of a deeply held belief that we can do better in online education.</p>
+            <a href="https://skill-wanderer.com" class="cta-button">Explore Skill-Wanderer.com</a>
+        </div>
+    </div>
+</body>
+</html>
