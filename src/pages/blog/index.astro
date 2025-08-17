@@ -15,7 +15,11 @@ const allPosts = await getCollection('posts', ({ data }) => {
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 // Get unique categories from posts for metadata
-const uniqueCategories = [...new Set(allPosts.map(post => post.data.category).filter(Boolean))];
+const uniqueCategories = [...new Set(
+  allPosts.flatMap(post => 
+    post.data.categories || (post.data.category ? [post.data.category] : [])
+  ).filter((cat): cat is string => Boolean(cat))
+)];
 const categoryKeywords = uniqueCategories.map(cat => getCategoryDisplayName(cat)).join(', ');
 
 // Dynamic description based on available content
@@ -80,25 +84,41 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
             <div id="postsContainer">
                 {sortedPosts.length > 0 ? (
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsGrid">
-                        {sortedPosts.map(post => (
-                            <article 
-                                class="post-card block bg-skill-wanderer-card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
-                                data-category={post.data.category || ''}
-                                data-title={post.data.title.toLowerCase()}
-                                data-description={post.data.description?.toLowerCase() || ''}
-                            >                                <a href={`/blog/${post.slug}/`} class="flex flex-col h-full">
-                                    {post.data.image && (
-                                        <Image 
-                                            src={post.data.image} 
-                                            alt={post.data.title} 
-                                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                                            width={400}
-                                            height={192}
-                                        />
-                                    )}
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <div class="flex justify-between items-center mb-3 text-xs">
-                                            {post.data.category && <span class="text-skill-wanderer-primary-orange uppercase font-bold tracking-wider">{post.data.category}</span>}
+                        {sortedPosts.map(post => {
+                            // Support both single category and categories array
+                            const postCategories = post.data.categories || (post.data.category ? [post.data.category] : []);
+                            const primaryCategory = postCategories[0] || '';
+                            const allCategoriesString = postCategories.join(',');
+                            
+                            return (
+                                <article 
+                                    class="post-card block bg-skill-wanderer-card-dark rounded-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                                    data-category={primaryCategory}
+                                    data-categories={allCategoriesString}
+                                    data-title={post.data.title.toLowerCase()}
+                                    data-description={post.data.description?.toLowerCase() || ''}
+                                >                                    <a href={`/blog/${post.slug}/`} class="flex flex-col h-full">
+                                        {post.data.image && (
+                                            <Image 
+                                                src={post.data.image} 
+                                                alt={post.data.title} 
+                                                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                                width={400}
+                                                height={192}
+                                            />
+                                        )}
+                                        <div class="p-6 flex-grow flex flex-col">
+                                            <div class="flex justify-between items-center mb-3 text-xs">
+                                                {postCategories.length > 0 && (
+                                                    <div class="flex flex-wrap gap-1">
+                                                        {postCategories.map((category, index) => (
+                                                            <span class="text-skill-wanderer-primary-orange uppercase font-bold tracking-wider text-xs">
+                                                                {getCategoryDisplayName(category)}
+                                                                {index < postCategories.length - 1 && <span class="text-skill-wanderer-text-dark-secondary"> • </span>}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             <span class="text-skill-wanderer-text-dark-muted">
                                                 {new Date(post.data.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                             </span>
@@ -111,7 +131,8 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
                                     </div>
                                 </a>
                             </article>
-                        ))}
+                            );
+                        })}
                     </div>
                 ) : (
                     <p class="text-skill-wanderer-text-dark-secondary mt-8 text-center">No posts available at the moment.</p>
@@ -164,10 +185,14 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
             
             postCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category') || '';
+                const cardCategories = card.getAttribute('data-categories') || '';
                 const cardTitle = card.getAttribute('data-title') || '';
                 const cardDescription = card.getAttribute('data-description') || '';
                 
-                const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+                // Check if current category matches any of the post's categories
+                const categoriesArray = cardCategories ? cardCategories.split(',') : (cardCategory ? [cardCategory] : []);
+                const matchesCategory = currentCategory === 'all' || categoriesArray.includes(currentCategory);
+                
                 const matchesSearch = currentSearch === '' || 
                     cardTitle.includes(currentSearch) || 
                     cardDescription.includes(currentSearch);

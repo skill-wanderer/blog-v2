@@ -16,17 +16,27 @@ const { Content, headings } = await entry.render();
 // Fetch all posts
 const allPosts = await getCollection('posts');
 
-// Filter posts by same category and exclude current post
-const relatedPostsData = allPosts.filter(post => 
-  post.data.category === entry.data.category && post.slug !== entry.slug
-);
+// Get current post categories (support both single category and categories array)
+const currentCategories = entry.data.categories || (entry.data.category ? [entry.data.category] : []);
+
+// Filter posts that share at least one category with current post and exclude current post
+const relatedPostsData = allPosts.filter(post => {
+  if (post.slug === entry.slug) return false;
+  
+  // Get post categories (support both single category and categories array)
+  const postCategories = post.data.categories || (post.data.category ? [post.data.category] : []);
+  
+  // Check if there's any overlap between current post categories and this post's categories
+  return currentCategories.some(category => postCategories.includes(category));
+});
 
 // Map filtered posts to the RelatedPost structure
 const relatedPosts = relatedPostsData.map(post => ({
   title: post.data.title,
   excerpt: post.data.description, // Using description as excerpt
   slug: post.slug,
-  category: post.data.category,
+  category: post.data.categories ? post.data.categories[0] : post.data.category, // Use first category for display
+  categories: post.data.categories || (post.data.category ? [post.data.category] : []), // Include all categories
   readTime: post.data.readTime,
   image: post.data.image,
 }));

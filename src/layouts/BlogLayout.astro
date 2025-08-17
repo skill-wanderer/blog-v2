@@ -14,7 +14,8 @@ export interface BlogPost {
   description: string;
   authorId: string;
   publishDate: string;
-  category: BlogCategory;
+  category?: string;
+  categories?: string[];
   readTime: string;
   image?: string;
   tags?: string[];
@@ -135,9 +136,18 @@ const breadcrumbJsonLd = {
   <section class="bg-skill-wanderer-hero-bg py-16 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">        <!-- Category Badge -->        <div class="mb-6">
-          <span class="inline-block bg-skill-wanderer-primary-orange text-white text-sm font-semibold px-4 py-2 rounded-full">
-            {getCategoryDisplayName(blogPost.category)}
-          </span>
+          {(() => {
+            const postCategories = blogPost.categories || (blogPost.category ? [blogPost.category] : []);
+            return postCategories.length > 0 && (
+              <div class="flex flex-wrap gap-2 justify-center">
+                {postCategories.map(category => (
+                  <span class="inline-block bg-skill-wanderer-primary-orange text-white text-sm font-semibold px-4 py-2 rounded-full">
+                    {getCategoryDisplayName(category)}
+                  </span>
+                ))}
+              </div>
+            );
+          })()}
         </div>
         
         <!-- Title -->

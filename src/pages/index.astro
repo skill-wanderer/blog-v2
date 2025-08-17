@@ -29,7 +29,11 @@ const recentPostsText = latestPosts.length > 0 ? `Latest posts include: ${latest
 const dynamicHomeDescription = `Join me on my learning journey as I share insights from exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development. ${totalPosts} posts and counting! ${recentPostsText}`;
 
 // Get unique categories for keywords
-const homeUniqueCategories = [...new Set(allPosts.map(post => post.data.category).filter(Boolean))];
+const homeUniqueCategories = [...new Set(
+  allPosts.flatMap(post => 
+    post.data.categories || (post.data.category ? [post.data.category] : [])
+  ).filter((cat): cat is string => Boolean(cat))
+)];
 const homeCategoryKeywords = homeUniqueCategories.map(cat => getCategoryDisplayName(cat)).join(', ');
 const enhancedHomeKeywords = `tech blog, software development, programming, web development, technology insights, coding tutorials, home lab, kubernetes, AI, machine learning, ${homeCategoryKeywords.toLowerCase()}`;
 ---
@@ -184,11 +188,26 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
                                     </div>
                                     <h3 class="text-3xl lg:text-4xl font-bold mb-4 text-skill-wanderer-text-dark group-hover:text-skill-wanderer-primary-orange transition-colors duration-300">{latestPost.data.title}</h3>
                                     {latestPost.data.description && <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary mb-6 flex-grow">{latestPost.data.description}</p>}                                    <div class="text-sm text-skill-wanderer-text-dark-muted">
-                                        {latestPost.data.category && <span>{getCategoryDisplayName(latestPost.data.category).toUpperCase()}</span>}
-                                        {latestPost.data.readTime && latestPost.data.category && <span class="mx-2">•</span>}
-                                        {latestPost.data.readTime && <span>{latestPost.data.readTime} min read</span>}
-                                        {(latestPost.data.category || latestPost.data.readTime) && <span class="mx-2">•</span>}
-                                        <span>{new Date(latestPost.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                        {/* Support both single category and categories array */}
+                                        {(() => {
+                                            const postCategories = latestPost.data.categories || (latestPost.data.category ? [latestPost.data.category] : []);
+                                            const hasCategories = postCategories.length > 0;
+                                            const hasReadTime = latestPost.data.readTime;
+                                            
+                                            return (
+                                                <>
+                                                    {hasCategories && (
+                                                        <span>
+                                                            {postCategories.map(cat => getCategoryDisplayName(cat)).join(' • ').toUpperCase()}
+                                                        </span>
+                                                    )}
+                                                    {hasReadTime && hasCategories && <span class="mx-2">•</span>}
+                                                    {hasReadTime && <span>{latestPost.data.readTime} min read</span>}
+                                                    {(hasCategories || hasReadTime) && <span class="mx-2">•</span>}
+                                                    <span>{new Date(latestPost.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                </>
+                                            );
+                                        })()}
                                     </div>
                                 </div>
                             </a>
