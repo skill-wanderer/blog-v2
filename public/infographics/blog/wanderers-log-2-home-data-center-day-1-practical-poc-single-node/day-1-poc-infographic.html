@@ -354,6 +354,243 @@
             color: #6c757d;
         }
 
+        /* Skill-Wanderer Section Styles */
+        .mission-statement {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .mission-statement h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .mission-statement p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .platform-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .platform-card.mission-hub {
+            border-color: #e74c3c;
+        }
+
+        .platform-card.mission-hub:hover {
+            border-color: #c0392b;
+        }
+
+        .platform-card.blog {
+            border-color: #f39c12;
+        }
+
+        .platform-card.blog:hover {
+            border-color: #d68910;
+        }
+
+        .platform-card.learning-dojo {
+            border-color: #27ae60;
+        }
+
+        .platform-card.learning-dojo:hover {
+            border-color: #229954;
+        }
+
+        .platform-card.coming-soon {
+            border-color: #9b59b6;
+        }
+
+        .platform-card.coming-soon:hover {
+            border-color: #8e44ad;
+        }
+
+        .platform-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .platform-card .description {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .difference-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 35px;
+            margin-top: 30px;
+        }
+
+        .difference-title {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .difference-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .difference-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .difference-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .difference-item h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .difference-item p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Hero Image Section */
+        .hero-image-section {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .hero-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-placeholder h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .hero-placeholder p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .hero-icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .hero-tech-stack {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 15px;
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8rem;
@@ -380,6 +617,24 @@
             <h1>Wanderer's Log #2 & Home Data Center Day 1</h1>
             <p>A Practical POC on a Single Node</p>
             <div class="subtitle">From Blueprint to Reality: Your First Home Data Center</div>
+        </div>
+
+        <!-- Hero Image Section -->
+        <div class="hero-image-section">
+            <div class="hero-image-container">
+                <div class="hero-image">
+                    <img src="/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/hero.jpg" 
+                         alt="Wanderer's Log #2 & Home Data Center Day 1: A Practical POC on a Single Node" />
+                    <div class="hero-overlay">
+                        <div class="hero-tech-stack">
+                            <span class="tech-badge">Ubuntu</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">WordPress</span>
+                            <span class="tech-badge">Cloudflare</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="content">
@@ -569,7 +824,21 @@
                 </div>
             </div>
 
-            <!-- Skill-Wanderer Introduction -->
+
+
+            <!-- Agile Philosophy -->
+            <div class="section">
+                <div class="warning-section">
+                    <h3>💡 The Beauty of Agile Development</h3>
+                    <p>
+                        What you build today can always be scaled up later. This POC is your foundation - 
+                        start small, learn fundamentals, gain momentum, then evolve your architecture as needs grow.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+                    <!-- Skill-Wanderer Introduction -->
             <div class="section">
                 <h2 class="section-title">About Skill-Wanderer: Where Education Meets Real-World Impact</h2>
                 
@@ -626,18 +895,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Agile Philosophy -->
-            <div class="section">
-                <div class="warning-section">
-                    <h3>💡 The Beauty of Agile Development</h3>
-                    <p>
-                        What you build today can always be scaled up later. This POC is your foundation - 
-                        start small, learn fundamentals, gain momentum, then evolve your architecture as needs grow.
-                    </p>
-                </div>
-            </div>
-        </div>
 
         <div class="footer">
             <h4>From Blueprint to Reality</h4>
