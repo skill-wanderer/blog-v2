@@ -12,11 +12,17 @@ tags: ["Wanderer's Log", "Home Data Center", "POC", "Docker", "WordPress", "Ubun
 _Disclaimer: I am not affiliated with any of the brands or products mentioned in this post. The choices reflect the real-world decisions made for the Skill-Wanderer project based on its specific needs and constraints._
 
 import { Image } from 'astro:assets';
- import heroImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/hero.jpg';
+import heroImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/hero.jpg';
+import dayOneGoalImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/Day-1-goal-and-three-steps-guild.jpg';
+import hardwareSpecsImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/hardware-specification.jpg';
+import techComponentsImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/technology-components.jpg';
+import hardwareToLiveImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/hardware-to-live-webstite.jpg';
+import pocSuccessImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/POC-success-metric-and-internet-speed-check.jpg';
+import nextStepsImage from '../../../public/images/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/next-step.jpg';
 
 > **📊 Visual Summary**: Want a quick overview? Check out our [Day 1 POC infographic](/infographics/blog/wanderers-log-2-home-data-center-day-1-practical-poc-single-node/day-1-poc-infographic.html) that highlights the three-step journey from hardware to live website.
 
- <Image src={heroImage} alt="Wanderer's Log #2 & Home Data Center Day 1: A Practical POC on a Single Node" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+<Image src={dayOneGoalImage} alt="Day 1 Goal and Three Steps Guide" class="w-full h-auto rounded-lg shadow-lg mb-8" />
 
 Welcome back to the "[Chronicles of a Home Data Center](https://wanderings.skill-wanderer.com/blog/?category=Home+Data+Center)"! In [Day 0](https://wanderings.skill-wanderer.com/blog/day-0-blueprint-a-small-scale-poc/), we meticulously crafted our blueprint. Today, on Day 1, we bring that blueprint to life.
 
@@ -26,6 +32,9 @@ However, as promised, this series is a guide. For today, we'll focus on a Proof 
 
 For this Day 1, we will focus on one computer device. So, choose one machine to be the star of the show.
 
+<Image src={hardwareSpecsImage} alt="Hardware Specifications Comparison" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
+
 ## Step 1: Choosing Your "Star" and Checking the Specs
 
 Before we begin, let's ensure your chosen hardware is up to the task. You can use an old laptop, desktop, mini PC, or even a capable single-board computer.
@@ -33,6 +42,9 @@ Before we begin, let's ensure your chosen hardware is up to the task. You can us
 **For a test POC (and a future cluster node):** Aim for at least a 4-core CPU, 16GB of RAM, and a 256GB SSD.
 
 **For a long-term single server:** If you know your project will stay on this one machine, I'd recommend a bit more power. Nowadays, an 8-core CPU, 32GB of RAM, and a 500GB SSD are relatively cheap and will give you plenty of headroom.
+
+<Image src={techComponentsImage} alt="Technology Components Overview" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
 
 ## Step 2: The Blueprint in Action - OS and WordPress
 
@@ -51,6 +63,9 @@ However, you should still learn a little bit about Docker. I intend to make a co
 **A Quick Tip for the Future:** Modern Kubernetes (K8s) no longer works directly with Docker as a container runtime using Docker Shim. However, you can still make it work using `cri-dockerd`, so if you learn Docker now and intend to migrate to K8s later, it can still be done.
 
 Once you've verified that your local WordPress container is working perfectly, it's time to show it to the world.
+
+<Image src={hardwareToLiveImage} alt="From Hardware to Live Website Process" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
 
 ## Step 3: Going Live - From Localhost to the World
 
@@ -74,6 +89,9 @@ Depending on whether you have a static IP or not, you can now configure Cloudfla
 
 Once that's done, your site will go live, and it will be a blast!
 
+<Image src={pocSuccessImage} alt="POC Success Metrics and Internet Speed Check" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
+
 ## The POC Reality Check: Successes and Next Steps
 
 If you've followed along, you've just gone from a piece of hardware to a live website on the internet. This is a huge milestone! In our [Day 0](https://wanderings.skill-wanderer.com/blog/day-0-blueprint-a-small-scale-poc/) post, we talked about setting "measurable success criteria" for our POC. Let's see how we did.
@@ -90,6 +108,9 @@ If you've followed along, you've just gone from a piece of hardware to a live we
 
 This is a massive win and the core goal of our Day 1 build. Now, what's next on the immediate horizon?
 
+<Image src={nextStepsImage} alt="Next Steps and Future Planning" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
+
 ### Next Steps:
 
 **Configure Your Application:** The POC is about getting the platform running. Now you get to do the fun part: go through the famous WordPress setup, choose a theme, and start building your actual site.
@@ -97,6 +118,7 @@ This is a massive win and the core goal of our Day 1 build. Now, what's next on 
 **Dive Deeper into Docker:** If you are serious about building a home data center, learning Docker is a must. You used a Docker Compose file to get this running, perhaps with help from an AI. A crucial next step is to study that file and understand the fundamentals. As I said, I have a plan to make a course about Docker for Skill-Wanderer, but not very soon, so you have to make do without my course for now.
 
 **Plan for Backups:** This depends on your goal. If you only intend for this to be a temporary POC to see how things work before you upgrade to a K8s multi-node setup soon, then you can skip this and we will do it when we migrate. If not, and you plan to run this single server for a while, then you should absolutely start thinking about your backup strategy now.
+
 
 ## Wrapping Up Day 1
 
