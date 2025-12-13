@@ -483,6 +483,33 @@
             text-decoration: underline;
         }
 
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .hero-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 40px 30px 20px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
@@ -523,6 +550,12 @@
             <h1>🗡️ The Tanegashima Shift 🤖</h1>
             <p>The Tragedy and the Ascension of the Samurai Coder</p>
         </header>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="/images/blog/the-tanegashima-shift-the-tragedy-and-the-ascension-of-the-samurai-coder/hero.jpg" alt="The Tanegashima Shift - Samurai facing the age of AI">
+            <div class="hero-image-caption">The age of individual martial prowess is over. The age of the machine has begun.</div>
+        </div>
 
         <div class="content">
             <!-- Historical Parallel -->
