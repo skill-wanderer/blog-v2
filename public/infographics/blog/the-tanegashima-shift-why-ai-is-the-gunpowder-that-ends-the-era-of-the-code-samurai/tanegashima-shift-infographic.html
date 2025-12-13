@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tanegashima Shift: AI and the End of the Code-Samurai Era - Infographic</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #faf8f5;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 50%, #8b0000 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '⚔️';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            left: -20px;
+            top: -20px;
+        }
+
+        .header::after {
+            content: '🤖';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            right: -20px;
+            bottom: -20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .timeline-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title .icon {
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b0000, #d4af37);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Historical Parallel Section */
+        .parallel-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .era-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid;
+        }
+
+        .era-card.feudal {
+            border-top-color: #8b0000;
+        }
+
+        .era-card.modern {
+            border-top-color: #0066cc;
+        }
+
+        .era-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .era-card.feudal h3 {
+            color: #8b0000;
+        }
+
+        .era-card.modern h3 {
+            color: #0066cc;
+        }
+
+        .era-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .era-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .era-card li:last-child {
+            border-bottom: none;
+        }
+
+        .arrow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #d4af37;
+        }
+
+        /* Four Paths Section */
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .path-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .path-card.relic::before { background: linear-gradient(90deg, #666, #999); }
+        .path-card.officer::before { background: linear-gradient(90deg, #8b0000, #cc0000); }
+        .path-card.admin::before { background: linear-gradient(90deg, #0066cc, #0099ff); }
+        .path-card.entrepreneur::before { background: linear-gradient(90deg, #d4af37, #ffd700); }
+
+        .path-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .path-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .path-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .path-card p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .path-outcome {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .path-card.relic .path-outcome { background: #f5f5f5; color: #666; }
+        .path-card.officer .path-outcome { background: #fff0f0; color: #8b0000; }
+        .path-card.admin .path-outcome { background: #f0f7ff; color: #0066cc; }
+        .path-card.entrepreneur .path-outcome { background: #fffbf0; color: #b8860b; }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #8b0000, #d4af37, #0066cc);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: calc(50% + 30px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + 30px);
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: #8b0000;
+            font-size: 1.1rem;
+        }
+
+        .timeline-event {
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            border: 4px solid #faf8f5;
+            z-index: 1;
+        }
+
+        /* Key Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .insight-box::before {
+            content: '💡';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .insight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .insight-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Comparison Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8b0000;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .parallel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-connector {
+                transform: rotate(90deg);
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 0 0 0 50px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <header class="header">
+            <h1>🗡️ The Tanegashima Shift 🤖</h1>
+            <p>Why AI is the Gunpowder that Ends the Era of the Code-Samurai</p>
+        </header>
+
+        <div class="content">
+            <!-- Historical Parallel -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">⚔️</span>
+                    The Historical Parallel
+                    <span class="icon">💻</span>
+                </h2>
+
+                <div class="parallel-grid">
+                    <div class="era-card feudal">
+                        <h3>🏯 Feudal Japan (1575)</h3>
+                        <ul>
+                            <li>⚔️ <strong>Samurai:</strong> Elite warriors, decades of training</li>
+                            <li>🐎 <strong>Takeda Cavalry:</strong> "Red Devils" - devastatingly effective</li>
+                            <li>📜 <strong>Tanegashima:</strong> Matchlock musket from Portugal</li>
+                            <li>👨‍🌾 <strong>Ashigaru:</strong> Peasant foot soldiers</li>
+                            <li>🎯 <strong>Outcome:</strong> Cavalry annihilated at Nagashino</li>
+                        </ul>
+                    </div>
+
+                    <div class="arrow-connector">⟷</div>
+
+                    <div class="era-card modern">
+                        <h3>💻 Tech Industry (2025)</h3>
+                        <ul>
+                            <li>👨‍💻 <strong>Senior Devs:</strong> Elite coders, years of experience</li>
+                            <li>🦄 <strong>10x Engineers:</strong> Rare, highly compensated</li>
+                            <li>🤖 <strong>AI Tools:</strong> Copilot, Claude, GPT-5</li>
+                            <li>🌱 <strong>Junior Devs:</strong> New to the field</li>
+                            <li>🎯 <strong>Outcome:</strong> Productivity democratized</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value">10 years</div>
+                        <div class="stat-label">To train a Samurai archer</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔫</div>
+                        <div class="stat-value">1 week</div>
+                        <div class="stat-label">To train a musketeer</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎓</div>
+                        <div class="stat-value">4 years</div>
+                        <div class="stat-label">Traditional CS degree</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-value">Weeks</div>
+                        <div class="stat-label">AI-assisted app building</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Shift Timeline -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">📅</span>
+                    The Shift Timeline
+                </h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1543 / 2020</div>
+                            <div class="timeline-event"><strong>The Arrival:</strong> Muskets reach Japan / GPT-3 launches. The elites scoff: "It's clumsy and slow."</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1575 / 2023</div>
+                            <div class="timeline-event"><strong>The Breakthrough:</strong> Nagashino battle / GPT-5 & Copilot. Scale beats individual skill.</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1600-1868 / Now</div>
+                            <div class="timeline-event"><strong>The Edo Period:</strong> Samurai remain powerful but the writing is on the wall. We are here.</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1877 / Future</div>
+                            <div class="timeline-event"><strong>The Satsuma Rebellion:</strong> Last stand of traditionalists. "Real programmers use Vim."</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Insight -->
+            <div class="insight-box">
+                <h3>The Core Insight</h3>
+                <p>
+                    Oda Nobunaga didn't win because the musket was <em>better</em> than the spear in a duel.<br>
+                    He won because he understood <strong>SCALE</strong>.<br><br>
+                    AI doesn't write better code than a senior developer.<br>
+                    But it enables <strong>3x output</strong> at a fraction of the cost.
+                </p>
+            </div>
+
+            <!-- The Four Paths -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">🛤️</span>
+                    The Four Paths Forward
+                </h2>
+
+                <div class="paths-grid">
+                    <div class="path-card relic">
+                        <div class="path-icon">🗡️</div>
+                        <h4>1. The Relic</h4>
+                        <div class="path-subtitle">The Tragic Path</div>
+                        <p>Refuse to adapt. Insist on "hand-crafting" code. Become irrelevant to the economy—respected for the quirk, like someone who knits their own sweaters.</p>
+                        <div class="path-outcome">⚠️ Outcome: Economic irrelevance</div>
+                    </div>
+
+                    <div class="path-card officer">
+                        <div class="path-icon">🎖️</div>
+                        <h4>2. The Officer</h4>
+                        <div class="path-subtitle">Solution Architect / Tech Lead</div>
+                        <p>Command the AI agents. Provide strategy, quality control, and architectural vision. You don't write loops—you direct the battle.</p>
+                        <div class="path-outcome">✅ Outcome: Strategic leadership</div>
+                    </div>
+
+                    <div class="path-card admin">
+                        <div class="path-icon">📋</div>
+                        <h4>3. The Administrator</h4>
+                        <div class="path-subtitle">Business Analyst / Product Manager</div>
+                        <p>AI shoots where you point it. But it doesn't know WHERE to aim. Become the architect of business value—tell AI what to build.</p>
+                        <div class="path-outcome">✅ Outcome: Business ownership</div>
+                    </div>
+
+                    <div class="path-card entrepreneur">
+                        <div class="path-icon">🏛️</div>
+                        <h4>4. The Entrepreneur</h4>
+                        <div class="path-subtitle">The Iwasaki Path (Mitsubishi)</div>
+                        <p>Use AI to build entire products solo. The barrier to entry is gone. A single developer can now build what used to require a team of six.</p>
+                        <div class="path-outcome">🌟 Outcome: Empire building</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Educational Gap -->
+            <div class="insight-box">
+                <h3>The Educational Gap</h3>
+                <p>
+                    <strong>An army of Ashigaru without officers is just a mob.</strong><br><br>
+                    "Conscript Coders" will flood the market—but they'll hit a ceiling.<br>
+                    When systems break, when architecture needs scaling, when AI hallucinates vulnerabilities...<br><br>
+                    The deep knowledge of <em>how computers work</em> is no longer for labor.<br>
+                    <strong>It's for command.</strong>
+                </p>
+            </div>
+
+            <!-- Final Message -->
+            <section class="timeline-section" style="text-align: center; margin-bottom: 0;">
+                <h2 class="section-title">
+                    <span class="icon">❓</span>
+                    The Question That Remains
+                </h2>
+                <p style="font-size: 1.3rem; color: #333; max-width: 700px; margin: 30px auto; line-height: 1.8;">
+                    The question is not <em>if</em> the era will end,<br>
+                    but <strong>who you will be when it does</strong>.<br><br>
+                    Will you be the rebel clinging to the past?<br>
+                    Or the Officer, Administrator, or Entrepreneur who defines the future?
+                </p>
+                <p style="font-size: 1.5rem; color: #8b0000; font-weight: 700; margin-top: 30px;">
+                    The Samurai may not be dead yet.<br>
+                    But the clock is ticking. ⏰
+                </p>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>Created by <a href="https://skill-wanderer.com">Skill-Wanderer</a></p>
+            <p><a href="/blog/the-tanegashima-shift-why-ai-is-the-gunpowder-that-ends-the-era-of-the-code-samurai">← Read the full article</a></p>
+        </footer>
+    </div>
+</body>
+</html>
