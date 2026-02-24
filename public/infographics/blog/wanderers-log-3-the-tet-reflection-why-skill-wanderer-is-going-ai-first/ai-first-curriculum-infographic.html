@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tết Reflection: Why Skill-Wanderer Is Going AI-First - Infographic</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #faf8f5;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #dc2626 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🏮';
+            position: absolute;
+            font-size: 140px;
+            opacity: 0.08;
+            left: -10px;
+            top: -10px;
+        }
+
+        .header::after {
+            content: '🤖';
+            position: absolute;
+            font-size: 140px;
+            opacity: 0.08;
+            right: -10px;
+            bottom: -10px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            padding: 6px 24px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── Content ── */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* ── Section Titles ── */
+        .section-title {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title .icon {
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #3b82f6);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section {
+            margin-bottom: 60px;
+        }
+
+        /* ── Before / After Comparison ── */
+        .parallel-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .era-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid;
+        }
+
+        .era-card.before {
+            border-top-color: #ef4444;
+        }
+
+        .era-card.after {
+            border-top-color: #3b82f6;
+        }
+
+        .era-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .era-card.before h3 {
+            color: #ef4444;
+        }
+
+        .era-card.after h3 {
+            color: #3b82f6;
+        }
+
+        .era-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .era-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .era-card li:last-child {
+            border-bottom: none;
+        }
+
+        .arrow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #f59e0b;
+        }
+
+        /* ── Stats Grid ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* ── Insight Box ── */
+        .insight-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .insight-box::before {
+            content: '💡';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .insight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f59e0b;
+        }
+
+        .insight-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* ── Warning Box ── */
+        .warning-box {
+            background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .warning-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .warning-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* ── Opportunity / Pivot Box ── */
+        .opportunity-box {
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .opportunity-box::before {
+            content: '🚀';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .opportunity-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .opportunity-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* ── Three Pillars Grid ── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .pillar-card.pillar-1::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .pillar-card.pillar-2::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .pillar-card.pillar-3::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .pillar-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .pillar-card.pillar-1 .pillar-number { background: #3b82f6; }
+        .pillar-card.pillar-2 .pillar-number { background: #8b5cf6; }
+        .pillar-card.pillar-3 .pillar-number { background: #f59e0b; }
+
+        .pillar-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pillar-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .pillar-card p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .pillar-outcome {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pillar-card.pillar-1 .pillar-outcome { background: #eff6ff; color: #1e40af; }
+        .pillar-card.pillar-2 .pillar-outcome { background: #f5f3ff; color: #5b21b6; }
+        .pillar-card.pillar-3 .pillar-outcome { background: #fffbeb; color: #92400e; }
+
+        /* ── Analogy Box ── */
+        .analogy-grid {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .analogy-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .analogy-card .analogy-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .analogy-card h4 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .analogy-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .analogy-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #f59e0b;
+        }
+
+        /* ── Learning Path Flow ── */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .flow-step {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .flow-step .flow-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .flow-step h5 {
+            font-size: 0.95rem;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .flow-step p {
+            font-size: 0.82rem;
+            color: #666;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #3b82f6;
+            font-weight: 700;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.7rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .parallel-grid,
+            .analogy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-connector,
+            .analogy-arrow {
+                transform: rotate(90deg);
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-container {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-badge">Wanderer's Log #3</div>
+            <h1>The Tết Reflection:<br>Why Skill-Wanderer Is Going AI-First</h1>
+            <p>A Lunar New Year reflection on pivoting from manual-coding-first to AI-agent-first education — and why reading code before writing it is the future of tech learning.</p>
+        </div>
+
+        <div class="content">
+
+            <!-- The Catalyst: Key Stats -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">📊</span>
+                    The Catalyst: What Changed
+                </h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏮</div>
+                        <div class="stat-value">Tết 2026</div>
+                        <div class="stat-label">Holiday that sparked the reflection</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🧠</div>
+                        <div class="stat-value">Opus 4.5 → 4.6</div>
+                        <div class="stat-label">AI models that shifted everything</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏗️</div>
+                        <div class="stat-value">Architecture</div>
+                        <div class="stat-label">Where the human work now lives</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-value">Obsolete</div>
+                        <div class="stat-label">Status of the old developer curriculum</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Before vs After AI -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">⚡</span>
+                    The Shift: Before vs. After Opus 4.5
+                </h2>
+
+                <div class="parallel-grid">
+                    <div class="era-card before">
+                        <h3>❌ Before Opus 4.5</h3>
+                        <ul>
+                            <li>💣 AI code came with "hidden bombs"</li>
+                            <li>✍️ Significant manual coding still required</li>
+                            <li>🔍 AI was a helper, couldn't carry the load</li>
+                            <li>📝 Workflow: mostly writing code by hand</li>
+                            <li>🐌 Slow onboarding for new learners</li>
+                        </ul>
+                    </div>
+                    <div class="arrow-connector">→</div>
+                    <div class="era-card after">
+                        <h3>✅ After Opus 4.5 / 4.6</h3>
+                        <ul>
+                            <li>🏗️ Human work shifted to architecture</li>
+                            <li>🤖 AI handles almost all manual coding</li>
+                            <li>🧹 Human role: direct, verify, clean up</li>
+                            <li>📖 Workflow: reading & reviewing code</li>
+                            <li>🚀 Learners can be productive much faster</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Real-World Proof: Stripe -->
+            <div class="warning-box">
+                <h3>Reality Check: AI Still Can't Do Everything</h3>
+                <p>
+                    In a real-world collaboration on a <strong>Stripe payment integration</strong>,<br>
+                    the AI couldn't piece together the complex, security-sensitive feature end-to-end.<br><br>
+                    It left behind: incomplete integrations, logic gaps, and leftover mess.<br><br>
+                    But here's the nuance: <strong>no manual code from scratch was needed.</strong><br>
+                    What was needed: <strong>programming knowledge, syntax literacy, and architectural thinking.</strong>
+                </p>
+            </div>
+
+            <!-- Core Insight -->
+            <div class="insight-box">
+                <h3>The Lesson Learned</h3>
+                <p>
+                    <strong style="font-size: 1.3rem; color: #60a5fa;">AI agent coding first, manual coding second.</strong><br><br>
+                    <strong style="font-size: 1.3rem; color: #60a5fa;">Reading code first, writing code second.</strong><br><br>
+                    The order of learning matters more than we think.<br>
+                    You can always go back and learn the fundamentals<br>
+                    once you're already productive.
+                </p>
+            </div>
+
+            <!-- The Keyboard Analogy -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">💡</span>
+                    The Keyboard vs. Pen Analogy
+                </h2>
+
+                <div class="analogy-grid">
+                    <div class="analogy-card">
+                        <div class="analogy-icon">✏️</div>
+                        <h4>Old Way: Pen First</h4>
+                        <p>Teaching learners to write every line by hand before using AI tools — like insisting on handwriting before allowing a keyboard.</p>
+                    </div>
+                    <div class="analogy-arrow">→</div>
+                    <div class="analogy-card">
+                        <div class="analogy-icon">⌨️</div>
+                        <h4>New Way: Keyboard First</h4>
+                        <p>Start with AI tools to become productive fast. Visit "handwriting" later. Teaching the keyboard is faster and delivers more satisfaction.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Learning Path -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">🛤️</span>
+                    The New Learning Path
+                </h2>
+
+                <div class="flow-container">
+                    <div class="flow-step">
+                        <div class="flow-icon">🤖</div>
+                        <h5>Learn AI Agent</h5>
+                        <p>Master AI-assisted coding first</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">📖</div>
+                        <h5>Read Code</h5>
+                        <p>Understand & clean AI output</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🧹</div>
+                        <h5>Debug & Verify</h5>
+                        <p>Build code literacy</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🏗️</div>
+                        <h5>Architecture</h5>
+                        <p>Tackle higher-order problems</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">✍️</div>
+                        <h5>Manual Coding</h5>
+                        <p>Learn the fundamentals deeper</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Three Pillars of the Pivot -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">🎯</span>
+                    The Three Pillars of the AI-First Pivot
+                </h2>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card pillar-1">
+                        <div class="pillar-number">1</div>
+                        <div class="pillar-icon">🤖</div>
+                        <h4>AI Agent Coding First</h4>
+                        <p>Every learner knows how to use an AI agent for coding <strong>before</strong> they write a single line of code manually. The AI agent becomes their first tool, not an afterthought.</p>
+                        <div class="pillar-outcome">✅ Productive from Day 1</div>
+                    </div>
+
+                    <div class="pillar-card pillar-2">
+                        <div class="pillar-number">2</div>
+                        <div class="pillar-icon">🆓</div>
+                        <h4>Start with Free AI Models</h4>
+                        <p>Learners use lower-end or free models like <strong>GitHub Copilot Free</strong> during training. The limitations of a lower-end model are actually a <strong>feature</strong> for learning.</p>
+                        <div class="pillar-outcome">✅ Accessible to everyone</div>
+                    </div>
+
+                    <div class="pillar-card pillar-3">
+                        <div class="pillar-number">3</div>
+                        <div class="pillar-icon">🧩</div>
+                        <h4>Smart Assignment Strategy</h4>
+                        <p>Assignments pair learners with lower-end AI. The AI writes; the learner reads, cleans, and directs. Those who master a weak model become <strong>extraordinary</strong> with a strong one.</p>
+                        <div class="pillar-outcome">✅ Deep comprehension through imperfection</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Beautiful Payoff -->
+            <div class="opportunity-box">
+                <h3>The Beautiful Payoff</h3>
+                <p>
+                    A learner who can work effectively with a <strong>lower-end AI model</strong><br>
+                    will be <strong>extraordinarily effective</strong> with a high-end model like <strong>Claude Opus 4.6</strong>.<br><br>
+                    They'll have the <strong>code literacy</strong>, the <strong>debugging instincts</strong>,<br>
+                    and the <strong>architectural awareness</strong> to leverage the best tools to their fullest potential.<br><br>
+                    <em style="color: #bbf7d0;">Speed from AI + Depth from struggle = Unstoppable developer.</em>
+                </p>
+            </div>
+
+            <!-- Final Message -->
+            <section class="timeline-section" style="text-align: center; margin-bottom: 0;">
+                <h2 class="section-title">
+                    <span class="icon">🌅</span>
+                    The Tết Takeaway
+                </h2>
+
+                <div style="max-width: 800px; margin: 30px auto; text-align: left;">
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        <strong>For Educators:</strong> The world has changed. AI isn't coming — it's here. The most responsible thing we can do is prepare learners for the world as it is, not the world as it was.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        <strong>For Learners:</strong> Don't fear AI tools. Embrace them as your first instrument. The fundamentals don't disappear — they become more meaningful once you understand <em>why</em> they matter.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        <strong>For High Achievers:</strong> Sometimes stepping away from the keyboard is exactly what you need to figure out the most important thing to type next.
+                    </p>
+                </div>
+
+                <p style="font-size: 1.4rem; color: #1e40af; font-weight: 700; margin-top: 30px; line-height: 1.6;">
+                    The curriculum pivot begins now.<br>
+                    AI agent first. Reading first. Architecture first.<br>
+                    Manual coding? It can wait. 🚀
+                </p>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>Created by <a href="https://skill-wanderer.com">Skill-Wanderer</a></p>
+            <p><a href="/blog/wanderers-log-3-the-tet-reflection-why-skill-wanderer-is-going-ai-first">← Read the full article</a></p>
+        </footer>
+    </div>
+</body>
+</html>
