@@ -48,7 +48,19 @@ const jsonLd = {
   },  "author": {
     "@type": "Person",
     "name": author,
-    "url": Astro.site || "https://wanderings.skill-wanderer.com"
+    "url": "https://skill-wanderer.com/about",
+    "jobTitle": "Founder & Solution Architect",
+    "knowsAbout": ["Software Engineering", "Solution Architecture", "DevOps", "Kubernetes", "AI", "Full-Stack Development", "Project Management", "Agile", "Startup Consulting"],
+    "sameAs": [
+      "https://linkedin.com/in/quan-nguyen-skill-wanderer",
+      "https://github.com/skill-wanderer",
+      "https://skill-wanderer.com"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Skill-Wanderer",
+      "url": "https://skill-wanderer.com"
+    }
   },
   "publisher": {
     "@type": "Organization",
@@ -161,9 +173,7 @@ const jsonLd = {
     
     <!-- Additional head content from pages -->
     <slot name="head" />
-      <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <!-- DNS Prefetch for external domains -->
     
     <!-- DNS Prefetch for better performance -->
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />

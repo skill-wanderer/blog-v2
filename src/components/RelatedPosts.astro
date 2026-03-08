@@ -37,6 +37,8 @@ const relatedPosts = posts.filter(post => post.slug !== currentSlug).slice(0, 3)
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 width={400}
                 height={225}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           )}
