@@ -17,11 +17,9 @@ export default defineConfig({
     tailwind(), 
     mdx(),
     sitemap({
-      // Customize sitemap generation
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
-      // You can also add custom filters here if needed
       filter: (page) => !page.includes('/draft/')
     })
   ],
