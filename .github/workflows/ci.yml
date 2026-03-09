@@ -32,6 +32,10 @@ jobs:
           PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
           PUBLIC_FIREBASE_APP_ID: ${{ secrets.PUBLIC_FIREBASE_APP_ID }}
           PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.PUBLIC_FIREBASE_MEASUREMENT_ID }}
+          PUBLIC_PATHFINDER_API_URL: ${{ secrets.PUBLIC_PATHFINDER_API_URL }}
+          PUBLIC_PATHFINDER_DOMAINS: ${{ secrets.PUBLIC_PATHFINDER_DOMAINS }}
+          PUBLIC_PATHFINDER_SESSION_EXPIRY_MINUTES: ${{ secrets.PUBLIC_PATHFINDER_SESSION_EXPIRY_MINUTES }}
+          PUBLIC_PATHFINDER_SESSION_STORAGE: ${{ secrets.PUBLIC_PATHFINDER_SESSION_STORAGE }}
         run: npm run build
 
       - name: Test Docker build (single architecture)
@@ -44,6 +48,10 @@ jobs:
             --build-arg PUBLIC_FIREBASE_MESSAGING_SENDER_ID="${{ secrets.PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" \
             --build-arg PUBLIC_FIREBASE_APP_ID="${{ secrets.PUBLIC_FIREBASE_APP_ID }}" \
             --build-arg PUBLIC_FIREBASE_MEASUREMENT_ID="${{ secrets.PUBLIC_FIREBASE_MEASUREMENT_ID }}" \
+            --build-arg PUBLIC_PATHFINDER_API_URL="${{ secrets.PUBLIC_PATHFINDER_API_URL }}" \
+            --build-arg PUBLIC_PATHFINDER_DOMAINS="${{ secrets.PUBLIC_PATHFINDER_DOMAINS }}" \
+            --build-arg PUBLIC_PATHFINDER_SESSION_EXPIRY_MINUTES="${{ secrets.PUBLIC_PATHFINDER_SESSION_EXPIRY_MINUTES }}" \
+            --build-arg PUBLIC_PATHFINDER_SESSION_STORAGE="${{ secrets.PUBLIC_PATHFINDER_SESSION_STORAGE }}" \
             .
           echo "Docker build completed successfully"
 

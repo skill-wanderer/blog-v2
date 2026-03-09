@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Meet Nova — Your AI Story Weaver | Skill-Wanderer"
+  description="Meet Nova, the AI-powered Story Weaver chatbot on Skill-Wanderer. Nova helps you explore blog posts, discover stories, and navigate the wanderings with a storyteller's touch."
+  keywords="Nova, AI chatbot, Story Weaver, Skill-Wanderer, blog assistant, AI guide"
+  type="website"
+>
+  <section class="relative min-h-screen bg-gradient-to-br from-skill-wanderer-darkest via-skill-wanderer-secondary-dark to-skill-wanderer-card-dark overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-skill-wanderer-primary-orange opacity-10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-skill-wanderer-light-orange opacity-15 rounded-full blur-2xl animate-pulse"></div>
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="h-full w-full" style="background-image: linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative z-10">
+      <!-- Hero -->
+      <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <div class="inline-block mb-6">
+          <span class="px-4 py-2 bg-skill-wanderer-primary-orange text-white text-sm font-semibold rounded-full tracking-wide">
+            &#x2728; AI-POWERED GUIDE
+          </span>
+        </div>
+
+        <!-- Nova star icon -->
+        <div class="flex justify-center mb-6">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-skill-wanderer-primary-orange to-skill-wanderer-light-orange flex items-center justify-center shadow-lg shadow-orange-500/30 nova-icon-float">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="none">
+              <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/>
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          Meet <span class="text-skill-wanderer-primary-orange">Nova</span>
+        </h1>
+        <p class="text-lg md:text-xl text-skill-wanderer-light-orange font-medium mb-4">The Story Weaver</p>
+        <p class="text-base md:text-lg text-skill-wanderer-text-dark-secondary leading-relaxed max-w-2xl mx-auto">
+          Nova is your AI-powered companion on the Skill-Wanderer blog. Think of her as a storyteller who has read every wandering and is ready to guide you through the knowledge within.
+        </p>
+      </div>
+
+      <!-- What Nova Can Do -->
+      <div class="max-w-5xl mx-auto mb-16 md:mb-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-10">What Nova Can Do</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-xl p-6 hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-skill-wanderer-primary-orange/10 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Explore Content</h3>
+            <p class="text-skill-wanderer-text-dark-secondary text-sm leading-relaxed">
+              Ask about any topic covered in the blog. Nova searches across all posts and surfaces the most relevant stories and insights.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-xl p-6 hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-skill-wanderer-primary-orange/10 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Get Recommendations</h3>
+            <p class="text-skill-wanderer-text-dark-secondary text-sm leading-relaxed">
+              Not sure what to read next? Nova can recommend posts based on your interests — from Kubernetes and AI to home lab adventures.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-xl p-6 hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-skill-wanderer-primary-orange/10 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Have a Conversation</h3>
+            <p class="text-skill-wanderer-text-dark-secondary text-sm leading-relaxed">
+              Nova remembers context within your session. Ask follow-up questions, dig deeper into topics, and let the conversation flow naturally.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Use -->
+      <div class="max-w-3xl mx-auto mb-16 md:mb-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-10">How It Works</h2>
+        <div class="space-y-6">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-skill-wanderer-primary-orange flex items-center justify-center text-white font-bold text-sm">1</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">Click the floating quill button</h3>
+              <p class="text-skill-wanderer-text-dark-secondary text-sm">Look for the glowing orange quill button in the bottom-right corner of any page. That's Nova waiting to chat.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-skill-wanderer-primary-orange flex items-center justify-center text-white font-bold text-sm">2</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">Ask a question or pick a suggestion</h3>
+              <p class="text-skill-wanderer-text-dark-secondary text-sm">Type your question in the chat input, or tap one of the suggested prompts to get started quickly.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-skill-wanderer-primary-orange flex items-center justify-center text-white font-bold text-sm">3</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">Explore the response</h3>
+              <p class="text-skill-wanderer-text-dark-secondary text-sm">Nova responds with a narrative answer drawn from the blog's content. Look for "Discovered Tales" links to jump directly to the source posts.</p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-skill-wanderer-primary-orange flex items-center justify-center text-white font-bold text-sm">4</div>
+            <div>
+              <h3 class="text-white font-semibold mb-1">Keep the conversation going</h3>
+              <p class="text-skill-wanderer-text-dark-secondary text-sm">Ask follow-up questions to dive deeper. When you're ready for a fresh start, hit the reset button to begin a new chapter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Questions -->
+      <div class="max-w-3xl mx-auto mb-16 md:mb-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-10">Try Asking Nova</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;What stories live here?&rdquo;
+          </div>
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;Tell me about Skill-Wanderer&rdquo;
+          </div>
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;What can I learn about Kubernetes?&rdquo;
+          </div>
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;Recommend a read&rdquo;
+          </div>
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;What's the home data center series about?&rdquo;
+          </div>
+          <div class="bg-skill-wanderer-card-dark border border-dark rounded-lg px-4 py-3 text-skill-wanderer-text-dark-secondary text-sm hover:border-skill-wanderer-primary-orange/40 transition-colors">
+            &ldquo;Tell me about AI and learning&rdquo;
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <p class="text-skill-wanderer-text-dark-secondary mb-6">Nova is available on every page — look for the glowing quill in the bottom-right corner.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/" class="inline-block font-semibold py-3 px-8 rounded-lg transition-colors bg-skill-wanderer-primary-orange text-skill-wanderer-text-dark hover:bg-skill-wanderer-light-orange">
+            Back to Home
+          </a>
+          <a href="/blog" class="inline-block font-semibold py-3 px-8 rounded-lg transition-colors bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark-secondary hover:bg-skill-wanderer-card-dark hover:text-white">
+            Browse All Posts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes nova-icon-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .nova-icon-float {
+      animation: nova-icon-float 3s ease-in-out infinite;
+    }
+  </style>
+</BaseLayout>
