@@ -74,6 +74,11 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
   <!-- Error bar -->
   <div id="nova-error" class="nova-error" style="display:none"></div>
 
+  <!-- Privacy notice -->
+  <div class="nova-privacy-notice">
+    We may store and analyze anonymized conversations to improve the system. You can request deletion at any time. Please avoid sharing personal or sensitive information.
+  </div>
+
   <!-- Input bar -->
   <form id="nova-input-form" class="nova-input-bar" autocomplete="off">
     <input id="nova-input" type="text" class="nova-input" placeholder="What story shall we explore…" maxlength="2000" />
@@ -466,6 +471,19 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
     color: #ff6b6b;
     font-size: 0.75rem;
     padding: 0.5rem 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Privacy notice */
+  .nova-privacy-notice {
+    padding: 0.375rem 0.75rem;
+    background: rgba(13, 17, 23, 0.95);
+    border-top: 1px solid rgba(255, 217, 61, 0.08);
+    font-size: 0.625rem;
+    color: rgba(180, 180, 180, 0.7);
+    text-align: center;
+    line-height: 1.4;
     position: relative;
     z-index: 1;
   }
