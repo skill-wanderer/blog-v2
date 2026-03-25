@@ -43,8 +43,8 @@ export async function GET(context) {
   const sortedPosts = posts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
   return rss({
-    title: 'Skill-Wanderer - Tech Journey & Insights',
-    description: 'Join me on my learning journey as I share insights from exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.',
+    title: 'Skill-Wanderer Guild - Tech Insights',
+    description: 'Insights from the Skill-Wanderer tech guild — a collective exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.',
     site: context.site,
     items: sortedPosts.map((post) => {
       // Support both single category and categories array

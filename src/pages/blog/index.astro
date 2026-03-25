@@ -23,14 +23,14 @@ const uniqueCategories = [...new Set(
 const categoryKeywords = uniqueCategories.map(cat => getCategoryDisplayName(cat)).join(', ');
 
 // Dynamic description based on available content
-const dynamicDescription = `Browse all ${sortedPosts.length} blog posts covering ${categoryKeywords}. Join me on my learning journey through the ever-evolving tech landscape.`;
+const dynamicDescription = `Browse all ${sortedPosts.length} blog posts covering ${categoryKeywords}. Insights from the Skill-Wanderer tech guild navigating the ever-evolving tech landscape.`;
 
 // Enhanced keywords including actual categories
 const enhancedKeywords = `tech blog posts, software development articles, programming tutorials, ${categoryKeywords.toLowerCase()}, home lab guides, kubernetes tutorials, AI insights, technology learning, coding journey`;
 ---
 
 <BaseLayout 
-    title="All Blog Posts - Skill-Wanderer | Tech Journey & Insights"
+    title="All Blog Posts - Skill-Wanderer Guild | Tech Insights"
     description={dynamicDescription}
     keywords={enhancedKeywords}
     type="website"
@@ -224,7 +224,7 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
         }
 
         function updatePageMetadata(visibleCount: number) {
-            const baseTitle = 'All Blog Posts - Skill-Wanderer | Tech Journey & Insights';
+            const baseTitle = 'All Blog Posts - Skill-Wanderer Guild | Tech Insights';
             const baseDescription = 'Browse all blog posts covering software development, home labs, Kubernetes, AI, and various technology topics.';
             
             let newTitle = baseTitle;
@@ -232,7 +232,7 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
             
             if (currentCategory !== 'all') {
                 const categoryDisplayName = getCategoryDisplayName(currentCategory);
-                newTitle = `${categoryDisplayName} Posts - Skill-Wanderer | Tech Journey & Insights`;
+                newTitle = `${categoryDisplayName} Posts - Skill-Wanderer Guild | Tech Insights`;
                 newDescription = `Browse ${visibleCount} ${categoryDisplayName.toLowerCase()} posts covering software development, technology insights, and more.`;
             } else if (currentSearch) {
                 newTitle = `Search Results for "${currentSearch}" - Skill-Wanderer`;

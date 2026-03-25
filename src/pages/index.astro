@@ -26,7 +26,7 @@ const latestPosts = sortedPosts.slice(0, 3);
 // Generate dynamic metadata based on actual content
 const totalPosts = sortedPosts.length;
 const recentPostsText = latestPosts.length > 0 ? `Latest posts include: ${latestPosts.map(p => p.data.title).slice(0, 2).join(', ')}.` : '';
-const dynamicHomeDescription = `Join me on my learning journey as I share insights from exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development. ${totalPosts} posts and counting! ${recentPostsText}`;
+const dynamicHomeDescription = `Skill-Wanderer is a tech guild sharing insights from exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development. ${totalPosts} posts and counting! ${recentPostsText}`;
 
 // Get unique categories for keywords
 const homeUniqueCategories = [...new Set(
@@ -39,7 +39,7 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
 ---
 
 <BaseLayout 
-  title="Skill-Wanderer - Insights from My Tech Journey"
+  title="Skill-Wanderer - Insights from Our Tech Guild"
   description={dynamicHomeDescription}
   keywords={enhancedHomeKeywords}
   type="website"
@@ -96,25 +96,25 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
             <!-- Badge -->
             <div class="inline-block mb-6">
                 <span class="px-4 py-2 bg-skill-wanderer-primary-orange text-white text-sm font-semibold rounded-full tracking-wide">
-                    ⚡ WELCOME TO THE JOURNEY
+                    ⚡ WELCOME TO THE GUILD
                 </span>
             </div>
             
             <!-- Main heading -->
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-skill-wanderer-text-dark leading-tight">
-                The <span class="text-skill-wanderer-primary-orange">Skill-Wanderer</span> Journey
+                The <span class="text-skill-wanderer-primary-orange">Skill-Wanderer</span> Guild
             </h1>
             
             <!-- Subtitle -->
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 max-w-4xl mx-auto text-skill-wanderer-text-dark-secondary leading-relaxed">
-                Insights from My <span class="text-skill-wanderer-light-orange">Tech Journey</span>
+                Insights from Our <span class="text-skill-wanderer-light-orange">Tech Guild</span>
             </h2>
             
             <!-- Description -->
             <p class="text-lg md:text-xl max-w-3xl mx-auto text-skill-wanderer-text-dark-muted leading-relaxed mb-12">
-                Join me on my learning journey as I share insights from exploring various tech
+                A collective of tech enthusiasts sharing insights from exploring various tech
                 domains, building projects, and navigating the ever-evolving landscape of software
-                development.
+                development together.
             </p>
             
             <!-- CTA Buttons -->
@@ -131,7 +131,7 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
             <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
                 <div class="text-center">
                     <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">{totalPosts}+</div>
-                    <div class="text-skill-wanderer-text-dark-secondary">Posts Written</div>
+                    <div class="text-skill-wanderer-text-dark-secondary">Posts Published</div>
                 </div>
                 <div class="text-center">
                     <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">{homeUniqueCategories.length}+</div>
@@ -249,9 +249,9 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
     <!-- Join the Journey Section -->
     <!-- <section class="py-16 md:py-24 bg-skill-wanderer-primary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-skill-wanderer-text-dark">Join the Journey</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-skill-wanderer-text-dark">Join the Guild</h2>
             <p class="text-lg mb-8 max-w-xl mx-auto text-skill-wanderer-text-dark-secondary">
-                Get weekly insights on development, architecture, and the art of continuous learning.
+                Get weekly insights from our guild on development, architecture, and the art of continuous learning.
             </p>
             <form class="max-w-md mx-auto flex gap-3">
                 <input type="email" placeholder="Enter your email" 

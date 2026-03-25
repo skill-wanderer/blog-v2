@@ -18,7 +18,7 @@ export interface Props {
 
 const { 
   title, 
-  description = "Insights from My Tech Journey - Join me on my learning journey exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.",
+  description = "Insights from the Skill-Wanderer Tech Guild - A collective of tech enthusiasts exploring various tech domains, building projects, and navigating the ever-evolving landscape of software development.",
   image = "/images/general/skill-wanderer-og-default.jpg", // Default OG image
   keywords = "tech blog, software development, programming, web development, technology insights, coding tutorials",
   author = "Skill-Wanderer",
@@ -47,21 +47,15 @@ const jsonLd = {
     "width": 1200,
     "height": 630
   },  "author": {
-    "@type": "Person",
-    "name": author,
-    "url": "https://skill-wanderer.com/about",
-    "jobTitle": "Founder & Solution Architect",
+    "@type": "Organization",
+    "name": "Skill-Wanderer",
+    "url": "https://skill-wanderer.com",
     "knowsAbout": ["Software Engineering", "Solution Architecture", "DevOps", "Kubernetes", "AI", "Full-Stack Development", "Project Management", "Agile", "Startup Consulting"],
     "sameAs": [
-      "https://linkedin.com/in/quan-nguyen-skill-wanderer",
+      "https://linkedin.com/company/skill-wanderer",
       "https://github.com/skill-wanderer",
       "https://skill-wanderer.com"
-    ],
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Skill-Wanderer",
-      "url": "https://skill-wanderer.com"
-    }
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -116,7 +110,7 @@ const jsonLd = {
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Skill-Wanderer RSS Feed" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Skill-Wanderer Guild RSS Feed" href="/rss.xml" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content={type} />
