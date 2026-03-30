@@ -7,36 +7,50 @@
     role="dialog"
     aria-label="Cookie notice"
     aria-live="polite"
-    class="fixed bottom-0 left-0 right-0 z-50 bg-skill-wanderer-darkest border-t border-skill-wanderer-primary-orange/30 shadow-lg transform transition-transform duration-300"
+    class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 transform transition-all duration-500 ease-out"
     style="display: none;"
 >
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <!-- Icon + Text -->
-            <div class="flex items-start gap-3 flex-1">
-                <svg class="w-5 h-5 text-skill-wanderer-primary-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <p class="text-sm text-skill-wanderer-text-dark-secondary">
-                    This site uses <strong class="text-skill-wanderer-text-dark-primary font-semibold">essential cookies only</strong> — no tracking or advertising cookies.
-                    <a
-                        href="https://skill-wanderer.com/cookie-policy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-skill-wanderer-primary-orange hover:text-skill-wanderer-light-orange underline underline-offset-2 ml-1 whitespace-nowrap"
-                    >
-                        Cookie Policy
-                    </a>
-                </p>
+    <div class="relative bg-skill-wanderer-card-dark/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+        <!-- Accent top bar -->
+        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-skill-wanderer-primary-orange via-skill-wanderer-light-orange to-skill-wanderer-primary-orange"></div>
+
+        <div class="px-5 pt-5 pb-4">
+            <!-- Header with cookie icon -->
+            <div class="flex items-center gap-2.5 mb-3">
+                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-skill-wanderer-primary-orange/15">
+                    <svg class="w-4 h-4 text-skill-wanderer-primary-orange" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10c0-.34-.02-.675-.05-1.005a1 1 0 00-.97-.853 1.5 1.5 0 01-1.36-2.132 1 1 0 00-.4-1.2A3.5 3.5 0 0115.78 3.1a1 1 0 00-.87-.66A10.08 10.08 0 0012 2zm-1 6a1 1 0 112 0 1 1 0 01-2 0zm-3 4a1 1 0 112 0 1 1 0 01-2 0zm4 4a1 1 0 112 0 1 1 0 01-2 0zm4-3a1 1 0 110-2 1 1 0 010 2z"/>
+                    </svg>
+                </div>
+                <span class="text-sm font-semibold text-skill-wanderer-text-dark tracking-wide">Cookie Notice</span>
             </div>
-            <!-- Action button -->
-            <button
-                id="cookie-accept"
-                type="button"
-                class="flex-shrink-0 bg-skill-wanderer-primary-orange hover:bg-skill-wanderer-light-orange text-skill-wanderer-text-dark text-sm font-semibold px-5 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-skill-wanderer-primary-orange focus:ring-offset-2 focus:ring-offset-skill-wanderer-darkest"
-            >
-                Got it
-            </button>
+
+            <!-- Body text -->
+            <p class="text-sm leading-relaxed text-skill-wanderer-text-dark-secondary mb-4">
+                We only use <strong class="text-skill-wanderer-text-dark font-medium">essential cookies</strong> to keep the site running — no tracking, no ads, no third-party analytics.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between gap-3">
+                <a
+                    href="https://skill-wanderer.com/cookie-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-skill-wanderer-text-dark-muted hover:text-skill-wanderer-primary-orange transition-colors duration-200 underline underline-offset-2 decoration-skill-wanderer-text-dark-muted/40 hover:decoration-skill-wanderer-primary-orange/60"
+                >
+                    Learn more
+                </a>
+                <button
+                    id="cookie-accept"
+                    type="button"
+                    class="group flex items-center gap-1.5 bg-skill-wanderer-primary-orange hover:bg-skill-wanderer-light-orange text-white text-sm font-semibold pl-4 pr-3.5 py-2 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-skill-wanderer-primary-orange/25 focus:outline-none focus:ring-2 focus:ring-skill-wanderer-primary-orange/50 focus:ring-offset-2 focus:ring-offset-skill-wanderer-card-dark"
+                >
+                    Got it
+                    <svg class="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -48,18 +62,21 @@
 
     function hideBanner() {
         if (banner) {
-            banner.style.transform = 'translateY(100%)';
-            setTimeout(() => { banner.style.display = 'none'; }, 300);
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(1rem) scale(0.97)';
+            setTimeout(() => { banner.style.display = 'none'; }, 500);
         }
     }
 
     if (banner && !localStorage.getItem(STORAGE_KEY)) {
         banner.style.display = 'block';
-        // Small delay so the slide-in transition is visible
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(1rem) scale(0.97)';
+        // Small delay so the entrance animation is visible
         requestAnimationFrame(() => {
-            banner.style.transform = 'translateY(100%)';
             requestAnimationFrame(() => {
-                banner.style.transform = 'translateY(0)';
+                banner.style.opacity = '1';
+                banner.style.transform = 'translateY(0) scale(1)';
             });
         });
     }
