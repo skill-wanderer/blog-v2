@@ -1,0 +1,71 @@
+---
+// Cookie consent banner — essential cookies only notice
+---
+
+<div
+    id="cookie-banner"
+    role="dialog"
+    aria-label="Cookie notice"
+    aria-live="polite"
+    class="fixed bottom-0 left-0 right-0 z-50 bg-skill-wanderer-darkest border-t border-skill-wanderer-primary-orange/30 shadow-lg transform transition-transform duration-300"
+    style="display: none;"
+>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <!-- Icon + Text -->
+            <div class="flex items-start gap-3 flex-1">
+                <svg class="w-5 h-5 text-skill-wanderer-primary-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-sm text-skill-wanderer-text-dark-secondary">
+                    This site uses <strong class="text-skill-wanderer-text-dark-primary font-semibold">essential cookies only</strong> — no tracking or advertising cookies.
+                    <a
+                        href="https://skill-wanderer.com/cookie-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-skill-wanderer-primary-orange hover:text-skill-wanderer-light-orange underline underline-offset-2 ml-1 whitespace-nowrap"
+                    >
+                        Cookie Policy
+                    </a>
+                </p>
+            </div>
+            <!-- Action button -->
+            <button
+                id="cookie-accept"
+                type="button"
+                class="flex-shrink-0 bg-skill-wanderer-primary-orange hover:bg-skill-wanderer-light-orange text-skill-wanderer-text-dark text-sm font-semibold px-5 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-skill-wanderer-primary-orange focus:ring-offset-2 focus:ring-offset-skill-wanderer-darkest"
+            >
+                Got it
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const STORAGE_KEY = 'sw-cookie-notice-dismissed';
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+
+    function hideBanner() {
+        if (banner) {
+            banner.style.transform = 'translateY(100%)';
+            setTimeout(() => { banner.style.display = 'none'; }, 300);
+        }
+    }
+
+    if (banner && !localStorage.getItem(STORAGE_KEY)) {
+        banner.style.display = 'block';
+        // Small delay so the slide-in transition is visible
+        requestAnimationFrame(() => {
+            banner.style.transform = 'translateY(100%)';
+            requestAnimationFrame(() => {
+                banner.style.transform = 'translateY(0)';
+            });
+        });
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(STORAGE_KEY, '1');
+        hideBanner();
+    });
+</script>
