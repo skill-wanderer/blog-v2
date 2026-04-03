@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import novaImage from '../../public/images/nova.webp';
+import { Image } from 'astro:assets';
 ---
 
 <BaseLayout
@@ -34,6 +36,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <svg width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="none">
               <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/>
             </svg>
+          </div>
+        </div>
+
+        <!-- Nova image -->
+        <div class="flex justify-center mb-8">
+          <div class="relative group">
+            <Image
+              src={novaImage}
+              alt="Nova AI Story Weaver"
+              width={700}
+              height={700}
+              class="rounded-full object-cover shadow-2xl shadow-orange-500/20 border border-skill-wanderer-primary-orange/20 transition-transform duration-500 group-hover:scale-105"
+              format="webp"
+              loading="eager"
+            />
+            
+            <!-- Glow effect -->
+            <div class="absolute inset-0 rounded-full bg-skill-wanderer-primary-orange opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
           </div>
         </div>
 
@@ -175,6 +195,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
     .nova-icon-float {
       animation: nova-icon-float 3s ease-in-out infinite;
+    }.nova-image-float {
+      animation: novaFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes novaFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </BaseLayout>
