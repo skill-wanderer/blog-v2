@@ -1,6 +1,7 @@
 ---
 // NovaChat.astro — Nova the Story Weaver chatbot
 // Storyteller personality for wanderings.skill-wanderer.com
+// src/components/NovaChat.astro
 const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
 ---
 
@@ -56,11 +57,11 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
   <div id="nova-messages" class="nova-messages">
     <!-- Welcome screen (shown when empty) -->
     <div id="nova-welcome" class="nova-welcome">
-      <svg class="nova-welcome-icon" width="48" height="48" viewBox="0 0 24 24" fill="#FF8C42" stroke="none">
-        <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/>
-        <circle cx="19" cy="5" r="1.2" fill="#FFD93D" opacity="0.7"/>
-        <circle cx="5" cy="3" r="0.8" fill="#FFD93D" opacity="0.5"/>
-      </svg>
+      <img 
+        src="/images/nova.webp" 
+        alt="Nova" 
+        class="nova-welcome-avatar"
+      />
       <div class="nova-welcome-title">Welcome, Wanderer!</div>
       <div class="nova-welcome-desc">Every star has a story, and this one begins with your question. Ask me anything about the wanderings&hellip;</div>
       <div id="nova-suggestions" class="nova-suggestions">
@@ -290,9 +291,12 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
     color: #b0b0b0;
     flex: 1;
   }
-  .nova-welcome-icon {
-    animation: nova-orbit-bob 5s ease-in-out infinite;
-    margin-bottom: 0.75rem;
+  .nova-welcome-avatar {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 9999px;
+    margin-bottom: 12px;
   }
   .nova-welcome-title {
     font-size: 0.875rem;
@@ -353,6 +357,13 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
     align-items: center;
     justify-content: center;
     margin-top: 2px;
+    overflow: hidden;
+  }
+  .nova-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9999px;
   }
 
   /* Bubbles */
@@ -596,6 +607,15 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
 </style>
 
 <script>
+  const NOVA_AVATAR_HTML = `
+    <img 
+      src="/images/nova.webp" 
+      alt=""
+      aria-hidden="true"
+      class="nova-avatar-img"
+      loading="lazy"
+    />
+  `;
   document.addEventListener('astro:page-load', initNova);
   document.addEventListener('DOMContentLoaded', initNova);
 
@@ -731,7 +751,7 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
           // Avatar
           const avatar = document.createElement('div');
           avatar.className = 'nova-avatar';
-          avatar.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#FF8C42" stroke="none"><path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/></svg>';
+          avatar.innerHTML = NOVA_AVATAR_HTML;
           row.appendChild(avatar);
         }
 
@@ -767,7 +787,7 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
       row.className = 'nova-msg nova-msg-assistant nova-typing-row';
       const avatar = document.createElement('div');
       avatar.className = 'nova-avatar';
-      avatar.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#FF8C42" stroke="none"><path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/></svg>';
+      avatar.innerHTML = NOVA_AVATAR_HTML;
       row.appendChild(avatar);
       const bubble = document.createElement('div');
       bubble.className = 'nova-bubble';
@@ -791,7 +811,7 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
 
         const avatar = document.createElement('div');
         avatar.className = 'nova-avatar';
-        avatar.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#FF8C42" stroke="none"><path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/></svg>';
+        avatar.innerHTML = NOVA_AVATAR_HTML;
         row.appendChild(avatar);
 
         const bubble = document.createElement('div');
