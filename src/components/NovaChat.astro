@@ -174,7 +174,6 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
   }
   .nova-star:nth-child(odd) { animation-duration: 3s; }
   .nova-star:nth-child(3n) { animation-duration: 5s; width: 1px; height: 1px; }
-  .nova-star:nth-child(n+21) { display: none; }
 
   /* Header */
   .nova-header {
@@ -655,7 +654,7 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
 
     // ─── Starfield ───
     if (starsEl) {
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < 20; i++) {
         const star = document.createElement('span');
         star.className = 'nova-star';
         star.style.left = Math.random() * 100 + '%';
