@@ -456,4 +456,4 @@ This project is open source and available under the [Apache License](LICENSE).
 
 ---
 
-*Built with ❤️ using Astro and a passion for sharing knowledge*
+*Built with ❤️ using Astro and a passion for sharing knowledge *
