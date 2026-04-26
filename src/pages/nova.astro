@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const novaImage = '/images/nova.webp';
 ---
 
 <BaseLayout
@@ -34,6 +35,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <svg width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="none">
               <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.27 7.18 20l1.64-6.91L3.82 9l6.09-.74z"/>
             </svg>
+          </div>
+        </div>
+
+        <!-- Nova image -->
+        <div class="flex justify-center mb-8">
+          <div class="relative group w-48 h-48">
+            <!-- Radial glow — behind avatar, non-interactive -->
+            <div class="absolute -inset-6 rounded-full bg-skill-wanderer-primary-orange opacity-15 blur-3xl group-hover:opacity-25 transition-opacity z-0 pointer-events-none"></div>
+            <!-- Gradient ring acts as border; avatar sits inside -->
+            <div class="relative z-10 w-full h-full rounded-full p-0.5 bg-gradient-to-br from-skill-wanderer-primary-orange via-skill-wanderer-light-orange to-yellow-400 shadow-2xl shadow-orange-500/30 transition-transform duration-500 group-hover:scale-105">
+              <img
+                src={novaImage}
+                alt="Nova AI Story Weaver"
+                class="w-full h-full rounded-full object-cover"
+                loading="eager"
+                width="190"
+                height="190"
+              />
+            </div>
           </div>
         </div>
 
@@ -170,8 +190,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <style>
     @keyframes nova-icon-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
     }
     .nova-icon-float {
       animation: nova-icon-float 3s ease-in-out infinite;
