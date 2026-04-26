@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From White Rice to Websites: How Technology Turns Elite Services Into Everyday Tools - Infographic</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #3d2f1f 0%, #5a4a35 50%, #6b5a3e 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #faf6ee;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a3826 0%, #6b5638 50%, #8b6f3e 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🍚';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            left: -20px;
+            top: -20px;
+        }
+
+        .header::after {
+            content: '💻';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            right: -20px;
+            bottom: -20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .timeline-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #3d2f1f;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title .icon {
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b6f3e, #d4af37);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* The Pattern Grid */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .pattern-card {
+            background: white;
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #8b6f3e;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pattern-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pattern-card h4 {
+            font-size: 1.1rem;
+            color: #3d2f1f;
+            margin-bottom: 8px;
+        }
+
+        .pattern-card .from {
+            font-size: 0.85rem;
+            color: #8b6f3e;
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .pattern-card .to {
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        /* Parallel Grid (Old vs New) */
+        .parallel-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .era-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid;
+        }
+
+        .era-card.old {
+            border-top-color: #8b6f3e;
+        }
+
+        .era-card.new {
+            border-top-color: #2d6b3f;
+        }
+
+        .era-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .era-card.old h3 {
+            color: #8b6f3e;
+        }
+
+        .era-card.new h3 {
+            color: #2d6b3f;
+        }
+
+        .era-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .era-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .era-card li:last-child {
+            border-bottom: none;
+        }
+
+        .arrow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #d4af37;
+        }
+
+        /* Key Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #3d2f1f 0%, #5a4a35 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .insight-box::before {
+            content: '💡';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .insight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .insight-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Quote Highlight */
+        .quote-highlight {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #d4af37;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        /* Tanegashima Callback Box */
+        .callback-box {
+            background: linear-gradient(135deg, #4a2820 0%, #6b3a2c 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .callback-box::before {
+            content: '🗡️';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .callback-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .callback-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .callback-box a {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        /* Pilot Box */
+        .pilot-box {
+            background: linear-gradient(135deg, #2d6b3f 0%, #3a8a52 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .pilot-box::before {
+            content: '🌱';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .pilot-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffe9a8;
+        }
+
+        .pilot-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Pilot Cards */
+        .pilot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .pilot-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #2d6b3f;
+        }
+
+        .pilot-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pilot-card h4 {
+            font-size: 1.15rem;
+            color: #3d2f1f;
+            margin-bottom: 10px;
+        }
+
+        .pilot-card p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8b6f3e;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #8b6f3e 0%, #b08850 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #fff8e1;
+        }
+
+        .cta-box p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 15px;
+        }
+
+        .cta-box .small {
+            font-style: italic;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        .footer {
+            background: #3d2f1f;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.85;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .hero-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 40px 30px 20px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .parallel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-connector {
+                transform: rotate(90deg);
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <header class="header">
+            <h1>🍚 From White Rice to Websites 💻</h1>
+            <p>How Technology Turns Elite Services Into Everyday Tools</p>
+        </header>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="/images/blog/from-white-rice-to-websites-how-technology-turns-elite-services-into-everyday-tools/hero.jpeg" alt="From White Rice to Websites — everyday luxuries that used to be rare">
+            <div class="hero-image-caption">White rice did not stop being valuable. It stopped being scarce.</div>
+        </div>
+
+        <div class="content">
+            <!-- The Pattern -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">📜</span>
+                    The Pattern Repeats
+                    <span class="icon">⚙️</span>
+                </h2>
+
+                <p style="text-align: center; color: #555; max-width: 800px; margin: 0 auto 30px; font-size: 1.05rem; line-height: 1.6;">
+                    Across centuries, the same shape keeps appearing: something the elite paid dearly for becomes something ordinary people can use without ceremony.
+                </p>
+
+                <div class="pattern-grid">
+                    <div class="pattern-card">
+                        <div class="pattern-icon">🍚</div>
+                        <h4>White Rice</h4>
+                        <div class="from">Court tables</div>
+                        <div class="to">Cheapest shelf staple</div>
+                    </div>
+                    <div class="pattern-card">
+                        <div class="pattern-icon">📖</div>
+                        <h4>Books</h4>
+                        <div class="from">Cost of a house</div>
+                        <div class="to">Free at the library</div>
+                    </div>
+                    <div class="pattern-card">
+                        <div class="pattern-icon">📷</div>
+                        <h4>Photography</h4>
+                        <div class="from">Weeks with a painter</div>
+                        <div class="to">A phone in every pocket</div>
+                    </div>
+                    <div class="pattern-card">
+                        <div class="pattern-icon">📰</div>
+                        <h4>Publishing</h4>
+                        <div class="from">Press, distribution, staff</div>
+                        <div class="to">Anyone with a phone</div>
+                    </div>
+                    <div class="pattern-card">
+                        <div class="pattern-icon">🎨</div>
+                        <h4>Design Tools</h4>
+                        <div class="from">Guild typesetters</div>
+                        <div class="to">Canva in 20 minutes</div>
+                    </div>
+                    <div class="pattern-card">
+                        <div class="pattern-icon">🌐</div>
+                        <h4>Websites</h4>
+                        <div class="from">Multi-week project</div>
+                        <div class="to"><strong>Next?</strong></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tanegashima Callback -->
+            <div class="callback-box">
+                <h3>The Sequel to The Tanegashima Shift</h3>
+                <p>
+                    The <a href="/blog/the-tanegashima-shift-the-tragedy-and-the-ascension-of-the-samurai-coder">Tanegashima essay</a>
+                    was about <em>the practitioner</em> — what AI does to the developer's craft and identity.<br><br>
+                    This piece is about <em>the market</em> — what AI does to the price, accessibility,<br>
+                    and social meaning of the things developers build.<br><br>
+                    <strong>AI does not remove the need for engineering judgment.</strong><br>
+                    It changes who can build, how fast, and what becomes economically possible.
+                </p>
+            </div>
+
+            <!-- What AI Changes vs What It Doesn't -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">⚖️</span>
+                    What AI Changes — and What It Does Not
+                </h2>
+
+                <div class="parallel-grid">
+                    <div class="era-card old">
+                        <h3>⚡ What It Changes</h3>
+                        <ul>
+                            <li>⏱️ <span><strong>Production time</strong> on simple components drops sharply</span></li>
+                            <li>📝 <span><strong>First drafts</strong> become cheap to throw away and redo</span></li>
+                            <li>👤 <span><strong>Small operators</strong> can take on team-shaped work</span></li>
+                            <li>💰 <span><strong>Baseline cost</strong> of a basic site falls meaningfully</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="arrow-connector">⟷</div>
+
+                    <div class="era-card new">
+                        <h3>🛡️ What It Does Not</h3>
+                        <ul>
+                            <li>🧭 <span><strong>What to build</strong> and <strong>why</strong> still need a human</span></li>
+                            <li>🏛️ <span><strong>Architecture</strong> that survives the second feature</span></li>
+                            <li>🚀 <span><strong>Deployment</strong>, domains, email, analytics</span></li>
+                            <li>🔧 <span><strong>Maintenance</strong> after launch — patches, content, browser quirks</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h3>The Distinction That Matters</h3>
+                    <p>
+                        The <strong>craft</strong> is not gone.<br>
+                        The <strong>production cost of the baseline</strong> has dropped.<br><br>
+                        Conflating those two is how both hype and despair get manufactured.
+                    </p>
+                </div>
+            </section>
+
+            <!-- The Old Model -->
+            <div class="callback-box" style="background: linear-gradient(135deg, #4a3826 0%, #6b5638 100%);">
+                <h3>The Old Model Was Not Wrong</h3>
+                <p>
+                    Hiring a freelancer or agency for a website used to cost a meaningful sum<br>
+                    because the <strong>production cost</strong> was a meaningful sum.<br><br>
+                    Design, frontend, backend, hosting, deployment, security, accessibility, SEO, maintenance —<br>
+                    all of it was labor-intensive and earned through years of practice. <strong>That was a fair trade.</strong><br><br>
+                    <em>The old model was not wrong. It was shaped by the cost structure of its time.</em>
+                </p>
+            </div>
+
+            <!-- Who Falls Through the Gap -->
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">🔍</span>
+                    Who the Old Model Did Not Quite Fit
+                </h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">✍️</div>
+                        <div class="stat-value">Writers</div>
+                        <div class="stat-label">Who want a clean home for their work</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎓</div>
+                        <div class="stat-value">Job Seekers</div>
+                        <div class="stat-label">Who need more than a LinkedIn URL</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛠️</div>
+                        <div class="stat-value">Small Operators</div>
+                        <div class="stat-label">Coaches, translators, craftspeople</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚪</div>
+                        <div class="stat-value">Quietly</div>
+                        <div class="stat-label">Decided they could not afford to want one</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skill-Wanderer Pilot -->
+            <div class="pilot-box">
+                <h3>The Skill-Wanderer Pilot</h3>
+                <p>
+                    A quarterly-paid website model for <strong>writers</strong> and <strong>job seekers</strong>.<br>
+                    First <strong>10 in each segment</strong> as early partners.<br><br>
+                    Client work funds free education and mentorship.<br>
+                    A guild-shaped partnership rather than a one-shot hand-off.
+                </p>
+            </div>
+
+            <section class="timeline-section">
+                <h2 class="section-title">
+                    <span class="icon">🤝</span>
+                    What Pilot Partners Get
+                </h2>
+
+                <div class="pilot-grid">
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">🏠</div>
+                        <h4>A Real Owned Site</h4>
+                        <p>An indexable website you actually own — not a hosted profile someone else controls.</p>
+                    </div>
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">🔓</div>
+                        <h4>No Vendor Lock-in</h4>
+                        <p>Viewable code. If the partnership stops fitting, you leave with clarity — not trapped inside a black box.</p>
+                    </div>
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">📅</div>
+                        <h4>Quarterly Cadence</h4>
+                        <p>An ongoing working relationship so the site grows with the person behind it, not a hand-off and disappear.</p>
+                    </div>
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">🛠️</div>
+                        <h4>Ongoing Care</h4>
+                        <p>No stuck copyright years, no dead forms, no aging plugins, no missing developer. The site stays alive.</p>
+                    </div>
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">🗣️</div>
+                        <h4>Direct Input</h4>
+                        <p>Pilot partners help shape the model itself. Their honest signal is what we cannot buy elsewhere.</p>
+                    </div>
+                    <div class="pilot-card">
+                        <div class="pilot-card-icon">💗</div>
+                        <h4>Accessible Pricing</h4>
+                        <p>Intentionally accessible during the pilot — not because the work has no value, but because the point is to lower the barrier.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ethical Note -->
+            <div class="insight-box">
+                <h3>This Is Not About Devaluing Software Work</h3>
+                <p>
+                    Better tools, paired with a mission-driven model,<br>
+                    can make a <strong>useful baseline</strong> of digital presence accessible<br>
+                    to people for whom the old baseline was effectively closed.<br><br>
+                    The craft above that baseline is not going anywhere.<br>
+                    <em>If anything, it becomes easier to see — because the floor is no longer the ceiling.</em>
+                </p>
+            </div>
+
+            <!-- Final Quote -->
+            <section class="timeline-section" style="text-align: center; margin-bottom: 0;">
+                <h2 class="section-title">
+                    <span class="icon">🌾</span>
+                    History Rhymes
+                </h2>
+
+                <div style="max-width: 800px; margin: 30px auto; text-align: left;">
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 15px;">
+                        White rice did not destroy rice farming. <em>It changed who got to eat well on a Tuesday.</em>
+                    </p>
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 15px;">
+                        Printing did not destroy authorship. <em>It changed who got to read.</em>
+                    </p>
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 15px;">
+                        Photography did not destroy painting. <em>It changed who got to keep a picture of their grandmother.</em>
+                    </p>
+                    <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 15px;">
+                        Desktop publishing did not destroy magazines. <em>It changed who got to start one.</em>
+                    </p>
+                </div>
+
+                <p style="font-size: 1.3rem; color: #8b6f3e; font-weight: 700; margin-top: 30px; line-height: 1.6;">
+                    AI-assisted development will not destroy software engineering.<br>
+                    It will change who gets to have a digital presence worth pointing to. 🌱
+                </p>
+            </section>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <h3>Join the Pilot</h3>
+                <p>
+                    If you are a writer or job seeker who needs a clearer online home<br>
+                    but does not want a large upfront website project — reach out and tell us<br>
+                    what you do and what kind of online presence you are trying to build.
+                </p>
+                <p class="small">The pilot is small, and the door is open.</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Created by <a href="https://skill-wanderer.com">Skill-Wanderer</a></p>
+            <p><a href="/blog/from-white-rice-to-websites-how-technology-turns-elite-services-into-everyday-tools">← Read the full article</a></p>
+        </footer>
+    </div>
+</body>
+</html>
