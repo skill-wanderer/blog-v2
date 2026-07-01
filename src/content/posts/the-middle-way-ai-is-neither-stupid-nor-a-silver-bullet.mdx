@@ -1,0 +1,191 @@
+---
+title: "The Middle Way: AI Is Neither Stupid Nor a Silver Bullet"
+description: "A front-line take on the two camps flooding your feed — the 'AI is stupid' crowd and the 'I run my company on 19 agents' crowd — and why the honest truth lives in the middle, with both real value and real trade-offs."
+authorId: "quan-nguyen"
+publishDate: "2026-06-28"
+category: "Skill-Wanderer Journey"
+readTime: "16 min read"
+image: "/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/hero.jpg"
+tags: ["Skill-Wanderer", "AI", "AI Agents", "Founder Notes", "Tech Industry", "Hype vs Reality", "Token Economics"]
+---
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/hero.jpg" alt="The Middle Way — AI is neither stupid nor a silver bullet" class="w-full h-auto rounded-lg shadow-lg mb-8" />
+
+## Why I Went Quiet
+
+It has been a busy stretch for Skill-Wanderer, and my posting cadence took a real hit. That was on purpose.
+
+I will not ship a low-quality post, and I will not ship a "not quite right" one either. There is a temptation, especially when you are trying to grow an audience, to post often and post loud. Volume is rewarded. The algorithm does not ask whether you were *correct*; it asks whether you were *engaging*. And that gap — between what gets rewarded and what is actually true — is the whole problem I want to talk about today.
+
+Because here is the thing about an education project: wrong information does not just fail to help. It actively **damages** people's knowledge. A confident, well-designed, completely-wrong post about AI plants a belief in someone's head that they will carry into real decisions — what tools to buy, what skills to learn, whether to bet their small business on a workflow that cannot survive contact with reality. Undoing a bad belief is far harder than teaching a blank slate. So when I do not have something honest and sharp to say, I would rather say nothing and let the cadence suffer.
+
+But lately something has been making my blood boil enough to break the silence: the internet is drowning in **one-sided AI content**.
+
+As someone on the front line of this industry — someone who builds with these tools every single day, pays for them out of pocket, and watches them succeed and fail in real work — I know AI's real capability *and* its real trade-offs. And almost nobody is writing the honest middle. The feed has sorted itself into two loud, opposite, and equally misleading camps. So let me write the thing that does not trend.
+
+---
+
+## Why the Feed Splits Into Two Lies
+
+Before I take apart each camp, it is worth understanding *why* they exist, because the mechanism is the same one that drives every hype cycle.
+
+Strong emotions travel. A post that makes you feel safe ("AI is dumb, relax, nothing has changed") spreads. A post that makes you feel like you are about to miss the boat ("I replaced my whole team with agents, you're already behind") spreads even faster. Both of those feelings are *comfortable* in their own way — one soothes your anxiety, the other flatters your ambition. What does not spread is the answer that asks you to hold two true things in your head at once and do some work.
+
+So the feed optimizes itself into two camps: the **deniers** and the **evangelists**. Neither is lying on purpose, mostly. They have just each grabbed one half of a truth and amputated the other half because the other half does not perform. My job here is to staple the two halves back together.
+
+---
+
+## Camp One: "AI Is Stupid"
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/camp-one-ai-is-stupid.jpg" alt="The 'AI is stupid' camp — feeding anxiety about the AI era" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+You have seen these posts. Someone asks their AI a trick question — "My car is parked, and the car wash is 100 meters away. Should I drive or walk?" — and the AI gives a clumsy answer like *walk*, which is obviously wrong, because the entire point of going to a car wash is to bring the car. The screenshot goes viral. The punchline writes itself: **see, AI is dumb.**
+
+Here is the part they never mention: they were using a weak, free model.
+
+I ran that same kind of question through every paid account I own, and they all answered it correctly, and most of them explained *why* — they caught the trick. The failure in that viral screenshot was not "AI." The failure was using a tool that was never good enough for the job, and then putting the blame on the entire category.
+
+This matters because the quality gap between a free, low-end model and a top-tier paid model is **not small**. It is not the difference between a cheap car and an expensive car, where both still get you to work. It is closer to the difference between a bicycle and a car. They are both "transport," and a headline can lump them together, but they do fundamentally different things under load. When someone shows you a bicycle failing to merge onto a highway and concludes "wheels don't work," they are not making an honest argument.
+
+And these posts are not really about AI at all. They are about **the anxiety of the AI era**. A lot of people are quietly frightened that the ground is shifting under their career, and a post that says "look, it can't even answer a riddle, you're fine" is a small dose of relief. That is why it spreads. It is emotional medicine disguised as a tech take.
+
+So here is my take, plainly: **if you are not paying for a proper AI account, you do not get to call AI stupid.** Free tiers exist for a reason, and they have hard limits — older models, smaller context, heavy rate limiting, weaker reasoning. Judge the technology by its best honestly-available form, not by the free sample. Use a real one first. *Then* tell me what it can't do, and I will probably agree with half of your list — because the real limitations are real. They are just not the ones in the viral screenshot.
+
+---
+
+## Camp Two: "I Run My Company on 19 Agents"
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/camp-two-agent-fairy-tales.jpg" alt="The agent fairy tales — 12, 19, or 6 agents running a business" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+The opposite camp sells you a fairy tale. "I automated my whole business with 12 agents." Then someone one-ups them with 19. Then a more grounded-sounding version appears with 6 to 9, and because the number is smaller it *feels* more credible, so people believe it more.
+
+I want to be fair here, because part of this is genuinely true: **we have reached a stage where 12 to 19 agents can actually run in coordination.** That is not science fiction anymore. I have built multi-agent workflows myself. The capability is real. But the storytellers leave out every single thing that determines whether it works *for you*, and those omissions are where people get hurt.
+
+### The model problem
+
+Use a free or low-quality model, and your fleet of agents is too dumb to do real work — go back and reread Camp One, because it applies with full force here. An agent is just a model in a loop with tools. If the model cannot reason reliably on a single hard step, chaining nineteen of those steps together does not average the errors out. It *compounds* them. A 95%-reliable step run twenty times in sequence succeeds end-to-end only about a third of the time. Cheap models make cheap mistakes, and agents turn a single mistake into a cascade. So the free route is dead on arrival.
+
+### The cost problem
+
+Use a *good-enough* model — the kind that can actually carry the work — and the token bill will exceed a human wage. Trust me on this, because I have watched the meter.
+
+Agents are token-hungry in a way that a single chat is not. Every agent re-reads context, plans, calls tools, reads the tool results, re-plans, and a lot of that context gets resent on every turn. Run several of them in parallel, on a capable model, doing real multi-step work for a full business day, and you are not paying chatbot prices anymore. You are paying *infrastructure* prices. The "I run my company on agents" crowd almost never shows you a real monthly invoice, and when they do quote a number, it is suspiciously low for the workload they are describing.
+
+"But the AI companies do it," someone will say. Yes — and that is exactly the trap. **AI companies can run enormous agent fleets because they *are* the AI company.** They run on what they produce, at their own internal cost, with priority access to their own capacity. You and I are downstream customers. We pay retail, and we wait in the same queue as everyone else. You will not get their price, and you will not get their priority. Building your business model on their economics is like opening a restaurant whose whole plan is "buy ingredients at the wholesaler's cost" — except you are not the wholesaler.
+
+### The reliability problem
+
+This is the one nobody warns you about, and it bit me hard.
+
+When I tried running agents in parallel during **peak AI hours**, they did not just slow down. The workflow *broke*. I would hit intermittent unresponsiveness — requests hanging, timing out, coming back half-formed — right in the middle of a multi-step chain, which is the worst possible time, because a broken step leaves the whole run in a corrupted, half-finished state that I then have to untangle by hand. The "automation" cost me more time than doing it myself would have.
+
+So I changed how I operate entirely. I now run parallel agents only during **low-traffic windows**, and I shut everything down at peak. That is the real operating discipline behind multi-agent work, and you will not find it in a single triumphant thread — because "I only run my agents at 3am when the servers are quiet" does not sound like the future. It just sounds like the truth.
+
+---
+
+## The $400 Story and the Expired SSL
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/expired-ssl.jpg" alt="A $400/month agent setup — with an expired SSL certificate" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+The most believable version I came across was the "6 to 9 agents for just $400 a month" story. The number was modest enough to take seriously, the workflow was described in enough detail to sound real, and I genuinely wanted it to be true. So I did the one thing most readers never do: I checked the source.
+
+I opened the founder's own website.
+
+It was insecure. The browser threw a warning. The SSL certificate had expired.
+
+Now, an expired certificate is a five-minute fix — and that is exactly the point. This was the public storefront of a person selling you on a self-running, agent-powered, fully-automated operation, and the most basic, automatable piece of hygiene on their own site had quietly lapsed. If the automation cannot keep a certificate alive, what *exactly* is the army of agents doing? I do not think I need to say much more than that. The tell is in the details, and the details are usually one click away.
+
+---
+
+## Now Let Me Defend AI, So You Know I Am Fair
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/what-ai-does-well.jpg" alt="What AI genuinely does well — the real value side of the ledger" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+If I only attacked the hype, I would just be Camp One with extra words. So let me be just as clear about the other side: **AI generates real, large, undeniable value**, and I would not run Skill-Wanderer or my client work without it.
+
+Here is where it genuinely earns its cost, from my own daily experience:
+
+- **It collapses the cost of a first draft.** Code, copy, a plan, a refactor strategy — getting from a blank page to a working starting point used to be the expensive part. Now it is cheap. I can prototype something, throw it away, and prototype again without flinching.
+- **It moves your work up the stack.** With a strong model, most of my time shifted from typing implementation to making **architectural decisions** — designing the system, deciding what to build and why, then directing the AI to fill it in and verifying what it produced. That is a higher-value place to spend a human brain.
+- **It is a tireless reader.** Pointing a capable model at unfamiliar code, a long document, or a dense error log and asking "what is going on here" is genuinely transformative. It does not get bored on page forty.
+- **It lets a small operator take on the shape of a team** — *for the right, bounded kind of work.* Not a whole company. But real leverage, real reach, for one person.
+
+None of this is hype. I have lived all of it. The value is the reason the trade-offs are worth managing at all — and it is precisely *because* the value is real that the dishonest selling makes me so angry. You do not need to lie about a tool this good. The honest version is already impressive.
+
+---
+
+## And Now the Bill: The Real Trade-Off Ledger
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/the-trade-off-ledger.jpg" alt="The real trade-off ledger — the costs that come with the value" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+Every entry on that value list comes with a matching cost. People in tech understand this instinctively, because it is the oldest rule in the field: there is no free lunch, and every decision is a trade. Here is the bill, honestly itemized:
+
+- **Token cost is real and it scales with ambition.** The more you let it do, the more you pay, and serious agentic work crosses into serious money fast.
+- **Capacity is not yours.** You share infrastructure with the entire world, and at peak you feel it — latency, throttling, the occasional broken run. Your workload is at the mercy of someone else's queue.
+- **Confident wrongness is the dangerous failure mode.** A weak model fails obviously. A strong model fails *plausibly* — it hands you something that looks completely right and is subtly, expensively wrong. That is harder to catch and it is why human verification never goes away.
+- **It does not own outcomes.** This is the big one. I have seen real cases where a team handed actual customer negotiation to an AI, and it cheerfully closed deal after deal — at terms that *lost the company money*. The agent "succeeded" at every visible step. The business still bled. An AI optimizes the task you gave it, not the outcome you actually wanted, and it will not feel the consequence the way a human employee does.
+- **Maintenance and judgment still need a person.** Someone has to decide what is worth building, keep it working after launch, and — yes — renew the certificate.
+
+This is not a case against AI. It is the *price tag* next to the value. You are allowed to buy something valuable and still read the price.
+
+---
+
+## The Anxiety Is Real — and So Is the Way Through It
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/management-is-the-new-skill.jpg" alt="Knowledge workers becoming managers of AIs — management as the must-have skill" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+I want to step away from the two camps for a moment and speak directly to the fear underneath all of this, because the anxiety driving people into both camps is **real**, and pretending it is not would be its own kind of one-sided dishonesty.
+
+Here is what I actually believe, and it is the reason I am not panicking even though I take the change seriously: **AI is going to change the rules of employment, and the new rule is management.** Sooner or later, the knowledge worker stops being the person who does the task and becomes the person who *directs the things that do the task*. Every knowledge worker, in some form, is on a path to becoming a manager of AIs. The hands-on-keyboard part of the job — the part most of us built our identity around — is exactly the part that is being lifted up the stack. What is left, and what grows in value, is judgment, direction, and oversight. In other words: management.
+
+And here is the part that genuinely surprised me. **Managing AI is not as different from managing people as you would expect.** Do not misread me — it *is* different in important ways; an AI has no career, no feelings you must protect, no Monday-morning mood, and it will not remember yesterday unless you make it. But the *fundamentals* of good management transfer almost completely. Give it enough context and information to actually succeed, instead of assuming it can read your mind. Define the job clearly. And — this is the big one — **assign the work to the right strengths and away from the known weaknesses.**
+
+Because every AI model has both, just like every person on a team does. I have used many of them, and each one has a real personality of trade-offs: one reasons more carefully but is slower and pricier; another is fast and cheap but cuts corners; one writes beautiful prose and another is better at cold, structured logic; one is a stronger architect and another a more careful implementer. A good manager of people learns who to hand which task to. A good manager of AIs does exactly the same thing — you learn each model's grain and you cut along it, not against it.
+
+So I understand the anxiety completely. The ground really is moving. But the skill that the moment is asking you to build — clear direction, good context, matching the work to the worker — is not some alien new discipline. It is **management**, and a lot of you already have the raw instinct for it. If you can catch up, if you can make that shift from *doer* to *director* before the wave does it for you, it will not bury you. It will do wonders for you.
+
+That is the honest reassurance. Not "you're fine, nothing changed." Not "panic, you're already behind." The truth: something big *is* changing, and there is a concrete, learnable skill on the other side of it that is well within your reach.
+
+---
+
+## Catching Up Is Not the Same as Chasing the Hype
+
+Now, I just told you to catch up, and I meant it. But I need to draw a careful line here, because there is a world of difference between **building the skill** and **chasing the story** — and the second one is where people get hurt.
+
+Catching up looks calm. It looks like paying for one good tool and learning its grain. It looks like handing a small piece of real work to an AI, watching how it succeeds and fails, and slowly building the management instinct I described above. It is patient, it compounds, and it does not require you to bet anything you cannot afford to lose.
+
+FOMO looks like the opposite. It looks like reading the "19 agents replaced my whole team" post at midnight and restructuring your business by morning on borrowed conviction. And AI FOMO behaves exactly like FOMO in stocks or crypto: jump in near the top of the excitement curve, with no understanding of the trade-offs, and you have booked yourself a rollercoaster ride straight to hell. The people posting the euphoric stories are, knowingly or not, selling at the top of *your* emotions. The negotiation-bot losses, the broken peak-hour workflows, the invoices that dwarf a salary — none of that makes the highlight reel, because none of it sells the dream.
+
+So the urgency you feel is not wrong. Just point it at the right target. The thing worth hurrying toward is the **skill** — the slow, durable shift from doer to director. The thing not worth chasing is the **fairy tale**. The cure for FOMO was never cynicism, and it was never "sit it out and hope it blows over." The cure is *understanding*. You cannot be made afraid of missing out on something you genuinely understand, because you already know exactly what it is worth and exactly what it costs.
+
+---
+
+## The Middle Way
+
+<img src="/images/blog/the-middle-way-ai-is-neither-stupid-nor-a-silver-bullet/the-middle-way.jpg" alt="The middle way — understanding both AI's usefulness and its trade-offs" class="w-full h-auto rounded-lg shadow-lg mb-6" />
+
+So here is the moral, and it is not complicated.
+
+**AI is not a silver bullet. It is also not a toy.** It generates genuine, substantial value, and it carries genuine, substantial cost and trade-offs. Both of those sentences are true at the same time, and any post that gives you only one of them is selling you the comfortable half.
+
+Anyone who has spent real time in tech already knows this instinct in their bones. Every tool has a benefit and a price. Every architecture decision is a trade. Every dependency you add is a dependency you now own. There is no free lunch, and there never was. AI is not an exception to that rule — it is just the newest, loudest example of it.
+
+So if you actually want to understand AI — not to feel safe, not to feel ahead, but to *understand* — you have to walk the middle way. Hold the usefulness and the trade-offs in your head at the same time, without flinching toward either comfort. Pay for a real tool before you judge it. Read the invoice before you scale it. Check the source before you believe it. And never outsource an *outcome* to something that cannot feel the consequence of getting it wrong.
+
+And then do the one thing neither camp will tell you to do: **start practicing the management.** Hand it real work, learn its grain, get good at giving context and matching the task to the strength. The deniers will tell you there is nothing to learn. The evangelists will tell you it is already done for you. Both are wrong, and the truth is more hopeful than either — there is a real, learnable skill here, and the people who pick it up calmly, without panic and without hype, are the ones it will do wonders for.
+
+That is the whole discipline. It is less exciting than either fairy tale, which is exactly how you know it is closer to the truth.
+
+It would take far more than one post to write all of it down. But that is the story for the day.
+
+---
+
+## Ready to Join the Journey?
+
+If our mission to provide honest, accessible, and free education resonates with you, here's how you can be part of it:
+
+- 🌐 **Visit our platform**: [skill-wanderer.com](https://skill-wanderer.com)
+- 📚 **Start learning**: [dojo.skill-wanderer.com](https://dojo.skill-wanderer.com)
+- 📝 **Read more**: [wanderings.skill-wanderer.com](https://wanderings.skill-wanderer.com)
+
+Take the middle way. See you next time.
