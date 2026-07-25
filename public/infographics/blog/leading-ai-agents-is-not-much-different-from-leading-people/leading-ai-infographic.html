@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leading AI Is Surprisingly Not That Different From Leading People - Infographic</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --container-bg: #111827;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --card-bg: #1f2937;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 60%),
+                        linear-gradient(180deg, rgba(17, 24, 39, 1) 0%, rgba(31, 41, 55, 0.5) 100%);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: #ffffff;
+            padding: 6px 20px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 40%, #e2e8f0 70%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ── Content ── */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* ── Section Titles ── */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            position: relative;
+        }
+
+        .section-title .icon {
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-cyan);
+            border-radius: 9999px;
+            margin: 10px auto 0 auto;
+            position: absolute;
+            bottom: -15px;
+        }
+
+        .section-wrap {
+            position: relative;
+            margin-bottom: 70px;
+        }
+
+        .lesson-tag {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            margin-bottom: 10px;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1fr;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .timeline-card.now {
+            border-top: 4px solid var(--accent-cyan);
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(6, 182, 212, 0.05) 100%);
+        }
+
+        .timeline-year {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 6px;
+        }
+
+        .timeline-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--accent-cyan);
+        }
+
+        /* ── Pivot / anchor box ── */
+        .anchor-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            max-width: 850px;
+            margin: 35px auto 0 auto;
+        }
+
+        .anchor-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .anchor-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ── Context dial (3 states) ── */
+        .dial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .dial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .dial-card.too-little::before { background: var(--accent-red); }
+        .dial-card.just-right::before { background: var(--accent-green); }
+        .dial-card.too-much::before { background: var(--accent-orange); }
+
+        .dial-card.just-right {
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(16, 185, 129, 0.05) 100%);
+        }
+
+        .dial-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .too-little .dial-label { color: var(--accent-red); }
+        .just-right .dial-label { color: var(--accent-green); }
+        .too-much .dial-label { color: var(--accent-orange); }
+
+        .dial-row {
+            display: flex;
+            gap: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .dial-row:last-child { margin-bottom: 0; }
+
+        .dial-who {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 26px;
+            text-align: center;
+        }
+
+        .dial-row span.txt { color: var(--text-secondary); }
+        .dial-row span.txt strong { color: var(--text-primary); font-weight: 600; }
+
+        /* ── Equivalence callout ── */
+        .equiv-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .equiv-term {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .equiv-term.human { color: var(--accent-purple); }
+        .equiv-term.ai { color: var(--accent-cyan); }
+
+        .equiv-sign {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+        }
+
+        .equiv-note {
+            width: 100%;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .equiv-note strong { color: var(--text-primary); }
+
+        /* ── Roster mapping ── */
+        .roster-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .roster-row {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            align-items: stretch;
+            gap: 15px;
+        }
+
+        .roster-side {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px 22px;
+        }
+
+        .roster-side.human { border-left: 3px solid var(--accent-purple); }
+        .roster-side.ai { border-left: 3px solid var(--accent-cyan); }
+
+        .roster-side h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .roster-side.human h4 { color: #c4b5fd; }
+        .roster-side.ai h4 { color: #67e8f9; }
+
+        .roster-side p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .roster-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+        }
+
+        .roster-heads {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .roster-head {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            padding-bottom: 8px;
+        }
+
+        .roster-head.human { color: var(--accent-purple); border-bottom: 2px solid rgba(139, 92, 246, 0.3); }
+        .roster-head.ai { color: var(--accent-cyan); border-bottom: 2px solid rgba(6, 182, 212, 0.3); }
+        .roster-head.spacer { border: none; }
+
+        /* ── Pipeline ── */
+        .pipeline {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1fr;
+            align-items: stretch;
+            gap: 10px;
+            margin-top: 35px;
+        }
+
+        .pipe-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .pipe-stage {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .pipe-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .pipe-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .pipe-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        /* ── Story / highlight box ── */
+        .story-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-box::after {
+            content: '🌙';
+            position: absolute;
+            right: -20px;
+            bottom: -25px;
+            font-size: 110px;
+            opacity: 0.05;
+        }
+
+        .story-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+            animation: pulse 2.6s infinite ease-in-out;
+        }
+
+        .story-content h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            color: #c4b5fd;
+            margin-bottom: 8px;
+        }
+
+        .story-content p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .story-content strong { color: #ddd6fe; }
+
+        /* ── Watchlist card ── */
+        .watchlist {
+            background: var(--card-bg);
+            border: 1px dashed rgba(6, 182, 212, 0.4);
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .watchlist-icon {
+            font-size: 2.4rem;
+            flex-shrink: 0;
+        }
+
+        .watchlist h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: #67e8f9;
+            margin-bottom: 6px;
+        }
+
+        .watchlist p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .watchlist p strong { color: var(--text-primary); }
+
+        /* ── Two-column compare (plan / no plan) ── */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .compare-col {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .compare-col.bad { border-top: 4px solid var(--accent-red); }
+        .compare-col.good { border-top: 4px solid var(--accent-green); }
+
+        .compare-col h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compare-col.bad h3 { color: var(--accent-red); }
+        .compare-col.good h3 { color: var(--accent-green); }
+
+        .compare-list {
+            list-style: none;
+        }
+
+        .compare-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 13px;
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+        }
+
+        .compare-list li:last-child { margin-bottom: 0; }
+
+        .compare-list li strong { color: var(--text-primary); font-weight: 600; }
+
+        .compare-list li::before {
+            position: absolute;
+            left: 2px;
+            font-weight: bold;
+        }
+
+        .compare-col.bad .compare-list li::before { content: "✕"; color: var(--accent-red); }
+        .compare-col.good .compare-list li::before { content: "✓"; color: var(--accent-green); }
+
+        /* ── Punchline strip ── */
+        .punchline {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            background: rgba(6, 182, 212, 0.07);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 30px;
+        }
+
+        .punchline span { color: var(--accent-cyan); }
+
+        /* ── Accountability box ── */
+        .blame-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blame-box::after {
+            content: '🛡️';
+            position: absolute;
+            right: -15px;
+            bottom: -25px;
+            font-size: 110px;
+            opacity: 0.04;
+        }
+
+        .blame-quote {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #f87171;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .blame-sub {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .blame-chain {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1fr;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .chain-card {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chain-card.verdict {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .chain-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .chain-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .chain-card.verdict h5 { color: var(--accent-red); }
+
+        .chain-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent-red);
+        }
+
+        /* ── Transferred vs not ── */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .split-col {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .split-col.kept { border-top: 4px solid var(--accent-green); }
+        .split-col.gone { border-top: 4px solid var(--text-secondary); }
+
+        .split-col h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .split-col.kept h3 { color: var(--accent-green); }
+        .split-col.gone h3 { color: var(--text-secondary); }
+
+        .split-col .split-sub {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        .split-chip {
+            display: inline-block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 9999px;
+            margin: 0 8px 10px 0;
+            border: 1px solid var(--border-color);
+            background: rgba(17, 24, 39, 0.6);
+        }
+
+        .split-col.kept .split-chip {
+            color: #6ee7b7;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .split-col.gone .split-chip {
+            color: var(--text-secondary);
+        }
+
+        /* ── Takeaway ── */
+        .takeaway {
+            background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.12), transparent 65%),
+                        linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            border-radius: 20px;
+            padding: 45px 40px;
+            text-align: center;
+        }
+
+        .takeaway h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .takeaway h3 span { color: var(--accent-cyan); }
+
+        .takeaway p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #111827;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+
+        /* ── Animations ── */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
+        }
+
+        /* ── Responsive Design ── */
+        @media (max-width: 1024px) {
+            .dial-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 10px; }
+
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 2rem; }
+
+            .content { padding: 30px 20px; }
+
+            .section-title { font-size: 1.45rem; }
+
+            .timeline,
+            .pipeline,
+            .blame-chain {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .timeline-arrow,
+            .pipe-arrow,
+            .chain-arrow {
+                transform: rotate(90deg);
+            }
+
+            .roster-heads { display: none; }
+
+            .roster-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .roster-link { transform: rotate(90deg); }
+
+            .compare-grid,
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-box,
+            .watchlist {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .takeaway { padding: 35px 22px; }
+            .takeaway h3 { font-size: 1.4rem; }
+
+            .blame-quote { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-badge">Leadership in the AI Era</div>
+            <h1 id="infographic-title">Leading AI Is Surprisingly<br>Not That Different From Leading People</h1>
+            <p>Years of leading developers, analysts and testers — then the tools changed completely and the job of directing them barely changed at all. Here is what transferred.</p>
+        </div>
+
+        <div class="content">
+
+            <!-- ── The Shift ── -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🕰️</span>
+                    The Shift Nobody Announced
+                </h2>
+
+                <div class="timeline">
+                    <div class="timeline-card">
+                        <div class="timeline-year">2017</div>
+                        <h4>Into Tech</h4>
+                        <p>Whatever shipped, a person typed it. The craft was in the hands.</p>
+                    </div>
+                    <div class="timeline-arrow">➔</div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">Early 2024</div>
+                        <h4>AI Coding Was a Joke</h4>
+                        <p>You would watch the demo, laugh, and go back to writing it yourself.</p>
+                    </div>
+                    <div class="timeline-arrow">➔</div>
+                    <div class="timeline-card now">
+                        <div class="timeline-year">2026</div>
+                        <h4>Nobody Types It Anymore</h4>
+                        <p>They lead the agents. Briefing, directing, reviewing, deciding.</p>
+                    </div>
+                </div>
+
+                <div class="anchor-box">
+                    <h4>The Surprise</h4>
+                    <p>I assumed the new era would ask me for a new skill set. Instead it handed me a bill for the one I already had — the same moves I learned leading 20 people: developers, business analysts, testers, and a project manager.</p>
+                </div>
+            </div>
+
+            <!-- ── Lesson 1: Context ── -->
+            <div class="section-wrap">
+                <span class="lesson-tag">Lesson 01</span>
+                <h2 class="section-title">
+                    <span class="icon">🎯</span>
+                    Enough Information to Solve the Problem
+                </h2>
+
+                <div class="dial-grid">
+                    <div class="dial-card too-little">
+                        <div class="dial-label">🕳️ Too Little</div>
+                        <div class="dial-row">
+                            <span class="dial-who">👤</span>
+                            <span class="txt"><strong>Human:</strong> builds on an assumption you never made — or stalls entirely.</span>
+                        </div>
+                        <div class="dial-row">
+                            <span class="dial-who">🤖</span>
+                            <span class="txt"><strong>AI:</strong> hallucinates through the gaps and hands you something confident and invented.</span>
+                        </div>
+                    </div>
+
+                    <div class="dial-card just-right">
+                        <div class="dial-label">✅ Just Right</div>
+                        <div class="dial-row">
+                            <span class="dial-who">🎚️</span>
+                            <span class="txt">Enough context to make the right call — <strong>plus a small margin</strong> for the surprises you did not anticipate.</span>
+                        </div>
+                        <div class="dial-row">
+                            <span class="dial-who">🧭</span>
+                            <span class="txt">The street they need, <strong>not a map of the whole continent.</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="dial-card too-much">
+                        <div class="dial-label">🌊 Too Much</div>
+                        <div class="dial-row">
+                            <span class="dial-who">👤</span>
+                            <span class="txt"><strong>Human:</strong> overthinks, widens scope, weighs trade-offs that did not matter.</span>
+                        </div>
+                        <div class="dial-row">
+                            <span class="dial-who">🤖</span>
+                            <span class="txt"><strong>AI:</strong> wanders and over-engineers. You asked for a button and got an architecture.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equiv-box">
+                    <div class="equiv-term human">"Misunderstood the ticket"</div>
+                    <div class="equiv-sign">=</div>
+                    <div class="equiv-term ai">"Hallucinated"</div>
+                    <p class="equiv-note">Different words, different research literatures — but from the lead's chair it is the same failure, with the same root cause and the same fix. <strong>When the brief is bad, the failure belongs to whoever wrote the brief.</strong></p>
+                </div>
+            </div>
+
+            <!-- ── Lesson 2: Roster ── -->
+            <div class="section-wrap">
+                <span class="lesson-tag">Lesson 02</span>
+                <h2 class="section-title">
+                    <span class="icon">🧩</span>
+                    Every Member Has Strengths and Weaknesses
+                </h2>
+
+                <div class="roster-heads">
+                    <div class="roster-head human">The People I Led</div>
+                    <div class="roster-head spacer"></div>
+                    <div class="roster-head ai">The Models I Lead Now</div>
+                </div>
+
+                <div class="roster-list">
+                    <div class="roster-row">
+                        <div class="roster-side human">
+                            <h4>The Fast One</h4>
+                            <p>Covers enormous ground, a little arrogant, leaves a trail to clean up — and clocks out after six hours, no negotiation.</p>
+                        </div>
+                        <div class="roster-link">≈</div>
+                        <div class="roster-side ai">
+                            <h4>Claude</h4>
+                            <p>Top of the benchmarks. Quick, sharp, does not always check thoroughly — and those tokens run out <em>very</em> fast.</p>
+                        </div>
+                    </div>
+
+                    <div class="roster-row">
+                        <div class="roster-side human">
+                            <h4>The Dependable Middle</h4>
+                            <p>Never the star, never the bottleneck. Quietly carries a third of the sprint without drama.</p>
+                        </div>
+                        <div class="roster-link">≈</div>
+                        <div class="roster-side ai">
+                            <h4>ChatGPT</h4>
+                            <p>The most balanced of the roster. Sufficiently intelligent, web crawling good enough for real work, price that does not sting.</p>
+                        </div>
+                    </div>
+
+                    <div class="roster-row">
+                        <div class="roster-side human">
+                            <h4>The Specialist</h4>
+                            <p>Unmatched at one thing. You do not hire a specialist and then complain that they are a specialist.</p>
+                        </div>
+                        <div class="roster-link">≈</div>
+                        <div class="roster-side ai">
+                            <h4>Gemini</h4>
+                            <p>The best web crawling I have used — Google origins showing. Other abilities can fall short, and that is not what I bring it in for.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pipeline">
+                    <div class="pipe-card">
+                        <div class="pipe-stage">Stage 01</div>
+                        <h4>Claude Code</h4>
+                        <p>Writes the spec, shapes the design. Where a little arrogance costs nothing.</p>
+                    </div>
+                    <div class="pipe-arrow">➔</div>
+                    <div class="pipe-card">
+                        <div class="pipe-stage">Stage 02</div>
+                        <h4>Codex</h4>
+                        <p>The long, patient, unglamorous stretch of actually building it.</p>
+                    </div>
+                    <div class="pipe-arrow">➔</div>
+                    <div class="pipe-card">
+                        <div class="pipe-stage">Stage 03</div>
+                        <h4>Antigravity IDE</h4>
+                        <p>Last pass — testing, and tightening whatever got left behind.</p>
+                    </div>
+                </div>
+
+                <div class="punchline">
+                    That is not an AI trick. That is <span>staffing.</span>
+                </div>
+            </div>
+
+            <!-- ── Lesson 3: Roster ambition ── -->
+            <div class="section-wrap">
+                <span class="lesson-tag">Lesson 03</span>
+                <h2 class="section-title">
+                    <span class="icon">💎</span>
+                    Never Settle for a Good-Enough Roster
+                </h2>
+
+                <div class="story-box">
+                    <div class="story-icon">🌙</div>
+                    <div class="story-content">
+                        <h4>The Midnight Guy</h4>
+                        <p>He was almost fired — not for his work, for his <strong>eccentric behaviour</strong>. He kept hours nobody had approved of. So I scouted him, took him onto my team, and did the only genuinely clever thing in the story: <strong>I left him where he deserved to be.</strong> No sanding him into a normal employee. Within a short stretch he became one of the best employees the company had. The same behaviour that nearly cost him his job was, in the right seat, the reason he outperformed everyone.</p>
+                    </div>
+                </div>
+
+                <div class="watchlist">
+                    <div class="watchlist-icon">🔎</div>
+                    <div>
+                        <h4>On the watchlist: Kimi</h4>
+                        <p>Very good results from people I trust, at a <strong>much cheaper token price</strong> — exactly the profile I have learned to chase. <strong>Currently not taking new subscribers</strong>, so the door is closed for now. The moment it opens, I am finding out what it is actually good at.</p>
+                    </div>
+                </div>
+
+                <div class="punchline">
+                    There were <span>always</span> people other teams rejected that I found golden.
+                </div>
+            </div>
+
+            <!-- ── Lesson 4: Planning ── -->
+            <div class="section-wrap">
+                <span class="lesson-tag">Lesson 04</span>
+                <h2 class="section-title">
+                    <span class="icon">🗺️</span>
+                    Never Go Without a Plan
+                </h2>
+
+                <div class="compare-grid">
+                    <div class="compare-col bad">
+                        <h3>🌀 No Plan</h3>
+                        <ul class="compare-list">
+                            <li><strong>You chase, you do not lead.</strong> Reacting to whatever it decided to build.</li>
+                            <li><strong>Discovery after the fact.</strong> You meet its interpretation only once the work exists.</li>
+                            <li><strong>The fourth re-explanation.</strong> Constraints have nowhere to live except your last message.</li>
+                            <li><strong>Failure, accelerated.</strong> The loop closes so fast you get to feel it several times before lunch.</li>
+                        </ul>
+                    </div>
+
+                    <div class="compare-col good">
+                        <h3>📋 Planned With the AI</h3>
+                        <ul class="compare-list">
+                            <li><strong>Talk through the goal</strong> and argue about the edges — the same conversation as the meeting room.</li>
+                            <li><strong>Write down what "done" means</strong> for each piece, before anyone starts.</li>
+                            <li><strong>Name the risks</strong> and who is watching them.</li>
+                            <li><strong>Alignment made visible</strong> and checkable before it costs anybody a week.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="anchor-box" style="margin-top: 30px;">
+                    <h4>⚠️ The Honest Hazard</h4>
+                    <p>Planning too far ahead can bite you — these tools move fast, and a plan written against last month's capabilities can have you routing carefully around a limitation that quietly stopped existing. That risk is real. Going in with no plan at all is still, by a wide margin, worse.</p>
+                </div>
+
+                <div class="punchline">
+                    The artifact of good leadership did not change. It just changed <span>file extension.</span> &nbsp;<code style="color:var(--accent-cyan)">.md</code>
+                </div>
+            </div>
+
+            <!-- ── Lesson 5: Responsibility ── -->
+            <div class="section-wrap">
+                <span class="lesson-tag">Lesson 05</span>
+                <h2 class="section-title">
+                    <span class="icon">🛡️</span>
+                    Accept the Responsibility
+                </h2>
+
+                <div class="blame-box">
+                    <div class="blame-quote">"It was my AI."</div>
+                    <p class="blame-sub">The most common phrase I hear when I ask what went wrong — and the stunning part is that it is <strong>not untrue</strong>.</p>
+
+                    <div class="blame-chain">
+                        <div class="chain-card">
+                            <h5>The claim is accurate</h5>
+                            <p>The model really did write the broken thing and invent the wrong assumption.</p>
+                        </div>
+                        <div class="chain-arrow">➔</div>
+                        <div class="chain-card">
+                            <h5>Follow it all the way down</h5>
+                            <p>If you take no responsibility for the result, you have described yourself as a pass-through.</p>
+                        </div>
+                        <div class="chain-arrow">➔</div>
+                        <div class="chain-card verdict">
+                            <h5>So why hire you?</h5>
+                            <p>Nobody needs to employ a pass-through. The token price is cheaper — and then the mistake is at least mine to own.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anchor-box" style="margin-top: 30px;">
+                    <h4>Ownership Is the Job</h4>
+                    <p>Not a nice-to-have on top of the technical skill — the specific, concrete thing a human is still paid for. Someone who checks. Someone who catches it before the client does. You <em>will</em> still mess up with the AI; that was never the failure. The failure is handing the mistake to someone else with the AI's name stapled to it.</p>
+                </div>
+            </div>
+
+            <!-- ── Where it breaks ── -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">⚖️</span>
+                    An Honest Interlude: What Did Not Transfer
+                </h2>
+
+                <div class="split-grid">
+                    <div class="split-col kept">
+                        <h3>✅ Transferred Intact</h3>
+                        <p class="split-sub">The operating parts — the ones that fill your calendar.</p>
+                        <span class="split-chip">Brief clearly</span>
+                        <span class="split-chip">Assign to strengths</span>
+                        <span class="split-chip">Plan before you start</span>
+                        <span class="split-chip">Own the result</span>
+                        <span class="split-chip">Keep scouting the roster</span>
+                    </div>
+
+                    <div class="split-col gone">
+                        <h3>➖ Genuinely Different</h3>
+                        <p class="split-sub">The relationship parts — real differences, honestly stated.</p>
+                        <span class="split-chip">No career to grow</span>
+                        <span class="split-chip">No Monday-morning mood</span>
+                        <span class="split-chip">Unmoved by praise or blunt feedback</span>
+                        <span class="split-chip">No memory of yesterday unless you arrange it</span>
+                        <span class="split-chip">Never says "we are building the wrong thing"</span>
+                    </div>
+                </div>
+
+                <div class="anchor-box">
+                    <h4>Why the Transfer Still Feels Complete</h4>
+                    <p>Every difference is about the <strong>relationship</strong>. Every similarity is about the <strong>work</strong>. And it is the work that fills your calendar.</p>
+                </div>
+            </div>
+
+            <!-- ── Takeaway ── -->
+            <div class="takeaway">
+                <h3>The tools changed completely.<br>The job of directing them <span>barely changed at all.</span></h3>
+                <p>We spent years being told human skills were about to be devalued. Close to the opposite happened. Context, delegation, planning, ownership — all still load-bearing, all still the difference between a good week and a wasted one. Human skill is not wasted. It is more important now than it has ever been.</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Brought to you by <a href="https://skill-wanderer.com" target="_blank" rel="noopener noreferrer">Skill-Wanderer</a></p>
+            <p><a href="/blog/leading-ai-agents-is-not-much-different-from-leading-people">← Read the full blog article</a></p>
+        </footer>
+    </div>
+</body>
+</html>
