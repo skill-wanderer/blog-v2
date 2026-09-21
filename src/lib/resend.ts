@@ -1,0 +1,149 @@
+// Resend integration for the newsletter.
+//
+// Resend is used for two things only:
+//   1. Storing subscribers (a Resend Audience is the source of truth).
+//   2. Sending the one-off welcome email.
+//
+// There is no confirmation / double opt-in step: a subscriber is added to the
+// audience straight away and the welcome email goes out immediately.
+//
+// The only configuration is an API key and a sender address. The audience is
+// looked up from the account at runtime, so there is no id to keep in sync.
+
+const RESEND_API = 'https://api.resend.com';
+
+export interface ResendConfig {
+  apiKey: string;
+  from: string;
+}
+
+/**
+ * Reads the Resend configuration from the Cloudflare Worker bindings when
+ * running on Cloudflare, and falls back to the build-time env for `astro dev`.
+ */
+export function getResendConfig(runtimeEnv?: Record<string, unknown>): ResendConfig | null {
+  const read = (key: string): string | undefined => {
+    const fromRuntime = runtimeEnv?.[key];
+    if (typeof fromRuntime === 'string' && fromRuntime) return fromRuntime;
+    const fromBuild = (import.meta.env as Record<string, unknown>)[key];
+    if (typeof fromBuild === 'string' && fromBuild) return fromBuild;
+    return undefined;
+  };
+
+  const apiKey = read('RESEND_API_KEY');
+  const from = read('RESEND_FROM_EMAIL');
+
+  if (!apiKey || !from) return null;
+
+  return { apiKey, from };
+}
+
+async function resendFetch(config: ResendConfig, path: string, body?: unknown) {
+  const response = await fetch(`${RESEND_API}${path}`, {
+    method: body === undefined ? 'GET' : 'POST',
+    headers: {
+      Authorization: `Bearer ${config.apiKey}`,
+      ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
+    },
+    ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+  });
+
+  let payload: any = null;
+  try {
+    payload = await response.json();
+  } catch {
+    // Resend always answers with JSON; an empty body means something upstream broke.
+  }
+
+  return { ok: response.ok, status: response.status, payload };
+}
+
+function errorMessage(payload: any, status: number): string {
+  return payload?.message ?? `Resend returned ${status}`;
+}
+
+// The audience id does not change, so one lookup per worker isolate is enough.
+let cachedAudienceId: string | null = null;
+
+/**
+ * Finds the audience to put subscribers in. Uses the account's only audience;
+ * if there are several, the oldest one wins, which is the "General" audience
+ * Resend creates with a new account.
+ */
+export async function resolveAudienceId(config: ResendConfig): Promise<string> {
+  if (cachedAudienceId) return cachedAudienceId;
+
+  const { ok, status, payload } = await resendFetch(config, '/audiences');
+
+  if (!ok) throw new Error(`Could not list audiences: ${errorMessage(payload, status)}`);
+
+  const audiences: Array<{ id: string; created_at?: string }> = payload?.data ?? [];
+
+  if (audiences.length === 0) {
+    throw new Error('No audience exists in this Resend account. Create one at https://resend.com/audiences.');
+  }
+
+  const oldest = [...audiences].sort((a, b) =>
+    (a.created_at ?? '').localeCompare(b.created_at ?? '')
+  )[0];
+
+  cachedAudienceId = oldest.id;
+  return cachedAudienceId;
+}
+
+export interface AddContactResult {
+  ok: boolean;
+  /** True when the address was already in the audience, so no welcome mail is needed. */
+  alreadySubscribed: boolean;
+  error?: string;
+}
+
+/** Adds the address to the Resend audience immediately, no confirmation step. */
+export async function addContact(config: ResendConfig, email: string): Promise<AddContactResult> {
+  let audienceId: string;
+  try {
+    audienceId = await resolveAudienceId(config);
+  } catch (error) {
+    return { ok: false, alreadySubscribed: false, error: (error as Error).message };
+  }
+
+  const { ok, status, payload } = await resendFetch(config, `/audiences/${audienceId}/contacts`, {
+    email,
+    unsubscribed: false,
+  });
+
+  if (ok) {
+    return { ok: true, alreadySubscribed: false };
+  }
+
+  const message = errorMessage(payload, status);
+
+  // Resend answers 409 (or a "already exists" message) when the contact is there
+  // already. That is a success from the visitor's point of view.
+  if (status === 409 || /already/i.test(message)) {
+    return { ok: true, alreadySubscribed: true };
+  }
+
+  return { ok: false, alreadySubscribed: false, error: message };
+}
+
+export interface SendEmailOptions {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  headers?: Record<string, string>;
+}
+
+export async function sendEmail(config: ResendConfig, options: SendEmailOptions) {
+  const { ok, status, payload } = await resendFetch(config, '/emails', {
+    from: config.from,
+    to: [options.to],
+    subject: options.subject,
+    html: options.html,
+    text: options.text,
+    headers: options.headers,
+  });
+
+  return { ok, error: ok ? undefined : errorMessage(payload, status) };
+}

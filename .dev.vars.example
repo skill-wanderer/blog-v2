@@ -1,0 +1,13 @@
+# Resend configuration for the newsletter.
+# Copy this file to `.dev.vars` and fill in real values for local development.
+# In production these are Cloudflare Worker secrets, set with:
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put RESEND_FROM_EMAIL
+
+# API key from https://resend.com/api-keys (needs "Full access", or write access
+# to Audiences and read access to list them, plus Emails).
+RESEND_API_KEY="re_xxxxxxxxxxxxxxxxxxxx"
+
+# Sender of the welcome email. The domain must be verified in Resend.
+# Replies and unsubscribe requests go to this address.
+RESEND_FROM_EMAIL="Skill Wanderer <hello@skill-wanderer.com>"

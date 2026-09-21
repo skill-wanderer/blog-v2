@@ -1,6 +1,7 @@
 ---
 // EmailSubscription.astro
-// Firebase email subscription component
+// Newsletter subscription form. Posts to /api/subscribe, which adds the
+// address to the Resend audience and sends the welcome email.
 ---
 
 <section class="bg-skill-wanderer-darkest py-16 border-t border-dark">
@@ -55,7 +56,7 @@
               <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>🎉 Thanks for subscribing! Check your email for confirmation.</span>
+              <span id="success-text">🎉 You are subscribed! A welcome email is on its way.</span>
             </div>
           </div>
 
@@ -111,60 +112,59 @@
 </section>
 
 <script>
-  // Wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', async function() {
-    // Dynamic import for Firebase modules to ensure client-side execution
-    const { db } = await import('../lib/firebase.ts');
-    const { collection, addDoc, Timestamp } = await import('firebase/firestore');
-
+  document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('email-subscription-form') as HTMLFormElement;
     const emailInput = document.getElementById('email') as HTMLInputElement;
     const subscribeBtn = document.getElementById('subscribe-btn') as HTMLButtonElement;
     const btnText = document.getElementById('btn-text') as HTMLSpanElement;
     const loadingIcon = document.getElementById('loading-icon') as HTMLElement;
     const successMessage = document.getElementById('success-message') as HTMLElement;
+    const successText = document.getElementById('success-text') as HTMLSpanElement;
     const errorMessage = document.getElementById('error-message') as HTMLElement;
     const errorText = document.getElementById('error-text') as HTMLSpanElement;
 
     if (!form) return;
 
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const email = emailInput.value.trim();
-      
-      if (!email) {
-        showError('Please enter a valid email address.');
-        return;
-      }
+    const defaultSuccess = successText.textContent;
 
-      // Validate email format
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+
+      if (!email || !emailRegex.test(email)) {
         showError('Please enter a valid email address.');
         return;
       }
 
       try {
-        // Show loading state
         setLoading(true);
         hideMessages();
 
-        // Add to Firestore
-        const docRef = await addDoc(collection(db, 'subscribers'), {
-          email: email,
-          subscribedAt: Timestamp.now(),
-          source: 'blog-v2',
+        // The server adds the address to the Resend audience and sends the
+        // welcome email. There is no confirmation step to click through.
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
         });
 
-        console.log('Subscriber added with ID: ', docRef.id);
-        
-        // Show success message
-        showSuccess();
-        form.reset();
+        const result = await response.json().catch(() => ({}));
 
+        if (!response.ok) {
+          showError(result.error || 'Something went wrong. Please try again later.');
+          return;
+        }
+
+        showSuccess(
+          result.alreadySubscribed
+            ? '✅ You are already on the list. Nothing more to do.'
+            : defaultSuccess
+        );
+        form.reset();
       } catch (error) {
-        console.error('Error adding subscriber: ', error);
+        console.error('Error subscribing: ', error);
         showError('Something went wrong. Please try again later.');
       } finally {
         setLoading(false);
@@ -184,7 +184,8 @@
       }
     }
 
-    function showSuccess() {
+    function showSuccess(message: string | null) {
+      if (message) successText.textContent = message;
       successMessage.classList.remove('hidden');
       errorMessage.classList.add('hidden');
     }

@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # design files
 design/
+
+# cloudflare worker local secrets
+.dev.vars
