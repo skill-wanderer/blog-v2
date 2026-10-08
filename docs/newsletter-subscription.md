@@ -50,22 +50,29 @@ call after a cold start and nothing after that. If you keep several audiences in
 this account and subscribers should land in a newer one, set the id explicitly in
 `resolveAudienceId` in `src/lib/resend.ts`.
 
-These are secrets, so they do **not** belong in a committed file, and ideally not
-in `.env` either, whose values are inlined at build time.
+Both are **build-time** variables. They are declared in `env.schema` in
+`astro.config.mjs` as `context: 'server', access: 'public'`, which makes Astro
+read them during `astro build` and inline them into the worker bundle
+(`dist/_worker.js`). The worker reads nothing from its runtime bindings, so no
+Worker secrets are needed. `context: 'server'` means only server code can import
+them from `astro:env/server`; importing them in client code fails the build.
+`dist/.assetsignore` keeps `_worker.js` out of the public static assets.
 
-**Local development:** copy `.dev.vars.example` to `.dev.vars` and fill it in.
-`.dev.vars` is git-ignored, and the Cloudflare platform proxy exposes it to the
-route through `locals.runtime.env`. Values in `.env` also work for `astro dev`.
+They are still secrets, so never commit real values. Anything that holds the
+built `dist/` folder or the deployed worker script contains the key, so changing
+either value needs a rebuild and redeploy.
 
-**Production:** set them as Worker secrets.
+**Local development:** put them in `.env` (git-ignored, see `.env.example`).
+`astro dev`, `npm run preview` and `npm run deploy` all read it.
 
-```bash
-npx wrangler secret put RESEND_API_KEY
-npx wrangler secret put RESEND_FROM_EMAIL
-```
+**Production (Cloudflare Workers Builds):** add both under *Workers & Pages >
+blog-v2 > Settings > Build > Variables and secrets*. These are build variables,
+not the runtime *Variables and Secrets* on the Settings page. If you deploy
+from another CI, export them in the environment of the `astro build` step.
 
-If either variable is missing the route answers `503` and the form tells the
-visitor that subscriptions are temporarily unavailable.
+If either variable is missing at build time the build still succeeds, the route
+answers `503`, and the form tells the visitor that subscriptions are temporarily
+unavailable.
 
 ## API reference
 

@@ -19,11 +19,11 @@ function bareAddress(from: string): string {
   return (match ? match[1] : from).trim();
 }
 
-export const POST: APIRoute = async ({ request, locals }) => {
-  const config = getResendConfig((locals as any)?.runtime?.env);
+export const POST: APIRoute = async ({ request }) => {
+  const config = getResendConfig();
 
   if (!config) {
-    console.error('Subscribe: Resend is not configured (RESEND_API_KEY / RESEND_FROM_EMAIL).');
+    console.error('Subscribe: Resend is not configured (RESEND_API_KEY / RESEND_FROM_EMAIL were not set at build time).');
     return json({ error: 'Subscriptions are temporarily unavailable. Please try again later.' }, 503);
   }
 
