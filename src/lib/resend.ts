@@ -10,6 +10,8 @@
 // The only configuration is an API key and a sender address. The audience is
 // looked up from the account at runtime, so there is no id to keep in sync.
 
+import { RESEND_API_KEY, RESEND_FROM_EMAIL } from 'astro:env/server';
+
 const RESEND_API = 'https://api.resend.com';
 
 export interface ResendConfig {
@@ -18,24 +20,14 @@ export interface ResendConfig {
 }
 
 /**
- * Reads the Resend configuration from the Cloudflare Worker bindings when
- * running on Cloudflare, and falls back to the build-time env for `astro dev`.
+ * Returns the Resend configuration. Both values are inlined at build time
+ * (see `env.schema` in astro.config.mjs), so nothing is read from the Worker
+ * bindings at runtime.
  */
-export function getResendConfig(runtimeEnv?: Record<string, unknown>): ResendConfig | null {
-  const read = (key: string): string | undefined => {
-    const fromRuntime = runtimeEnv?.[key];
-    if (typeof fromRuntime === 'string' && fromRuntime) return fromRuntime;
-    const fromBuild = (import.meta.env as Record<string, unknown>)[key];
-    if (typeof fromBuild === 'string' && fromBuild) return fromBuild;
-    return undefined;
-  };
+export function getResendConfig(): ResendConfig | null {
+  if (!RESEND_API_KEY || !RESEND_FROM_EMAIL) return null;
 
-  const apiKey = read('RESEND_API_KEY');
-  const from = read('RESEND_FROM_EMAIL');
-
-  if (!apiKey || !from) return null;
-
-  return { apiKey, from };
+  return { apiKey: RESEND_API_KEY, from: RESEND_FROM_EMAIL };
 }
 
 async function resendFetch(config: ResendConfig, path: string, body?: unknown) {
