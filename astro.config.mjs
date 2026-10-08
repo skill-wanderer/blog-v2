@@ -19,9 +19,11 @@ export default defineConfig({
     // environment and inlined into the server bundle, so the worker needs no
     // runtime secrets. `context: 'server'` keeps them out of client code.
     // Optional so builds without them still pass; /api/subscribe answers 503.
+    // RESEND_REPLY_TO is optional on its own; without it replies go to the sender.
     schema: {
       RESEND_API_KEY: envField.string({ context: 'server', access: 'public', optional: true }),
       RESEND_FROM_EMAIL: envField.string({ context: 'server', access: 'public', optional: true }),
+      RESEND_REPLY_TO: envField.string({ context: 'server', access: 'public', optional: true }),
     },
   },
   markdown: {
