@@ -7,27 +7,34 @@
 // There is no confirmation / double opt-in step: a subscriber is added to the
 // audience straight away and the welcome email goes out immediately.
 //
-// The only configuration is an API key and a sender address. The audience is
-// looked up from the account at runtime, so there is no id to keep in sync.
+// The only configuration is an API key, a sender address and an optional
+// reply-to address. The audience is looked up from the account at runtime, so
+// there is no id to keep in sync.
 
-import { RESEND_API_KEY, RESEND_FROM_EMAIL } from 'astro:env/server';
+import { RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_REPLY_TO } from 'astro:env/server';
 
 const RESEND_API = 'https://api.resend.com';
 
 export interface ResendConfig {
   apiKey: string;
   from: string;
+  /** Where replies go. Unset means replies go to `from`. */
+  replyTo?: string;
 }
 
 /**
- * Returns the Resend configuration. Both values are inlined at build time
+ * Returns the Resend configuration. All values are inlined at build time
  * (see `env.schema` in astro.config.mjs), so nothing is read from the Worker
  * bindings at runtime.
  */
 export function getResendConfig(): ResendConfig | null {
   if (!RESEND_API_KEY || !RESEND_FROM_EMAIL) return null;
 
-  return { apiKey: RESEND_API_KEY, from: RESEND_FROM_EMAIL };
+  return {
+    apiKey: RESEND_API_KEY,
+    from: RESEND_FROM_EMAIL,
+    replyTo: RESEND_REPLY_TO?.trim() || undefined,
+  };
 }
 
 async function resendFetch(config: ResendConfig, path: string, body?: unknown) {
@@ -131,6 +138,7 @@ export async function sendEmail(config: ResendConfig, options: SendEmailOptions)
   const { ok, status, payload } = await resendFetch(config, '/emails', {
     from: config.from,
     to: [options.to],
+    reply_to: config.replyTo,
     subject: options.subject,
     html: options.html,
     text: options.text,

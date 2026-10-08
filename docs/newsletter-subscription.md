@@ -36,12 +36,13 @@ works on the Cloudflare runtime.
 
 ## Configuration
 
-Two variables, both required.
+Two required variables and one optional one.
 
 | Variable | Meaning |
 |---|---|
-| `RESEND_API_KEY` | API key from <https://resend.com/api-keys>, with access to Audiences and Emails |
-| `RESEND_FROM_EMAIL` | Sender, e.g. `Skill Wanderer <hello@skill-wanderer.com>`. The domain must be verified in Resend, and replies and unsubscribe requests go to this address |
+| `RESEND_API_KEY` | Required. API key from <https://resend.com/api-keys>, with access to Audiences and Emails |
+| `RESEND_FROM_EMAIL` | Required. Sender, e.g. `Skill Wanderer <hello@skill-wanderer.com>`. The domain must be verified in Resend. Replies and unsubscribe requests go to this address unless `RESEND_REPLY_TO` is set |
+| `RESEND_REPLY_TO` | Optional. Reply-To address for the welcome email, e.g. a personal inbox when the sender is a no-reply address. When set, replies, the unsubscribe `mailto:` link and the `List-Unsubscribe` header all use it. It does not need a verified domain |
 
 There is no audience id to configure. The route calls `GET /audiences` and uses
 the account's oldest audience, which is the `General` one Resend creates with a
@@ -50,7 +51,7 @@ call after a cold start and nothing after that. If you keep several audiences in
 this account and subscribers should land in a newer one, set the id explicitly in
 `resolveAudienceId` in `src/lib/resend.ts`.
 
-Both are **build-time** variables. They are declared in `env.schema` in
+All three are **build-time** variables. They are declared in `env.schema` in
 `astro.config.mjs` as `context: 'server', access: 'public'`, which makes Astro
 read them during `astro build` and inline them into the worker bundle
 (`dist/_worker.js`). The worker reads nothing from its runtime bindings, so no
@@ -60,19 +61,20 @@ them from `astro:env/server`; importing them in client code fails the build.
 
 They are still secrets, so never commit real values. Anything that holds the
 built `dist/` folder or the deployed worker script contains the key, so changing
-either value needs a rebuild and redeploy.
+any of them needs a rebuild and redeploy.
 
 **Local development:** put them in `.env` (git-ignored, see `.env.example`).
 `astro dev`, `npm run preview` and `npm run deploy` all read it.
 
-**Production (Cloudflare Workers Builds):** add both under *Workers & Pages >
+**Production (Cloudflare Workers Builds):** add them under *Workers & Pages >
 blog-v2 > Settings > Build > Variables and secrets*. These are build variables,
 not the runtime *Variables and Secrets* on the Settings page. If you deploy
 from another CI, export them in the environment of the `astro build` step.
 
-If either variable is missing at build time the build still succeeds, the route
-answers `503`, and the form tells the visitor that subscriptions are temporarily
-unavailable.
+If either required variable is missing at build time the build still succeeds,
+the route answers `503`, and the form tells the visitor that subscriptions are
+temporarily unavailable. A missing `RESEND_REPLY_TO` changes nothing except
+where replies go.
 
 ## API reference
 
@@ -129,5 +131,6 @@ closest match to production.
 - The route has no rate limiting. If the form starts attracting abuse, put a
   Cloudflare rate-limiting rule in front of `/api/subscribe`.
 - Unsubscribing from the welcome email is a `mailto:` link plus a
-  `List-Unsubscribe` header pointing at the sender address. Broadcasts use
-  Resend's hosted unsubscribe page instead.
+  `List-Unsubscribe` header pointing at the reply-to address (or the sender
+  address when `RESEND_REPLY_TO` is unset). Broadcasts use Resend's hosted
+  unsubscribe page instead.

@@ -51,7 +51,8 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ message: 'You are already subscribed.', alreadySubscribed: true }, 200);
   }
 
-  const unsubscribeEmail = bareAddress(config.from);
+  // The welcome email says "reply to unsubscribe", so use the inbox replies land in.
+  const unsubscribeEmail = bareAddress(config.replyTo ?? config.from);
   const welcome = await sendEmail(config, {
     to: email,
     subject: welcomeSubject,
