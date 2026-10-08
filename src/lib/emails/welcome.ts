@@ -6,6 +6,7 @@ const SITE_URL = 'https://wanderings.skill-wanderer.com';
 const BLOG_URL = `${SITE_URL}/blog`;
 const HUB_URL = 'https://skill-wanderer.com/';
 const DOJO_URL = 'https://dojo.skill-wanderer.com/';
+const HELP_THE_MISSION_URL = 'https://skill-wanderer.com/help-the-mission';
 
 export interface WelcomeEmailOptions {
   /** Address a reader can write to in order to be removed from the list. */
@@ -30,7 +31,7 @@ export function welcomeHtml({ unsubscribeEmail }: WelcomeEmailOptions): string {
       <td align="center">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background-color:#161b22;border:1px solid rgba(255,217,61,0.12);border-radius:16px;overflow:hidden;">
           <tr>
-            <td style="background:linear-gradient(135deg,#FF6B35 0%,#E85D25 100%);padding:28px 32px;">
+            <td style="background-color:#FF6B35;background:linear-gradient(135deg,#FF6B35 0%,#E85D25 100%);padding:28px 32px;">
               <h1 style="margin:0;font-size:24px;line-height:1.3;color:#ffffff;font-weight:700;">You are on the list</h1>
             </td>
           </tr>
@@ -47,10 +48,12 @@ export function welcomeHtml({ unsubscribeEmail }: WelcomeEmailOptions): string {
                 </tr>
               </table>
               <p style="margin:0 0 8px;color:#a0a0a0;font-size:14px;">While you wait for the next post:</p>
-              <ul style="margin:0 0 8px;padding-left:20px;color:#e0e0e0;font-size:14px;line-height:1.8;">
+              <ul style="margin:0 0 28px;padding-left:20px;color:#e0e0e0;font-size:14px;line-height:1.8;">
                 <li><a href="${HUB_URL}" style="color:#FFD93D;text-decoration:none;">The Skill Wanderer hub</a></li>
                 <li><a href="${DOJO_URL}" style="color:#FFD93D;text-decoration:none;">The Dojo, where the learning happens</a></li>
               </ul>
+              <p style="margin:0 0 12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);color:#a0a0a0;font-size:15px;">And if you ever feel like lending a hand to keep education free, there are a few ways to do it. No pressure at all.</p>
+              <p style="margin:0;font-size:15px;"><a href="${HELP_THE_MISSION_URL}" style="color:#FF6B35;font-weight:700;text-decoration:none;">See how you can help &rarr;</a></p>
             </td>
           </tr>
           <tr>
@@ -82,6 +85,11 @@ Start reading the blog: ${BLOG_URL}
 While you wait for the next post:
 - The Skill Wanderer hub: ${HUB_URL}
 - The Dojo, where the learning happens: ${DOJO_URL}
+
+And if you ever feel like lending a hand to keep education free, there are a
+few ways to do it. No pressure at all.
+
+See how you can help: ${HELP_THE_MISSION_URL}
 
 You are getting this because you subscribed at ${SITE_URL}.
 To unsubscribe, reply to this message or write to ${unsubscribeEmail} with the
