@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'I Was Not Born for This' Is True Only as Long as You Believe It - Infographic</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --container-bg: #111827;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-gold: #fbbf24;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --card-bg: #1f2937;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.10) 0px, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(251, 191, 36, 0.10) 0px, transparent 50%);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .infographic {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.15), transparent 60%),
+                        radial-gradient(circle at top left, rgba(139, 92, 246, 0.10), transparent 55%),
+                        linear-gradient(180deg, rgba(17, 24, 39, 1) 0%, rgba(31, 41, 55, 0.5) 100%);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange));
+            color: #ffffff;
+            padding: 6px 20px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 40%, #e2e8f0 70%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .content { padding: 50px 40px; }
+
+        .section-wrap { margin-bottom: 70px; }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 45px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            position: relative;
+        }
+
+        .section-title .icon { font-size: 2rem; }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 9999px;
+            position: absolute;
+            bottom: -15px;
+        }
+
+        .section-lede {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: -25px auto 30px auto;
+            font-size: 1rem;
+        }
+
+        .section-lede strong { color: var(--text-primary); }
+
+        .sub-head {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin: 36px 0 18px;
+        }
+
+        .punchline {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            background: rgba(251, 191, 36, 0.06);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-top: 28px;
+        }
+
+        .punchline span { color: var(--accent-gold); }
+
+        .funnel-arrow {
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .src {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Step zero */
+        .thesis { margin-bottom: 70px; }
+
+        .thesis-kicker {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .step-chain {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1fr;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .step-node {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 18px 20px;
+            text-align: center;
+        }
+
+        .step-node .node-num {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .step-node h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .step-node.first {
+            border-color: rgba(251, 191, 36, 0.55);
+            background: linear-gradient(180deg, rgba(251, 191, 36, 0.12), var(--card-bg));
+            box-shadow: 0 0 24px rgba(251, 191, 36, 0.12);
+        }
+
+        .step-node.first .node-num,
+        .step-node.first h4 { color: var(--accent-gold); }
+
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        .thesis-note {
+            text-align: center;
+            max-width: 840px;
+            margin: 20px auto 0;
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+        }
+
+        .thesis-note strong { color: var(--text-primary); }
+
+        /* One sentence, many costumes */
+        .costume-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .costume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px 16px 16px 4px;
+            padding: 14px 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .big-sentence {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: white;
+            margin-bottom: 28px;
+        }
+
+        .loop-chain {
+            display: grid;
+            grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
+            gap: 8px;
+            align-items: stretch;
+        }
+
+        .loop-step {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px 14px;
+            text-align: center;
+        }
+
+        .loop-step .step-num {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .loop-step .step-icon { font-size: 1.5rem; display: block; margin-bottom: 6px; }
+
+        .loop-step h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .loop-step p { font-size: 0.83rem; color: var(--text-secondary); }
+
+        .loop-step.proof {
+            border-color: rgba(239, 68, 68, 0.45);
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.08), rgba(17, 24, 39, 0.7));
+        }
+
+        .loop-step.proof h5 { color: #fca5a5; }
+
+        .loop-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-red);
+            font-size: 1.2rem;
+        }
+
+        .loop-back {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--accent-red);
+        }
+
+        /* Two beliefs */
+        .belief-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .belief-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-red);
+            border-radius: 20px;
+            padding: 26px 28px;
+        }
+
+        .belief-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .belief-head .belief-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+        .belief-head h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.3;
+            color: white;
+        }
+
+        .belief-card p { font-size: 0.92rem; color: var(--text-secondary); }
+        .belief-card p strong { color: var(--text-primary); }
+
+        .logic {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .logic-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logic-chip {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .logic-arrow { color: var(--accent-red); font-size: 0.85rem; }
+
+        .root-belief {
+            margin-top: 24px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(239, 68, 68, 0.10), transparent 70%),
+                        linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px;
+            padding: 26px 32px;
+        }
+
+        .root-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+
+        .root-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .root-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .root-sub strong { color: var(--text-primary); }
+
+        /* The highlight reel */
+        .filmstrip {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            background: #05070d;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 28px 16px;
+        }
+
+        .filmstrip::before,
+        .filmstrip::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, rgba(243, 244, 246, 0.18) 0 12px, transparent 12px 24px);
+            border-radius: 2px;
+        }
+
+        .filmstrip::before { top: 10px; }
+        .filmstrip::after { bottom: 10px; }
+
+        .frame {
+            position: relative;
+            background: #111827;
+            border: 1px solid #263041;
+            border-radius: 6px;
+            padding: 26px 8px 14px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .frame-tag {
+            position: absolute;
+            top: 7px;
+            left: 9px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fca5a5;
+        }
+
+        .frame-icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            filter: grayscale(0.7);
+        }
+
+        .frame h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--text-secondary);
+        }
+
+        .frame.final {
+            opacity: 1;
+            background: linear-gradient(180deg, rgba(251, 191, 36, 0.20), rgba(245, 158, 11, 0.05));
+            border-color: rgba(251, 191, 36, 0.6);
+            box-shadow: 0 0 26px rgba(251, 191, 36, 0.22);
+        }
+
+        .frame.final .frame-tag { color: var(--accent-gold); }
+        .frame.final .frame-icon { filter: none; }
+        .frame.final h5 { color: white; }
+
+        .film-caption {
+            text-align: center;
+            max-width: 820px;
+            margin: 16px auto 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .film-caption strong { color: var(--text-primary); }
+
+        .leader-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .leader-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 18px 16px;
+        }
+
+        .leader-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .leader-head .leader-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+        .leader-head h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            line-height: 1.25;
+            color: white;
+        }
+
+        .leader-card .before {
+            font-size: 0.82rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .leader-outcome {
+            margin-top: auto;
+            padding-top: 8px;
+        }
+
+        .leader-arrow {
+            display: block;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .leader-card .after {
+            display: flex;
+            align-items: center;
+            min-height: 88px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(17, 24, 39, 0.4));
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Nobody was born a programmer */
+        .myth-row {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        .myth-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px 26px;
+        }
+
+        .myth-card.myth { border-top: 4px solid var(--accent-red); }
+        .myth-card.truth { border-top: 4px solid var(--accent-green); }
+
+        .myth-tag {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .myth .myth-tag { color: var(--accent-red); }
+        .truth .myth-tag { color: var(--accent-green); }
+
+        .myth-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: white;
+        }
+
+        .myth .myth-text {
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            text-decoration-color: var(--accent-red);
+            text-decoration-thickness: 2px;
+        }
+
+        .myth-note { margin-top: 8px; font-size: 0.88rem; color: var(--text-secondary); }
+
+        .myth-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-size: 1.5rem;
+        }
+
+        .catch-strip {
+            margin-top: 22px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(17, 24, 39, 0.4));
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 16px;
+            padding: 22px 26px;
+            text-align: center;
+        }
+
+        .catch-strip h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            color: white;
+            margin-bottom: 14px;
+        }
+
+        .catch-strip h4 span { color: #6ee7b7; }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .skill-chip {
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 7px 15px;
+            border-radius: 9999px;
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+        }
+
+        .catch-strip p { font-size: 0.93rem; color: var(--text-secondary); }
+        .catch-strip p strong { color: var(--text-primary); }
+
+        /* 100% or 50% */
+        .odds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .odds-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 28px;
+        }
+
+        .odds-card.lose { border-top: 4px solid var(--accent-red); }
+        .odds-card.win { border-top: 4px solid var(--accent-green); }
+
+        .odds-belief {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .odds-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .odds-figure {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .lose .odds-figure { color: var(--accent-red); }
+        .win .odds-figure { color: var(--accent-green); }
+
+        .odds-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .meter {
+            display: flex;
+            height: 12px;
+            margin: 16px 0 6px;
+            border-radius: 9999px;
+            overflow: hidden;
+            background: rgba(75, 85, 99, 0.6);
+        }
+
+        .meter .fill-loss { width: 100%; background: linear-gradient(90deg, #b91c1c, var(--accent-red)); }
+        .meter .fill-win { width: 50%; background: linear-gradient(90deg, #059669, var(--accent-green)); }
+
+        .meter-legend {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .odds-card p { font-size: 0.92rem; color: var(--text-secondary); }
+        .odds-card p strong { color: var(--text-primary); }
+
+        .virgil {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .virgil-quote {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 70%), #0f172a;
+            padding: 24px 28px;
+        }
+
+        .virgil-quote .latin {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #c4b5fd;
+            margin-bottom: 4px;
+        }
+
+        .virgil-quote .english { font-size: 0.98rem; color: var(--text-primary); }
+
+        .virgil-story {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--card-bg);
+            padding: 24px 28px;
+        }
+
+        .virgil-story h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            color: #c4b5fd;
+            margin-bottom: 6px;
+        }
+
+        .virgil-story p { font-size: 0.92rem; color: var(--text-secondary); }
+        .virgil-story p strong { color: var(--text-primary); }
+
+        /* How the belief broke */
+        .tracks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .track {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 26px 28px;
+        }
+
+        .track.pushed { border-top: 4px solid var(--accent-orange); }
+        .track.jumped { border-top: 4px solid var(--accent-cyan); }
+
+        .track-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .track-head h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .track-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            border: 1px solid;
+            white-space: nowrap;
+        }
+
+        .pushed .track-tag { color: var(--accent-orange); border-color: rgba(245, 158, 11, 0.4); }
+        .jumped .track-tag { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4); }
+
+        .track-steps {
+            list-style: none;
+            position: relative;
+        }
+
+        .track-steps::before {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 18px;
+            bottom: 18px;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .track-steps li {
+            position: relative;
+            padding-left: 52px;
+            margin-bottom: 16px;
+            min-height: 36px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .track-steps li:last-child { margin-bottom: 0; }
+        .track-steps li strong { color: var(--text-primary); }
+
+        .step-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background: #111827;
+            border: 1px solid var(--border-color);
+        }
+
+        .pushed .step-dot { border-color: rgba(245, 158, 11, 0.45); }
+        .jumped .step-dot { border-color: rgba(6, 182, 212, 0.45); }
+
+        /* Anything, but not everything */
+        .weeks-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.07), rgba(17, 24, 39, 0.4));
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 20px;
+            padding: 28px 30px;
+        }
+
+        .weeks-kicker {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .price-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .price-chip {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+            background: rgba(17, 24, 39, 0.6);
+            color: var(--text-secondary);
+        }
+
+        .price-chip strong { color: var(--text-primary); }
+
+        .price-chip.time {
+            border-color: rgba(251, 191, 36, 0.45);
+            color: #fcd34d;
+        }
+
+        .price-chip.time strong { color: var(--accent-gold); }
+
+        .weeks-figure {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1;
+            color: white;
+        }
+
+        .weeks-unit {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin: 6px 0 12px;
+        }
+
+        .weeks-text p { font-size: 0.92rem; color: var(--text-secondary); }
+        .weeks-text p strong { color: var(--text-primary); }
+
+        .weeks-src {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .weeks-grid svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .weeks-grid figcaption {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .bad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .bad-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px 24px;
+        }
+
+        .bad-icon { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+
+        .bad-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .bad-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .bad-verdict {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        /* Nobody is forcing me */
+        .arrival-row {
+            display: grid;
+            grid-template-columns: 1fr 36px 1fr 36px 1fr;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .arrival-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 20px;
+            text-align: center;
+        }
+
+        .arrival-card .arrival-icon { font-size: 1.7rem; display: block; margin-bottom: 6px; }
+
+        .arrival-skill {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .arrival-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .arrival-card p { font-size: 0.86rem; color: var(--text-secondary); }
+
+        .arrival-card.forced h4 { color: var(--accent-orange); }
+        .arrival-card.leap h4 { color: var(--accent-cyan); }
+
+        .arrival-card.chosen {
+            border-color: rgba(16, 185, 129, 0.45);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.08), var(--card-bg));
+        }
+
+        .arrival-card.chosen h4 { color: var(--accent-green); }
+
+        .arrival-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+        }
+
+        .evidence {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .evidence-label {
+            width: 100%;
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .evidence-chip {
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 7px 15px;
+            border-radius: 9999px;
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #67e8f9;
+            text-decoration: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .evidence-chip:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .question-shift {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .q-old,
+        .q-new {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 12px 22px;
+            border-radius: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .q-old {
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            text-decoration-color: rgba(239, 68, 68, 0.75);
+        }
+
+        .q-new {
+            color: var(--accent-gold);
+            border-color: rgba(251, 191, 36, 0.45);
+        }
+
+        .q-arrow { color: var(--accent-gold); font-size: 1.4rem; }
+
+        .shift-note {
+            text-align: center;
+            max-width: 760px;
+            margin: 14px auto 0;
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+        }
+
+        .shift-note strong { color: var(--text-primary); }
+
+        /* Cannot, or chose not to */
+        .cards-pair {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .word-wrap {
+            width: 250px;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .word-card {
+            min-height: 124px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .word-card.worn {
+            color: rgba(68, 52, 30, 0.78);
+            background:
+                linear-gradient(118deg, transparent 48%, rgba(120, 88, 48, 0.3) 49.5%, transparent 51%),
+                linear-gradient(32deg, transparent 63%, rgba(120, 88, 48, 0.22) 64.5%, transparent 66%),
+                radial-gradient(circle at 15% 20%, rgba(150, 110, 60, 0.4), transparent 50%),
+                radial-gradient(circle at 88% 85%, rgba(150, 110, 60, 0.35), transparent 45%),
+                #d8c7a0;
+            border-radius: 15px 7px 12px 9px;
+            box-shadow: inset 0 0 26px rgba(110, 78, 38, 0.55), 0 10px 24px rgba(0, 0, 0, 0.45);
+            transform: rotate(-3deg);
+        }
+
+        .word-card.crisp {
+            color: #1f2937;
+            background: #f9fafb;
+            border-radius: 6px;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(2deg);
+        }
+
+        .word-caption {
+            display: block;
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+        }
+
+        .word-caption strong { display: block; color: var(--text-primary); }
+
+        .the-question {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 26px;
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+        }
+
+        .the-question strong {
+            display: block;
+            margin-top: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            line-height: 1.35;
+            color: white;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .split-col {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 28px;
+        }
+
+        .split-col.chose { border-top: 4px solid var(--accent-green); }
+        .split-col.examine { border-top: 4px solid var(--accent-gold); }
+
+        .split-col h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .split-col.chose h3 { color: var(--accent-green); }
+        .split-col.examine h3 { color: var(--accent-gold); }
+
+        .split-col p { font-size: 0.92rem; color: var(--text-secondary); }
+        .split-col p strong { color: var(--text-primary); }
+
+        .chip-row { margin: 12px 0 4px; }
+
+        .split-chip {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 9999px;
+            margin: 0 6px 8px 0;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            background: rgba(17, 24, 39, 0.6);
+            color: #fcd34d;
+        }
+
+        .split-col.chose .split-chip {
+            color: #6ee7b7;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .split-col .split-chip.add { border-style: dashed; }
+
+        .test-strip {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 24px;
+            background: var(--card-bg);
+            border: 1px dashed rgba(251, 191, 36, 0.45);
+            border-radius: 16px;
+            padding: 20px 26px;
+        }
+
+        .test-strip .test-icon { font-size: 1.9rem; flex-shrink: 0; }
+
+        .test-strip h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            color: var(--accent-gold);
+            margin-bottom: 2px;
+        }
+
+        .test-strip p { font-size: 0.92rem; color: var(--text-secondary); }
+        .test-strip p strong { color: var(--text-primary); }
+
+        /* Takeaway */
+        .takeaway {
+            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.14), transparent 65%),
+                        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.10), transparent 60%),
+                        linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 20px;
+            padding: 45px 40px;
+            text-align: center;
+        }
+
+        .takeaway h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: white;
+            margin-bottom: 14px;
+        }
+
+        .takeaway h3 span { color: var(--accent-gold); }
+
+        .takeaway p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .takeaway p strong { color: var(--text-primary); }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 8px; }
+
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .header h1 { font-size: 2rem; }
+            .content { padding: 35px 20px; }
+            .section-title { font-size: 1.5rem; }
+
+            .costume-grid { grid-template-columns: repeat(2, 1fr); }
+            .filmstrip { grid-template-columns: repeat(3, 1fr); }
+            .leader-grid { grid-template-columns: repeat(2, 1fr); }
+            .leader-card:last-child { grid-column: 1 / -1; }
+
+            .step-chain,
+            .loop-chain,
+            .myth-row,
+            .arrival-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .step-arrow,
+            .loop-link,
+            .myth-arrow,
+            .arrival-arrow {
+                transform: rotate(90deg);
+            }
+
+            .belief-grid,
+            .odds-grid,
+            .virgil,
+            .tracks,
+            .weeks-panel,
+            .bad-grid,
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .big-sentence { font-size: 1.9rem; }
+        }
+
+        @media (max-width: 560px) {
+            body { padding: 20px 10px; }
+            .header { padding: 40px 22px; }
+            .header h1 { font-size: 1.7rem; }
+            .section-title { font-size: 1.35rem; }
+            .costume-grid,
+            .leader-grid { grid-template-columns: 1fr; }
+            .leader-card .after { min-height: 0; }
+            .filmstrip { grid-template-columns: repeat(2, 1fr); }
+            .big-sentence { font-size: 1.55rem; }
+            .root-belief { padding: 24px 20px; }
+            .root-text { font-size: 1.3rem; }
+            .odds-figure { font-size: 2.6rem; }
+            .virgil-quote,
+            .virgil-story { padding: 22px 20px; }
+            .weeks-panel { padding: 24px 20px; }
+            .weeks-figure { font-size: 2.8rem; }
+            .question-shift { flex-direction: column; gap: 10px; }
+            .q-old,
+            .q-new { font-size: 1.05rem; }
+            .q-arrow { transform: rotate(90deg); }
+            .the-question strong { font-size: 1.2rem; }
+            .test-strip { flex-direction: column; text-align: center; gap: 10px; padding: 20px; }
+            .takeaway { padding: 35px 22px; }
+            .takeaway h3 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-badge">Skill-Wanderer Journey</div>
+            <h1 id="infographic-title">"I Was Not Born for This"<br>Is True Only as Long as You Believe It</h1>
+            <p>For years I believed I was not born to lead and not born to code. Both beliefs were 100% right, for exactly as long as I held them. Here is how they broke, why belief has to come before learning, and why some of the things I am bad at, I am bad at on purpose.</p>
+        </div>
+
+        <div class="content">
+
+            <!-- Step zero -->
+            <div class="thesis">
+                <span class="thesis-kicker">The step before self-learning</span>
+                <div class="step-chain">
+                    <div class="step-node first">
+                        <span class="node-num">Step 0</span>
+                        <h4>Believe you can learn it</h4>
+                    </div>
+                    <div class="step-arrow">&#10148;</div>
+                    <div class="step-node">
+                        <span class="node-num">Step 1</span>
+                        <h4>Decide to learn it</h4>
+                    </div>
+                    <div class="step-arrow">&#10148;</div>
+                    <div class="step-node">
+                        <span class="node-num">Step 2</span>
+                        <h4>Learn it</h4>
+                    </div>
+                </div>
+                <p class="thesis-note">Frameworks expire, languages drift and certificates go stale. The ability to self-learn keeps paying out, and it starts with a step so early that most of us walk straight past it. And the half that motivational posters leave out: <strong>being able to learn something is not the same as having to learn it.</strong></p>
+            </div>
+
+            <!-- One sentence, many costumes -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🔒</span>
+                    One Sentence, Many Costumes
+                </h2>
+                <p class="section-lede">As a mentor and as a manager, I have heard one sentence more than any other. It rarely shows up in its own clothes.</p>
+
+                <div class="costume-grid">
+                    <div class="costume">"I am not a numbers person."</div>
+                    <div class="costume">"I am just not technical."</div>
+                    <div class="costume">"I am not a natural leader."</div>
+                    <div class="costume">"Some people just get it, and I am not one of them."</div>
+                </div>
+
+                <div class="funnel-arrow">&#9660; &nbsp; different words, same sentence underneath &nbsp; &#9660;</div>
+                <p class="big-sentence">"I was not born for this."</p>
+
+                <div class="loop-chain">
+                    <div class="loop-step">
+                        <span class="step-num">Step 1</span>
+                        <span class="step-icon">🙅</span>
+                        <h5>You hold the belief</h5>
+                        <p>It feels like a plain fact, not a belief.</p>
+                    </div>
+                    <div class="loop-link">&#10148;</div>
+                    <div class="loop-step">
+                        <span class="step-num">Step 2</span>
+                        <span class="step-icon">🚪</span>
+                        <h5>You never start</h5>
+                        <p>The editor stays closed. The lead role gets turned down.</p>
+                    </div>
+                    <div class="loop-link">&#10148;</div>
+                    <div class="loop-step">
+                        <span class="step-num">Step 3</span>
+                        <span class="step-icon">⚖️</span>
+                        <h5>Or you start, braced to fail</h5>
+                        <p>The first error reads like a verdict instead of a clue.</p>
+                    </div>
+                    <div class="loop-link">&#10148;</div>
+                    <div class="loop-step proof">
+                        <span class="step-num">Step 4</span>
+                        <span class="step-icon">🧾</span>
+                        <h5>The "proof" arrives</h5>
+                        <p>No clumsy attempts collected, so no competence built.</p>
+                    </div>
+                </div>
+                <p class="loop-back">&#8635; &nbsp; the belief now looks proven, and the loop starts again</p>
+
+                <div class="punchline">The belief does not describe your ability. <span>It manufactures the evidence that proves it right,</span> for exactly as long as you believe it.</div>
+            </div>
+
+            <!-- Two beliefs -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🎒</span>
+                    Two Things I Was Sure I Was Not Born For
+                </h2>
+                <p class="section-lede">From childhood through university I carried a long list. Two items on it turned out to be the two things my working life would be built on.</p>
+
+                <div class="belief-grid">
+                    <div class="belief-card">
+                        <div class="belief-head">
+                            <span class="belief-icon">🧭</span>
+                            <h3>Not born to be a leader</h3>
+                        </div>
+                        <p>About the "born" part, I was right. That is not modesty. <strong>There is no doubt about it whatsoever.</strong></p>
+                        <div class="logic">
+                            <span class="logic-chip">Not born a leader</span>
+                            <span class="logic-step"><span class="logic-arrow">&#10148;</span><span class="logic-chip">So leading is not for me</span></span>
+                        </div>
+                    </div>
+                    <div class="belief-card">
+                        <div class="belief-head">
+                            <span class="belief-icon">💻</span>
+                            <h3>Not born for programming</h3>
+                        </div>
+                        <p>I am not a very careful person, so I knew I would make bugs. In my head, programmers wrote correct code. <strong>Very obviously not me.</strong></p>
+                        <div class="logic">
+                            <span class="logic-chip">I will make bugs</span>
+                            <span class="logic-step"><span class="logic-arrow">&#10148;</span><span class="logic-chip">So programming is not for me</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="root-belief">
+                    <span class="root-label">The belief underneath both</span>
+                    <p class="root-text">Talent is something you are born with.</p>
+                    <p class="root-sub">Leaders led. Programmers programmed. Everyone else watched. <strong>It never felt like a belief. It felt like a plain fact about me, as fixed as my height.</strong></p>
+                </div>
+            </div>
+
+            <!-- Highlight reel and the leaders -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🎬</span>
+                    We Only Ever Meet Them at the Top
+                </h2>
+                <p class="section-lede">Films and books introduce the general already brilliant, the founder already successful, the leader already magnetic. Social media does the same with the promotion and the launch. The years before get cut.</p>
+
+                <div class="filmstrip">
+                    <div class="frame">
+                        <span class="frame-tag">Cut</span>
+                        <span class="frame-icon">🌙</span>
+                        <h5>Practising alone at night</h5>
+                    </div>
+                    <div class="frame">
+                        <span class="frame-tag">Cut</span>
+                        <span class="frame-icon">🩹</span>
+                        <h5>Falling</h5>
+                    </div>
+                    <div class="frame">
+                        <span class="frame-tag">Cut</span>
+                        <span class="frame-icon">📚</span>
+                        <h5>Studying</h5>
+                    </div>
+                    <div class="frame">
+                        <span class="frame-tag">Cut</span>
+                        <span class="frame-icon">💥</span>
+                        <h5>Failing</h5>
+                    </div>
+                    <div class="frame">
+                        <span class="frame-tag">Cut</span>
+                        <span class="frame-icon">🔁</span>
+                        <h5>The same motion, again and again</h5>
+                    </div>
+                    <div class="frame final">
+                        <span class="frame-tag">Final cut</span>
+                        <span class="frame-icon">🏔️</span>
+                        <h5>Triumph on the summit</h5>
+                    </div>
+                </div>
+                <p class="film-caption">We see great people when they are great, and almost never how they became great. So we decide they were born that way, and <strong>we compare our own raw footage with everyone else's final cut.</strong></p>
+
+                <h3 class="sub-head">Most great leaders were not born great</h3>
+                <div class="leader-grid">
+                    <div class="leader-card">
+                        <div class="leader-head">
+                            <span class="leader-icon">⚖️</span>
+                            <h4>Mohandas Gandhi</h4>
+                        </div>
+                        <p class="before">A young lawyer in Bombay. In his very first case he could not think of a single question to ask, sat down and handed back his fee.</p>
+                        <div class="leader-outcome">
+                            <span class="leader-arrow">&#9660;</span>
+                            <p class="after">Led India's independence movement.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-head">
+                            <span class="leader-icon">📖</span>
+                            <h4>Abraham Lincoln</h4>
+                        </div>
+                        <p class="before">Born in a log cabin, with less than a year of schooling. Taught himself law from borrowed books. Lost his first election, then two Senate races.</p>
+                        <div class="leader-outcome">
+                            <span class="leader-arrow">&#9660;</span>
+                            <p class="after">President of the United States.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-head">
+                            <span class="leader-icon">🧾</span>
+                            <h4>Ulysses S. Grant</h4>
+                        </div>
+                        <p class="before">At 38, a clerk in his father's leather shop, after failing at farming and selling firewood on the streets of St. Louis.</p>
+                        <div class="leader-outcome">
+                            <span class="leader-arrow">&#9660;</span>
+                            <p class="after">Less than four years later, commanded every Union army.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-head">
+                            <span class="leader-icon">🧑‍🏫</span>
+                            <h4>Võ Nguyên Giáp</h4>
+                        </div>
+                        <p class="before">A history teacher with no formal military training, who taught himself strategy.</p>
+                        <div class="leader-outcome">
+                            <span class="leader-arrow">&#9660;</span>
+                            <p class="after">Became Vietnam's greatest general.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-head">
+                            <span class="leader-icon">🌾</span>
+                            <h4>Toyotomi Hideyoshi</h4>
+                        </div>
+                        <p class="before">Born a peasant without even a surname. Started out carrying Oda Nobunaga's sandals.</p>
+                        <div class="leader-outcome">
+                            <span class="leader-arrow">&#9660;</span>
+                            <p class="after">Ended up ruling Japan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="punchline">None of them were born great, and I was certainly not born a leader. <span>It turns out that puts me in rather good company.</span></div>
+            </div>
+
+            <!-- Programmer -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🐛</span>
+                    Nobody Was Born a Programmer
+                </h2>
+                <p class="section-lede">For the first generation it was literally impossible: when they were born, there was nothing to program yet. Everyone since has had to learn it, me included.</p>
+
+                <div class="myth-row">
+                    <div class="myth-card myth">
+                        <span class="myth-tag">What I believed</span>
+                        <p class="myth-text">Good programmers do not make bugs.</p>
+                        <p class="myth-note">So someone who knew they would make bugs could never be one.</p>
+                    </div>
+                    <div class="myth-arrow">&#10148;</div>
+                    <div class="myth-card truth">
+                        <span class="myth-tag">What is actually true</span>
+                        <p class="myth-text">Every developer makes bugs, including the very best.</p>
+                        <p class="myth-note">Even AI makes them, which makes sense when you remember who it learned to code from: us.</p>
+                    </div>
+                </div>
+
+                <div class="catch-strip">
+                    <h4>The skill was never "do not make bugs". <span>The skill is catching them.</span></h4>
+                    <div class="skill-chips">
+                        <span class="skill-chip">🧪 Testing</span>
+                        <span class="skill-chip">👀 Reviewing</span>
+                        <span class="skill-chip">🔍 Debugging</span>
+                        <span class="skill-chip">🧱 Habits that make carelessness manageable</span>
+                    </div>
+                    <p>Every one of those is learned. <strong>Nobody is born knowing how to read a stack trace.</strong></p>
+                </div>
+
+                <div class="punchline">AI changed what you have to learn. <span>It did not remove the need to learn it.</span></div>
+            </div>
+
+            <!-- 100% or 50% -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">⚔️</span>
+                    100% Right, or 50% Right
+                </h2>
+                <p class="section-lede">A saying I have carried for years, more honest than most motivational quotes. In learning, the battle is the evening you decide whether to open the tutorial, or the moment after your third failed attempt.</p>
+
+                <div class="odds-grid">
+                    <div class="odds-card lose">
+                        <span class="odds-belief">Go in believing you will lose</span>
+                        <div class="odds-row">
+                            <span class="odds-figure">100%</span>
+                            <span class="odds-label">right, every time</span>
+                        </div>
+                        <div class="meter"><span class="fill-loss"></span></div>
+                        <div class="meter-legend"><span>Loss</span><span>Guaranteed</span></div>
+                        <p>Disbelief guarantees the loss. <strong>With a guaranteed loss, you have no chance at all.</strong></p>
+                    </div>
+                    <div class="odds-card win">
+                        <span class="odds-belief">Go in believing you will win</span>
+                        <div class="odds-row">
+                            <span class="odds-figure">50%</span>
+                            <span class="odds-label">right, maybe</span>
+                        </div>
+                        <div class="meter"><span class="fill-win"></span></div>
+                        <div class="meter-legend"><span>Win</span><span>Lose</span></div>
+                        <p>Belief merely keeps the outcome open. <strong>With 50%, you have a chance.</strong></p>
+                    </div>
+                </div>
+
+                <div class="virgil">
+                    <div class="virgil-quote">
+                        <p class="latin">Possunt, quia posse videntur.</p>
+                        <p class="english">"They can, because they think they can."</p>
+                        <span class="src">Virgil, Aeneid, Book V</span>
+                    </div>
+                    <div class="virgil-story">
+                        <h4>The ending nobody quotes</h4>
+                        <p>Two thousand years ago, Virgil gave that line to the crew chasing the leader in a boat race. What gets quoted far less often is how the race ends: <strong>they drew almost level, and still finished second.</strong> Virgil understood the 50% too.</p>
+                    </div>
+                </div>
+
+                <div class="punchline">Belief does not win the battle. <span>It gets you onto the field.</span></div>
+            </div>
+
+            <!-- How it broke -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🌉</span>
+                    How the Belief Finally Broke
+                </h2>
+                <p class="section-lede">Not through inspiration, and not through confidence. One belief broke because a job pushed me. For the other one, I jumped.</p>
+
+                <div class="tracks">
+                    <div class="track pushed">
+                        <div class="track-head">
+                            <h3>🧭 Leadership</h3>
+                            <span class="track-tag">Pushed</span>
+                        </div>
+                        <ol class="track-steps">
+                            <li><span class="step-dot">📘</span><strong>A book planted the doubt.</strong> It could not make me a leader, but it made me suspicious of the story I had been telling myself.</li>
+                            <li><span class="step-dot">🚢</span><strong>A job left no opting out.</strong> As an import and export manager reaching customers overseas, I had people to lead, born for it or not.</li>
+                            <li><span class="step-dot">📈</span><strong>Practice did the real work.</strong> Every day, with real stakes and real feedback. I was not half as bad as I had thought.</li>
+                        </ol>
+                    </div>
+                    <div class="track jumped">
+                        <div class="track-head">
+                            <h3>💻 Programming</h3>
+                            <span class="track-tag">Jumped</span>
+                        </div>
+                        <ol class="track-steps">
+                            <li><span class="step-dot">✨</span><strong>Curiosity lit the spark.</strong> When our company set out to build its first website, I took an HTML and CSS course on a free LinkedIn Learning trial.</li>
+                            <li><span class="step-dot">🤝</span><strong>A leap of faith.</strong> A friend, who became one of my early mentors, convinced me to quit import and export and move into tech.</li>
+                            <li><span class="step-dot">🐛</span><strong>Bugs, exactly as predicted.</strong> Plenty of them. But by then I knew everybody makes them. They were simply part of the job.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="punchline">Neither move proved I was secretly born for it. <span>You do not need to be born with it, because you can learn it.</span></div>
+            </div>
+
+            <!-- Anything, but not everything -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">⏳</span>
+                    Anything, but Not Everything
+                </h2>
+                <p class="section-lede">"You can learn anything!" True, as far as it goes. But <strong>being able to learn anything does not mean you can learn everything</strong>, and it certainly does not mean you should.</p>
+
+                <div class="weeks-panel">
+                    <div class="weeks-text">
+                        <span class="weeks-kicker">Every skill has a price</span>
+                        <div class="price-chips">
+                            <span class="price-chip">💵 <strong>Money</strong>: courses, books, equipment</span>
+                            <span class="price-chip time">⏳ <strong>Time</strong>: practice, and months of being bad</span>
+                            <span class="price-chip">🔐 <strong>Gates</strong>: licences, supervised training</span>
+                        </div>
+                        <div class="weeks-figure">&asymp; 4,000</div>
+                        <span class="weeks-unit">weeks, if you live to eighty</span>
+                        <p>Time is the currency that matters most, because it is the one you can never earn back. Every skill is paid for out of this budget, and <strong>every yes to one skill is a quiet no to another.</strong></p>
+                        <span class="weeks-src">From Oliver Burkeman, <em>Four Thousand Weeks</em></span>
+                    </div>
+                    <figure class="weeks-grid">
+                        <svg viewBox="0 0 560 364" role="img" aria-labelledby="weeks-grid-title">
+                            <title id="weeks-grid-title">Eighty columns of fifty-two squares, one square for every week of an eighty-year life</title>
+                            <defs>
+                                <pattern id="week" width="7" height="7" patternUnits="userSpaceOnUse">
+                                    <rect x="1" y="1" width="5" height="5" rx="1.2" fill="#fbbf24" fill-opacity="0.55"/>
+                                </pattern>
+                            </defs>
+                            <rect width="560" height="364" fill="url(#week)"/>
+                        </svg>
+                        <figcaption>Each square is one week. Each column is one year. Eighty columns.</figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="sub-head">So some things I choose to be bad at</h3>
+                <div class="bad-grid">
+                    <div class="bad-card">
+                        <span class="bad-icon">🏸</span>
+                        <div>
+                            <h4>A bad badminton player</h4>
+                            <p>I am quite sure I could learn it, given the hours. For the life I actually live, it would give back very little, and I am at peace with that.</p>
+                            <span class="bad-verdict">Chose not to</span>
+                        </div>
+                    </div>
+                    <div class="bad-card">
+                        <span class="bad-icon">🚗</span>
+                        <div>
+                            <h4>Cannot drive a car</h4>
+                            <p>Not because I am incapable. A taxi takes me anywhere I need to go, and learning it, then keeping it sharp, would cost real time for little return.</p>
+                            <span class="bad-verdict">Chose not to</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="punchline">Choosing what to be bad at is not a failure of ambition. <span>It is what makes being good at anything possible.</span></div>
+            </div>
+
+            <!-- Nobody is forcing me -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🌅</span>
+                    This Time, Nobody Is Forcing Me
+                </h2>
+                <p class="section-lede">The list moves in both directions. Right now I am teaching myself <strong>course design, marketing, and how education itself works</strong>: the craft of helping people actually learn.</p>
+
+                <div class="arrival-row">
+                    <div class="arrival-card forced">
+                        <span class="arrival-icon">🧭</span>
+                        <span class="arrival-skill">Leadership</span>
+                        <h4>Forced</h4>
+                        <p>A job needed a leader, and I was the one in it.</p>
+                    </div>
+                    <div class="arrival-arrow">&#10148;</div>
+                    <div class="arrival-card leap">
+                        <span class="arrival-icon">💻</span>
+                        <span class="arrival-skill">Programming</span>
+                        <h4>A leap of faith</h4>
+                        <p>I jumped, with a friend giving me the push.</p>
+                    </div>
+                    <div class="arrival-arrow">&#10148;</div>
+                    <div class="arrival-card chosen">
+                        <span class="arrival-icon">🎓</span>
+                        <span class="arrival-skill">Course design and marketing</span>
+                        <h4>Simply a choice</h4>
+                        <p>They matter for Skill-Wanderer, so they have earned their place in the budget.</p>
+                    </div>
+                </div>
+
+                <div class="evidence">
+                    <span class="evidence-label">Already visible on this blog</span>
+                    <a class="evidence-chip" href="/blog/victory-belongs-to-the-most-persevering-our-first-course-is-live">🚀 Launched a course I never thought I would</a>
+                    <a class="evidence-chip" href="/blog/wanderers-log-3-the-tet-reflection-why-skill-wanderer-is-going-ai-first">🤖 Took the curriculum AI-first</a>
+                    <a class="evidence-chip" href="/blog/wanderers-log-4-goodbye-moodle-hello-custom-lms">🏗️ Left Moodle to build our own platform</a>
+                </div>
+
+                <div class="question-shift">
+                    <span class="q-old">"Can I learn this?"</span>
+                    <span class="q-arrow">&#10148;</span>
+                    <span class="q-new">"Is it worth learning right now?"</span>
+                </div>
+                <p class="shift-note">When you have agreed to the price in advance, a clumsy first try is not proof that you were not born for this. <strong>It is just part of the payment.</strong></p>
+            </div>
+
+            <!-- Cannot, or chose not to -->
+            <div class="section-wrap">
+                <h2 class="section-title">
+                    <span class="icon">🔑</span>
+                    Cannot, or Chose Not To?
+                </h2>
+                <p class="section-lede">From the outside, the two look identical. From the inside, they could not be more different.</p>
+
+                <div class="cards-pair">
+                    <div class="word-wrap">
+                        <div class="word-card worn">I can't</div>
+                        <span class="word-caption"><strong>A belief about my limits.</strong>Closes a door I never actually tried.</span>
+                    </div>
+                    <div class="word-wrap">
+                        <div class="word-card crisp">I chose<br>not to</div>
+                        <span class="word-caption"><strong>A decision about my priorities.</strong>Walks past a door I know I could open.</span>
+                    </div>
+                </div>
+
+                <p class="the-question">Next time you catch yourself thinking you are bad at something, ask yourself: <strong>Do you believe you cannot learn it, or did you choose not to?</strong></p>
+
+                <div class="split-grid">
+                    <div class="split-col chose">
+                        <h3>✅ If you chose not to</h3>
+                        <p>Good. Own it. Put it on your list, right next to mine.</p>
+                        <div class="chip-row">
+                            <span class="split-chip">🏸 My badminton</span>
+                            <span class="split-chip">🚗 My driving</span>
+                            <span class="split-chip add">➕ Yours goes here</span>
+                        </div>
+                        <p>Do not waste a minute feeling guilty. <strong>That is not a weakness. It is a strategy.</strong></p>
+                    </div>
+                    <div class="split-col examine">
+                        <h3>🔍 If you believe you cannot</h3>
+                        <p>Look hard at where that belief came from.</p>
+                        <div class="chip-row">
+                            <span class="split-chip">A test you failed once</span>
+                            <span class="split-chip">A teacher's offhand comment</span>
+                            <span class="split-chip">A film where the hero was born brilliant</span>
+                        </div>
+                        <p>You only have to stop being certain that you cannot. <strong>That moves you from 100% to 50%, and 50% is a chance.</strong></p>
+                    </div>
+                </div>
+
+                <div class="test-strip">
+                    <span class="test-icon">🧪</span>
+                    <div>
+                        <h4>Then make it a real choice</h4>
+                        <p>Give it a small, honest test: a few weeks, one small project. Keep going if it is worth your time, or move it, honestly this time, into "chose not to".</p>
+                    </div>
+                </div>
+
+                <div class="punchline">Both are fine. The only answer that is not fine is <span>the one you never actually chose.</span></div>
+            </div>
+
+            <!-- Takeaway -->
+            <div class="takeaway">
+                <h3>You were probably not born for it. Almost nobody was.<br><span>You can still learn it,</span> if you decide it is worth your time.</h3>
+                <p>Self-learning starts one step earlier than most people think: not with a course or a plan, but with a quiet decision to stop believing the sentence that has been keeping you out. <strong>So, what is on your list?</strong> Which of the things you are bad at did you choose, and which ones did you only ever believe?</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Brought to you by <a href="https://skill-wanderer.com" target="_blank" rel="noopener noreferrer">Skill-Wanderer</a></p>
+            <p><a href="/blog/i-was-not-born-for-this">&#8592; Read the full blog article</a></p>
+        </footer>
+    </div>
+</body>
+</html>
