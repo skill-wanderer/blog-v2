@@ -35,34 +35,36 @@ const enhancedKeywords = `tech blog posts, software development articles, progra
     keywords={enhancedKeywords}
     type="website"
 >
-    <div class="bg-skill-wanderer-darkest text-skill-wanderer-text-dark py-12 md:py-16">
+    <div class="bg-skill-wanderer-darkest text-skill-wanderer-text-dark py-8 md:py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center text-skill-wanderer-text-dark">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-12 text-center text-skill-wanderer-text-dark">
                 All Blog Posts
-            </h1>            <!-- Filter Section -->
-            <div class="mb-8 bg-skill-wanderer-card-dark rounded-lg p-6">
-                <div class="flex flex-col gap-6">
+            </h1>
+
+            <!-- Filter Section -->
+            <div class="mb-8 bg-skill-wanderer-card-dark rounded-xl p-4 sm:p-6 border border-dark">
+                <div class="flex flex-col gap-4 sm:gap-6">
                     <!-- Search Input -->
                     <div class="w-full">
                         <input 
                             type="text" 
                             id="searchInput" 
                             placeholder="Search posts by title or description..." 
-                            class="w-full px-4 py-3 rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-skill-wanderer-secondary-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
+                            class="w-full px-4 py-3 text-sm sm:text-base rounded-lg bg-skill-wanderer-secondary-dark text-skill-wanderer-text-dark border border-skill-wanderer-secondary-dark focus:border-skill-wanderer-primary-orange focus:outline-none transition-colors"
                         />
                     </div>
                     <!-- Category Filter -->
                     <div class="w-full">
-                        <div class="flex flex-wrap gap-3 justify-center sm:justify-start">
+                        <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 py-1 -mx-2 px-2 sm:mx-0 sm:px-0 sm:flex-wrap justify-start items-center">
                             <button 
-                                class="category-filter active px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-skill-wanderer-primary-orange text-white font-semibold transition-all duration-300 hover:shadow-lg text-sm sm:text-base whitespace-nowrap" 
+                                class="category-filter active px-4 py-2 sm:px-6 sm:py-2.5 rounded-full bg-skill-wanderer-primary-orange text-white font-semibold transition-all duration-300 hover:shadow-lg text-xs sm:text-sm whitespace-nowrap flex-shrink-0" 
                                 data-category="all"
                             >
                                 All
                             </button>
                             {BLOG_CATEGORIES.map(category => (
                                 <button 
-                                    class="category-filter px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-transparent border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-sm sm:text-base whitespace-nowrap" 
+                                    class="category-filter px-4 py-2 sm:px-6 sm:py-2.5 rounded-full bg-transparent border border-skill-wanderer-primary-orange/60 text-skill-wanderer-primary-orange font-semibold hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-xs sm:text-sm whitespace-nowrap flex-shrink-0" 
                                     data-category={category}
                                 >
                                     {getCategoryDisplayName(category)}

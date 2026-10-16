@@ -95,40 +95,40 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center relative z-10">
             <!-- Badge -->
             <div class="inline-block mb-6">
-                <span class="px-4 py-2 bg-skill-wanderer-primary-orange text-white text-sm font-semibold rounded-full tracking-wide">
+                <span class="px-4 py-2 bg-skill-wanderer-primary-orange text-white text-xs sm:text-sm font-semibold rounded-full tracking-wide">
                     ⚡ WELCOME TO THE GUILD
                 </span>
             </div>
             
             <!-- Main heading -->
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-skill-wanderer-text-dark leading-tight">
-                The <span class="text-skill-wanderer-primary-orange">Skill-Wanderer</span> Guild
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-skill-wanderer-text-dark leading-tight tracking-tight">
+                The <span class="text-skill-wanderer-primary-orange whitespace-nowrap">Skill-Wanderer</span> Guild
             </h1>
             
             <!-- Subtitle -->
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 max-w-4xl mx-auto text-skill-wanderer-text-dark-secondary leading-relaxed">
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 max-w-4xl mx-auto text-skill-wanderer-text-dark-secondary leading-relaxed">
                 Insights from Our <span class="text-skill-wanderer-light-orange">Tech Guild</span>
             </h2>
             
             <!-- Description -->
-            <p class="text-lg md:text-xl max-w-3xl mx-auto text-skill-wanderer-text-dark-muted leading-relaxed mb-12">
+            <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-skill-wanderer-text-dark-muted leading-relaxed mb-10">
                 A collective of tech enthusiasts sharing insights from exploring various tech
                 domains, building projects, and navigating the ever-evolving landscape of software
                 development together.
             </p>
             
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="/blog" class="px-8 py-4 bg-skill-wanderer-primary-orange text-white font-semibold rounded-lg shadow-lg hover:bg-skill-wanderer-light-orange hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
+                <a href="/blog" class="w-full sm:w-auto px-8 py-4 bg-skill-wanderer-primary-orange text-white font-semibold rounded-lg shadow-lg hover:bg-skill-wanderer-light-orange hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-base sm:text-lg text-center">
                     Explore All Posts
                 </a>
-                <a href="#latest-posts" class="px-8 py-4 border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold rounded-lg hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-lg">
+                <a href="#latest-posts" class="w-full sm:w-auto px-8 py-4 border-2 border-skill-wanderer-primary-orange text-skill-wanderer-primary-orange font-semibold rounded-lg hover:bg-skill-wanderer-primary-orange hover:text-white transition-all duration-300 text-base sm:text-lg text-center">
                     Latest Updates
                 </a>
             </div>
             
             <!-- Stats or highlights -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div class="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto">
                 <div class="text-center">
                     <div class="text-3xl font-bold text-skill-wanderer-primary-orange mb-2">{totalPosts}+</div>
                     <div class="text-skill-wanderer-text-dark-secondary">Posts Published</div>
@@ -150,22 +150,27 @@ const enhancedHomeKeywords = `tech blog, software development, programming, web 
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
-    </section><!-- Explore Topics Section -->
+    </section>
+
+    <!-- Explore Topics Section -->
     <section class="py-12 md:py-16 bg-skill-wanderer-light-gray">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>            <div class="flex flex-wrap justify-center gap-4">
-                <a href="/blog" class="btn-primary">All Posts</a>
+            <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-skill-wanderer-text-light">Explore Topics</h2>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <a href="/blog" class="btn-primary text-sm sm:text-base">All Posts</a>
                 {BLOG_CATEGORIES.map(category => (
-                    <a href={`/blog?category=${formatCategoryForUrl(category)}`} class="px-5 py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light">{getCategoryDisplayName(category)}</a>
+                    <a href={`/blog?category=${formatCategoryForUrl(category)}`} class="px-4 py-2 sm:px-5 sm:py-2 rounded-lg font-medium transition-colors bg-skill-wanderer-white text-skill-wanderer-text-light-secondary border border-light hover:bg-skill-wanderer-light-gray hover:text-skill-wanderer-text-light text-sm sm:text-base">{getCategoryDisplayName(category)}</a>
                 ))}
             </div>
         </div>
-    </section>    <!-- Latest Posts Section -->
+    </section>
+
+    <!-- Latest Posts Section -->
     <section id="latest-posts" class="py-12 md:py-16 bg-skill-wanderer-secondary-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2>
-                <a href="/blog" class="btn-primary">View All Posts</a>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-skill-wanderer-text-dark">Latest Posts</h2>
+                <a href="/blog" class="btn-primary text-sm sm:text-base">View All Posts</a>
             </div>
             {sortedPosts.length > 0 ? (<div class="flex flex-col lg:flex-row gap-8">
                     <!-- Main Latest Post (lg:w-2/3) -->

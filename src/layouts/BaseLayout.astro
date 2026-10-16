@@ -219,6 +219,13 @@ const jsonLd = {
         .prose a {
             @apply text-skill-wanderer-primary-orange hover:text-skill-wanderer-orange-hover transition-colors;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-skill-wanderer-article-bg">

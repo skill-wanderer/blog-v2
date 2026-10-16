@@ -572,20 +572,39 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
     40% { transform: scale(1); opacity: 1; }
   }
 
+  /* Coordinated clearance when cookie banner is open on mobile */
+  body.cookie-banner-open .nova-fab {
+    bottom: 14.5rem;
+    transition: bottom 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  @media (min-width: 640px) {
+    body.cookie-banner-open .nova-fab {
+      bottom: 1.5rem;
+    }
+  }
+
   /* ───── Responsive / Mobile ───── */
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .nova-fab {
+      width: 52px;
+      height: 52px;
       bottom: 1rem;
       right: 1rem;
     }
+    .nova-fab-ring {
+      inset: -5px;
+    }
     .nova-panel {
       width: 100vw;
-      height: 100vh;
+      height: 100dvh;
       max-width: 100vw;
-      max-height: 100vh;
-      bottom: 0;
+      max-height: 100dvh;
+      top: 0;
+      left: 0;
       right: 0;
+      bottom: 0;
       border-radius: 0;
+      border: none;
     }
     .nova-header {
       padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
@@ -963,11 +982,16 @@ const apiUrl = import.meta.env.PUBLIC_PATHFINDER_API_URL || '';
 
     function closePanel() {
       panel!.classList.remove('nova-panel-open');
-      panel!.addEventListener('transitionend', function handler() {
-        panel!.removeEventListener('transitionend', handler);
+      let finished = false;
+      function onDone() {
+        if (finished) return;
+        finished = true;
+        panel!.removeEventListener('transitionend', onDone);
         panel!.style.display = 'none';
         fab!.style.display = 'flex';
-      });
+      }
+      panel!.addEventListener('transitionend', onDone);
+      setTimeout(onDone, 350);
     }
 
     // ─── Event listeners ───

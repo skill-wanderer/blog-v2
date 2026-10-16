@@ -133,9 +133,11 @@ const breadcrumbJsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} slot="head" />
   
   <!-- Hero Section -->
-  <section class="bg-skill-wanderer-hero-bg py-16 md:py-24">
+  <section class="bg-skill-wanderer-hero-bg py-10 sm:py-16 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">        <!-- Category Badge -->        <div class="mb-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Category Badge -->
+        <div class="mb-6">
           {(() => {
             const postCategories = blogPost.categories || (blogPost.category ? [blogPost.category] : []);
             return postCategories.length > 0 && (
@@ -151,12 +153,12 @@ const breadcrumbJsonLd = {
         </div>
         
         <!-- Title -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-skill-wanderer-hero-text mb-6 leading-tight">
+        <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold text-skill-wanderer-hero-text mb-6 leading-tight break-words">
           {blogPost.title}
         </h1>
         
         <!-- Meta Information -->
-        <div class="flex flex-wrap justify-center items-center gap-4 text-skill-wanderer-hero-meta mb-8">
+        <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 text-xs sm:text-sm text-skill-wanderer-hero-meta mb-8">
           <div class="flex items-center space-x-2">
             <span>By {author.name}</span>
           </div>
@@ -172,13 +174,15 @@ const breadcrumbJsonLd = {
             </svg>
             <span>{blogPost.readTime}</span>
           </div>
-        </div>          <!-- Hero Image -->
+        </div>
+
+        <!-- Hero Image -->
         {blogPost.image && (
           <div class="rounded-lg overflow-hidden shadow-2xl">
             <Image 
               src={blogPost.image} 
               alt={blogPost.title}
-              class="w-full h-80 md:h-[28rem] lg:h-[32rem] object-cover"
+              class="w-full h-56 sm:h-72 md:h-[28rem] lg:h-[32rem] object-cover"
               width={800}
               height={512}
               loading="eager"
@@ -192,16 +196,48 @@ const breadcrumbJsonLd = {
 
   <!-- Main Content -->
   <div class="bg-skill-wanderer-article-bg">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-12 gap-12">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
           
           <!-- Main Article -->
-          <main class="lg:col-span-8">
-            <article class="prose prose-lg max-w-none">
+          <main class="lg:col-span-8 min-w-0">
+            <!-- Mobile Table of Contents -->
+            {pageHeadings && pageHeadings.length > 0 && (
+              <details class="lg:hidden mb-8 bg-skill-wanderer-toc-bg rounded-lg border border-light p-4 shadow-sm group">
+                <summary class="flex items-center justify-between font-semibold text-skill-wanderer-article-headings cursor-pointer select-none">
+                  <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-skill-wanderer-primary-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                    Table of Contents
+                  </span>
+                  <svg class="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <nav class="mt-4 pt-3 border-t border-gray-200/60 space-y-2 max-h-72 overflow-y-auto pr-1">
+                  {pageHeadings.map((heading) => (
+                    <a 
+                      href={`#${heading.id}`}
+                      class={`block py-1 px-2 rounded text-sm text-skill-wanderer-article-text hover:text-skill-wanderer-primary-orange hover:bg-orange-50 transition-colors ${
+                        heading.level === 2 ? 'font-medium' : 
+                        heading.level === 3 ? 'ml-4 text-xs' : 
+                        'ml-7 text-xs opacity-90'
+                      }`}
+                    >
+                      {heading.text}
+                    </a>
+                  ))}
+                </nav>
+              </details>
+            )}
+
+            <article class="prose prose-lg max-w-none break-words">
               <slot />
             </article>
-              <!-- Tags -->
+
+            <!-- Tags -->
             {blogPost.tags && blogPost.tags.length > 0 && (
               <div class="mt-12 pt-8 border-t border-light">
                 <h3 class="text-lg font-semibold text-skill-wanderer-article-headings mb-4">Tags</h3>
@@ -214,9 +250,20 @@ const breadcrumbJsonLd = {
                 </div>
               </div>
             )}
+
+            <!-- Mobile Share Buttons -->
+            <div class="lg:hidden mt-10 pt-6 border-t border-light">
+              <ShareButtons 
+                title={blogPost.title}
+                url={currentUrl.toString()}
+                description={blogPost.description}
+                layout="horizontal"
+              />
+            </div>
             
             <!-- Author Bio -->
-            <div class="mt-12">              <AuthorBio 
+            <div class="mt-12">
+              <AuthorBio 
                 name={author.name}
                 bio={author.bio}
                 avatar={author.avatar}
@@ -226,12 +273,11 @@ const breadcrumbJsonLd = {
           </main>
           
           <!-- Sidebar -->
-
           <aside class="hidden lg:block lg:col-span-4 sticky top-8 self-start">
             {pageHeadings && pageHeadings.length > 0 && (
               <TableOfContents headings={pageHeadings} />
             )}
-            <div class="mt-8"> {/* Added a div for spacing */}
+            <div class="mt-8">
               <ShareButtons 
                 title={blogPost.title}
                 url={currentUrl.toString()}
@@ -309,6 +355,10 @@ const breadcrumbJsonLd = {
   
   .prose table {
     @apply w-full border-collapse mb-6;
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
   
   .prose th, .prose td {
